@@ -9,8 +9,7 @@ App.modules.Carbon = function(app) {
    // app router
    var Router = Backbone.Router.extend({
       routes: {
-        "w/:work":        "work",  // #work
-        "w/:work/*state": "work"   // #work/state
+        "w/*state": "work"
       },
 
       work: function() {
@@ -19,14 +18,34 @@ App.modules.Carbon = function(app) {
 
     });
 
-    app.State = Backbone.Model({
+    app.State = Backbone.Model.extend({
+
         initialize: function() {
+            this.compressor = LZMA ? new LZMA("/js/libs/lzma_worker.js") : null;
+        },
+
+        save: function() {
+            this.serialize();
+        },
+
+        fetch: function(state) {
+            var self = this;
+            var b = atob(state);
+            var bytes = b.split(',').map(function(s){  return parseInt(s, 10); }); 
+            self.compressor.decompress(bytes, function(res){
+                self.set(JSON.parse(res));
+            });
         },
 
         serialize: function() {
+            var self = this;
+            var json = JSON.stringify(this.toJSON());
+            this.compressor.compress(json, 1, function(data) {
+                self.router.navigate('w/' + btoa(data));
+            });
         }
-
     });
+
     // the app
     app.Carbon = Class.extend({
 
@@ -45,6 +64,8 @@ App.modules.Carbon = function(app) {
             // init routing
             this.router = new Router();
             this.router.bind('route:work', this.on_route);
+            this.app_state = new app.State();
+            this.app_state.router = this.router;
 
             this.bus.on('app:route_to', this.on_route_to);
 
@@ -67,6 +88,19 @@ App.modules.Carbon = function(app) {
 
         _state_url: function() {
             var self = this;
+            var c = self.map.map.get_center();
+            self.app_state.set({
+                'map': {
+                    center: {
+                        lat: c.lat(),
+                        lon: c.lng()
+                    },
+                    zoom: self.map.map.get_zoom()
+                }
+            });
+            self.app_state.save();
+
+            /*var self = this;
             if(self.work_id === undefined) return;
             var center = self.map.map.get_center();
             var zoom = self.map.map.get_zoom();
@@ -85,6 +119,7 @@ App.modules.Carbon = function(app) {
             });
 
             self.router.navigate('w/' + self.work_id + '/' + map_pos + '|' + layer_data.join(','));
+            */
         },
 
         set_state: function(st) {
@@ -93,47 +128,19 @@ App.modules.Carbon = function(app) {
           self.map.map.set_zoom(st.zoom);
        },
 
-       decode_state: function(state) {
-          var states = state.split('|');
-          var maps = states[0];
-          var tk = maps.split(',');
 
-          // layers
-          var layers = states[1].split(',');
-          var layers_state = [];
-          var layer_indexes = _.pluck(app.config.MAP_LAYERS,'name');
-          for(var i = 0; i < layers.length/2; ++i) {
-            var idx = layers[i*2];
-            var enabled = layers[i*2 + 1];
-            layers_state.push({
-              name: layer_indexes[parseInt(idx, 10)], 
-              enabled: parseInt(enabled, 10) !== 0 ? true: false
-            });
-          }
-          return {
-            zoom : parseInt(tk[0], 10),
-            lat: parseFloat(tk[1]),
-            lon: parseFloat(tk[2]),
-            layers: layers_state
-          };
-       },
-
-       on_route: function(work_id, state) {
-            this.work_id = work_id;
-            this.banner.hide();
-            this.map.work_mode();
-            if(jQuery.browser.msie === undefined) {
-                clearInterval(this.animation);
-            }
+       on_route: function(state) {
+            //this.work_id = work_id;
+            //this.banner.hide();
+            //this.map.work_mode();
             // show the panel and set mode to adding polys
-            this.panel.show();
+            //this.panel.show();
             this.map.show_controls(true);
+            this.app_state.fetch(state);
 
-            app.Log.debug("route: work => ", work_id);
-            this.bus.emit('work', work_id);
-            if(state) {
-              this.set_state(this.decode_state(state));
-            }
+            //if(state) {
+              //this.set_state(this.decode_state(state));
+            //}
         },
 
         on_route_to: function(route) {
