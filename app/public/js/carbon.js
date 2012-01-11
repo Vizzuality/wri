@@ -19,15 +19,19 @@ App.modules.Carbon = function(app) {
 
     });
 
+    app.State = Backbone.Model({
+        initialize: function() {
+        },
+
+        serialize: function() {
+        }
+
+    });
     // the app
     app.Carbon = Class.extend({
 
         init: function() {
             _.bindAll(this, 'on_route');
-            jQuery.ajaxSetup({
-                cache: false
-            });
-            $('html,body').css({overflow: 'hidden'});
         },
 
         run: function() {
@@ -37,75 +41,28 @@ App.modules.Carbon = function(app) {
             // set a global bus
             app.bus = this.bus;
             this.map = new app.Map(this.bus);
-            this.work = new app.Work(this.bus);
-            this.panel = new app.Panel(this.bus);
-            this.banner = new app.StartBanner(this.bus);
-            this.header = new app.Header();
-
-            this.panel.hide();
 
             // init routing
             this.router = new Router();
             this.router.bind('route:work', this.on_route);
 
             this.bus.on('app:route_to', this.on_route_to);
-            this.bus.on('app:work_loaded', function() {
-                /*
- *        var default_pos = new google.maps.LatLng(28.488005204159457, 7.403798828124986);
-                self.map.map.set_center(default_pos);
-                self.map.map.set_zoom(2);
-
-                if(self.work.work.polygon_count() === 0) {
-                    self.map.editing(true);
-                } else {
-                    var polys = self.work.work.get_all_polygons();
-                    // I <3 my code
-                    var b = new google.maps.LatLngBounds();
-                    _.each(polys, function(p) {
-                        _.each(p, function(point) {
-                            var pos = new google.maps.LatLng(point[0], point[1]);
-                            b.extend(pos);
-                        });
-                    });
-                    self.map.map.map.fitBounds(b);
-                }
-                */
-            });
-            this.bus.on('view:show_report', function(id, r) {
-                self.map.editing(r.polygons.length === 0);
-            });
-
-            this.bus.on('view:show_error', function(error) {
-              app.Error.show(error);
-            });
 
             this.state_url = _.debounce(this._state_url, 200);
             this.map.map.bind('center_changed', this.state_url);
             this.map.map.bind('zoom_changed', this.state_url);
-            this.bus.on('map:reorder_layers', this.state_url);
 
-            if(location.hash === '') {
-                this.banner.show();
-                if(jQuery.browser.msie === undefined) {
-                    this.banner_animation();
-                }
-            }
             // ready, luanch
             Backbone.history.start();
             //this.router.navigate('w/work_test');
-        },
-
-        banner_animation: function() {
-            var self = this;
-            var update_vel = 0.01;
-            this.bus.on('model:create_work', function() {
-              update_vel = 0.2;
-            });
-            this.animation = setInterval(function() {
-                var m = self.map.map;
-                var c = m.get_center();
-                m.set_center(new google.maps.LatLng(c.lat(), c.lng() + update_vel));
-            }, 20);
+            //
+            var test = new app.Model();
+            test.set({'my_test': 'jaja'});
+            test.save();
+            setTimeout(function() {
+              test.set({'my_test': 'ADASD'});
+              test.save();
+            }, 1000);
         },
 
         _state_url: function() {
@@ -134,11 +91,6 @@ App.modules.Carbon = function(app) {
           var self = this;
           self.map.map.set_center(new google.maps.LatLng(st.lat,st.lon));
           self.map.map.set_zoom(st.zoom);
-          _.each(st.layers, function(layer) {
-            self.map.enable_layer(layer.name, layer.enabled);
-          });
-          self.map.layer_editor.sort_by(st.layers.reverse());
-          self.bus.emit('map:reorder_layers', _.pluck(st.layers, 'name'));
        },
 
        decode_state: function(state) {

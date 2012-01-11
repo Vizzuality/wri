@@ -12,12 +12,12 @@ TEST_POLY = """{"polygons":[[[-1.4170918294416264,23.148193359375],[-1.680667133
 class APITest(TestCase):
 
     def test_update_work(self):
-        response = self.client.post('/api/v0/work', {});
+        response = self.client.post('/api/v0/m', {});
         self.assertEquals(200, response.status_code)
         data = json.loads(response.content)
         self.assertNotEqual(None, data['id'])
 
-        response = self.client.put('/api/v0/work/' + data['id'], json.dumps([
+        response = self.client.put('/api/v0/m/' + data['id'], json.dumps([
             {
                 'polygons': ['test', 'test', 'test']
             },

@@ -62,7 +62,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'django.contrib.contenttypes',
-    'carbontool'
+    'keyvalue'
 )
 if DEBUG:
     logging.basicConfig(

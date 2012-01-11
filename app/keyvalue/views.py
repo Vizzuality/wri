@@ -16,34 +16,35 @@ from django.http import HttpResponse, Http404
 from django.views.decorators.csrf import csrf_exempt
 
 from baseconv import base62
-from models import Work, Error
+from models import JSONData, Error
 
 
 BASE_ID = 123456
 @csrf_exempt
-def work(request, work_hash=None):
-
+def json_data(request, obj_hash=None):
     status = 200
     work = None
-    if work_hash:
-        id = base62.to_decimal(work_hash)
-        work = Work.get_by_id(id - BASE_ID)
+    if obj_hash:
+        id = base62.to_decimal(obj_hash)
+        work = JSONData.get_by_id(id - BASE_ID)
         if not work:
             raise Http404
 
     # create work
     if request.method == "POST":
-        w = Work()
+        w = JSONData()
+        d = json.loads(request.raw_post_data)
         w.put();
-        data = json.dumps({'id': base62.from_decimal(BASE_ID + w.unique_id())})
+        d['id'] = base62.from_decimal(BASE_ID + w.unique_id())
+        data = w.json = json.dumps(d)
+        w.put();
 
     # update
     elif request.method == "PUT":
         if work:
-            work.json = request.raw_post_data
+            data = work.json = request.raw_post_data
             work.put()
-            data = request.raw_post_data
-        pass
+
     # remove
     elif request.method == "DELETE":
         work.delete();
@@ -58,6 +59,9 @@ def work(request, work_hash=None):
         else: 
           data = work.json
         pass
+
+    if not data:
+            raise Http404
 
     return HttpResponse(data, status=status, mimetype='application/json')
 

@@ -45,21 +45,7 @@
 
   <div id="container">
     <header>
-      <div class="left">
-        <h1>CARBON CALCULATOR</h1>
-        <p>a joint product of The CBD Secretariat, LifeWeb and UNEP-WCMC</p>
-      </div>
-      <div class="right">
-        <ul>
-          <li><a class="no_bkg" href="/about">ABOUT</a></li>
-          <li><a href="#share" class='share_button'><span><strong>SHARE</strong> THIS REPORT</span></a></li>
-        </ul>
-        <div class="share_tooltip">
-            <a href='#' class="close"></a>
-            <h1>share your report using this link</h1>
-            <input class="link" value=""  readonly="readonly"></input>
-        </div>
-      </div>
+        <h1>title</h1>
     </header>
 
     <div id="main" role="main">
@@ -92,97 +78,14 @@
                 </div>
             </div>
 
-            <!-- search box -->
-            <div class="search">
-              <h1>search</h1>
-              <input type='text' placeholder='............................' />
-              <a href="#search">&nbsp;&nbsp;</a>
-            </div>
-
-            <div id="polygon_popup">
-                <a id='done' href="">done</a>
-                <a id='delete' href="">delete</a>
-            </div> <!-- polygon_popup -->
-
-            <div id="protected_popup" class="popup_text">
-                <div class="top"></div>
-                <div class="center">
-                  <a href='#' class="close"></a>
-                  <h1 class="name">name</h1>
-                </div>
-                <div class="bottom">
-                  <a id='add_protected' href="#"><span>add this to the analisys</span></a>
-                </div>
-            </div> <!-- polygon_popup -->
-
-
             <a class="cartodb_logo" href="http://cartodb.com"></a>
         </div>
-
-
-        <div id="panel">
-            <div id="tabs">
-                <ul>
-                   <li class="add"><a href="#add_new_one" class="add">+</a></li>
-                   <li class="total last"><a href="#summary">summary</a></li>
-                </ul>
-            </div>
-            <div id="tab_content">
-            </div>
-            <!-- tooltip -->
-            <div class="list_tooltip">
-            </div>
-            {% include "_help_tooltips.html" %}
-        </div>
-
-        <div id="start_banner">
-            <div class="inner">
-                <div class="help">
-                    <h1>welcome to the carbon calculator tool</h1>
-                    <p>Draw polygons around your area of interest (AOI) to get an initial estimate about the potential contribution of this area to climate change mitigation and get information on its conservation values and forest status.</p>
-                    <button id="create_work"><span class="button_info">create an AOI</span></button>
-                </div> <!-- help -->
-            </div> <!-- inner -->
-        </div>
-
-      <div id="error_dialog">
-        <div class="error_wrapper">
-          <!--<a href='#' class="close"></a>-->
-          <!--<h1 id="title">ERROR</h1>-->
-          <p id="error_text">An error ocurred</p>
-          <a id="ok" href="#">ok</a>
-        </div>
-      </div>
-
     </div>
 
 
     <footer>
     </footer>
   </div> <!--! end of #container -->
-
-  <!-- templates -->
-  <script type="text/template" id="report-tmpl">
-     {% include "_report.html" %}
-  </script>
-
-  <script type="text/template" id="report-tmpl-common">
-     {% include "_report_common.html" %}
-  </script>
-
-
-   <script type="text/template" id="report-tmpl-no-content">
-    <div class="no_content">
-      <div class="inner">
-          <span class="title">
-              <h2>DRAW YOUR FIRST POLYGON</h2>
-          </span>
-          <p>Start clicking on the map for drawing the first polygon of this AOI.</p>
-      </div>
-      <span class="end"></span>
-      <span style="display:none" class="loader"></span>
-    </div>
-  </script>
 
   <!-- JavaScript at the bottom for fast page loading -->
 
@@ -209,7 +112,10 @@
   <script src="js/modules/config.js"></script>
   <script src="js/modules/bus.js"></script>
   <script src="js/modules/map.js"></script>
+
+  <script src="js/views/projector.js"></script>
   <script src="js/modules/work.js"></script>
+  <!--
   <script src="js/modules/panel.js"></script>
   <script src="js/modules/start_banner.js"></script>
   <script src="js/modules/ws.js"></script>
@@ -217,54 +123,32 @@
   <script src="js/modules/cartodb.js"></script>
   <script src="js/modules/error.js"></script>
 
-  <!-- backbone components -->
-  <script src="js/views/draw_tool.js"></script>
-  <script src="js/views/projector.js"></script>
-  <script src="js/views/map.js"></script>
   <script src="js/views/report.js"></script>
   <script src="js/views/polygon.js"></script>
-  <script src="js/views/layers.js"></script>
   <script src="js/views/sharepopup.js"></script>
+  -->
+  <script src="js/views/draw_tool.js"></script>
+  <script src="js/views/layers.js"></script>
   <script src="js/views/searchbox.js"></script>
 
+  <script src="js/views/map.js"></script>
 
-  <!-- main -->
   <script src="js/carbon.js"></script>
-
-  <script>
-    function number_format(n) {
-        var s = n.toFixed(0);
-        var chrs = [];
-        var c = 0;
-        for(var i = s.length - 1; i != -1; --i, ++c) {
-            if(((c % 3) == 0) && c > 0) {
-                chrs.push(',');
-            }
-            chrs.push(s.charAt(i));
-        }
-        return chrs.reverse().join('');
-    }
-  </script>
-
 
   <!-- end scripts-->
   <script>
       function init() {
-          // use timeout trick to avoid jquery catch the exceptions thrown
-          setTimeout(function() {
-              App(function(app) {
-                  var carbon = new app.Carbon();
-                  carbon.run();
-                  //debug
-                  window.carbon = carbon;
-                  window._app= app;
-              });
-          }, 100);
+            App(function(app) {
+                var carbon = new app.Carbon();
+                carbon.run();
+                //debug
+                window.carbon = carbon;
+                window._app= app;
+                
+            });
       }
       $(document).ready(function() {
-      //$(function() {
             init();
-
       });
   </script>
 

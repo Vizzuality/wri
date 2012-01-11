@@ -7,12 +7,12 @@ if 'SERVER_SOFTWARE' in os.environ and os.environ['SERVER_SOFTWARE'].startswith(
 
     from django.db import models
 
-    class Work(models.Model):
+    class JSONData(models.Model):
         json = models.TextField(default='[]')
 
         @staticmethod
         def get_by_id(id):
-            return Work.objects.get(pk=id)
+            return JSONData.objects.get(pk=id)
 
         def put(self):
             self.save()
