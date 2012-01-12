@@ -170,12 +170,12 @@ var MapView = Backbone.View.extend({
     },
 
     // add a new tiled layer
-    add_layer: function(name, layer_info) {
+    add_layer: function(name, layer_info, layer) {
           var opacity = 1.0;
           if(layer_info.opacity !== undefined) {
             opacity = layer_info.opacity;
           }
-          var layer = new google.maps.ImageMapType({
+          layer = layer || new google.maps.ImageMapType({
               getTileUrl: function(tile, zoom) {
                 var y = tile.y;
                 var tileRange = 1 << zoom;
@@ -199,6 +199,7 @@ var MapView = Backbone.View.extend({
          };
          this.layers_order.push(name);
          this.reorder_layers();
+         this.trigger('changed:layers');
     },
 
     get_layers: function() {

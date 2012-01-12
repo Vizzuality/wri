@@ -89,6 +89,11 @@ App.modules.Map = function(app) {
                 bus: bus,
                 layers: this.map.get_layers()
             });
+
+            this.map.bind('changed:layers', function() {
+                self.layer_editor.layers = self.map.get_layers();
+                self.layer_editor.render();
+            });
             this.polygon_edit = new PolygonDrawTool({mapview: this.map});
             this.editing(false);
             this.polygons = [];
