@@ -69,78 +69,10 @@ App.modules.Map = function(app) {
         }
     });
 
-    //TODO: refactor base popup
-    var ProtectedZonePopup = Backbone.View.extend({
-        el: $('#protected_popup'),
-
-        events: {
-            'click .close': 'hide',
-            'click #add_protected': 'add_protected_area'
-        },
-
-        initialize: function() {
-            _.bindAll(this, 'show', 'hide');
-            this.map = this.options.mapview;
-            this.name_el = this.$('.name');
-            this.protected_zone = null;
-        },
-
-        show: function(at, protected_zone_info) {
-            var self = this;
-            self.name_el.html("<a target='_blank' href='http://protectedplanet.net/sites/" + protected_zone_info.slug + "'>" + protected_zone_info.name + "</a>");
-            this.protected_zone = protected_zone_info;
-            self.at = at;
-            self.set_pos(at);
-            this.el.show();
-        },
-
-        set_pos: function(at) {
-            var p = this.map.projector.transformCoordinates(at);
-            this.el.css({
-                top: p.y - 120,
-                left: p.x - 30
-            });
-        },
-
-        move: function() {
-            if(this.at)
-                this.set_pos(this.at);
-        },
-
-        hide: function(e) {
-            if(e) { e.preventDefault(); }
-            this.el.hide();
-            self.at = null;
-        },
-
-        add_protected_area: function(e) {
-            var self = this;
-            if(e) { e.preventDefault(); }
-            self.hide();
-            app.WS.ProtectedPlanet.PA_polygon(this.protected_zone.id, function(geom) {
-                // convert polygon lon, lat -> lat, lon
-                var polygons = geom.the_geom.coordinates;
-                if(geom.the_geom.type === "MultiPolygon") {
-                } else {
-                    polygons = [polygons];
-                }
-                _(polygons).each(function(coord) {
-                    var polygon = _(coord).map(function(poly) {
-                        return _(poly).map(function(latlon) {
-                            return [latlon[1], latlon[0]];
-                        });
-                    });
-                    self.trigger('add_polygon', polygon);
-                });
-            });
-        }
-
-    });
-
 
     app.Map = Class.extend({
         init: function(bus) {
-            _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing', 'enable_layer', 'reoder_layers', 'protected_area_click','reorder_layers', 'update_report', 'remove_all', 'clear');
+            _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing', 'enable_layer', 'reoder_layers', 'reorder_layers', 'update_report', 'remove_all', 'clear');
             var self = this;
             this.map = new MapView({el: $('.map_container')});
             this.seachbox = new Searchbox({el: $('.map_container .search')});
@@ -152,7 +84,6 @@ App.modules.Map = function(app) {
             });
 
             this.popup = new Popup({mapview: this.map});
-            this.protectedzone_popup = new ProtectedZonePopup({mapview: this.map});
             this.layer_editor = new LayerEditor({
                 el: $('.layers'),
                 bus: bus,
@@ -181,26 +112,13 @@ App.modules.Map = function(app) {
             bus.attach(this.polygon_edit, 'polygon');
             this.popup.bind('edit', this.end_edit_polygon);
             this.popup.bind('remove', this.remove_polygon);
-            this.map.bind('center_changed', function(pos) {
-                self.protectedzone_popup.move(pos);
-            });
 
-            this.protectedzone_popup.bind('add_polygon', function(polygon) {
-                self.bus.emit('polygon', {paths: polygon});
-            });
             this.seachbox.bind('goto', function(latlng, zoom) {
                 self.map.set_center(latlng);
                 self.map.set_zoom(zoom);
             });
             this.show_controls(false);
 
-            // when first vertex is created the tool allows to
-            // click on a PA, in the next polygons is not allowed
-            this.polygon_edit.bind('first_vertex', function() {
-                setTimeout(function() {
-                    self.map.unbind('click', self.protected_area_click);
-                }, 500);
-            });
             $(document).keyup(function(e) {
                 if (e.keyCode == 27) {
                     if(self._editing) {
@@ -229,18 +147,6 @@ App.modules.Map = function(app) {
             this._editing = b;
             this.polygon_edit.editing_state(b);
             // always try to unbind to avoid bind twice
-            this.map.unbind('click', this.protected_area_click);
-            this.map.bind('click', this.protected_area_click);
-        },
-
-        protected_area_click: function(e) {
-            var self = this;
-            var pos = [e.latLng.lat(), e.latLng.lng()];
-            app.WS.ProtectedPlanet.info_at(pos, function(data) {
-                if(data) {
-                    self.protectedzone_popup.show(e.latLng, data);
-                }
-            });
         },
 
         disable_editing: function() {
