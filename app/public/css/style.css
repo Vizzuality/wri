@@ -991,6 +991,22 @@ div.right {
   color: #111;
 }
 
+/* line 41, ../../css_src/partials/_panel.scss */
+.time_slider_wrapper {
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+  background: #FFF;
+  border: 1px solid #CCC;
+  border-radius: 2px;
+  padding: 10px;
+}
+/* line 49, ../../css_src/partials/_panel.scss */
+.time_slider_wrapper #time_slider {
+  width: 250px;
+  height: 20px;
+}
+
 /* Golden ratio scale from http://modularscale.com/scale/?px1=12&px2=48&ra1=1.618&ra2=0
 ---------------------------------------- */
 /* line 36, ../../css_src/partials/_base.scss */

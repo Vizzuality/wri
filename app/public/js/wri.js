@@ -4,6 +4,92 @@
  ===============================================
 */
 
+/*
+ ====================
+ this class renders deforestation data in a given time
+ ====================
+*/
+
+function TimePlayer() {
+    this.time = 0;
+    this.canvas_setup = this.get_image;
+    this.render = this.render_time;
+    this.data = [];
+    for(var i=0; i < 64*64; ++i) {
+        this.data[i] = 0;
+    }
+}
+
+TimePlayer.prototype = new CanvasTileLayer();
+
+TimePlayer.prototype.set_time = function(t) {
+    console.log(t);
+    this.time = t;
+    this.redraw();
+};
+
+TimePlayer.prototype.pre_cache_months = function(time_pixels) {
+    this.months = [];
+    for(var m=0; m < 48 ; ++m) {
+        var data = [];
+        for(var i=0; i < 64; ++i) {
+            for(var j=0; j < 64; ++j) {
+                var xx = i*4;
+                var yy = j*4;
+                var px = (m/3)>>0;
+                var sx = px%4;
+                var sy = (px/4)>>0;
+                var comp = m%3;
+                data[j*64 + i] = time_pixels[((yy + sy)*256 + (xx + sx))*4 + comp];
+            }
+        }
+        this.months[m] = data;
+    }
+
+}
+
+TimePlayer.prototype.get_image = function(tile, coord, zoom) {
+    var self = this;
+    var img = new Image();
+    img.src = '/img/test_time.png';
+    img.onload = function() {
+        var c = tile.canvas;
+        tile.ctx.drawImage(img, 0, 0);
+        tile.pixel_data = tile.ctx.getImageData(0, 0, c.width, c.height).data;
+        self.pre_cache_months(tile.pixel_data);
+        //self.render();
+    };
+};
+
+TimePlayer.prototype.render_time = function(tile, coord, zoom) {
+    var month = this.time>>0;
+    var w = tile.canvas.width;
+    var h = tile.canvas.height;
+    var ctx = tile.ctx;
+    var image = ctx.getImageData(0,0, w, h);
+    var pixels = image.data;
+    var time_pixels = tile.pixel_data;
+    var pixel_pos;
+    var grid_size = 4;
+    var data = this.months[month];
+
+    for(i=0; i < w; ++i) {
+        for(j=0; j < h; ++j) {
+           var x = (i/4)>>0;
+           var y = (j/4)>>0;
+           var def = data[y*64  + x];
+           pixel_pos = 4 * (j*w + i);
+
+            // x,y, time -> real pixel pos
+           pixels[pixel_pos + 0] = 25*def;
+           pixels[pixel_pos + 1] = 0;
+           pixels[pixel_pos + 2] = 0;
+           pixels[pixel_pos + 3] = def === 0 ? 0: 200;
+        }
+    }
+    ctx.putImageData(image,0,0);
+};
+
 App.modules.WRI= function(app) {
 
    // app router
@@ -75,7 +161,14 @@ App.modules.WRI= function(app) {
             this.state = [];
             this.level = 0;
 
+            // main components
+
             this.stats_panel = new app.StatsPanel({el: $('#panel')}); 
+            this.time_slider = new Slider({el: $("#time_slider")});
+            this.time_slider.bind('change', function(v) {
+                self.time_layer.set_time(v);
+            });
+            
 
             this.bus.on('app:route_to', this.on_route_to);
 
@@ -83,6 +176,7 @@ App.modules.WRI= function(app) {
             this.map.map.bind('center_changed', this.state_url);
             this.map.map.bind('zoom_changed', this.state_url);
             this.map.show_controls(true);
+
 
             // ready, luanch
             Backbone.history.start();
@@ -96,7 +190,15 @@ App.modules.WRI= function(app) {
               test.save();
             }, 1000);
             */
-            this.add_test_layer();
+            ///this.add_test_layer();
+            this.add_time_layer();
+        },
+
+        add_time_layer: function() {
+            var lyr = new TimePlayer();
+            this.time_layer = lyr;
+            this.map.map.add_layer('time', {name: 't'}, lyr);
+            this.map.map.enable_layer('time', true);
         },
 
         add_test_layer: function() {
@@ -194,13 +296,12 @@ App.modules.WRI= function(app) {
                 ['name_0', 'name_1', 'name_2', 'cartodb_id']
             ];
 
+            //update level
             this.state.push(b);
             ++this.level;
             this.cartodb.options.table = 'gadm' + this.level;
             this.cartodb.options.columns = columns_level[this.level];
-
             this.map.map.map.fitBounds(b);
-
 
         },
 
@@ -218,26 +319,6 @@ App.modules.WRI= function(app) {
             });
             self.app_state.save();
 
-            /*var self = this;
-            if(self.work_id === undefined) return;
-            var center = self.map.map.get_center();
-            var zoom = self.map.map.get_zoom();
-            var data = [];
-            data.push(zoom, center.lat(), center.lng());
-            var map_pos = data.join(',');
-
-            var layers = self.map.map.layers;
-            var layer_data = [];
-            var layer_indexes = _.pluck(app.config.MAP_LAYERS,'name');
-            _(self.map.map.layers_order).each(function(name) {
-                var layer = layers[name];
-                var idx = _.indexOf(layer_indexes, name);
-                layer_data.push(idx);
-                layer_data.push(layer.enabled?1:0);
-            });
-
-            self.router.navigate('w/' + self.work_id + '/' + map_pos + '|' + layer_data.join(','));
-            */
         },
 
         set_state: function(st) {

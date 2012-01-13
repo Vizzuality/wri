@@ -1,11 +1,15 @@
 
-function CanvasTileLayer(canvas_setup) {
+function CanvasTileLayer(canvas_setup, render) {
     this.tileSize = new google.maps.Size(256,256);
     this.maxZoom = 19;
     this.name = "Tile #s";
     this.alt = "Canvas tile layer";
     this.tiles = {};
     this.canvas_setup = canvas_setup;
+    this.render = render;
+    if(!render) {
+        this.render = canvas_setup;
+    }
 }
 
 
@@ -57,7 +61,7 @@ CanvasTileLayer.prototype.each = function(callback) {
 CanvasTileLayer.prototype.redraw= function() {
     for(var t in this.tiles) {
         var tile = this.tiles[t];
-        this.canvas_setup(tile, tile.coord, tile.zoom);
+        this.render(tile, tile.coord, tile.zoom);
     }
 };
 

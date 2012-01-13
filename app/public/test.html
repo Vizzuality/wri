@@ -1,0 +1,28 @@
+
+<html>
+    <body>
+        <canvas id="c"></canvas>
+    </body>
+    <script src="/js/libs/zlib.js"></script>
+    <script src="/js/libs/png.js"></script>
+    <script>
+        var canvas = document.getElementById('c');
+        var ctx = canvas.getContext('2d');
+        canvas.width = canvas.height = 256;
+        ctx.globalCompositeOperation = 'copy';
+        ctx.fillStyle = "rgba(127, 127, 127, 127)";
+        ctx.fillRect(0, 0, 256, 256);
+        PNG.load('/img/test_2.png', function(png) {
+            var pixel_data = ctx.getImageData(0, 0, c.width, c.height);
+            png.copyToImageData(pixel_data, png.decodePixels());
+            var d = pixel_data.data;
+            console.log(d[0], d[1], d[2], d[3]);
+        });
+        var img = new Image();
+        img.src = '/img/test_2.png';
+        img.onload = function() {
+            //ctx.drawImage(img, 0, 0);
+        };
+    </script>
+
+</html>
