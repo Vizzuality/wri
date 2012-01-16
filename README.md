@@ -2,6 +2,8 @@
 
 The WRI project aims to build a web app that rides on FORMA data to explain the story of deforestation over time.
 
+![](http://i.imgur.com/yxC8q.png)
+
 # Development setup
 
 See the [README here](https://github.com/Vizzuality/wri/blob/master/app/README).
