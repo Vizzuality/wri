@@ -1,4 +1,3 @@
-
 Premise
 =================
 
@@ -51,3 +50,7 @@ encoding
 - This is also nice in tiles where no deforestation is ever detected,
 
     [0]
+    
+- Or ones that were already completed deforested
+
+    [16]
