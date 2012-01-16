@@ -4,7 +4,7 @@ The WRI project aims to build a web app that rides on FORMA data to explain the 
 
 # Development setup
 
-To do.
+See the [README here](https://github.com/Vizzuality/wri/blob/master/app/README).
 
 ## Data sources
 
