@@ -73,5 +73,5 @@ variation
 
     specific timepoint look-ups Values[3] would give us the 3rd month
 
-    accumulative values, so eval(Values.splice(7,2).join('+')) - Values[0] would give us the summed values of the first 7 months
+    accumulative values, so eval(Values.splice(7,2).join('+')) would give us the summed values of the first 7 months
  
