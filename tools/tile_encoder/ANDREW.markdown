@@ -54,3 +54,24 @@ encoding
 - Or ones that were already completed deforested
 
     [16]
+
+
+variation
+--------
+
+- Use a similar array structure with the 0 position reserved for the starting value
+    
+    [x, n ,n ,n ....]
+    
+    so x = initial value for a cell
+
+    here though, n = an incrementing value at each date
+
+    so if we have 144 dates to store, our array would be 145 length
+
+- This is nice because it allows a few things
+
+    specific timepoint look-ups Values[3] would give us the 3rd month
+
+    accumulative values, so eval(Values.splice(7,2).join('+')) would give us the summed values of the first 7 months
+ 
