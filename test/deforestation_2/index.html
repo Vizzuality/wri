@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <style>
+            body {
+                font-family: Helvetica;
+            }
+            h1 {
+                font-size: 77px;
+                letter-spacing: -3px;
+                color: #555;
+                margin: 60px 0;
+            }
+        #c {
+            background-color: #FFFFFF;
+        }
+        #wrap {
+            width: 1024px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #range {
+            width: 70%;
+            margin: 20px 0;
+        }
+        </style>
+    </head>
+
+    <!--<canvas id="c" style="witdh: 500px; heigth: 500px;"></canvas>-->
+    <div id="wrap">
+        <h1>deforestation visualization</h1>
+        <input id="range" type="range" min='0' max='60' />
+        <canvas id="c"></canvas>
+    </div>
+
+    <script src="dat.gui.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        var app = new App();
+        app.init();
+        var gui = new dat.GUI();
+        var r = function() {
+            app.render();
+        }
+        gui.add(app, 'threshold', 0, 60).onChange(r);
+        gui.add(app, 'fadeDist', 0, 30).onChange(r);
+        gui.add(app, 'radius', 0, 30).onChange(r);
+        gui.add(app, 'alphaLow', 0, 250).onChange(r);
+        gui.add(app, 'alphaHigh', 10, 255).onChange(r);
+        gui.add(app, 'maxAlpha', 0, 1).onChange(r);
+        gui.add(app, 'postProccess').onChange(r);
+        gui.add(app, 'circle').onChange(r);
+        app.run();
+    </script>
+
+</html>
