@@ -45,8 +45,7 @@ TimePlayer.prototype.pre_cache_months = function(time_pixels) {
         }
         this.months[m] = data;
     }
-
-}
+};
 
 TimePlayer.prototype.get_image = function(tile, coord, zoom) {
     var self = this;
@@ -71,13 +70,21 @@ TimePlayer.prototype.render_time = function(tile, coord, zoom) {
     var time_pixels = tile.pixel_data;
     var pixel_pos;
     var grid_size = 4;
-    var data = this.months[month];
+    var data, i, j, x, y, def;
+
+    // Check if month is in bounds.
+    if (month < this.months.length) {
+        data = this.months[month];        
+    } else {
+        _app.Log.log("Month {0} is out of range in TimePlayer.render_time()".format(month));   
+        return;
+    }
 
     for(i=0; i < w; ++i) {
         for(j=0; j < h; ++j) {
-           var x = (i/4)>>0;
-           var y = (j/4)>>0;
-           var def = data[y*64  + x];
+           x = (i/4)>>0;
+           y = (j/4)>>0;
+           def = data[y*64  + x];
            pixel_pos = 4 * (j*w + i);
 
             // x,y, time -> real pixel pos
