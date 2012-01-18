@@ -123,7 +123,7 @@ TimePlayer.prototype.render_time = function(tile, coord, zoom) {
         ctx.fillStyle = colors[idx];//"rgb(" + c + ",0, 0)";
       }
       // render
-      ctx.fillRect(x, y, 10, 10);
+      ctx.fillRect(x, y, 6, 6);
     }
 };
 
