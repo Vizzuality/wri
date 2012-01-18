@@ -33,6 +33,7 @@ CREATE OR REPLACE FUNCTION AXH_Griddify(rast raster, s int, tbl text, tile_id in
         v int;
         predate int = 0; --the value assigned to months prior to forma
         tmp int;
+        testv varchar;
         total_incr int;
         --indexing values for the array
         poly geometry;
@@ -58,8 +59,8 @@ CREATE OR REPLACE FUNCTION AXH_Griddify(rast raster, s int, tbl text, tile_id in
                 FOR ix IN 0..(s-1) LOOP
                     FOR iy IN 0..(s-1) LOOP
                         v := ST_Value(rast, (mx + ix), (my + iy));
-                        IF v != null_val THEN
-                            holder[v] := holder[v] + 1;
+                        IF v != null_val AND v IS NOT NULL THEN
+                            holder[v+1] := holder[v+1] + 1;
                             total_incr := total_incr + 1;
                         END IF;
                     END LOOP;
