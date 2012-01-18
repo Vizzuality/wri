@@ -6,25 +6,25 @@ Setting up the development environment for the WRI app is super easy.
 
 First check out the WRI project code by firing up your command line and typing:
 
-```shell
-git clone git@github.com:Vizzuality/wri.git
+```bash
+$ git clone git@github.com:Vizzuality/wri.git
 ```
 
 The WRI app rides on [Django](https://www.djangoproject.com/) which is a super clean Python web framework. You'll need to install version 1.2.4 using [PIP](https://www.djangoproject.com), an easy to use Python package manager:
 
-```shell
+```bash
 $ sudo pip install django==1.2.4
 ```
 
 Next we'll create the models:
 
-```shell
+```bash
 $ cd app && python manage.py syncdb
 ```
 
 And that's it! Start the server and view [http://localhost:8000]( http://localhost:8000).
 
-```shell
+```bash
  $ cd app && python manage.py runserver
 ```
 
@@ -32,14 +32,14 @@ And that's it! Start the server and view [http://localhost:8000]( http://localho
 
 If you want to change application style that gets reflected on a browser refresh, you'ill need [Compass](http://compass-style.org), the CSS Authoring Framework. This depends on Ruby and Gem being installed:
 
-```shell
+```bash
 $ gem install compass
 $ gem install html5-boilerplate
 ```
 
 Finally:
 
-```shell
+```bash
 $ cd app && compass watch
 ```
 
