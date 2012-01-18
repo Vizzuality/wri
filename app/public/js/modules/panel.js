@@ -5,7 +5,7 @@
 */
 
 
-App.modules.Panel = function(app) {
+App.modules.StatsPanel = function(app) {
 
     var StatsPanel = Backbone.View.extend({
 

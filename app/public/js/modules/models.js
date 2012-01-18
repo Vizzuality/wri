@@ -1,9 +1,9 @@
 
-App.modules.Data = function(app) {
+App.modules.Model = function(app) {
 
     var Model = Backbone.Model.extend({
 
-        urlRoot: app.config.API_URL,
+        urlRoot: app.Config.API_URL,
 
         initialize: function() {
           //_.bindAll(this, '_save');
@@ -12,7 +12,7 @@ App.modules.Data = function(app) {
         }
     });
 
-    app.Model = Model
+    app.Model = Model;
 
 
 };
