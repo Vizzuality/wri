@@ -12,12 +12,10 @@
 
 function TimePlayer() {
     this.time = 0;
-    this.canvas_setup = this.get_image;
+    this.canvas_setup = this.get_time_data;
     this.render = this.render_time;
-    this.data = [];
-    for(var i=0; i < 64*64; ++i) {
-        this.data[i] = 0;
-    }
+    this.cells = [];
+    this.base_url = 'http://wri-01.cartodb.com/api/v2/sql';
 }
 
 TimePlayer.prototype = new CanvasTileLayer();
@@ -28,73 +26,105 @@ TimePlayer.prototype.set_time = function(t) {
     this.redraw();
 };
 
-TimePlayer.prototype.pre_cache_months = function(time_pixels) {
-    this.months = [];
-    for(var m=0; m < 48 ; ++m) {
-        var data = [];
-        for(var i=0; i < 64; ++i) {
-            for(var j=0; j < 64; ++j) {
-                var xx = i*4;
-                var yy = j*4;
-                var px = (m/3)>>0;
-                var sx = px%4;
-                var sy = (px/4)>>0;
-                var comp = m%3;
-                data[j*64 + i] = time_pixels[((yy + sy)*256 + (xx + sx))*4 + comp];
-            }
-        }
-        this.months[m] = data;
-    }
-};
-
-TimePlayer.prototype.get_image = function(tile, coord, zoom) {
+TimePlayer.prototype.sql = function(sql, callback) {
     var self = this;
-    var img = new Image();
-    img.src = '/img/test_time.png';
-    img.onload = function() {
-        var c = tile.canvas;
-        tile.ctx.drawImage(img, 0, 0);
-        tile.pixel_data = tile.ctx.getImageData(0, 0, c.width, c.height).data;
-        self.pre_cache_months(tile.pixel_data);
-        //self.render();
-    };
-};
+    $.getJSON(this.base_url  + "?q=" + encodeURIComponent(sql) ,function(data){
+        callback(data);
+    });
+}
+
+TimePlayer.prototype.pre_cache_months = function(rows) {
+    var row;
+    var cells = [];
+    for(var i in rows) {
+      row = rows[i];
+      cells[i] = {
+        x: row.upper_left_x,
+        y: row.upper_left_y,
+        months: row.cummulative
+      }
+    }
+    return cells;
+}
+
+// get time data in json format
+TimePlayer.prototype.get_time_data = function(tile, coord, zoom) {
+    var self = this;
+
+    var projection = new MercatorProjection();
+    var bbox = projection.tileBBox(coord.x, coord.y, zoom);
+    var sql = "SELECT upper_left_x, upper_left_y, cell_width, cell_height, pixels, total_incr as events, cummulative, boxpoly, the_geom_webmercator FROM griddify_results"
+
+    sql += " WHERE the_geom && ST_SetSRID(ST_MakeBox2D(";
+    sql += "ST_Point(" + bbox[0].lng() + "," + bbox[0].lat() +"),";
+    sql += "ST_Point(" + bbox[1].lng() + "," + bbox[1].lat() +")), 4326)";
+
+    this.sql(sql, function(data) {
+        tile.cells = self.pre_cache_months(data.rows);
+    });
+}
+
+
+var originShift = 2 * Math.PI* 6378137 / 2.0;
+function meterToPixels(mx, my, zoom) {
+  var initialResolution = 2 * Math.PI * 6378137 / 256.0;
+  var res = initialResolution / (1 << zoom)
+  px = (mx + originShift) / res
+  py = (my + originShift) / res
+  return [px, py];
+}
+
 
 TimePlayer.prototype.render_time = function(tile, coord, zoom) {
+    var projection = new MercatorProjection();
     var month = this.time>>0;
     var w = tile.canvas.width;
     var h = tile.canvas.height;
     var ctx = tile.ctx;
-    var image = ctx.getImageData(0,0, w, h);
-    var pixels = image.data;
-    var time_pixels = tile.pixel_data;
-    var pixel_pos;
-    var grid_size = 4;
     var data, i, j, x, y, def;
 
-    // Check if month is in bounds.
-    if (month < this.months.length) {
-        data = this.months[month];        
-    } else {
-        _app.Log.log("Month {0} is out of range in TimePlayer.render_time()".format(month));   
-        return;
-    }
+    var cells = tile.cells;
+    var cell;
+    var point;
+    var x, y;
 
-    for(i=0; i < w; ++i) {
-        for(j=0; j < h; ++j) {
-           x = (i/4)>>0;
-           y = (j/4)>>0;
-           def = data[y*64  + x];
-           pixel_pos = 4 * (j*w + i);
+    // clear canvas
+    tile.canvas.width = w;
 
-            // x,y, time -> real pixel pos
-           pixels[pixel_pos + 0] = 25*def;
-           pixels[pixel_pos + 1] = 0;
-           pixels[pixel_pos + 2] = 0;
-           pixels[pixel_pos + 3] = def === 0 ? 0: 200;
-        }
+    ctx.fillStyle = "#000";
+    // render cells
+    for(i=0; i < cells.length; ++i) {
+      cell = cells[i];
+
+      //transform to local tile x/y
+      //TODO: precache this
+      point = projection.tilePoint(coord.x, coord.y, zoom);
+      pixels = meterToPixels(cell.x, cell.y, zoom);
+      pixels[1] = (256 << zoom) - pixels[1];
+      x = pixels[0] - point[0];
+      y = pixels[1] - point[1];
+
+      //var c = (255.0*cell.months[month]/10)>>0;
+      ctx.fillStyle = '#000';
+      if(cell.months) {
+        var c =  cell.months[month];
+        var colors = [
+            'rgba(255, 51, 51, 0.9)',
+            'rgba(170, 52, 51, 0.6)',
+            'rgba(104, 48, 59, 0.6)',
+            'rgba(84, 48, 59, 0.6)'
+        ]
+        if (c == 0) continue;
+        var idx = 0;
+        if(c < 10) idx = 0;
+        if(c < 7.5) idx = 1
+        if(c < 5) idx = 2;
+        if(c < 2.5) idx = 3;
+        ctx.fillStyle = colors[idx];//"rgb(" + c + ",0, 0)";
+      }
+      // render
+      ctx.fillRect(x, y, 10, 10);
     }
-    ctx.putImageData(image,0,0);
 };
 
 App.modules.WRI= function(app) {
