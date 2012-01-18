@@ -36,6 +36,9 @@ Thumbs.db
 # Editor files #
 ################
 *.swp
+*.*~
+#*
+.#*
 
 # Compass
 .sass-cache
@@ -47,3 +50,7 @@ publish/*
 app/carbontool.db
 production
 env
+
+# Build artifacts
+wri.db
+build

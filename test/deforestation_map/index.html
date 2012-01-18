@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <style>
+            body {
+                font-family: Helvetica;
+            }
+            h1 {
+                font-size: 77px;
+                letter-spacing: -3px;
+                color: #555;
+                margin: 60px 0;
+            }
+        #c {
+            background-color: #FFFFFF;
+        }
+        #wrap {
+            width: 1024px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #range {
+            width: 70%;
+            margin: 20px 0;
+        }
+        </style>
+    </head>
+
+    <!--<canvas id="c" style="witdh: 500px; heigth: 500px;"></canvas>-->
+    <div id="wrap">
+        <h1>deforestation visualization</h1>
+        <div id="map_canvas" style="width:100%; height:500px"></div>
+    </div>
+
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="dat.gui.min.js"></script>
+    <script src="app.js"></script>
+    <script src="canvas_overlay.js"></script>
+
+    <script>
+        function map_init() {
+            var opts = {
+                zoom: 8,
+                center: new google.maps.LatLng(0.3067,110.67),
+                latitude: 0.3067, 
+                longitude: 109.67,
+                mapTypeId: google.maps.MapTypeId.SATELLITE
+            }
+            var map = new google.maps.Map(document.getElementById("map_canvas"), opts);
+            return map;
+        }
+        var map = map_init();
+        var canvas_layer = new CanvasOverlay(map);
+        /*var app = new App();
+        app.init();
+        var gui = new dat.GUI();
+        var r = function() {
+            app.render();
+        }
+        gui.add(app, 'threshold', 0, 60).onChange(r);
+        gui.add(app, 'fadeDist', 0, 30).onChange(r);
+        gui.add(app, 'radius', 0, 30).onChange(r);
+        gui.add(app, 'alphaLow', 0, 250).onChange(r);
+        gui.add(app, 'alphaHigh', 10, 255).onChange(r);
+        gui.add(app, 'maxAlpha', 0, 1).onChange(r);
+        gui.add(app, 'postProccess').onChange(r);
+        gui.add(app, 'circle').onChange(r);
+        app.run();
+        */
+    </script>
+
+</html>
