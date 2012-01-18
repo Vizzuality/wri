@@ -1,7 +1,7 @@
 #!/bin/bash
 PSQL="psql -A -t -U cartodb_user_2 -d cartodb_user_2_db"
 DELT=$($PSQL -c "DELETE FROM asia_500m_18_jan_8x_grid")
-RIDLIST=$($PSQL -c "SELECT rid FROM asia_500m_18_jan WHERE (st_summarystats(rast)).\"sum\" > 0")
+RIDLIST=$($PSQL -c "SELECT rid FROM asia_500m_18_jan WHERE (st_summarystats(rast)).\"count\" > 0")
 for RID in $RIDLIST; do
  OUT=$($PSQL -c "SELECT AXH_Griddify(rast, 8, 'asia_500m_18_jan_8x_grid', rid) FROM asia_500m_18_jan WHERE rid = $RID")
  echo $OUT;
