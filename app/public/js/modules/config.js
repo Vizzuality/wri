@@ -19,7 +19,40 @@ App.modules.Config = function(app) {
             name: "m2",
             url: "https://wri-01.cartodb.com/tiles/gadm2/{Z}/{X}/{Y}.png?cache_buster=0&sql=SELECT%20*%20FROM%20gadm2%20WHERE%20forma=true"
           }
-        ]
+        ],
+        MAP_STYLE: [
+                    {
+                        stylers: [
+                            { saturation: -100 },
+                            { gamma: 0 },
+                            { lightness: -95 }
+                        ]
+                    },{
+                        featureType: "water",
+                        stylers: [
+                            { saturation: -100 },
+                            { gamma: 0 },
+                            { lightness: -100 }
+                        ]
+                    },{
+                        featureType: "administrative",
+                        stylers: [
+                            { visibility: "off" }
+                        ]
+                    },{
+                        featureType: "transit.line",
+                        stylers: [
+                            { visibility: "off" }
+                        ]
+                    },
+                    {
+                        elementType: "labels",
+                        stylers: [
+                          { visibility: "off" }
+                        ]
+                    }
+          ]
+
     };
 
 }

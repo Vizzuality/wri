@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block container %} 
+
+<div class="background_map">
+  {% include "_map.html" %} 
+</div>
+<div class="container">
+    <header class="home">
+        <div class="logo">
+            <img src="http://placehold.it/145x65/000000&text=wri"></img>
+        </div>
+        <h1>See what's going on with the deforestation around the world</h1>
+        <h2>Now, Perú is the country where the deforestation is happening with more intensity</h2>
+    </header>
+    <article class="interactive_map" >
+     &nbsp;
+    </article>
+
+    <article class="countries" >
+        <section>
+          <h1>featured histories</h1>
+          <ul>
+            <li><img src="http://placehold.it/243x153"></img></li>
+            <li><img src="http://placehold.it/243x153"></img></li>
+          </ul>
+        </section>
+        <section>
+          <h1>south america</h1>
+          <ul id="south_america">
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+          </ul>
+        </section>
+        <section>
+          <h1>middle america</h1>
+          <ul id="middle_america">
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+          </ul>
+        </section>
+        <section>
+          <h1>south east asia</h1>
+          <ul id="south_east_asia">
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+            <li>country</li>
+          </ul>
+        </section>
+    </article>
+
+    <!--
+    <div id="main" role="main">
+
+        <div class="time_slider_wrapper">
+            <input id="time_slider" type="range" min="0" max="48" value="0" step="1">
+        </div>
+
+    </div>
+    -->
+
+
+    <footer>
+    </footer>
+</div>
+{% endblock %}
+
+{% block js %}
+  <script>
+      function init() {
+            App(function(app) {
+                var wri = new app.WRIHome();
+                wri.run();
+                //debug
+                window.wri = wri;
+                window._app= app;
+            });
+      }
+      $(document).ready(function() {
+            init();
+      });
+  </script>
+{% endblock %}

@@ -8,7 +8,8 @@ from django.views.generic.simple import redirect_to, direct_to_template
 
 urlpatterns = patterns('',
     # Example:
-    (r'^$', direct_to_template, {'template':'index.html'}),
+    (r'^$', direct_to_template, {'template':'home.html'}),
+    (r'^country$', direct_to_template, {'template':'country.html'}),
     (r'^ie6$', direct_to_template, {'template':'ie6.html'}),
     (r'^api/v0/', include('keyvalue.urls')),
 

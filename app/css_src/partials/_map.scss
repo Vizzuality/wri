@@ -10,10 +10,10 @@
 
 .map_container {
   position: absolute;
-  top:72px;
   //width:100%;
+  top: 0;
   left:0;
-  right:352px;
+  right: 0;
   bottom:0;
 
   .map {

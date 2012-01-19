@@ -334,184 +334,68 @@ input:invalid, textarea:invalid {
   background-color: #f0dddd;
 }
 
-/* line 55, ../../css_src/partials/_page.scss */
-body.tool div#error_dialog {
+/* line 50, ../../css_src/partials/_page.scss */
+html, body {
   width: 100%;
   height: 100%;
+}
+
+/* line 55, ../../css_src/partials/_page.scss */
+body.tool {
+  background-color: #000;
+}
+/* line 58, ../../css_src/partials/_page.scss */
+body.tool .container {
+  width: 1100px;
+  margin: 0 auto;
+  z-index: 100;
+  position: relative;
+  overflow: auto;
+}
+/* line 66, ../../css_src/partials/_page.scss */
+body.tool .background_map {
+  width: 100%;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  display: none;
+  top: 0;
+  left: 0;
+  height: 110%;
 }
-/* line 62, ../../css_src/partials/_page.scss */
-body.tool div#error_dialog .error_wrapper {
-  background-color: #FFF;
-  margin-top: -155px;
-  margin-left: -270px;
-  width: 372px;
-  height: 108px;
-  padding: 10px;
-  background: url("/img/sprite.png") left -1581px no-repeat;
+/* line 74, ../../css_src/partials/_page.scss */
+body.tool article.interactive_map {
+  height: 360px;
 }
-/* line 71, ../../css_src/partials/_page.scss */
-body.tool div#error_dialog h1 {
-  margin: 0 0 10px;
-  padding: 0;
-  text-transform: uppercase;
-  color: #333;
-  text-shadow: none;
-  border-bottom: 2px solid black;
-  padding-bottom: 3px;
+/* line 78, ../../css_src/partials/_page.scss */
+body.tool header.home {
+  color: white;
 }
 /* line 80, ../../css_src/partials/_page.scss */
-body.tool div#error_dialog p {
-  margin: 25px 0 13px 105px;
-  color: #666666;
+body.tool header.home h1 {
+  margin-top: 20px;
+  font-size: 61px;
+  line-height: 1em;
 }
-/* line 84, ../../css_src/partials/_page.scss */
-body.tool div#error_dialog a {
-  margin: 35px 0 0 105px;
-  font-size: 15px;
-  font: bold 13px "Helvetica Neue", "Helvetica";
-  color: black;
+/* line 85, ../../css_src/partials/_page.scss */
+body.tool header.home h2 {
+  margin-top: 10px;
+  font-size: 25px;
+  line-height: 1em;
+  font-weight: normal;
 }
-/* line 90, ../../css_src/partials/_page.scss */
-body.tool div#error_dialog .close {
-  float: right;
-  width: 12px;
-  height: 17px;
-  background: url("/img/sprite.png") right -1258px no-repeat;
+/* line 94, ../../css_src/partials/_page.scss */
+body.tool article.countries section {
+  float: left;
+  width: 25%;
 }
-/* line 98, ../../css_src/partials/_page.scss */
-body.tool header {
-  position: relative;
-  width: 100%;
-  height: 73px;
-  background: #333333;
-}
-/* line 105, ../../css_src/partials/_page.scss */
-body.tool header div.share_tooltip {
-  display: none;
-  position: absolute;
-  top: 30px;
-  left: -145px;
-  z-index: 200;
-  background: url("/img/sprite.png") left -1702px no-repeat;
-  padding: 31px 20px 20px 20px;
-  width: 312px;
-}
-/* line 114, ../../css_src/partials/_page.scss */
-body.tool header div.share_tooltip .close {
-  float: right;
-  width: 12px;
-  height: 17px;
-  background: url("/img/sprite.png") right -1258px no-repeat;
-}
-/* line 124, ../../css_src/partials/_page.scss */
-body.tool header div.share_tooltip h1 {
-  margin: 0 0 5px;
-  padding: 0;
+/* line 97, ../../css_src/partials/_page.scss */
+body.tool article.countries section h1 {
+  font-size: 13px;
   text-transform: uppercase;
-  color: #333;
-  text-shadow: none;
 }
-/* line 131, ../../css_src/partials/_page.scss */
-body.tool header div.share_tooltip .link {
-  width: 297px;
-  background-color: #f2f2f2;
-  border: 1px solid #999999;
-  padding: 5px;
-  color: #666666;
-  text-shadow: none;
-}
-/* line 141, ../../css_src/partials/_page.scss */
-body.tool header div {
-  padding: 20px;
-}
-/* line 144, ../../css_src/partials/_page.scss */
-body.tool header div h1 {
-  font: bold 13px "WhitneyBold","Myriad Pro";
-  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
-  text-shadow: 0 1px 0 black;
-  color: #FFFFFF;
-}
-/* line 148, ../../css_src/partials/_page.scss */
-body.tool header div h1:hover {
-  cursor: default;
-}
-/* line 151, ../../css_src/partials/_page.scss */
-body.tool header div p {
-  font: normal 13px "WhitneyBookRegular","Myriad Pro";
-  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
-  text-shadow: 0 1px 0 black;
-  color: white;
-}
-/* line 157, ../../css_src/partials/_page.scss */
-body.tool header div ul {
-  float: right;
-  width: auto;
-}
-/* line 161, ../../css_src/partials/_page.scss */
-body.tool header div ul li {
-  display: inline-block;
-  vertical-align: top;
-  zoom: 1;
-  *display: inline;
-  width: auto;
-}
-/* line 165, ../../css_src/partials/_page.scss */
-body.tool header div ul li a {
-  float: left;
-  height: 28px;
-  height: 26px\9;
-  padding: 0 0 0 12px;
-  background: url("/img/sprite.png") 0 0 no-repeat;
-  font: normal 13px "WhitneyBookRegular","Myriad Pro";
-  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
-  text-shadow: 0 1px 0 black;
-  color: white;
-  border: none;
-  text-decoration: none;
-}
-/* line 177, ../../css_src/partials/_page.scss */
-body.tool header div ul li a:hover {
-  text-decoration: underline;
-  color: white;
-}
-/* line 182, ../../css_src/partials/_page.scss */
-body.tool header div ul li a span {
-  float: left;
-  width: auto;
-  height: 14px;
-  height: 12px\9;
-  padding: 6px 12px 8px 0;
+/* line 102, ../../css_src/partials/_page.scss */
+body.tool article.countries section ul {
+  list-style-type: none;
+  padding: 0;
   margin: 0;
-  background: url("/img/sprite.png") right -28px no-repeat;
-  line-height: 13px;
-}
-/* line 190, ../../css_src/partials/_page.scss */
-body.tool header div ul li a span strong {
-  font: bold 13px "WhitneyBold";
-}
-/* line 194, ../../css_src/partials/_page.scss */
-body.tool header div ul li a.no_bkg {
-  margin: 6px 12px 0 0;
-  background: none;
-}
-/* line 197, ../../css_src/partials/_page.scss */
-body.tool header div ul li a.no_bkg span {
-  background: none;
-}
-
-/* line 206, ../../css_src/partials/_page.scss */
-div.left {
-  float: left;
-}
-
-/* line 207, ../../css_src/partials/_page.scss */
-div.right {
-  float: right;
-  position: relative;
 }
 
 /* line 3, ../../css_src/partials/_map.scss */
@@ -527,9 +411,9 @@ div.right {
 /* line 11, ../../css_src/partials/_map.scss */
 .map_container {
   position: absolute;
-  top: 72px;
+  top: 0;
   left: 0;
-  right: 352px;
+  right: 0;
   bottom: 0;
 }
 /* line 19, ../../css_src/partials/_map.scss */
@@ -921,181 +805,6 @@ div.right {
   display: block;
 }
 
-/* line 4, ../../css_src/partials/_breadcrumb.scss */
-.breadcrumb {
-  position: absolute;
-  top: 100px;
-  left: 100px;
-  background: #FFF;
-  border: 1px solid #CCC;
-  padding: 10px;
-}
-/* line 12, ../../css_src/partials/_breadcrumb.scss */
-.breadcrumb ul {
-  margin: 0;
-}
-/* line 14, ../../css_src/partials/_breadcrumb.scss */
-.breadcrumb ul li {
-  margin: 0;
-  padding: 10px;
-  display: inline;
-  border-left: 1px solid #CCC;
-}
-/* line 19, ../../css_src/partials/_breadcrumb.scss */
-.breadcrumb ul li:first-child {
-  border-left: none;
-}
-/* line 22, ../../css_src/partials/_breadcrumb.scss */
-.breadcrumb ul li:hover {
-  background: #F0F0F0;
-}
-
-/* line 2, ../../css_src/partials/_panel.scss */
-#panel {
-  overflow: auto;
-  position: absolute;
-  background-color: #FFF;
-  padding: 0;
-  right: 0;
-  top: 72px;
-  bottom: 0;
-  width: 332px;
-  border-left: 1px solid #BBB;
-  padding: 20px;
-}
-/* line 14, ../../css_src/partials/_panel.scss */
-#panel h1 {
-  font: bold 22px "Helvetica";
-  margin-bottom: 20px;
-}
-/* line 20, ../../css_src/partials/_panel.scss */
-#panel dl {
-  padding-bottom: 5px;
-  border-bottom: 1px solid #F0F0F0;
-}
-/* line 24, ../../css_src/partials/_panel.scss */
-#panel dd, #panel dt {
-  display: inline-block;
-  font: bold 13px "WhitneyBookRegular","Myriad Pro";
-  letter-spacing: -1px;
-  margin-top: 0px;
-}
-/* line 30, ../../css_src/partials/_panel.scss */
-#panel dt {
-  width: 100px;
-  text-transform: uppercase;
-  color: #555;
-}
-/* line 35, ../../css_src/partials/_panel.scss */
-#panel dd {
-  color: #111;
-}
-
-/* line 41, ../../css_src/partials/_panel.scss */
-.time_slider_wrapper {
-  position: absolute;
-  bottom: 100px;
-  left: 100px;
-  background: #FFF;
-  border: 1px solid #CCC;
-  border-radius: 2px;
-  padding: 10px;
-}
-/* line 49, ../../css_src/partials/_panel.scss */
-.time_slider_wrapper #time_slider {
-  width: 250px;
-  height: 20px;
-}
-
-/* Golden ratio scale from http://modularscale.com/scale/?px1=12&px2=48&ra1=1.618&ra2=0
----------------------------------------- */
-/* line 36, ../../css_src/partials/_base.scss */
-html, body {
-  height: 100%;
-}
-
-/* Carbon tool mixins */
-/* line 3, ../../css_src/partials/_start_banner.scss */
-#start_banner {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  height: 324px;
-  width: 100%;
-  margin-top: -162px;
-  background: white;
-  text-align: center;
-  border-bottom: 1px solid #CCCCCC;
-  border-top: 1px solid #CCCCCC;
-  -moz-box-shadow: 0 -10px 10px 0 rgba(0, 0, 0, 0.1), 0 10px 10px 0 rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 0 -10px 10px 0 rgba(0, 0, 0, 0.1), 0 10px 10px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0 -10px 10px 0 rgba(0, 0, 0, 0.1), 0 10px 10px 0 rgba(0, 0, 0, 0.1);
-}
-/* line 17, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner {
-  width: 765px;
-  height: 324px;
-  margin: 0 auto;
-  text-align: left;
-  background: url("/img/sprite.png") right -56px no-repeat;
-}
-/* line 24, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help {
-  width: 385px;
-  padding: 58px 0 0 0;
-}
-/* line 28, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help h1 {
-  display: block;
-  width: 100%;
-  padding: 0 0 10px 0;
-  border-bottom: 2px solid #666666;
-  text-transform: uppercase;
-  font: bold 11px "WhitneyBold","Myriad Pro";
-  color: #333333;
-}
-/* line 38, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help p {
-  margin: 12px 0 0 0;
-  font: normal 15px "Helvetica Neue",Arial;
-  color: #333333;
-}
-/* line 42, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help p.margin {
-  margin: 20px 0 0 0;
-}
-/* line 45, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help button {
-  float: right;
-  width: auto;
-  height: 47px;
-  margin: 23px 0 0 0;
-  padding: 0 0 0 21px;
-  border: none;
-  background: url("/img/sprite.png") left -380px no-repeat;
-  font: bold 15px "WhitneyBold","Myriad Pro";
-  color: #333333;
-}
-/* line 56, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help button span {
-  float: right;
-  min-width: 150px\9;
-  height: 15px;
-  padding: 17px 21px 19px 0;
-  background: url("/img/sprite.png") right -427px no-repeat;
-  line-height: 15px;
-  text-transform: uppercase;
-}
-/* line 67, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help button:hover span {
-  color: black;
-  text-decoration: underline;
-}
-/* line 73, ../../css_src/partials/_start_banner.scss */
-#start_banner button {
-  float: right;
-}
-
 @media print {
   /* line 10, ../../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   * {
@@ -1162,475 +871,4 @@ html, body {
   h2, h3 {
     page-break-after: avoid;
   }
-}
-/* line 2, ../../css_src/partials/_layout.scss */
-body.out {
-  background: white;
-}
-/* line 5, ../../css_src/partials/_layout.scss */
-body.out section.results {
-  display: inline-block;
-  vertical-align: top;
-  zoom: 1;
-  *display: inline;
-  width: 100%;
-  margin: 80px 0 0 0;
-  background: url("/img/pattern.jpg") repeat 0 0;
-}
-/* line 11, ../../css_src/partials/_layout.scss */
-body.out section.results div.inner {
-  width: 920px;
-  margin: 0 auto;
-  padding: 38px 0;
-}
-/* line 16, ../../css_src/partials/_layout.scss */
-body.out section.results div.inner h3 {
-  padding: 0 0 20px 0;
-  font: bold 27px "WhitneyBold","Myriad Pro";
-  color: #333333;
-}
-/* line 22, ../../css_src/partials/_layout.scss */
-body.out section.results div.inner table {
-  width: 920px;
-}
-/* line 25, ../../css_src/partials/_layout.scss */
-body.out section.results div.inner table div {
-  width: 440px;
-  padding: 0 0 40px;
-}
-/* line 27, ../../css_src/partials/_layout.scss */
-body.out section.results div.inner table h6 {
-  width: 100%;
-  font: bold 13px "WhitneyBold","Myriad Pro";
-  color: #333333;
-  padding: 0 0 5px;
-  border-bottom: 2px solid #323232;
-}
-/* line 33, ../../css_src/partials/_layout.scss */
-body.out section.results div.inner table h6 a {
-  color: #333333;
-}
-/* line 39, ../../css_src/partials/_layout.scss */
-body.out section.results div.inner table p {
-  margin: 7px 0 0 0;
-  padding: 0 0 15px 0;
-  font: normal 13px "Helvetica",Arial;
-  color: #666666;
-}
-/* line 46, ../../css_src/partials/_layout.scss */
-body.out section.results div.inner table a.butt {
-  float: left;
-  width: auto;
-  height: 26px;
-  padding: 0 0 0 4px;
-  margin: 0 4px 0 0;
-  background: url("/img/sprite.png") no-repeat 0 -1337px;
-  font: bold 11px "WhitneyBold","Myriad Pro";
-  color: #66CCCC;
-  text-decoration: none;
-}
-/* line 57, ../../css_src/partials/_layout.scss */
-body.out section.results div.inner table a.butt span {
-  float: left;
-  width: auto;
-  height: 11px;
-  padding: 7px 8px 8px 4px;
-  background: url("/img/sprite.png") no-repeat right -1337px;
-}
-/* line 65, ../../css_src/partials/_layout.scss */
-body.out section.results div.inner table a.butt:hover {
-  color: #3A7676;
-}
-/* line 71, ../../css_src/partials/_layout.scss */
-body.out div.layout {
-  width: 920px;
-  margin: 0 auto;
-}
-/* line 75, ../../css_src/partials/_layout.scss */
-body.out div.layout header {
-  padding: 35px 0 45px;
-  border-bottom: 2px solid #323232;
-}
-/* line 79, ../../css_src/partials/_layout.scss */
-body.out div.layout header h1 {
-  float: left;
-}
-/* line 81, ../../css_src/partials/_layout.scss */
-body.out div.layout header h1 a {
-  font: bold 13px "WhitneyBold","Myriad Pro";
-  color: #333333;
-  text-decoration: none;
-}
-/* line 85, ../../css_src/partials/_layout.scss */
-body.out div.layout header h1 a:hover {
-  color: black;
-}
-/* line 89, ../../css_src/partials/_layout.scss */
-body.out div.layout header ul {
-  float: right;
-  width: auto;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-/* line 96, ../../css_src/partials/_layout.scss */
-body.out div.layout header ul li {
-  float: left;
-  width: auto;
-  margin: 0 0 0 20px;
-}
-/* line 101, ../../css_src/partials/_layout.scss */
-body.out div.layout header ul li a {
-  font: bold 13px "WhitneyBold","Myriad Pro";
-  color: #333333;
-  text-decoration: none;
-}
-/* line 105, ../../css_src/partials/_layout.scss */
-body.out div.layout header ul li a:hover {
-  color: #66CCCC;
-}
-/* line 108, ../../css_src/partials/_layout.scss */
-body.out div.layout header ul li.selected a {
-  color: #66CCCC;
-}
-/* line 108, ../../css_src/partials/_layout.scss */
-body.out div.layout header ul li.selected a:hover {
-  cursor: default;
-}
-/* line 113, ../../css_src/partials/_layout.scss */
-body.out div.layout h2 {
-  margin: 45px 0 0 0;
-  font: bold 47px "WhitneyBold","Myriad Pro";
-  color: #333333;
-  line-height: 47px;
-}
-/* line 120, ../../css_src/partials/_layout.scss */
-body.out div.layout p.subtitle {
-  padding: 10px 0 0 0;
-  font: normal 17px "Helvetica",Arial;
-  color: #999999;
-}
-/* line 127, ../../css_src/partials/_layout.scss */
-body.out div.layout section.error {
-  width: 600px;
-  margin: 0 auto;
-  padding: 220px 0;
-  text-align: center;
-}
-/* line 132, ../../css_src/partials/_layout.scss */
-body.out div.layout section.error a {
-  color: #66CCCC;
-}
-/* line 132, ../../css_src/partials/_layout.scss */
-body.out div.layout section.error a:hover {
-  color: #66AAAA;
-}
-/* line 136, ../../css_src/partials/_layout.scss */
-body.out div.layout article.data_sources {
-  margin: 50px 0 0 0;
-}
-/* line 139, ../../css_src/partials/_layout.scss */
-body.out div.layout article.data_sources h4 {
-  margin-top: 20px;
-  font: bold 27px "WhitneyBold","Myriad Pro";
-  color: #333333;
-  text-transform: capitalize;
-}
-/* line 146, ../../css_src/partials/_layout.scss */
-body.out div.layout article.data_sources h6 {
-  padding: 20px 0 5px 0;
-  font: bold 13px "WhitneyBold","Myriad Pro";
-  color: #333333;
-  border-bottom: 2px solid #333333;
-}
-/* line 152, ../../css_src/partials/_layout.scss */
-body.out div.layout article.data_sources p {
-  padding: 5px 0;
-  font: normal 16px "Helvetica",Arial;
-  color: #000;
-  margin: 10px 0;
-}
-/* line 159, ../../css_src/partials/_layout.scss */
-body.out div.layout article.data_sources ul {
-  list-style-image: url("/img/icons/list.png");
-  width: 100%;
-  margin: 0;
-  padding: 5px 0 0 0;
-}
-/* line 165, ../../css_src/partials/_layout.scss */
-body.out div.layout article.data_sources ul li {
-  padding: 5px 0;
-  font: normal 15px "Helvetica",Arial;
-  color: #666666;
-}
-/* line 174, ../../css_src/partials/_layout.scss */
-body.out div.layout section.start {
-  position: relative;
-  float: left;
-  width: 918px;
-  height: 402px;
-  margin: 45px 0 0 0;
-  border: 1px solid #CCCCCC;
-  -moz-box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.08);
-  -webkit-box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.08);
-  box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.08);
-  background: url("/img/start.jpg") no-repeat 0 0;
-}
-/* line 186, ../../css_src/partials/_layout.scss */
-body.out div.layout section.start div.mamufas {
-  position: absolute;
-  display: none;
-  top: 0;
-  left: 0;
-  width: 918px;
-  height: 402px;
-  background: url("/img/mamufas.png") no-repeat 0 0;
-}
-/* line 195, ../../css_src/partials/_layout.scss */
-body.out div.layout section.start div.mamufas a {
-  position: absolute;
-  width: 316px;
-  height: 78px;
-  top: 50%;
-  left: 50%;
-  margin: -39px 0 0 -158px;
-  text-decoration: none;
-  background: url("/img/sprite.png") no-repeat 0 -1181px;
-}
-/* line 204, ../../css_src/partials/_layout.scss */
-body.out div.layout section.start div.mamufas a:hover {
-  background-position: 0 -1259px;
-}
-/* line 204, ../../css_src/partials/_layout.scss */
-body.out div.layout section.start div.mamufas a:hover span {
-  cursor: pointer;
-}
-/* line 204, ../../css_src/partials/_layout.scss */
-body.out div.layout section.start div.mamufas a:hover small {
-  color: white;
-}
-/* line 206, ../../css_src/partials/_layout.scss */
-body.out div.layout section.start div.mamufas a span {
-  display: block;
-  width: 225px;
-  padding: 22px 0 0 15px;
-  font: bold 21px "WhitneyBold";
-  color: #FFFFFF;
-  text-align: center;
-  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
-  text-shadow: 0 1px 0 #3c7d7d;
-  line-height: 17px;
-}
-/* line 216, ../../css_src/partials/_layout.scss */
-body.out div.layout section.start div.mamufas a span small {
-  padding: 0;
-  font: normal 13px "Helvetica",Arial;
-  text-shadow: none;
-  filter: none;
-  color: #549A9A;
-}
-/* line 228, ../../css_src/partials/_layout.scss */
-body.out div.layout section.start:hover div.mamufas {
-  display: block;
-}
-/* line 232, ../../css_src/partials/_layout.scss */
-body.out div.layout section.two_columns {
-  width: 100%;
-  margin: 50px 0 0 0;
-  display: inline-block;
-  vertical-align: top;
-  zoom: 1;
-  *display: inline;
-}
-/* line 237, ../../css_src/partials/_layout.scss */
-body.out div.layout section.two_columns div.left {
-  width: 550px;
-}
-/* line 238, ../../css_src/partials/_layout.scss */
-body.out div.layout section.two_columns div.right {
-  width: 333px;
-}
-/* line 240, ../../css_src/partials/_layout.scss */
-body.out div.layout section.two_columns h4 {
-  padding: 0 0 5px 0;
-  font: bold 13px "WhitneyBold","Myriad Pro";
-  color: #333333;
-  border-bottom: 2px solid #333333;
-}
-/* line 247, ../../css_src/partials/_layout.scss */
-body.out div.layout section.two_columns p {
-  padding: 12px 0;
-  font: normal 17px "Helvetica",Arial;
-  color: #666666;
-}
-/* line 252, ../../css_src/partials/_layout.scss */
-body.out div.layout section.two_columns p strong {
-  font-weight: normal;
-  color: #333333;
-}
-/* line 257, ../../css_src/partials/_layout.scss */
-body.out div.layout section.two_columns p.orange {
-  font-style: italic;
-  color: #FBB986;
-}
-/* line 263, ../../css_src/partials/_layout.scss */
-body.out div.layout section.two_columns ul {
-  list-style-image: url("/img/icons/list_green.png");
-  width: 100%;
-  margin: 6px 0 0 0;
-}
-/* line 268, ../../css_src/partials/_layout.scss */
-body.out div.layout section.two_columns ul li {
-  padding: 7px 0;
-  font: normal 15px "Helvetica",Arial;
-  color: #666666;
-}
-/* line 276, ../../css_src/partials/_layout.scss */
-body.out div.layout section.video {
-  width: 920px;
-  margin: 50px 0 0 0;
-}
-/* line 279, ../../css_src/partials/_layout.scss */
-body.out div.layout section.video div.left {
-  width: 441px;
-}
-/* line 280, ../../css_src/partials/_layout.scss */
-body.out div.layout section.video div.right {
-  width: 441px;
-  padding: 50px 0 0 0;
-}
-/* line 282, ../../css_src/partials/_layout.scss */
-body.out div.layout section.video h3 {
-  font: bold 27px "WhitneyBold","Myriad Pro";
-  color: #333333;
-  padding: 0 0 5px 0;
-}
-/* line 288, ../../css_src/partials/_layout.scss */
-body.out div.layout section.video p {
-  padding: 10px 0;
-  font: normal 15px "Helvetica",Arial;
-  line-height: 20px;
-  color: #666666;
-}
-/* line 296, ../../css_src/partials/_layout.scss */
-body.out div.layout footer {
-  display: inline-block;
-  vertical-align: top;
-  zoom: 1;
-  *display: inline;
-  width: 100%;
-  margin: 80px 0 0 0;
-  padding: 0 0 30px 0;
-}
-/* line 303, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div h6 {
-  width: 100%;
-  padding: 0 0 5px 0;
-  border-bottom: 2px solid #CCCCCC;
-  font: bold 13px "WhitneyBold","Myriad Pro";
-  color: #333333;
-}
-/* line 313, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.collab {
-  width: 100%;
-}
-/* line 316, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.collab ul {
-  list-style: none;
-  margin: 0;
-  padding: 20px 0 0 0;
-}
-/* line 321, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.collab ul li {
-  display: inline-block;
-  vertical-align: top;
-  zoom: 1;
-  *display: inline;
-  width: auto;
-  margin: 0 27px 0 0;
-  padding: 0;
-}
-/* line 327, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.collab ul li a {
-  float: left;
-  text-indent: -9999px;
-  line-height: 0;
-  font-size: 0;
-}
-/* line 334, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.collab ul li a.cbd {
-  width: 145px;
-  height: 48px;
-  background: url("/img/sprite.png") no-repeat 0 -1126px;
-}
-/* line 335, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.collab ul li a.lifeweb {
-  width: 121px;
-  height: 48px;
-  background: url("/img/sprite.png") no-repeat -150px -1127px;
-}
-/* line 336, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.collab ul li a.unep-wcmc {
-  width: 96px;
-  height: 49px;
-  background: url("/img/sprite.png") no-repeat -375px -1123px;
-}
-/* line 337, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.collab ul li a.vizzuality {
-  width: 89px;
-  height: 47px;
-  background: url("/img/sprite.png") no-repeat -280px -1126px;
-}
-/* line 338, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.collab ul li a.federal_agency {
-  width: 211px;
-  height: 92px;
-  margin-left: -10px;
-  background: url("/img/sprite.png") no-repeat left -2312px;
-}
-/* line 339, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.collab ul li a.nature {
-  float: left;
-  width: 53px;
-  height: 57px;
-  margin: -8px 0 0 12px;
-  background: url("/img/sprite.png") no-repeat 0 -1369px;
-  text-indent: -9999px;
-  line-height: 0;
-  font-size: 0;
-}
-/* line 351, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.collab ul li.last {
-  margin: 0;
-}
-/* line 355, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.collab p {
-  padding: 75px 0 0 0;
-  font: normal 15px "Helvetica",Arial;
-  color: #B2B2B2;
-}
-/* line 359, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.collab p a {
-  color: #7F7F7F;
-  text-decoration: none;
-}
-/* line 359, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.collab p a:hover {
-  text-decoration: underline;
-}
-/* line 363, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.right {
-  width: 333px;
-  padding: 0;
-}
-/* line 367, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.right a.nature {
-  float: left;
-  width: 240px;
-  height: 57px;
-  margin: 15px 0 0;
-  background: url("/img/sprite.png") no-repeat 0 -1369px;
-  text-indent: -9999px;
-  line-height: 0;
-  font-size: 0;
 }

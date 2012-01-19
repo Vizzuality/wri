@@ -94,6 +94,7 @@ App.modules.Map = function(app) {
                 self.layer_editor.layers = self.map.get_layers();
                 self.layer_editor.render();
             });
+            this.map.map.setOptions({'styles': app.Config.MAP_STYLE});
             this.polygon_edit = new PolygonDrawTool({mapview: this.map});
             this.editing(false);
             this.polygons = [];

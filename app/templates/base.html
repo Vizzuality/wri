@@ -1,5 +1,4 @@
 <!doctype html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 8 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
@@ -33,9 +32,6 @@
   <link rel="stylesheet" href="css/style.css?v=2">
   <link rel="stylesheet" href="css/jquery.jscrollpane.css">
 
-  <!-- Uncomment if you are specifically targeting less enabled mobile browsers
-  <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
-
   <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
   <script src="js/libs/modernizr-2.0.6.js"></script>
 
@@ -43,75 +39,8 @@
 
 <body class="tool">
 
-  <div id="container">
-    <header>
-        <div class="left">
-          <h1>WRI</h1>
-          <p>project description</p>
-        </div>
-    </header>
-
-    <div id="main" role="main">
-
-
-        <div class="map_container" id="main_map">
-            <div class="map"></div>
-            <!-- zoom-control -->
-            <div class="zoom_control">
-              <a href="#zoom_in" class="zoom_in">zoom_in</a>
-              <a href="#zoom_out" class="zoom_out">zoom_out</a>
-            </div>
-            <!-- end zoom control -->
-            <!--
-            <div class="layer_editor">
-                <a href="#" class="layer_raster"></a>
-                <a href="#" class="layer_google_maps"></a>
-            </div>
-            -->
-            <div class="crosshair">
-                <img src="/img/icons/crosshair_map.png" />
-            </div>
-
-            <div class="tiles_info"><span></span></div>
-
-            <div class="layers">
-                <a href="#view" class="view"><span>VIEWING <b class="layer_number">3 LAYERS</b></span></a>
-                <div class="show">
-                    <span class="top"></span>
-                    <ul class="dropdown">
-                        <a class="expand" href="#expand">expand</a>
-                    </ul>
-                </div>
-            </div>
-
-            <a class="cartodb_logo" href="http://cartodb.com"></a>
-        </div>
-
-        <div class="breadcrumb">
-          <ul>
-            <li><a href="#">level 0</a></li>
-            <li><a href="#">level 1</a></li>
-            <li><a href="#">level 2</a></li>
-            <li><a href="#">level 3</a></li>
-          </ul>
-        </div>
-
-        <div class="time_slider_wrapper">
-            <input id="time_slider" type="range" min="0" max="48" value="0" step="1">
-        </div>
-
-        <div id="panel">
-          <h1>Stats</h1>
-          <div class="info">
-          </div>
-        </div>
-    </div>
-
-
-    <footer>
-    </footer>
-  </div> <!--! end of #container -->
-
+  {% block container %}
+  {% endblock %}
   <!-- JavaScript at the bottom for fast page loading -->
 
   <script src="js/libs/jquery.min.js"></script>
@@ -152,13 +81,13 @@
   <script src="js/modules/start_banner.js"></script>
   <script src="js/modules/ws.js"></script>
   <script src="js/modules/header.js"></script>
-  <script src="js/modules/cartodb.js"></script>
   <script src="js/modules/error.js"></script>
 
   <script src="js/views/report.js"></script>
   <script src="js/views/polygon.js"></script>
   <script src="js/views/sharepopup.js"></script>
   -->
+  <script src="js/modules/cartodb.js"></script>
   <script src="js/modules/panel.js"></script>
   <script src="js/views/grid_layer.js"></script>
   <script src="js/views/draw_tool.js"></script>
@@ -169,37 +98,14 @@
   <script src="js/views/map.js"></script>
 
   <script src="js/wri.js"></script>
+  <script src="js/wri_home.js"></script>
 
-  <!-- end scripts-->
-  <script>
-      function init() {
-            App(function(app) {
-                var wri = new app.WRI();
-                wri.run();
-                //debug
-                window.wri = wri;
-                window._app= app;
-            });
-      }
-      $(document).ready(function() {
-            init();
-      });
-  </script>
+  <!-- todo: add production compressed js -->
 
+  {% block js %}
+  {% endblock %}
 
-  <!--[if lt IE 7 ]>
-    <script src="js/libs/dd_belatedpng.js"></script>
-    <script>DD_belatedPNG.fix("img, .png_bg"); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
-  <![endif]-->
-
-
-  <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
-  <!--<script>
-    var _gaq=[["_setAccount","UA-6510422-1"],["_trackPageview"]];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-    g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
-    s.parentNode.insertBefore(g,s)}(document,"script"));
-   </script>-->
+  {% include "_analytics.html" %}
 
 </body>
 </html>

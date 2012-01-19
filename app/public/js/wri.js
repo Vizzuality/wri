@@ -4,139 +4,17 @@
  ===============================================
 */
 
-/*
- ====================
- this class renders deforestation data in a given time
- ====================
-*/
-
-function TimePlayer() {
-    this.time = 0;
-    this.canvas_setup = this.get_time_data;
-    this.render = this.render_time;
-    this.cells = [];
-    this.base_url = 'http://wri-01.cartodb.com/api/v2/sql';
-}
-
-TimePlayer.prototype = new CanvasTileLayer();
-
-TimePlayer.prototype.set_time = function(t) {
-    console.log(t);
-    this.time = t;
-    this.redraw();
-};
-
-TimePlayer.prototype.sql = function(sql, callback) {
-    var self = this;
-    $.getJSON(this.base_url  + "?q=" + encodeURIComponent(sql) ,function(data){
-        callback(data);
-    });
-}
-
-TimePlayer.prototype.pre_cache_months = function(rows) {
-    var row;
-    var cells = [];
-    for(var i in rows) {
-      row = rows[i];
-      cells[i] = {
-        x: row.upper_left_x,
-        y: row.upper_left_y,
-        months: row.cummulative
-      }
-    }
-    return cells;
-}
-
-// get time data in json format
-TimePlayer.prototype.get_time_data = function(tile, coord, zoom) {
-    var self = this;
-
-    var projection = new MercatorProjection();
-    var bbox = projection.tileBBox(coord.x, coord.y, zoom);
-    var sql = "SELECT upper_left_x, upper_left_y, cell_width, cell_height, pixels, total_incr as events, cummulative, boxpoly, the_geom_webmercator FROM griddify_results"
-
-    sql += " WHERE the_geom && ST_SetSRID(ST_MakeBox2D(";
-    sql += "ST_Point(" + bbox[0].lng() + "," + bbox[0].lat() +"),";
-    sql += "ST_Point(" + bbox[1].lng() + "," + bbox[1].lat() +")), 4326)";
-
-    this.sql(sql, function(data) {
-        tile.cells = self.pre_cache_months(data.rows);
-    });
-}
-
-
-var originShift = 2 * Math.PI* 6378137 / 2.0;
-function meterToPixels(mx, my, zoom) {
-  var initialResolution = 2 * Math.PI * 6378137 / 256.0;
-  var res = initialResolution / (1 << zoom)
-  px = (mx + originShift) / res
-  py = (my + originShift) / res
-  return [px, py];
-}
-
-
-TimePlayer.prototype.render_time = function(tile, coord, zoom) {
-    var projection = new MercatorProjection();
-    var month = this.time>>0;
-    var w = tile.canvas.width;
-    var h = tile.canvas.height;
-    var ctx = tile.ctx;
-    var data, i, j, x, y, def;
-
-    var cells = tile.cells;
-    var cell;
-    var point;
-    var x, y;
-
-    // clear canvas
-    tile.canvas.width = w;
-
-    ctx.fillStyle = "#000";
-    // render cells
-    for(i=0; i < cells.length; ++i) {
-      cell = cells[i];
-
-      //transform to local tile x/y
-      //TODO: precache this
-      point = projection.tilePoint(coord.x, coord.y, zoom);
-      pixels = meterToPixels(cell.x, cell.y, zoom);
-      pixels[1] = (256 << zoom) - pixels[1];
-      x = pixels[0] - point[0];
-      y = pixels[1] - point[1];
-
-      //var c = (255.0*cell.months[month]/10)>>0;
-      ctx.fillStyle = '#000';
-      if(cell.months) {
-        var c =  cell.months[month];
-        var colors = [
-            'rgba(255, 51, 51, 0.9)',
-            'rgba(170, 52, 51, 0.6)',
-            'rgba(104, 48, 59, 0.6)',
-            'rgba(84, 48, 59, 0.6)'
-        ]
-        if (c == 0) continue;
-        var idx = 0;
-        if(c < 10) idx = 0;
-        if(c < 7.5) idx = 1
-        if(c < 5) idx = 2;
-        if(c < 2.5) idx = 3;
-        ctx.fillStyle = colors[idx];//"rgb(" + c + ",0, 0)";
-      }
-      // render
-      ctx.fillRect(x, y, 6, 6);
-    }
-};
-
 App.modules.WRI= function(app) {
 
    // app router
    var Router = Backbone.Router.extend({
       routes: {
-        "w/*state": "work"
+        ":country": "country",
+        ":country/*state": "country"
       },
 
-      work: function() {
-        app.Log.log("route: work");
+      country: function() {
+        app.Log.log("route: country");
       }
 
     });
@@ -173,6 +51,17 @@ App.modules.WRI= function(app) {
         }
     });
 
+    var Country = app.CartoDB.CartoDBModel.extend({
+      table: "gadm0",
+      columns: {
+        'id': 'cartodb_id',
+        'name': 'name_engli',
+        'center': 'ST_Centroid(the_geom)',
+        'bbox': 'ST_Envelope(the_geom)'
+      },
+      what: 'name_engli'
+    });
+
     // the app
     app.WRI = Class.extend({
 
@@ -191,7 +80,7 @@ App.modules.WRI= function(app) {
 
             // init routing
             this.router = new Router();
-            this.router.bind('route:work', this.on_route);
+            this.router.bind('route:country', this.on_route);
             this.app_state = new app.State();
             this.app_state.router = this.router;
 
@@ -205,7 +94,6 @@ App.modules.WRI= function(app) {
             this.time_slider.bind('change', function(v) {
                 self.time_layer.set_time(v);
             });
-            
 
             this.bus.on('app:route_to', this.on_route_to);
 
@@ -227,8 +115,8 @@ App.modules.WRI= function(app) {
               test.save();
             }, 1000);
             */
-            ///this.add_test_layer();
-            this.add_time_layer();
+            //this.add_test_layer();
+            //this.add_time_layer();
         },
 
         add_time_layer: function() {
@@ -242,7 +130,7 @@ App.modules.WRI= function(app) {
             var self = this;
             var cartodb = new CartoDB({
                 user: 'wri-01',
-                table: 'gadm0',
+                table: 'gadm0_simple',
                 columns: ['iso',   'shape_area', 'cartodb_id'],
                 debug: false,
                 where: 'forma=true',
@@ -365,17 +253,28 @@ App.modules.WRI= function(app) {
        },
 
 
-       on_route: function(state) {
+       on_route: function(country, state) {
             //this.work_id = work_id;
             //this.banner.hide();
             //this.map.work_mode();
             // show the panel and set mode to adding polys
             //this.panel.show();
-            this.app_state.fetch(state);
+            //this.app_state.fetch(state);
 
             //if(state) {
               //this.set_state(this.decode_state(state));
             //}
+            var self = this;
+            var c = new Country({'name_engli': country});
+            c.fetch();
+            c.bind('change', function() {
+              var b = new google.maps.LatLngBounds();
+              _(c.get('bbox').coordinates[0]).each(function(ll) {
+                b.extend(new google.maps.LatLng(ll[1], ll[0]));
+              });
+              self.map.map.map.fitBounds(b);
+
+            });
         },
 
         on_route_to: function(route) {

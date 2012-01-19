@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block container %} 
+
+<div class="background_map">
+  {% include "_map.html" %} 
+</div>
+
+<div class="container">
+
+    <article class="country_info" >
+      <h1>Country</h1>
+    </article>
+
+    <footer>
+    </footer>
+
+</div>
+{% endblock %}
+
+{% block js %}
+  <script>
+      function init() {
+            App(function(app) {
+                var wri = new app.WRI();
+                wri.run();
+                //debug
+                window.wri = wri;
+                window._app= app;
+            });
+      }
+      $(document).ready(function() {
+            init();
+      });
+  </script>
+{% endblock %}
