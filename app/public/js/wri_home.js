@@ -9,6 +9,7 @@ App.modules.WRIHome= function(app) {
     var Countries = app.CartoDB.CartoDBCollection.extend({
       table: 'gadm0',
       columns: ['unregion1', 'unregion2', 'name_engli'],
+      cache: true,
       inside: function(area) {
         return this.filter(function(c) {
           return c.get('unregion1') === area;
@@ -66,6 +67,7 @@ App.modules.WRIHome= function(app) {
         ];
         countries.fetch();
       }
+
     });
 }
 

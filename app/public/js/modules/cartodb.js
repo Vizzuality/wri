@@ -42,6 +42,17 @@ App.modules.CartoDB = function(app) {
         }
     }
 
+    var cache = localStorage || {
+        setItem: function(key, value) {
+        },
+        getItem: function(key) {
+            return null;
+        },
+        removeItem: function(key) {
+        }
+    };
+
+
 
     var CartoDBModel = Backbone.Model.extend({
 
@@ -79,6 +90,7 @@ App.modules.CartoDB = function(app) {
       }
     });
 
+
     /**
      * cartodb collection created from a sql composed using 'columns' and
      * 'table' attributes defined in a child class
@@ -99,9 +111,20 @@ App.modules.CartoDB = function(app) {
 
       fetch: function() {
         var self = this;
-        app.CartoDB.query(this._create_sql(), function(data) {
-          self.reset(data.rows);
-        });
+        var sql = this._create_sql();
+        var item = this.cache ? cache.getItem(sql): false;
+        if(!item) {
+            app.CartoDB.query(this._create_sql(), function(data) {
+              if(this.cache) {
+                  try {
+                    cache.setItem(sql, JSON.stringify(data.rows));
+                  } catch(e) {}
+              }
+              self.reset(data.rows);
+            });
+        } else {
+            self.reset(JSON.parse(item));
+        }
       }
 
     });
