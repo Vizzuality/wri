@@ -102,7 +102,9 @@ TimePlayer.prototype.render_time = function(tile, coord, zoom) {
     var total_pixels = 256 << zoom;
 
     var cells = tile.cells;
-    if(!cells) return;
+    if(!cells || cells.length === 0) {
+      return;
+    }
     var cell;
     var point;
     var x, y;
@@ -120,34 +122,43 @@ TimePlayer.prototype.render_time = function(tile, coord, zoom) {
         'rgba(84, 48, 59, 0.6)'
     ];
 
+    var extra = 0;
+    var fillStyle;
+    size = meterToPixelsDist(cells[0].w, cells[0].w, zoom);
     // render cells
-    for(i=0; i < cells.length; ++i) {
+    for(i = 0; i < cells.length; ++i) {
+
       cell = cells[i];
+      extra = 0;
 
       //transform to local tile x/y
-      //TODO: precache this
       pixels = meterToPixels(cell.x, cell.y, zoom);
       pixels[1] = total_pixels - pixels[1];
       x = pixels[0] - point[0];
       y = pixels[1] - point[1];
-      size = meterToPixelsDist(cell.w, cell.w, zoom);
 
-      var extra = 0;
-      //var c = (cell.months[month]/10)>>0;
-      ctx.fillStyle = 'rgba(84, 48, 59, 0.6)';
+      fillStyle = 'rgba(84, 48, 59, 0.6)';
       if(cell.months) {
         var c =  cell.months[month];
         var a =  cell.months_accum[month];
         idx = 3 - c;
-        ctx.fillStyle = colors[idx];//"rgb(" + c + ",0, 0)";
-        if(idx == 0) extra = 1;
+        fillStyle = colors[idx];
+        //"rgb(" + c + ",0, 0)";
+
+        // when is totally red draw the pixel a little bit big
+        if(idx === 0) {
+          extra = 1;
+        }
+
+        //no deforestation already
         if(a === 0) {
-          ctx.fillStyle = 'rgba(0,0,0,0)';
+          fillStyle = 'rgba(0,0,0,0)';
         }
       }
       // render
       var s = size[0] >> 0;
       s+=extra;
+      ctx.fillStyle = fillStyle;
       ctx.fillRect(x, y, s, s);
     }
 };

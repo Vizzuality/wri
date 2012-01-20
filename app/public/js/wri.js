@@ -84,7 +84,8 @@ App.modules.WRI= function(app) {
         },
 
         add_time_layer: function() {
-            var lyr = new TimePlayer('asia_500m_18_jan_40x_grid');
+            //var lyr = new TimePlayer('asia_500m_18_jan_40x_grid');
+            var lyr = new TimePlayer('asia_500m_4x_grid_live');
             this.time_layer = lyr;
             this.map.map.add_layer('time', {name: 't'}, lyr);
             this.map.map.enable_layer('time', true);
