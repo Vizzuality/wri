@@ -3,6 +3,7 @@
 function CanvasOverlay(map){
     var self = this;
     this.bounds = null;
+    this.projection = new MercatorProjection();
     self.setMap(map);
 }
 
@@ -81,30 +82,33 @@ CanvasOverlay.prototype.draw = function() {
 
 function CanvasTileOverlay(map, layer) {
     var self = this;
+    CanvasOverlay.call(this, map);
     this.layer = layer;
     this.tiles = {};
-    this.canvasOverlay = new CanvasTileOverlay(map);
-    this.canvasOverlay.render = function() {
-        self.render();
-    };
     google.maps.event.addListener(this.getMap(), 'bounds_changed', function() { self.bounds_changed(); });
+    google.maps.event.addListener(this.getMap(), 'zoom_changed', function() { self.bounds_changed(); });
 }
 
-CanvasOverlay.prototype.bounds_changed = function() {
-    var canvas = this.canvasOverlay;
-    var bounds = this.canvasOverlay.bounds;
+CanvasTileOverlay.prototype = new CanvasOverlay();
+
+CanvasTileOverlay.prototype.bounds_changed = function() {
+    var canvas = this.canvas;
+    var bounds = this.bounds;
     var new_tiles = this.tilesInBounds(bounds, this.layer.tileSize, canvas.width, canvas.height);
     //todo: manage tiles outside
     this.tiles = new_tiles;
 }
 
-CanvasOverlay.prototype.tilesInBounds = function(bounds, tileSize, width, height) {
+CanvasTileOverlay.prototype.tilesInBounds = function(bounds, tileSize, width, height) {
     var ne = bounds.getNorthEast();
     var sw = bounds.getSouthWest();
-    var originTile = this.latLngToTile(new google.maps.LatLng(ne.lat(), sw.lon()));
+    var ll = new google.maps.LatLng(ne.lat(), sw.lng());
+    var zoom = this.map.getZoom();
+    var originTile = this.projection.latLngToTile(ll, this.map.getZoom());
+    var tileOffsetPixel = this.projection.latLngToTilePoint(ll, originTile.x, originTile.y, zoom);
 
-    var num_tiles_x = Math.ceil(width/tileSize);
-    var num_tiles_y = Math.ceil(height/tileSize);
+    var num_tiles_x = Math.ceil((tileOffsetPixel.x + width)/tileSize);
+    var num_tiles_y = Math.ceil((tileOffsetPixel.y + height)/tileSize);
 
     var tiles = [];
     for(var i = 0; i < num_tiles_x; ++i) {
@@ -117,32 +121,48 @@ CanvasOverlay.prototype.tilesInBounds = function(bounds, tileSize, width, height
             });
         }
     }
+    console.log(tiles.length);
     return tiles;
 
-}
+};
 
-CanvasOverlay.prototype.render = function() {
+CanvasTileOverlay.prototype.render = function() {
     var tile, x, y;
     var layer = this.layer;
+    var ctx = this.ctx;
+    var bounds = this.bounds;
+    var projection = this.projection;
+    var ne = bounds.getNorthEast();
+    var sw = bounds.getSouthWest();
+    var zoom = this.map.getZoom();
+
+    var ll = new google.maps.LatLng(ne.lat(), sw.lng());
+    var tileOrigin = projection.latLngToTile(ll, zoom);
+    var tileOffsetPixel = projection.latLngToTilePoint(ll, tileOrigin.x, tileOrigin.y, zoom);
+    /*
+    var originTile = this.latLngToTile(ll, this.map.getZoom());
+
+    var numTiles = 1 << this.map.getZoom();
+    var worldCoordinate = projection.fromLatLngToPoint(ll);
+    var pixelCoordinate = new google.maps.Point(
+            worldCoordinate.x * numTiles,
+            worldCoordinate.y * numTiles
+    );
+
+    var tile_x = originTile.x*layer.tileSize;
+    var tile_y = originTile.y*layer.tileSize;
+    var ox = pixelCoordinate.x - tile_x;
+    var oy = pixelCoordinate.y - tile_y;
+    */
+
     for(var t in this.tiles) {
         tile = this.tiles[t];
         // get the tile canvas position
-        x = tile.x*layer.tileSize.x;
-        y = tile.y*layer.tileSize.y;
-        layer.renderTile();
+        x = layer.tileSize*(tile.x - tileOrigin.x);
+        y = layer.tileSize*(tile.y - tileOrigin.y);
+        layer.renderTile(ctx, x - tileOffsetPixel.x, y - tileOffsetPixel.y);
     }
 
-}
-
-CanvasOverlay.prototype.latLngToTile = function(latLng, zoom) {
-    var projection = this.getProjection();
-    var numTiles = 1 << zoom;
-    var worldCoordinate = projection.fromLatLngToPoint(latLng);
-    var pixelCoordinate = new google.maps.Point(
-            worldCoordinate.x * numTiles,
-            worldCoordinate.y * numTiles);
-    return new google.maps.Point(
-            Math.floor(pixelCoordinate.x / TILE_SIZE),
-            Math.floor(pixelCoordinate.y / TILE_SIZE));
 };
+
 

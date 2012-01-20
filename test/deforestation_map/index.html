@@ -34,6 +34,7 @@
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script src="dat.gui.min.js"></script>
     <script src="app.js"></script>
+    <script src="gmaps_mercator.js"></script>
     <script src="canvas_overlay.js"></script>
 
     <script>
@@ -49,7 +50,12 @@
             return map;
         }
         var map = map_init();
-        var canvas_layer = new CanvasOverlay(map);
+        var canvas_layer = new CanvasTileOverlay(map, {
+            tileSize: 256,
+            renderTile: function(ctx, x, y) {
+                ctx.fillRect(x, y, 10, 10);
+            }
+        });
         /*var app = new App();
         app.init();
         var gui = new dat.GUI();
