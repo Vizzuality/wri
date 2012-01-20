@@ -40,7 +40,7 @@ TimePlayer.prototype.pre_cache_months = function(rows) {
         if(def[d] > 0) {
           last = d;
         }
-        def[d] = Math.max(0, 3 - (d - last));
+        def[d] = Math.max(0, (9 - (d - last))>>3);
       }
 
       cells[i] = {
