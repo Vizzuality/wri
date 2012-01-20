@@ -56,11 +56,10 @@ body.tool {
   background-color: #000;
 
   .container {
+    position: relative;
     width: $layout_width;
     margin: 0 auto;
     z-index: 100;
-    position: relative;
-    overflow: auto;
   }
 
   .background_map {
@@ -69,6 +68,23 @@ body.tool {
     top: 0;
     left: 0;
     height: 110%;
+  }
+
+  article.months {
+    $h: 70px;
+    position: absolute;
+    bottom: 0;
+    height: $h;
+    width: 100%;
+    background: #CCC;
+    .marker {
+      position: relative;
+      top: -37px;
+      width: 83px;
+      height: 35px;
+      background: #C00;
+      z-index: 1;
+    }
   }
 
   article.interactive_map{
@@ -92,7 +108,8 @@ body.tool {
 
   article.countries {
     section {
-      float: left;
+      float:left;
+      display: inline-block;
       width: 25%;
       h1 {
         font-size: 13px;
@@ -106,7 +123,19 @@ body.tool {
       }
     }
   }
-}
 
+
+  article.country_info { 
+    position: relative;
+    width: 500px;
+    left: 50%;
+    top: 70px;
+    color: white;
+    h1 {
+      font-size: 45px;
+    }
+  }
+
+}
 
 

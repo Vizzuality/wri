@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load webdesign %}
 
 {% block container %} 
 
@@ -6,16 +7,30 @@
   {% include "_map.html" %} 
 </div>
 
-<div class="container">
+<article class="country_info" >
+  <h1>Country</h1>
+  <h2>Deforestation in Brazil has been incremented in 5% the last 6 months</h2>
+  <section class="graph">
+    &nbsp;
+  </section>
+  <section>
+      <h3>Brazil situation</h3>
+      {% lorem 1 %}
+      <h3>Most deforested regions</h3>
+      {% lorem 1 %}
+      <h3>also</h3>
+      {% lorem 1 %}
+  </section>
+</article>
 
-    <article class="country_info" >
-      <h1>Country</h1>
-    </article>
 
-    <footer>
-    </footer>
+<footer>
+</footer>
 
-</div>
+<article class="months">
+    <div class="marker">
+    </div>
+</article>
 {% endblock %}
 
 {% block js %}

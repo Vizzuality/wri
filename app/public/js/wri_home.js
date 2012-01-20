@@ -4,7 +4,7 @@ App.modules.WRIHome= function(app) {
 
 
     /**
-     * countries model
+     * countries collection
      */
     var Countries = app.CartoDB.CartoDBCollection.extend({
       table: 'gadm0',

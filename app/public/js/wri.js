@@ -19,38 +19,9 @@ App.modules.WRI= function(app) {
 
     });
 
-    app.State = Backbone.Model.extend({
-
-        initialize: function() {
-            //this.compressor = LZMA ? new LZMA("/js/libs/lzma_worker.js") : null;
-        },
-
-        save: function() {
-            this.serialize();
-        },
-
-        fetch: function(state) {
-          /*
-            var self = this;
-            var b = atob(state);
-            var bytes = b.split(',').map(function(s){  return parseInt(s, 10); }); 
-            self.compressor.decompress(bytes, function(res){
-                self.set(JSON.parse(res));
-            });
-            */
-        },
-
-        serialize: function() {
-          /*
-            var self = this;
-            var json = JSON.stringify(this.toJSON());
-            this.compressor.compress(json, 1, function(data) {
-                self.router.navigate('w/' + btoa(data));
-            });
-            */
-        }
-    });
-
+    /**
+     * contry model from gadm0 table in cartodb
+     */
     var Country = app.CartoDB.CartoDBModel.extend({
       table: "gadm0",
       columns: {
@@ -73,57 +44,70 @@ App.modules.WRI= function(app) {
         run: function() {
             _.bindAll(this, 'on_route_to', '_state_url');
             var self = this;
-            this.bus = new app.Bus();
+
             // set a global bus
+            this.bus = new app.Bus();
             app.bus = this.bus;
             this.map = new app.Map(this.bus);
 
-            // init routing
+            // init routing and app state
             this.router = new Router();
             this.router.bind('route:country', this.on_route);
             this.app_state = new app.State();
             this.app_state.router = this.router;
+            this.state_url = _.debounce(this._state_url, 200);
 
             this.state = [];
             this.level = 0;
 
-            // main components
 
-            this.stats_panel = new app.StatsPanel({el: $('#panel')}); 
-            this.time_slider = new Slider({el: $("#time_slider")});
-            this.time_slider.bind('change', function(v) {
-                self.time_layer.set_time(v);
+            // slider
+            this.slider = new Slider({el: $("article.months")});
+            this.slider.bind('change', function(v) {
+                self.time_layer.set_time((v*90)>>0);
             });
 
             this.bus.on('app:route_to', this.on_route_to);
 
-            this.state_url = _.debounce(this._state_url, 200);
             this.map.map.bind('center_changed', this.state_url);
             this.map.map.bind('zoom_changed', this.state_url);
             this.map.show_controls(true);
 
 
+            this.add_country_layer();
+            this.add_time_layer();
             // ready, luanch
             Backbone.history.start();
-            //this.router.navigate('w/work_test');
-            /*
-            var test = new app.Model();
-            test.set({'my_test': 'jaja'});
-            test.save();
-            setTimeout(function() {
-              test.set({'my_test': 'ADASD'});
-              test.save();
-            }, 1000);
-            */
+
             //this.add_test_layer();
             //this.add_time_layer();
         },
 
         add_time_layer: function() {
-            var lyr = new TimePlayer();
+            var lyr = new TimePlayer('asia_500m_18_jan_40x_grid');
             this.time_layer = lyr;
             this.map.map.add_layer('time', {name: 't'}, lyr);
             this.map.map.enable_layer('time', true);
+        },
+
+        add_country_layer: function() {
+            var self = this;
+            var cartodb = new CartoDB({
+                user: 'wri-01',
+                table: 'gadm0_simple',
+                columns: ['iso',   'shape_area', 'cartodb_id'],
+                debug: false,
+                where: 'forma=true',
+                shader: {
+                    'point-color': '#fff',
+                    'line-color': '#D7D7D8',
+                    'line-width': '2',
+                    'polygon-fill': 'rgba(255,255, 255,0.2)'
+                }
+            });
+            self.country_layer = cartodb;
+            this.map.map.add_layer('vector0', {name: 'v0', enabled: true}, cartodb.layer);
+            //this.map.map.enable_layer('vector0', true);
         },
 
         add_test_layer: function() {
@@ -136,7 +120,7 @@ App.modules.WRI= function(app) {
                 where: 'forma=true',
                 shader: {
                     'point-color': '#fff',
-                    'line-color': '#000',
+                    'line-color': '#D7D7D8',
                     'line-width': '1',
                     'polygon-fill': function(data) { 
                         var c = 255 - (255*data.shape_area/950.0)>>0;
@@ -275,6 +259,11 @@ App.modules.WRI= function(app) {
               self.map.map.map.fitBounds(b);
 
             });
+
+            //TODO: make a method
+            self.country_layer.options.where = "name_engli = '{0}'".format(country);
+            self.map.map.enable_layer('vector0', true);
+            self.country_layer.layer.redraw();
         },
 
         on_route_to: function(route) {

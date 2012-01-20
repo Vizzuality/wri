@@ -62,7 +62,8 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'django.contrib.contenttypes',
-    'keyvalue'
+    'keyvalue',
+    'django.contrib.webdesign'
 )
 if DEBUG:
     logging.basicConfig(

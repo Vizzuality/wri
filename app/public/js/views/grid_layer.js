@@ -4,18 +4,18 @@
  ====================
 */
 
-function TimePlayer() {
+function TimePlayer(table) {
     this.time = 0;
     this.canvas_setup = this.get_time_data;
     this.render = this.render_time;
     this.cells = [];
+    this.table = table;
     this.base_url = 'http://wri-01.cartodb.com/api/v2/sql';
 }
 
 TimePlayer.prototype = new CanvasTileLayer();
 
 TimePlayer.prototype.set_time = function(t) {
-    console.log(t);
     this.time = t;
     this.redraw();
 };
@@ -32,10 +32,24 @@ TimePlayer.prototype.pre_cache_months = function(rows) {
     var cells = [];
     for(var i in rows) {
       row = rows[i];
+      // filter the spikes in deforestation change
+      var def = row.time_series;
+      var last = 0;
+
+      for(var d = 0; d < def.length; ++d) {
+        if(def[d] > 0) {
+          last = d;
+        }
+        def[d] = Math.max(0, 3 - (d - last));
+      }
+
       cells[i] = {
         x: row.upper_left_x,
         y: row.upper_left_y,
-        months: row.cummulative
+        w: row.cell_width,
+        h: row.cell_height,
+        months_accum: row.cummulative,
+        months: row.time_series
       }
     }
     return cells;
@@ -47,7 +61,7 @@ TimePlayer.prototype.get_time_data = function(tile, coord, zoom) {
 
     var projection = new MercatorProjection();
     var bbox = projection.tileBBox(coord.x, coord.y, zoom);
-    var sql = "SELECT upper_left_x, upper_left_y, cell_width, cell_height, pixels, total_incr as events, cummulative, boxpoly, the_geom_webmercator FROM griddify_results"
+    var sql = "SELECT upper_left_x, upper_left_y, cell_width, cell_height, pixels, total_incr as events, cummulative, boxpoly, time_series, time_series, the_geom_webmercator FROM " + this.table;
 
     sql += " WHERE the_geom && ST_SetSRID(ST_MakeBox2D(";
     sql += "ST_Point(" + bbox[0].lng() + "," + bbox[0].lat() +"),";
@@ -60,22 +74,32 @@ TimePlayer.prototype.get_time_data = function(tile, coord, zoom) {
 
 
 var originShift = 2 * Math.PI* 6378137 / 2.0;
+var initialResolution = 2 * Math.PI * 6378137 / 256.0;
+
 function meterToPixels(mx, my, zoom) {
-  var initialResolution = 2 * Math.PI * 6378137 / 256.0;
-  var res = initialResolution / (1 << zoom)
-  px = (mx + originShift) / res
-  py = (my + originShift) / res
+  var res = initialResolution / (1 << zoom);
+  var px = (mx + originShift) / res;
+  var py = (my + originShift) / res;
+  return [px, py];
+}
+
+function meterToPixelsDist(mx, my, zoom) {
+  var res = initialResolution / (1 << zoom);
+  var px = (mx) / res;
+  var py = (my) / res;
   return [px, py];
 }
 
 
 TimePlayer.prototype.render_time = function(tile, coord, zoom) {
     var projection = new MercatorProjection();
-    var month = this.time>>0;
+    var month = 1 + this.time>>0;
     var w = tile.canvas.width;
     var h = tile.canvas.height;
     var ctx = tile.ctx;
-    var data, i, j, x, y, def;
+    var data, i, j, x, y, def, size;
+
+    var total_pixels = 256 << zoom;
 
     var cells = tile.cells;
     if(!cells) return;
@@ -87,38 +111,44 @@ TimePlayer.prototype.render_time = function(tile, coord, zoom) {
     tile.canvas.width = w;
 
     ctx.fillStyle = "#000";
+    point = projection.tilePoint(coord.x, coord.y, zoom);
+
+    var colors = [
+        'rgba(255, 51, 51, 0.9)',
+        'rgba(170, 52, 51, 0.6)',
+        'rgba(104, 48, 59, 0.6)',
+        'rgba(84, 48, 59, 0.6)'
+    ];
+
     // render cells
     for(i=0; i < cells.length; ++i) {
       cell = cells[i];
 
       //transform to local tile x/y
       //TODO: precache this
-      point = projection.tilePoint(coord.x, coord.y, zoom);
       pixels = meterToPixels(cell.x, cell.y, zoom);
-      pixels[1] = (256 << zoom) - pixels[1];
+      pixels[1] = total_pixels - pixels[1];
       x = pixels[0] - point[0];
       y = pixels[1] - point[1];
+      size = meterToPixelsDist(cell.w, cell.w, zoom);
 
-      //var c = (255.0*cell.months[month]/10)>>0;
-      ctx.fillStyle = '#000';
+      var extra = 0;
+      //var c = (cell.months[month]/10)>>0;
+      ctx.fillStyle = 'rgba(84, 48, 59, 0.6)';
       if(cell.months) {
         var c =  cell.months[month];
-        var colors = [
-            'rgba(255, 51, 51, 0.9)',
-            'rgba(170, 52, 51, 0.6)',
-            'rgba(104, 48, 59, 0.6)',
-            'rgba(84, 48, 59, 0.6)'
-        ]
-        if (c == 0) continue;
-        var idx = 0;
-        if(c < 10) idx = 0;
-        if(c < 7.5) idx = 1
-        if(c < 5) idx = 2;
-        if(c < 2.5) idx = 3;
+        var a =  cell.months_accum[month];
+        idx = 3 - c;
         ctx.fillStyle = colors[idx];//"rgb(" + c + ",0, 0)";
+        if(idx == 0) extra = 1;
+        if(a === 0) {
+          ctx.fillStyle = 'rgba(0,0,0,0)';
+        }
       }
       // render
-      ctx.fillRect(x, y, 6, 6);
+      var s = size[0] >> 0;
+      s+=extra;
+      ctx.fillRect(x, y, s, s);
     }
 };
 
