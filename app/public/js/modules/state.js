@@ -49,8 +49,8 @@ App.modules.State = function(app) {
           var self = this;
           var json = JSON.stringify(this.toJSON());
           //remove previous state
-          location.hash = location.hash.replace(/\/s\/[a-zA-Z0-9=]+/,'');
-          location.hash += '/s/' + btoa(json);
+          var new_hash = location.hash.replace(/\/s\/[a-zA-Z0-9=]+/,'');
+          self.router.navigate(new_hash + '/s/' + btoa(json), false);
           /*
             var self = this;
             var json = JSON.stringify(this.toJSON());

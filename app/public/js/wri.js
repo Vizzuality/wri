@@ -13,8 +13,8 @@ App.modules.WRI= function(app) {
         ":country/s/*state": "country"
       },
 
-      country: function() {
-        app.Log.log("route: country");
+      country: function(country, state) {
+        app.Log.log("route: country" + country + " " + state);
       }
 
     });
@@ -48,6 +48,8 @@ App.modules.WRI= function(app) {
             // set a global bus
             this.bus = new app.Bus();
             app.bus = this.bus;
+
+            // the map
             this.map = new app.Map(this.bus);
 
             // init routing and app state
@@ -238,31 +240,18 @@ App.modules.WRI= function(app) {
           self.map.map.set_zoom(st.zoom);
        },
 
-
        on_route: function(country, state) {
-            //this.work_id = work_id;
-            //this.banner.hide();
-            //this.map.work_mode();
-            // show the panel and set mode to adding polys
-            //this.panel.show();
+            var self = this;
+
             if(state) {
                 this.app_state.fetch(state);
+            } else {
+                var c = new Country({'name_engli': country});
+                c.fetch();
+                c.bind('change', function() {
+                    self.map.center_map_on(c.get('bbox'));
+                });
             }
-
-            //if(state) {
-              //this.set_state(this.decode_state(state));
-            //}
-            var self = this;
-            var c = new Country({'name_engli': country});
-            c.fetch();
-            /*c.bind('change', function() {
-              var b = new google.maps.LatLngBounds();
-              _(c.get('bbox').coordinates[0]).each(function(ll) {
-                b.extend(new google.maps.LatLng(ll[1], ll[0]));
-              });
-              self.map.map.map.fitBounds(b);
-            });
-            */
 
             //TODO: make a method
             self.country_layer.options.where = "name_engli = '{0}'".format(country);
