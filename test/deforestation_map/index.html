@@ -36,6 +36,7 @@
     <script src="app.js"></script>
     <script src="gmaps_mercator.js"></script>
     <script src="canvas_overlay.js"></script>
+    <script src="deforestation_layer.js"></script>
 
     <script>
         function map_init() {
@@ -50,12 +51,38 @@
             return map;
         }
         var map = map_init();
-        var canvas_layer = new CanvasTileOverlay(map, {
+        //var url= "http://c.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/";
+        var url = "http://forma-vis.s3-website-us-east-1.amazonaws.com/forma_low_zoom/"
+        var url = "/tiles/";
+        var canvas_layer = new CanvasTileOverlay(map, DeforesationLayer);
+        var gui = new dat.GUI();
+        var r = function() {
+            canvas_layer.draw(true);
+        }
+        gui.add(DeforesationLayer, 'threshold', 0, 60).onChange(r);
+        gui.add(DeforesationLayer, 'maxAlpha', 0, 1).onChange(r);
+        gui.add(DeforesationLayer, 'radius', 0, 30).onChange(r);
+        gui.add(DeforesationLayer, 'alphaLow', 0, 255).onChange(r);
+        gui.add(DeforesationLayer, 'alphaThreshold', 0, 255).onChange(r);
+
+        /*var canvas_layer = new CanvasTileOverlay(map, {
             tileSize: 256,
-            renderTile: function(ctx, x, y) {
-                ctx.fillRect(x, y, 10, 10);
+            renderTile: function(ctx, tile, zoom, x, y) {
+                if (!tile.img) {
+                    var img = new Image();
+                    img.onload = function() {
+                        tile.loaded = true;
+                    }
+                    var bound = 1 << zoom;
+                    var yVal = (bound - tile.y - 1);
+                    img.src = url + zoom + "/" + tile.x + "/" + yVal + ".png"
+                    tile.img = img;
+                }
+                if(tile.loaded) {
+                    ctx.drawImage(tile.img, x, y);
+                }
             }
-        });
+        });*/
         /*var app = new App();
         app.init();
         var gui = new dat.GUI();

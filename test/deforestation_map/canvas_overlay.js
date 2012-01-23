@@ -53,14 +53,14 @@ CanvasOverlay.prototype.onAdd = function() {
 }
 
 
-CanvasOverlay.prototype.render = function() { }
+CanvasOverlay.prototype.render = function() { };
 
 
-CanvasOverlay.prototype.draw = function() {
+CanvasOverlay.prototype.draw = function(force) {
      var projection = this.getProjection();
      var currentBounds = this.map.getBounds();
 
-     if (currentBounds.equals(this.bounds)) {
+     if (!force && currentBounds.equals(this.bounds)) {
         //bounds didnt changed
         return;
      }
@@ -92,17 +92,41 @@ function CanvasTileOverlay(map, layer) {
 CanvasTileOverlay.prototype = new CanvasOverlay();
 
 CanvasTileOverlay.prototype.bounds_changed = function() {
+    var t, tile, tid;
     var canvas = this.canvas;
     var bounds = this.bounds;
     var new_tiles = this.tilesInBounds(bounds, this.layer.tileSize, canvas.width, canvas.height);
-    //todo: manage tiles outside
-    this.tiles = new_tiles;
+
+    var new_tiles_ids = {};
+    // add new tiles
+    for(t in new_tiles) {
+        tile = new_tiles[t];
+        tid = tile.zoom + "_" + tile.x + "_" + tile.y;
+        new_tiles_ids[tid] = true;
+        if(!this.tiles[tid]) {
+            this.tiles[tid] = tile;
+        }
+    }
+
+    // remove non visible tiles
+    for(t in this.tiles) {
+        tile = this.tiles[t];
+        tid = tile.zoom + "_" + tile.x + "_" + tile.y;
+        if(!new_tiles_ids[tid]) {
+            delete this.tiles[tid];
+            console.log("removing " + tid);
+        }
+    }
 }
 
+/**
+ * return the tiles inside the current bounds
+ */
 CanvasTileOverlay.prototype.tilesInBounds = function(bounds, tileSize, width, height) {
     var ne = bounds.getNorthEast();
     var sw = bounds.getSouthWest();
     var ll = new google.maps.LatLng(ne.lat(), sw.lng());
+
     var zoom = this.map.getZoom();
     var originTile = this.projection.latLngToTile(ll, this.map.getZoom());
     var tileOffsetPixel = this.projection.latLngToTilePoint(ll, originTile.x, originTile.y, zoom);
@@ -117,11 +141,11 @@ CanvasTileOverlay.prototype.tilesInBounds = function(bounds, tileSize, width, he
             var tile_y = originTile.y + j;
             tiles.push({
                 x: tile_x,
-                y: tile_y
+                y: tile_y,
+                zoom: zoom
             });
         }
     }
-    console.log(tiles.length);
     return tiles;
 
 };
@@ -155,13 +179,16 @@ CanvasTileOverlay.prototype.render = function() {
     var oy = pixelCoordinate.y - tile_y;
     */
 
+    this.canvas.width = this.canvas.width;
     for(var t in this.tiles) {
         tile = this.tiles[t];
         // get the tile canvas position
         x = layer.tileSize*(tile.x - tileOrigin.x);
         y = layer.tileSize*(tile.y - tileOrigin.y);
-        layer.renderTile(ctx, x - tileOffsetPixel.x, y - tileOffsetPixel.y);
+        layer.renderTile(ctx, tile, zoom, x - tileOffsetPixel.x, y - tileOffsetPixel.y);
     }
+    layer.postProcess( this.canvas, ctx);
+
 
 };
 
