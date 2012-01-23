@@ -77,7 +77,6 @@ App.modules.WRI= function(app) {
             this.app_state.bind('change:map', this.set_state);
 
 
-            this.add_country_layer();
             this.add_time_layer();
             // ready, luanch
             Backbone.history.start();
@@ -92,26 +91,6 @@ App.modules.WRI= function(app) {
             this.time_layer = lyr;
             this.map.map.add_layer('time', {name: 't'}, lyr);
             this.map.map.enable_layer('time', true);
-        },
-
-        add_country_layer: function() {
-            var self = this;
-            var cartodb = new CartoDB({
-                user: 'wri-01',
-                table: 'gadm0_simple',
-                columns: ['iso',   'shape_area', 'cartodb_id'],
-                debug: false,
-                where: 'forma=true',
-                shader: {
-                    'point-color': '#fff',
-                    'line-color': '#D7D7D8',
-                    'line-width': '2',
-                    'polygon-fill': 'rgba(255,255, 255,0.2)'
-                }
-            });
-            self.country_layer = cartodb;
-            this.map.map.add_layer('vector0', {name: 'v0', enabled: true}, cartodb.layer);
-            //this.map.map.enable_layer('vector0', true);
         },
 
         add_test_layer: function() {
@@ -155,68 +134,10 @@ App.modules.WRI= function(app) {
                     self.push(b);
                 }
             });
-
-
-            this.map.map.bind('mousemove', function(e) {
-                var p = cartodb.geometry_at(e.latLng, e.point,self.map.map.get_zoom());
-                if(p) {
-                    if(self.current_geom == p.properties.cartodb_id){
-                        return ;
-                    }
-                    var cid = self.current_geom = p.properties.cartodb_id;
-
-                    self.stats_panel.set_info(p.properties);
-                    var geom = p.geometry;
-                    var opts = {
-                            "strokeColor": "#FFF366",
-                            "strokeOpacity": 0.8,
-                            "strokeWeight": 2,
-                            "fillColor": "#FFF366",
-                            "fillOpacity": 0.6,
-                            'clickable': false
-                    };
-                    if(self.vec) {
-                        self.vec.forEach(function(gv){
-                           gv.setMap(null);
-                        });
-                    }
-                    if(self.vec_cache[cid]) {
-                        self.vec = self.vec_cache[cid];
-                    } else {
-                        self.vec = new GeoJSON(geom, opts);
-                        if(!self.vec.length) {
-                            self.vec = [self.vec];
-                        }
-                        self.vec_cache[cid] = self.vec;
-                    }
-                    self.vec.forEach(function(gv){
-                        gv.setMap(self.map.map.map);
-                    });
-                } else {
-                    if(self.vec) {
-                        self.vec.forEach(function(gv){
-                           gv.setMap(null);
-                        });
-                    }
-                }
-            });
         },
 
-        push: function(b) {
-            var columns_level = [
-                ['name_engli','cartodb_id'],
-                ['name_0', 'name_1', 'cartodb_id'],
-                ['name_0', 'name_1', 'name_2', 'cartodb_id']
-            ];
 
-            //update level
-            this.state.push(b);
-            ++this.level;
-            this.cartodb.options.table = 'gadm' + this.level;
-            this.cartodb.options.columns = columns_level[this.level];
-            this.map.map.map.fitBounds(b);
 
-        },
 
         _state_url: function() {
             var self = this;
@@ -254,9 +175,7 @@ App.modules.WRI= function(app) {
             }
 
             //TODO: make a method
-            self.country_layer.options.where = "name_engli = '{0}'".format(country);
-            self.map.map.enable_layer('vector0', true);
-            self.country_layer.layer.redraw();
+            self.map.show_country(country);
         },
 
         on_route_to: function(route) {

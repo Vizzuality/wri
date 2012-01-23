@@ -109,6 +109,10 @@ App.modules.Map = function(app) {
                 self.map.set_center(latlng);
                 self.map.set_zoom(zoom);
             });
+
+            // prebuil layers
+            self.country_layer = new app.CountryLayer(self);
+
             this.show_controls(false);
         },
 
@@ -127,6 +131,13 @@ App.modules.Map = function(app) {
         reorder_layers: function(order) {
             this.map.reorder_layers(order);
             this.layer_editor.render();
+        },
+
+        show_country: function(country) {
+            this.country_layer.show_country(country);
+        },
+
+        enter_on: function(region_name) {
         },
 
         show_controls: function(show) {
