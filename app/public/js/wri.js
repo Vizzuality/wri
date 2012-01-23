@@ -10,7 +10,7 @@ App.modules.WRI= function(app) {
    var Router = Backbone.Router.extend({
       routes: {
         ":country": "country",
-        ":country/*state": "country"
+        ":country/s/*state": "country"
       },
 
       country: function() {
@@ -42,7 +42,7 @@ App.modules.WRI= function(app) {
         },
 
         run: function() {
-            _.bindAll(this, 'on_route_to', '_state_url');
+            _.bindAll(this, 'on_route_to', '_state_url', 'set_state');
             var self = this;
 
             // set a global bus
@@ -54,7 +54,7 @@ App.modules.WRI= function(app) {
             this.router = new Router();
             this.router.bind('route:country', this.on_route);
             this.app_state = new app.State();
-            this.app_state.router = this.router;
+            this.app_state.set_router(this.router);
             this.state_url = _.debounce(this._state_url, 200);
 
             this.state = [];
@@ -72,6 +72,7 @@ App.modules.WRI= function(app) {
             this.map.map.bind('center_changed', this.state_url);
             this.map.map.bind('zoom_changed', this.state_url);
             this.map.show_controls(true);
+            this.app_state.bind('change:map', this.set_state);
 
 
             this.add_country_layer();
@@ -84,8 +85,8 @@ App.modules.WRI= function(app) {
         },
 
         add_time_layer: function() {
-            //var lyr = new TimePlayer('asia_500m_18_jan_40x_grid');
-            var lyr = new TimePlayer('asia_500m_4x_grid_live');
+            var lyr = new TimePlayer('asia_500m_18_jan_40x_grid');
+            //var lyr = new TimePlayer('asia_500m_4x_grid_live');
             this.time_layer = lyr;
             this.map.map.add_layer('time', {name: 't'}, lyr);
             this.map.map.enable_layer('time', true);
@@ -228,12 +229,12 @@ App.modules.WRI= function(app) {
                 }
             });
             self.app_state.save();
-
         },
 
-        set_state: function(st) {
+        set_state: function(state) {
           var self = this;
-          self.map.map.set_center(new google.maps.LatLng(st.lat,st.lon));
+          var st = state.get('map');
+          self.map.map.set_center(new google.maps.LatLng(st.center.lat,st.center.lon));
           self.map.map.set_zoom(st.zoom);
        },
 
@@ -244,7 +245,9 @@ App.modules.WRI= function(app) {
             //this.map.work_mode();
             // show the panel and set mode to adding polys
             //this.panel.show();
-            //this.app_state.fetch(state);
+            if(state) {
+                this.app_state.fetch(state);
+            }
 
             //if(state) {
               //this.set_state(this.decode_state(state));
@@ -252,14 +255,14 @@ App.modules.WRI= function(app) {
             var self = this;
             var c = new Country({'name_engli': country});
             c.fetch();
-            c.bind('change', function() {
+            /*c.bind('change', function() {
               var b = new google.maps.LatLngBounds();
               _(c.get('bbox').coordinates[0]).each(function(ll) {
                 b.extend(new google.maps.LatLng(ll[1], ll[0]));
               });
               self.map.map.map.fitBounds(b);
-
             });
+            */
 
             //TODO: make a method
             self.country_layer.options.where = "name_engli = '{0}'".format(country);

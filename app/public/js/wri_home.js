@@ -1,4 +1,8 @@
-
+/*
+ ===============================================
+ WRIHome manages /
+ ===============================================
+*/
 
 App.modules.WRIHome= function(app) {
 
@@ -18,7 +22,8 @@ App.modules.WRIHome= function(app) {
     });
 
     /**
-     * country list on the home page
+     * country list on the home page.
+     * Renders a country list
      */
     var CountriesView = Backbone.View.extend({
 
@@ -30,6 +35,7 @@ App.modules.WRIHome= function(app) {
       },
 
       render: function() {
+        //TODO: manage more than 1 area
         var names = _.map(this.countries.inside(this.area), function(c) { return c.get('name_engli');});
         names = _(names).map(function(n) {
           return '<li><a href="/country#{0}">{0}</a></li>'.format(n);
@@ -48,6 +54,7 @@ App.modules.WRIHome= function(app) {
 
       run: function() {
         var countries = new Countries();
+        // the 3 country lists
         var views = [
           new CountriesView({
             el: $('#south_america'),

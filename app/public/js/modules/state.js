@@ -8,7 +8,14 @@ App.modules.State = function(app) {
     app.State = Backbone.Model.extend({
 
         initialize: function() {
+            // removed because it does not want to work on FF :(
             //this.compressor = LZMA ? new LZMA("/js/libs/lzma_worker.js") : null;
+        },
+
+        set_router: function(router) {
+            var self = this;
+            self.router = router;
+            //self.router.bind('route', this.on_route);
         },
 
         save: function() {
@@ -16,6 +23,17 @@ App.modules.State = function(app) {
         },
 
         fetch: function(state) {
+           var self = this;
+           if (state) {
+               var b;
+               try {
+                    b = atob(state);
+               } catch(e) {
+                   app.Log.error("error parsing state");
+                   return;
+               }
+               self.set(JSON.parse(b));
+           }
           /*
             var self = this;
             var b = atob(state);
@@ -26,7 +44,13 @@ App.modules.State = function(app) {
             */
         },
 
+
         serialize: function() {
+          var self = this;
+          var json = JSON.stringify(this.toJSON());
+          //remove previous state
+          location.hash = location.hash.replace(/\/s\/[a-zA-Z0-9=]+/,'');
+          location.hash += '/s/' + btoa(json);
           /*
             var self = this;
             var json = JSON.stringify(this.toJSON());
