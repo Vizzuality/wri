@@ -20,6 +20,12 @@ TimePlayer.prototype.set_time = function(t) {
     this.redraw();
 };
 
+TimePlayer.prototype.set_table = function(table) {
+  this.table = table;
+  this.recreate();
+  this.redraw();
+};
+
 TimePlayer.prototype.sql = function(sql, callback) {
     var self = this;
     $.getJSON(this.base_url  + "?q=" + encodeURIComponent(sql) ,function(data){

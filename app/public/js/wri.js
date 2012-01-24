@@ -66,7 +66,7 @@ App.modules.WRI= function(app) {
             // slider
             this.slider = new Slider({el: $("article.months")});
             this.slider.bind('change', function(v) {
-                self.time_layer.set_time((v*90)>>0);
+                self.map.set_time((v*90)>>0);
             });
 
             this.bus.on('app:route_to', this.on_route_to);
@@ -77,7 +77,6 @@ App.modules.WRI= function(app) {
             this.app_state.bind('change:map', this.set_state);
 
 
-            this.add_time_layer();
             // ready, luanch
             Backbone.history.start();
 
@@ -85,17 +84,6 @@ App.modules.WRI= function(app) {
             //this.add_time_layer();
         },
 
-        add_time_layer: function() {
-            var lyr = new TimePlayer('asia_500m_18_jan_40x_grid');
-            //var lyr = new TimePlayer('asia_500m_4x_grid_live');
-            this.time_layer = lyr;
-            this.map.map.add_layer('time', {name: 't'}, lyr);
-            this.map.map.enable_layer('time', true);
-        },
-
-        add_test_layer: function() {
-
-        },
 
 
 

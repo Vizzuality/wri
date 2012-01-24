@@ -58,6 +58,13 @@ CanvasTileLayer.prototype.each = function(callback) {
     }
 }
 
+CanvasTileLayer.prototype.recreate= function() {
+    for(var t in this.tiles) {
+        var tile = this.tiles[t];
+        this.canvas_setup(tile, tile.coord, tile.zoom);
+    }
+};
+
 CanvasTileLayer.prototype.redraw= function() {
     for(var t in this.tiles) {
         var tile = this.tiles[t];

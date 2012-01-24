@@ -6,7 +6,7 @@
 */
 App.modules.Map = function(app) {
 
-    // edit, delete popup shown when user is editing a poly
+    // red popup showing zone and activity over a region
     var Popup = Backbone.View.extend({
         el: $('.area_popup'),
 
@@ -35,9 +35,12 @@ App.modules.Map = function(app) {
     });
 
 
+    /**
+     * map and ALL related things like layers and so on
+     */
     app.Map = Class.extend({
         init: function(bus) {
-            _.bindAll(this, 'enable_layer', 'reorder_layers', 'show_area_info');
+            _.bindAll(this, 'enable_layer', 'reorder_layers', 'show_area_info', 'zoom_changed');
             var self = this;
             this.bus = bus;
             this.map = new MapView({el: $('.map_container')});
@@ -45,6 +48,9 @@ App.modules.Map = function(app) {
             this.popup = new Popup({mapview: this.map});
             this.movement_timeout = -1;
             this.report_polygons = {};
+
+            //map style
+            this.map.map.setOptions({'styles': app.Config.MAP_STYLE});
 
             // add layers to the map
             _(app.Config.MAP_LAYERS).each(function(layer) {
@@ -62,13 +68,8 @@ App.modules.Map = function(app) {
                 self.layer_editor.layers = self.map.get_layers();
                 self.layer_editor.render();
             });
-            this.map.map.setOptions({'styles': app.Config.MAP_STYLE});
 
-
-            bus.link(this, {
-                'map:enable_layer': 'enable_layer',
-                'map:reorder_layers':'reorder_layers'
-            });
+            this.map.bind('zoom_changed', this.zoom_changed);
 
             this.seachbox.bind('goto', function(latlng, zoom) {
                 self.map.set_center(latlng);
@@ -80,12 +81,21 @@ App.modules.Map = function(app) {
             self.country_layer.bind('mouse_on', this.show_area_info);
             self.country_layer.bind('mouse_out', self.popup.hide);
 
-            this.show_controls(false);
+            //grid layer
+            self.grid_layer = new TimePlayer('asia_500m_18_jan_40x_grid');
+            self.map.add_layer('time', {name: 't'}, self.grid_layer);
+            self.map.enable_layer('time', true);
+
+            self.show_controls(false);
         },
 
         //shows the popup when the user hovers some area
         show_area_info: function(e, area) {
             this.popup.show(e.latLng, "TODO");
+        },
+
+        set_time: function(month) {
+            this.grid_layer.set_time(month);
         },
 
         center_map_on: function(bbox) {
@@ -94,6 +104,20 @@ App.modules.Map = function(app) {
                 b.extend(new google.maps.LatLng(ll[1], ll[0]));
               });
               this.map.map.fitBounds(b);
+        },
+
+        // enable suitable grid size for each zoom
+        zoom_changed: function(z) {
+            var self = this;
+            console.log("zoom: ", z);
+            var table_name = 'asia_500m_18_jan_8x_grid';
+            if(z < 5) {
+                table_name = 'asia_500m_18_jan_40x_grid';
+            } else if(z > 11) {
+                table_name = 'asia_500m_18_jan_4x_grid';
+            }
+            self.grid_layer.set_table(table_name);
+            console.log("table_name: ", table_name);
         },
 
         enable_layer: function(name, enable) {
