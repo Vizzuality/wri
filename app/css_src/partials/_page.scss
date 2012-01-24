@@ -19,7 +19,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
-a, a:active, a:visited { color: $link-color; }
+h4 {font:bold 13px "Open Sans"; color:#999999; text-transform:uppercase}
+
+a, a:active, a:visited { color: $link-color; text-decoration:none;}
 a:hover { color: $link-hover-color; }
 
 strong, th {
@@ -55,87 +57,258 @@ html, body {
 body.tool {
   background-color: #000;
 
+  // .background_map {
+  //   width: 100%;
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   height: 110%;
+  // }
+
+
+  // article.months {
+  //   $h: 70px;
+  //   position: absolute;
+  //   bottom: 0;
+  //   height: $h;
+  //   width: 100%;
+  //   background: #CCC;
+  //   .marker {
+  //     position: relative;
+  //     top: -37px;
+  //     width: 83px;
+  //     height: 35px;
+  //     background: #C00;
+  //     z-index: 1;
+  //   }
+  // }
+
+
+  // article.interactive_map{
+  //   height: 360px;
+  // }
+
+  // header.home {
+  //   color: white;
+  //   h1 {
+  //     margin-top: 20px;
+  //     font-size: 61px;
+  //     line-height: 1em;
+  //   }
+  //   h2 {
+  //     margin-top: 10px;
+  //     font-size: 25px;
+  //     line-height: 1em;
+  //     font-weight: normal;
+  //   }
+  // }
+
+    // article.country_info { 
+  //   position: relative;
+  //   width: 500px;
+  //   left: 50%;
+  //   top: 70px;
+  //   color: white;
+  //   h1 {
+  //     font-size: 45px;
+  //   }
+  // }
+
+
+  /* LAYOUT */
   .container {
     position: relative;
-    width: $layout_width;
-    margin: 0 auto;
-    z-index: 100;
-  }
-
-  .background_map {
     width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 110%;
   }
 
-  article.months {
-    $h: 70px;
-    position: absolute;
-    bottom: 0;
-    height: $h;
-    width: 100%;
-    background: #CCC;
-    .marker {
-      position: relative;
-      top: -37px;
-      width: 83px;
-      height: 35px;
-      background: #C00;
-      z-index: 1;
-    }
+  .inner {
+    overflow:hidden;
+    width:$layout_width;
+    margin:0 auto;
   }
 
-  article.interactive_map{
-    height: 360px;
-  }
-
-  header.home {
-    color: white;
-    h1 {
-      margin-top: 20px;
-      font-size: 61px;
-      line-height: 1em;
-    }
-    h2 {
-      margin-top: 10px;
-      font-size: 25px;
-      line-height: 1em;
-      font-weight: normal;
-    }
-  }
-
-  article.countries {
-    section {
-      float:left;
-      display: inline-block;
-      width: 25%;
-      h1 {
-        font-size: 13px;
-        text-transform: uppercase;
+  /* HEADER */
+  header {
+    padding:20px 0;
+    overflow:hidden;
+    h1 {float:left;}
+    nav {
+      float:right;
+      margin:19px 0 0 0;
+      a {
+        height:18px;
+        margin:0 0 0 5px;
+        padding:4px 10px;
+        border:1px solid rgba(255,255,255,0.1);
+        @include border-radius(3px);
+        font:normal 17px "Open Sans";
+        color:white;
+        letter-spacing:-1px;
+        &:hover {border-color:rgba(255,255,255,0.7)}
       }
+    }
+  }
+
+  /* HOME SUBHEADER */
+  article.subheader {
+    section.title {
+      width:755px
+    }
+    form {
+      position:relative;
+      width:253px;
+      margin:64px 0 0;
+
+      input[type="text"] {
+        width:222px;
+        height:19px;
+        padding:11px 22px 11px 7px;
+        border:1px solid rgba(255,255,255,0.15);
+        @include border-radius(3px);
+        background:none;
+        font:normal 17px "Open Sans";
+        line-height:normal;
+        color:white;
+        &:focus {
+          outline:none;
+        }
+      }
+      input[type="submit"] {
+        position:absolute;
+        top:16px;
+        right:10px;
+        width:14px;
+        height:14px;
+        @include icons-sprite(lens);
+        border:none;
+        &:focus {
+          outline:none;
+        }
+      }
+    }
+  }
+
+  /* COUNTRIES LIST */
+  article.countries {
+    width:100%;
+    padding:0 0 90px;
+    letter-spacing:-4px;
+
+    section.column {
+      @include inline-block();
+      width:255px;
+      margin-right:20px;
+      letter-spacing:0;
+      section.column:last-child {margin:0}
 
       ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
+        margin:15px 0 0 0;
+        padding:0;
+        list-style:none;
+
+        li {
+          position:relative;
+          width:100%;
+          padding:0 0 9px;
+          a {
+            position:relative;
+            display:block;
+            width:100%;
+            padding:0 0 8px 0;
+            font:normal 15px "Open Sans";
+            span {
+              position:absolute;
+              left:0;
+              bottom:0;
+              height:4px;
+              @include border-radius(5px);
+              background:#1b1c1c;
+            }
+            &:hover span {background:#FF3333}
+            &.over {
+              position:absolute;
+              left:0;
+              bottom:29px;
+              @include inline-block();
+              width:230px;
+              padding:0 0 0 3px;
+              z-index:20;
+              background:url('/img/layout/black_hack.png') repeat-y;
+
+              &:hover span {color:white}
+
+              span {
+                position:relative;
+                margin: 0;
+                padding: 0 5px 2px 0;
+                background-color: #000000;
+                z-index: 15;
+                color: #CCCCCC;
+                font: normal 17px "Open Sans";
+                line-height: 24px;
+                letter-spacing:0px;
+                white-space: pre-wrap;
+                word-spacing:3px;
+                @include border-radius(0);
+              }
+            }
+          }
+          p.over {
+            position:absolute;
+            left:0;
+            bottom:9px;
+            padding: 1px 5px 3px 5px;
+            background-color: #000000;
+            z-index: 15;
+            color: #666666;
+            font: normal 13px "Open Sans";
+            line-height: normal;
+            letter-spacing:-1px;
+            white-space: pre-wrap;
+            word-spacing:3px;
+            @include border-radius(0);
+          }
+        }
       }
     }
   }
 
-
-  article.country_info { 
-    position: relative;
-    width: 500px;
-    left: 50%;
-    top: 70px;
-    color: white;
-    h1 {
-      font-size: 45px;
+  /* SLIDER */
+  footer.slider {
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    display:block;
+    padding:20px;
+    margin:0;
+    height:29px;
+    z-index:100;
+    @include background-image(linear-gradient(#f3f3f3, #cacaca));
+    span.canvas {
+      position:relative;
+      display:block;
+      height:29px;
+      background:rgba(0,0,0,.10);
+      @include border-radius(5px);
+      a.ui-slider-handle {
+        position:absolute;
+        width:89px;
+        height:30px;
+        top:-34px;
+        left:0;
+        padding:11px 0 0 0;
+        margin:0 0 0 -44px;
+        font:bold 13px "Open Sans";
+        text-align:center;
+        line-height:13px;
+        color:#F1F1F1;
+        z-index:10;
+        @include icons-sprite(handle);
+        &:focus {outline:none}
+      }
     }
   }
-
 }
 
 

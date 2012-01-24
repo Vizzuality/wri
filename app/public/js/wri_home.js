@@ -38,7 +38,7 @@ App.modules.WRIHome= function(app) {
         //TODO: manage more than 1 area
         var names = _.map(this.countries.inside(this.area), function(c) { return c.get('name_engli');});
         names = _(names).map(function(n) {
-          return '<li><a href="/country#{0}">{0}</a></li>'.format(n);
+          return '<li><a href="/country#{0}">{0}<span style="width:50%" class="bar"></span></a></li>'.format(n);
         });
         this.el.html('');
         this.el.append(names.join(''));

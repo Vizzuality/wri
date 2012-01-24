@@ -53,3 +53,4 @@ env
 # Build artifacts
 wri.db
 build
+app/public/js/node_modules/
