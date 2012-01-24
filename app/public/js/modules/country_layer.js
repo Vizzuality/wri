@@ -127,7 +127,7 @@ App.modules.CountryLayer = function(app) {
                 if(self.current_geom == p.properties.cartodb_id){
                     return ;
                 }
-                self.trigger('mouse_on', p);
+                self.trigger('mouse_on', e, p);
                 var cid = self.current_geom = p.properties.cartodb_id;
 
                 //self.stats_panel.set_info(p.properties);

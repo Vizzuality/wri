@@ -8,82 +8,50 @@ App.modules.Map = function(app) {
 
     // edit, delete popup shown when user is editing a poly
     var Popup = Backbone.View.extend({
-        el: $('#polygon_popup'),
-
-        events: {
-            'click #delete': 'remove',
-            'click #done': 'edit'
-        },
+        el: $('.area_popup'),
 
         initialize: function() {
-            _.bindAll(this, 'show', 'hide', 'remove', 'edit');
+            _.bindAll(this, 'show', 'hide');
             this.map = this.options.mapview;
-            this.smooth = this.options.smooth || true;
-            this.smooth_k = 0.08;
-            this.target_pos = null;
-            this.current_pos = null;
         },
 
-        remove: function(e) {
-            e.preventDefault();
-            this.trigger('remove');
-        },
-
-        edit: function(e) {
-            e.preventDefault();
-            this.trigger('edit');
-        },
-
-        show: function(at) {
+        show: function(at, info) {
             var self = this;
             var px = this.map.projector.transformCoordinates(at);
-            if(!this.timer) {
-                this.timer = setInterval(function() {
-                    self.current_pos.x += (self.target_pos.x - self.current_pos.x)*self.smooth_k;
-                    self.current_pos.y += (self.target_pos.y - self.current_pos.y)*self.smooth_k;
-                    self.set_pos(self.current_pos);
-                }, 20);
-                this.current_pos = px;
-            }
-            this.target_pos = px;
-
-            if(!this.smooth) {
-                set_pos(px);
-            }
+            this.set_pos(px);
         },
 
         set_pos: function(p) {
             this.el.css({
-                top: this.current_pos.y - 20 - 50,
-                left: this.current_pos.x
+                top: p.y - 20 - 50,
+                left: p.x
             });
             this.el.show();
         },
 
         hide: function() {
             this.el.hide();
-            if(this.timer) {
-                clearInterval(this.timer);
-                this.timer = null;
-            }
         }
     });
 
 
     app.Map = Class.extend({
         init: function(bus) {
-            _.bindAll(this, 'enable_layer', 'reorder_layers');
+            _.bindAll(this, 'enable_layer', 'reorder_layers', 'show_area_info');
             var self = this;
+            this.bus = bus;
             this.map = new MapView({el: $('.map_container')});
             this.seachbox = new Searchbox({el: $('.map_container .search')});
+            this.popup = new Popup({mapview: this.map});
+            this.movement_timeout = -1;
             this.report_polygons = {};
+
             // add layers to the map
             _(app.Config.MAP_LAYERS).each(function(layer) {
                 self.map.add_layer(layer.name, layer);
                 self.map.enable_layer(layer.name, layer.enabled);
             });
 
-            this.popup = new Popup({mapview: this.map});
             this.layer_editor = new LayerEditor({
                 el: $('.layers'),
                 bus: bus,
@@ -95,10 +63,7 @@ App.modules.Map = function(app) {
                 self.layer_editor.render();
             });
             this.map.map.setOptions({'styles': app.Config.MAP_STYLE});
-            this.polygon_edit = new PolygonDrawTool({mapview: this.map});
-            this.bus = bus;
 
-            this.movement_timeout = -1;
 
             bus.link(this, {
                 'map:enable_layer': 'enable_layer',
@@ -112,8 +77,15 @@ App.modules.Map = function(app) {
 
             // prebuil layers
             self.country_layer = new app.CountryLayer(self);
+            self.country_layer.bind('mouse_on', this.show_area_info);
+            self.country_layer.bind('mouse_out', self.popup.hide);
 
             this.show_controls(false);
+        },
+
+        //shows the popup when the user hovers some area
+        show_area_info: function(e, area) {
+            this.popup.show(e.latLng, "TODO");
         },
 
         center_map_on: function(bbox) {
