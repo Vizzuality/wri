@@ -94,46 +94,7 @@ App.modules.WRI= function(app) {
         },
 
         add_test_layer: function() {
-            var self = this;
-            var cartodb = new CartoDB({
-                user: 'wri-01',
-                table: 'gadm0_simple',
-                columns: ['iso',   'shape_area', 'cartodb_id'],
-                debug: false,
-                where: 'forma=true',
-                shader: {
-                    'point-color': '#fff',
-                    'line-color': '#D7D7D8',
-                    'line-width': '1',
-                    'polygon-fill': function(data) { 
-                        var c = 255 - (255*data.shape_area/950.0)>>0;
-                        return "rgba(" + c + ", 250, 250, 0.8)";
-                    }
-                }
-            });
-            self.cartodb = cartodb;
-            this.map.map.add_layer('vector0', {name: 'v0', enabled: true}, cartodb.layer);
-            this.map.map.enable_layer('vector0', true);
-            self.vec = null;
-            self.current_geom = null;
-            self.vec_cache = {};
 
-            this.map.map.bind('click', function(e) {
-                var p = cartodb.geometry_at(e.latLng, e.point,self.map.map.get_zoom());
-                if(p) {
-                    var geom = p.geometry;
-                    var vec = new GeoJSON(geom);
-                    if(!vec.length) vec =[vec];
-                    var b = new google.maps.LatLngBounds();
-                    _(vec).each(function(v) {
-                        v.getPath().forEach(function(ele, idx) {
-                            b.extend(ele);
-                        });
-                    });
-
-                    self.push(b);
-                }
-            });
         },
 
 
