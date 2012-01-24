@@ -319,3 +319,60 @@ body.tool {
 }
 
 
+body.front {
+  background-color: #191919;
+  
+  article.error {
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-250px 0 0 -281px;
+    width:562px;
+
+    header {
+      display:block;
+      h1 {
+        margin:0 0 0 12px;
+      } 
+    }
+
+    section {
+      position:relative;
+
+      &.empty {
+        display:inline-block;
+        width:530px;
+        height:357px;
+        margin:0 16px;
+        background:#000000;
+        @include border-radius(4px);
+        div.band {left:-62px; bottom:40px;}
+        em {display:block; font:bold 250px "Open Sans"; color:#333333; text-align:center; line-height:290px;}
+      }
+
+      div.band {
+        position:absolute;
+        bottom:74px;
+        left:-48px;
+        width:508px;
+        height:44px;
+        padding:20px 75px;
+        @include layout-sprite(band);
+
+        h2 {display:block; font:bold 15px "Open Sans"; color:white; letter-spacing:0; text-align:center; line-height:15px;}
+        p {
+          margin:3px 0 0 0;
+          text-align:center;
+          color:#7B1718;
+          a {
+            color:#7B1718;
+            text-decoration:underline;
+            &:hover {color:#3F0B0C;}
+          }
+        }
+      }
+    }
+  }  
+}
+
+
