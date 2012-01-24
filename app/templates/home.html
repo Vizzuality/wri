@@ -1,76 +1,96 @@
 {% extends "base.html" %}
 
-{% block container %} 
+{% block container %}
 
-<div class="background_map">
-  {% include "_map.html" %} 
-</div>
-<div class="container">
-    <header class="home">
-        <div class="logo">
-            <img src="http://placehold.it/145x65/000000&text=wri"></img>
-        </div>
-        <h1>See what's going on with the deforestation around the world</h1>
-        <h2>Now, Perú is the country where the deforestation is happening with more intensity</h2>
-    </header>
-    <article class="interactive_map" >
-     &nbsp;
-    </article>
+  <div id="bkg_map">
+    {% include "_map.html" %} 
+  </div>
 
-    <article class="countries" >
-        <section>
-          <h1>featured histories</h1>
+  <div class="container">
+    <div class="inner">
+      <header class="home">
+        <h1 class="left">
+          <a href="/">
+            <img src="/img/logos/wri.png" alt="WORLD RESOURCES INSTITUTE" title="WORLD RESOURCES INSTITUTE"/>
+          </a>
+        </h1>
+        <nav class="right">
+          <a href="/stories">Stories</a>
+          <a href="/about">About</a>
+        </nav>
+      </header>
+
+      <article class="subheader">
+        <div class="inner">
+          <section class="title left">
+            <h2>Para, Brazil saw the most deforestation in the World in December 2012.</h2>
+            <p class="bigger margin10">Browse the map or select a country from the list below.</p>
+          </section>
+          <form class="right">
+            <input type="text" placeholder="Seach for a country"/>
+            <input type="submit" value=""/>
+          </form>
+        </div>      
+      </article>
+    </div>
+  </div>
+
+
+  <div class="container margin300">
+    <div class="inner">
+      <article class="countries">
+        <section class="column">
+          <h4>featured histories</h4>
           <ul>
-            <li><img src="http://placehold.it/243x153"></img></li>
-            <li><img src="http://placehold.it/243x153"></img></li>
+            <li>
+              <img src="http://placehold.it/243x153" alt="x" title="x"/>
+              <a href="#todo" class="over"><span>Good Tidings from Tropical Forests: Large-Scale Clearing Has Fallen Sharply</span></a>
+              <p class="over">Brazil</p>
+            </li>
+            <li>
+              <img src="http://placehold.it/243x153" alt="x" title="x"/>
+              <a href="#todo" class="over"><span>Good Tidings from Tropical Forests: Large-Scale Clearing Has Fallen Sharply</span></a>
+              <p class="over">Brazil</p>
+            </li>
           </ul>
         </section>
-        <section>
-          <h1>south america</h1>
+        <section class="column">
+          <h4>south america</h4>
           <ul id="south_america">
           </ul>
         </section>
-        <section>
-          <h1>middle america</h1>
+        <section class="column">
+          <h4>middle america</h4>
           <ul id="middle_america">
           </ul>
         </section>
-        <section>
-          <h1>south east asia</h1>
+        <section class="column">
+          <h4>south east asia</h4>
           <ul id="south_east_asia">
           </ul>
         </section>
-    </article>
-
-    <!--
-    <div id="main" role="main">
-
-        <div class="time_slider_wrapper">
-            <input id="time_slider" type="range" min="0" max="48" value="0" step="1">
-        </div>
-
+      </article>
     </div>
-    -->
+  </div>
 
 
-    <footer>
-    </footer>
-</div>
+  <footer class="slider"></footer>
+
 {% endblock %}
 
 {% block js %}
   <script>
-      function init() {
-            App(function(app) {
-                var wri = new app.WRIHome();
-                wri.run();
-                //debug
-                window.wri = wri;
-                window._app= app;
-            });
-      }
-      $(document).ready(function() {
-            init();
+    function init() {
+      App(function(app) {
+        var wri = new app.WRIHome();
+        wri.run();
+        //debug
+        window.wri = wri;
+        window._app= app;
       });
+    }
+    $(document).ready(function() {
+      init();
+    });
   </script>
 {% endblock %}
