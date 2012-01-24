@@ -726,6 +726,13 @@ body.tool footer.slider span.canvas a.ui-slider-handle {
 body.tool footer.slider span.canvas a.ui-slider-handle:focus {
   outline: none;
 }
+/* line 312, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+body.tool footer.slider table {
+  position: absolute;
+  top: 27px;
+  left: 28px;
+  right: 28px;
+}
 
 /* line 3, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .ie7 .map_container {

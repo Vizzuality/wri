@@ -307,6 +307,13 @@ body.tool {
         @include icons-sprite(handle);
         &:focus {outline:none}
       }
+
+    }
+    table {
+      position:absolute;
+      top:27px;
+      left:28px;
+      right:28px;
     }
   }
 }

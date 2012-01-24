@@ -58,8 +58,20 @@
     _addCanvas: function($el) {
       $el.append('<span class="canvas"></span>');
 
+      // Add years
+      // var table = '<table><tr>';
 
-      // Add years and so on
+      // for (var i=2006, length=2013; i<length; i++) {
+      //   if (i!=2012) {
+      //     table += '<td width="16%"><div>' + i + '</div></td>'
+      //   } else {
+      //     table += '<td width="2%"><div>' + i + '</div></td>'
+      //   }
+      // }
+
+      // table += '</tr></table>';
+
+      //$el.append(table);
 
       Core._initializeSlider($el);
     },
@@ -78,12 +90,14 @@
         slide: function(ev,ui) {
           var date = Core.options.monthNames[new Date(ui.value).getMonth()] + ' ' + new Date(ui.value).getFullYear();
           $(ev.target).find('a.ui-slider-handle').text(date);
+          var value = ui.value;
+          Core._trigger('change',[value],$(ev.target));
         }
       });
     },
 
     _resetSlider: function(ev) {
-      console.log(ev);
+      //console.log(ev);
     }
 
 
@@ -131,9 +145,12 @@
 
 
 (function(){
-  $('.slider').wriSlider({
+  $('footer.slider').wriSlider({
       start: 'January 1, 2006 00:00:00'
     , end: 'February 1, 2012 00:00:00'
     , value: 'January 1, 2009 00:00:00'
+  }).bind('change.wriSlider', function(ev,data){
+    console.log(data);
   });
+
 })( jQuery, window );
