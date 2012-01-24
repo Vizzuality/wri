@@ -106,8 +106,10 @@ App.modules.CountryLayer = function(app) {
                 var area_name = geometry.properties.name_1;
                 this.show_region(area_name);
                 this.trigger('changed_area_name', area_name);
+                this.map.map.map.fitBounds(b);
+                //this.map.map.unbind('mousemove', this.mousemove);
+                this.remove_hover();
             }
-            this.map.map.map.fitBounds(b);
 
         },
 
@@ -117,6 +119,9 @@ App.modules.CountryLayer = function(app) {
                 this.show_country(country);
                 this.trigger('changed_area_name', country);
                 this.level = this.LEVEL_COUNTRY;
+                //always unbind to not bind twice
+                this.map.map.unbind('mousemove', this.mousemove);
+                this.map.map.bind('mousemove', this.mousemove);
             }
         },
 
@@ -129,42 +134,41 @@ App.modules.CountryLayer = function(app) {
                 }
                 self.trigger('mouse_on', e, p);
                 var cid = self.current_geom = p.properties.cartodb_id;
-
-                //self.stats_panel.set_info(p.properties);
                 var geom = p.geometry;
-                var opts = {
-                        "strokeColor": "#FFF366",
-                        "strokeOpacity": 0.8,
-                        "strokeWeight": 2,
-                        "fillColor": "#FFF366",
-                        "fillOpacity": 0.6,
-                        'clickable': false
-                };
-                if(self.vec) {
-                    self.vec.forEach(function(gv){
-                       gv.setMap(null);
-                    });
-                }
-                if(self.vec_cache[cid]) {
-                    self.vec = self.vec_cache[cid];
-                } else {
-                    self.vec = new GeoJSON(geom, opts);
-                    if(!self.vec.length) {
-                        self.vec = [self.vec];
-                    }
-                    self.vec_cache[cid] = self.vec;
-                }
-                self.vec.forEach(function(gv){
-                    gv.setMap(self.map.map.map);
-                });
+                this.show_hover(geom);
             } else {
-                if(self.vec) {
-                    self.vec.forEach(function(gv){
-                       gv.setMap(null);
-                    });
-                }
+                self.remove_hover();
                 self.current_geom = null;
                 self.trigger('mouse_out');
+            }
+        },
+
+        show_hover: function(geom) {
+            var self = this;
+            var opts = {
+                    "strokeColor": "#FFF366",
+                    "strokeOpacity": 0.8,
+                    "strokeWeight": 2,
+                    "fillColor": "#FFF366",
+                    "fillOpacity": 0.6,
+                    'clickable': false
+            };
+            self.remove_hover();
+            self.vec = new GeoJSON(geom, opts);
+            if(!self.vec.length) {
+                self.vec = [self.vec];
+            }
+            self.vec.forEach(function(gv){
+                gv.setMap(self.map.map.map);
+            });
+        },
+
+        remove_hover: function() {
+            var self = this;
+            if(self.vec) {
+                self.vec.forEach(function(gv){
+                   gv.setMap(null);
+                });
             }
         }
     });

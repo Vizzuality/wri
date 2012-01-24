@@ -111,7 +111,7 @@ App.modules.Map = function(app) {
             var self = this;
             console.log("zoom: ", z);
             var table_name = 'asia_500m_18_jan_8x_grid';
-            if(z < 5) {
+            if(z < 6) {
                 table_name = 'asia_500m_18_jan_40x_grid';
             } else if(z > 11) {
                 table_name = 'asia_500m_18_jan_4x_grid';
