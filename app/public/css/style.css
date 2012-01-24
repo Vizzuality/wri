@@ -726,7 +726,7 @@ body.tool footer.slider span.canvas a.ui-slider-handle {
 body.tool footer.slider span.canvas a.ui-slider-handle:focus {
   outline: none;
 }
-/* line 312, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 312, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool footer.slider table {
   position: absolute;
   top: 27px;
@@ -922,9 +922,10 @@ body.tool footer.slider table {
 }
 /* line 184, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .area_popup h1, .map_container .area_popup h2 {
+  font-size: 16px;
   background: #E33;
 }
-/* line 189, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 190, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .search {
   display: none;
   position: absolute;
@@ -936,7 +937,7 @@ body.tool footer.slider table {
   padding: 5px 0px 3px 8px;
   background: url("/img/sprite.png") no-repeat 0 -1858px;
 }
-/* line 199, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 200, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .search h1 {
   margin: 0;
   padding: 0;
@@ -946,7 +947,7 @@ body.tool footer.slider table {
   color: #333333;
   letter-spacing: -1px;
 }
-/* line 208, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 209, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .search input {
   outline: none;
   width: 105px;
@@ -954,11 +955,11 @@ body.tool footer.slider table {
   border: 0;
   font: normal 13px "Helvetica";
 }
-/* line 215, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 216, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .search a {
   text-decoration: none;
 }
-/* line 220, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 221, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers {
   display: none;
   position: absolute;
@@ -967,7 +968,7 @@ body.tool footer.slider table {
   width: 224px;
   z-index: 100;
 }
-/* line 228, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 229, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers a.view {
   float: right;
   display: block;
@@ -977,7 +978,7 @@ body.tool footer.slider table {
   background: url("/img/sprite.png") no-repeat 0 -1035px;
   text-decoration: none;
 }
-/* line 237, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 238, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers a.view span {
   float: left;
   height: 13px;
@@ -989,11 +990,11 @@ body.tool footer.slider table {
   text-indent: 0px;
   text-decoration: none;
 }
-/* line 248, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 249, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers a.view span strong {
   font: bold 13px "WhitneyBold","Myriad Pro";
 }
-/* line 254, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 255, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show {
   position: absolute;
   top: 21px;
@@ -1002,14 +1003,14 @@ body.tool footer.slider table {
   width: 224px;
   z-index: -1;
 }
-/* line 262, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 263, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show span.top {
   float: right;
   width: 100%;
   height: 12px;
   background: url("/img/sprite.png") no-repeat right -2311px;
 }
-/* line 269, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 270, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul {
   float: right;
   width: 212px;
@@ -1019,7 +1020,7 @@ body.tool footer.slider table {
   text-align: left;
   background: url("/img/sprite.png") no-repeat right bottom;
 }
-/* line 278, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 279, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul:last-child {
   border: none;
   -moz-border-radius-bottomleft: 4px;
@@ -1035,7 +1036,7 @@ body.tool footer.slider table {
   -khtml-border-bottom-right-radius: 4px;
   border-bottom-right-radius: 4px;
 }
-/* line 283, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 284, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li {
   padding: 5px 9px;
   border: none;
@@ -1043,7 +1044,7 @@ body.tool footer.slider table {
   font: normal 13px "Helvetica Neue";
   color: #333333;
 }
-/* line 290, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 291, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li span.color {
   width: 7px;
   height: 7px;
@@ -1051,50 +1052,50 @@ body.tool footer.slider table {
   margin-right: 10px;
   display: inline-block;
 }
-/* line 300, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 301, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.enabled span.color.carbon {
   background: url("/img/sprite.png") no-repeat -224px -2312px;
 }
-/* line 303, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 304, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.enabled span.color.protected_areas {
   background: url("/img/sprite.png") no-repeat -224px -2342px;
 }
-/* line 306, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 307, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.enabled span.color.carbon_sequestration {
   background: url("/img/sprite.png") no-repeat -224px -2372px;
 }
-/* line 309, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 310, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.enabled span.color.restoration_potential {
   background: url("/img/sprite.png") no-repeat -224px -2401px;
 }
-/* line 312, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 313, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.enabled span.color.forest_status {
   background: url("/img/sprite.png") no-repeat -224px -2432px;
 }
-/* line 315, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 316, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.enabled span.color.KBA {
   background: url("/img/sprite.png") no-repeat -224px -2462px;
 }
-/* line 323, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 324, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.last {
   border: none;
 }
-/* line 327, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 328, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li:hover {
   background: url("/img/sprite.png") no-repeat -270px -1372px;
   background-color: #EDEDED;
   cursor: pointer!important;
 }
-/* line 333, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 334, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.enabled {
   font-weight: bold;
 }
-/* line 337, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 338, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.moving {
   border-top: 1px solid #CCCCCC;
   border-bottom: 1px solid #CCCCCC;
 }
-/* line 343, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 344, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul a.expand {
   display: block;
   width: 100%;
@@ -1104,19 +1105,19 @@ body.tool footer.slider table {
   line-height: 0;
   background: url("/img/sprite.png") no-repeat 0 -1444px;
 }
-/* line 351, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 352, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul a.expand:hover {
   background-position: 0 -1452px;
 }
-/* line 359, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 360, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers.open a.view {
   background-position: left -1072px;
 }
-/* line 362, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 363, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers.open a.view span {
   background-position: right -1072px;
 }
-/* line 367, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 368, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
 .map_container .layers.open .show {
   display: block;
 }

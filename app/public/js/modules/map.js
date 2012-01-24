@@ -80,6 +80,7 @@ App.modules.Map = function(app) {
             self.country_layer = new app.CountryLayer(self);
             self.country_layer.bind('mouse_on', this.show_area_info);
             self.country_layer.bind('mouse_out', self.popup.hide);
+            self.map.bind('zoom_changed', self.popup.hide);
 
             //grid layer
             self.grid_layer = new TimePlayer('asia_500m_18_jan_40x_grid');

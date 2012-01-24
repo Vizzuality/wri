@@ -28,7 +28,7 @@ App.modules.CountryLayer = function(app) {
                     'point-color': '#fff',
                     'line-color': '#D7D7D8',
                     'line-width': '2',
-                    'polygon-fill': 'rgba(255,255, 255,0.2)'
+                    'polygon-fill': 'rgba(255,255, 255,0.05)'
                 }
             });
             map.map.add_layer('vector0', {name: 'v0', enabled: true}, cartodb.layer);
@@ -108,9 +108,11 @@ App.modules.CountryLayer = function(app) {
                 this.trigger('changed_area_name', area_name);
                 this.map.map.map.fitBounds(b);
                 //this.map.map.unbind('mousemove', this.mousemove);
-                this.remove_hover();
+            } else if(this.level == this.LEVEL_REGION) {
+                this.map.map.unbind('mousemove', this.mousemove);
+                this.map.map.map.fitBounds(b);
             }
-
+            this.remove_hover();
         },
 
         back: function() {
