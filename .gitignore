@@ -54,3 +54,6 @@ env
 wri.db
 build
 app/public/js/node_modules/
+
+Gemfile
+Gemfile.lock

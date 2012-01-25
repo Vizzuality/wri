@@ -31,7 +31,7 @@ strong, th {
 small {
   // Use font-size mixin to convert to percentage for YUI
   // http://developer.yahoo.com/yui/3/cssfonts/#fontsize
-  @include font-size(11px);  // approx 85% when base-font-size eq 13px
+  font-size: 11px;  // approx 85% when base-font-size eq 13px
 }
 
 // Add the 'required' attribute on your
@@ -160,9 +160,9 @@ body.tool {
       margin:64px 0 0;
 
       input[type="text"] {
-        width:222px;
-        height:19px;
-        padding:11px 22px 11px 7px;
+        display:block;
+        width:219px;
+        padding:11px 22px 11px 9px;
         border:1px solid rgba(255,255,255,0.15);
         @include border-radius(3px);
         background:none;
@@ -175,7 +175,7 @@ body.tool {
       }
       input[type="submit"] {
         position:absolute;
-        top:16px;
+        top:19px;
         right:10px;
         width:14px;
         height:14px;
@@ -314,6 +314,40 @@ body.tool {
       top:27px;
       left:28px;
       right:28px;
+    }
+  }
+
+  /* AUTOCOMPLETE */
+  .ui-autocomplete {
+    width:228px;
+    padding:60px 18px 0 18px;
+    margin:-90px 0 0 -27px;
+    border:1px solid #333333;
+    @include border-radius(3px);
+    list-style:none;
+
+    li {
+      position:relative;
+      width:100%;
+      padding:0 0 9px;
+      a {
+        position:relative;
+        display:block;
+        width:100%;
+        padding:0 0 8px 0;
+        font:normal 15px "Open Sans";
+        span {
+          position:absolute;
+          left:0;
+          bottom:0;
+          height:4px;
+          @include border-radius(5px);
+          background:#1b1c1c;
+        }
+        &:hover,
+        &.ui-state-hover,
+        &.ui-state-active { color:white; span {background:#FF3333}}
+      }
     }
   }
 }
