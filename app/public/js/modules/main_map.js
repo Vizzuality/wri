@@ -3,15 +3,17 @@
  * bubbels map
  */
 App.modules.MainMap = function(app) {
-        var CARTODB= 'https://wri-01.cartodb.com/api/v1/sql?q=SELECT ST_Centroid(the_geom) as the_geom, name_engli, random() as deforest FROM gadm0_simple where forma = true&format=geojson';
+        //var CARTODB= 'https://wri-01.cartodb.com/api/v1/sql?q=SELECT ST_Centroid(the_geom) as the_geom, name_engli, deforest FROM gadm0_simple where forma = true&format=geojson';
+        var CARTODB= "https://wri-01.cartodb.com/api/v1/sql?q=SELECT ST_Centroid(the_geom) as the_geom,iso,name_engli, cumm FROM country_attributes_live where forma=true&format=geojson";
 
         app.MainMap = function() {
 
-              var w = 1260,
+              var w = 1100,
                   h = 768;
                  merc = d3.geo.mercator()
                     .scale(1027)
-                    .translate([w>>1,h>>1]);
+                    //this value is calculated using the eye, HAHAHA
+                    .translate([30 + (w>>1),h>>2]);
 
 
             var get_min_distance = function(countries) {
@@ -29,13 +31,6 @@ App.modules.MainMap = function(app) {
             }
 
             d3.json(encodeURI(CARTODB), function(countries) {
-                /*d3.select('body')
-                    .data(countries.features)
-                    .enter()
-                    .append('p')
-                    .text(function(data) {
-                        return data.properties.name_engli + data.geometry.coordinates
-                    });*/
 
                 var min_distance = Math.sqrt(get_min_distance(countries.features));
                 var r = min_distance/2;
@@ -45,16 +40,20 @@ App.modules.MainMap = function(app) {
                    .attr("height", h);
 
                 var node = svg.selectAll("g.node")
-                    .data(countries.features)
-                    .enter().append("g")
+                    .data(countries.features.filter(
+                        function(d) { return d.properties.cumm; }
+                    ))
+                    .enter()
+                    .append("g")
                     .attr("class", "node")
                     .attr("transform", function(p) { 
                         var ll = p.geometry.coordinates;
                         return "translate(" + merc(ll).join(',') + ")"; 
                     });
+
                 node.append("circle")
                     .attr("r", function(d) {
-                            return d.properties.deforest*30;
+                            return Math.sqrt(d.properties.cumm[0])*0.1;
                     });
 
                 node.append("text")
@@ -62,6 +61,7 @@ App.modules.MainMap = function(app) {
                     .text(function(d) {
                         return d.properties.name_engli;
                     });
+
                 node.append("text")
                     .attr("text-anchor", "middle")
                     .attr('class', 'small')
@@ -70,10 +70,20 @@ App.modules.MainMap = function(app) {
                         return "123123 events";
                     });
 
+
+
                 svg.selectAll('g.node')
                     .on('mouseover', function(data, i) {
                         var ll = data.geometry.coordinates;
                         var t = "translate(" + merc(ll).join(',') + ") scale(3, 3)";
+                        var node = d3.select(this);
+
+                        /*d3.select(this)
+                            .select('circle')
+                            .transition()
+                            .attr('r', 30);
+                            */
+
                         d3.select(this)
                             .transition()
                             .attr('transform', t)
@@ -81,17 +91,25 @@ App.modules.MainMap = function(app) {
                                 .transition()
                                 .delay(100)
                                 .style('opacity', 1.0);
+
                     })
                     .on('mouseout', function(data, i) {
                         var ll = data.geometry.coordinates;
                         var t = "translate(" + merc(ll).join(',') + ") scale(1, 1)";
                         d3.select(this)
+                            //.select('circle')
                             .transition()
-                            .attr('transform', t)
+                            .attr('transform', t);
+                            /*.attr("r", function(d) {
+                                return Math.sqrt(d.properties.cumm[0])*0.1;
+                            });*/
+
+                        d3.select(this)
                             .selectAll('text')
-                                .transition()
-                                .delay(0.2)
-                                .style('opacity', 0.0);
+                            .transition()
+                            .style('opacity', 0);
+
+
                     });
 
             });

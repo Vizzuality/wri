@@ -8,9 +8,11 @@
   height: 100%;
 }
 
+.inner {
+      background: url('/img/main_map_bkg.png') repeat-y 0 40px;
+}
 .buble_map {
-      background: url('/img/main_map_bkg.png') 52px -80px;
-      width: 1260px;
+      width: 1100px;
       height: 768px;
 
       circle {
