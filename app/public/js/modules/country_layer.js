@@ -27,8 +27,8 @@ App.modules.CountryLayer = function(app) {
                 shader: {
                     'point-color': '#fff',
                     'line-color': '#D7D7D8',
-                    'line-width': '2',
-                    'polygon-fill': 'rgba(255,255, 255,0.05)'
+                    'line-width': '1',
+                    'polygon-fill': 'rgba(255,255, 255,0.01)'
                 }
             });
             map.map.add_layer('vector0', {name: 'v0', enabled: true}, cartodb.layer);
@@ -148,11 +148,11 @@ App.modules.CountryLayer = function(app) {
         show_hover: function(geom) {
             var self = this;
             var opts = {
-                    "strokeColor": "#FFF366",
+                    "strokeColor": "#FFFFFF",
                     "strokeOpacity": 0.8,
-                    "strokeWeight": 2,
+                    "strokeWeight": 4,
                     "fillColor": "#FFF366",
-                    "fillOpacity": 0.6,
+                    "fillOpacity": 0.0,
                     'clickable': false
             };
             self.remove_hover();

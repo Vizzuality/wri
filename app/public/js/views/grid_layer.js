@@ -26,6 +26,12 @@ TimePlayer.prototype.set_table = function(table) {
   this.redraw();
 };
 
+TimePlayer.prototype.set_country = function(country) {
+  this.country = country;
+  this.recreate();
+  this.redraw();
+}
+
 TimePlayer.prototype.sql = function(sql, callback) {
     var self = this;
     $.getJSON(this.base_url  + "?q=" + encodeURIComponent(sql) ,function(data){
@@ -65,14 +71,29 @@ TimePlayer.prototype.pre_cache_months = function(rows) {
 TimePlayer.prototype.get_time_data = function(tile, coord, zoom) {
     var self = this;
 
+    if(!self.table || !self.country)  {
+        return;
+    }
+
     var projection = new MercatorProjection();
     var bbox = projection.tileBBox(coord.x, coord.y, zoom);
-    var sql = "SELECT upper_left_x, upper_left_y, cell_width, cell_height, pixels, total_incr as events, cummulative, boxpoly, time_series, time_series, the_geom_webmercator FROM " + this.table;
+    //TODO: remove not used
+    var sql = "SELECT upper_left_x, upper_left_y, cell_width, cell_height, pixels, total_incr as events, cummulative, boxpoly, time_series, time_series FROM " + this.table;
 
-    sql += " WHERE the_geom && ST_SetSRID(ST_MakeBox2D(";
+    // only inside the country
+    sql += " INNER JOIN gadm0_simple ON ";
+    sql += "gadm0_simple.name_engli = '{0}'".format(self.country);
+
+    // get cells only tile bounding box
+    sql += " AND {0}.the_geom && ST_SetSRID(ST_MakeBox2D(".format(self.table);
     sql += "ST_Point(" + bbox[0].lng() + "," + bbox[0].lat() +"),";
     sql += "ST_Point(" + bbox[1].lng() + "," + bbox[1].lat() +")), 4326)";
 
+    // and inside the country
+    //sql += " AND ST_Intersects(gadm0_simple.the_geom, {0}.the_geom)".format(self.table);
+    sql += " AND gadm0_simple.the_geom && {0}.the_geom".format(self.table);
+
+    console.log(sql);
     this.sql(sql, function(data) {
         tile.cells = self.pre_cache_months(data.rows);
     });

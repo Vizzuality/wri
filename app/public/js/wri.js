@@ -64,9 +64,13 @@ App.modules.WRI= function(app) {
 
 
             // slider
-            this.slider = new Slider({el: $("article.months")});
+            this.slider = new Slider({el: $(".slider")});
             this.slider.bind('change', function(v) {
-                self.map.set_time((v*90)>>0);
+                // timestamp to month
+                var start = new Date(2006, 1, 1).getTime();
+                var d = v - start;
+                var months = d/(3600*1000*24*30);
+                self.map.set_time(months>>0);
             });
 
             this.bus.on('app:route_to', this.on_route_to);

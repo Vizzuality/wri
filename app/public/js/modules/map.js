@@ -114,7 +114,7 @@ App.modules.Map = function(app) {
             var table_name = 'asia_500m_18_jan_8x_grid';
             if(z < 6) {
                 table_name = 'asia_500m_18_jan_40x_grid';
-            } else if(z > 11) {
+            } else if(z >= 9) {
                 table_name = 'asia_500m_18_jan_4x_grid';
             }
             self.grid_layer.set_table(table_name);
@@ -132,6 +132,7 @@ App.modules.Map = function(app) {
 
         show_country: function(country) {
             this.country_layer.show_country(country);
+            this.grid_layer.set_country(country);
         },
 
         enter_on: function(region_name) {

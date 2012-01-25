@@ -149,8 +149,5 @@
       start: 'January 1, 2006 00:00:00'
     , end: 'February 1, 2012 00:00:00'
     , value: 'January 1, 2009 00:00:00'
-  }).bind('change.wriSlider', function(ev,data){
-    console.log(data);
   });
-
 })( jQuery, window );

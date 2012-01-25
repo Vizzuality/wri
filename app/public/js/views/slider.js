@@ -10,8 +10,12 @@ var Slider = Backbone.View.extend({
 
     initialize: function() {
         _.bindAll(this, 'startDrag', 'onDrag', 'endDrag');
+        var self = this;
         this.dragging = false;
         this.marker = this.$('.marker');
+        this.el.bind('change.wriSlider', function(ev,data){
+            self.trigger('change', data);
+        });
     },
 
     startDrag: function(e) {
