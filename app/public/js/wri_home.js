@@ -53,6 +53,9 @@ App.modules.WRIHome= function(app) {
     app.WRIHome = Class.extend({
 
       run: function() {
+
+        app.MainMap();
+
         var countries = new Countries();
         // the 3 country lists
         var views = [

@@ -8,6 +8,33 @@
   height: 100%;
 }
 
+.buble_map {
+      background: url('/img/main_map_bkg.png') 52px -80px;
+      width: 1260px;
+      height: 768px;
+
+      circle {
+        fill: #FF3333;
+      }
+
+      circle.ortho {
+        fill:#971c20;
+      }
+      text {
+          opacity: 0;
+          fill: #FFF;
+          color: #FFF;
+          font: bold 20px sans-serif;
+      }
+      text.small {
+          fill: #FFF;
+          color: #FFF;
+          font: 10px sans-serif;
+      }
+
+
+}
+
 .map_container {
   position: absolute;
   //width:100%;
