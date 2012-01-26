@@ -15,6 +15,7 @@ App.modules.MainMap = function(app) {
 
           init: function(countries) {
 		    _.bindAll(this, 'render');
+			this.month = 0;
 			this.countries = countries;
 			this.countries.bind('reset', this.render);
           },
@@ -37,6 +38,7 @@ App.modules.MainMap = function(app) {
 		  },
 
 		  render: function() { 
+			var self = this;
 			//var min_distance = Math.sqrt(get_min_distance(countries.features));
 			//var r = min_distance/2;
 			var countries = this.countries;
@@ -56,13 +58,17 @@ App.modules.MainMap = function(app) {
 					var ll = p.center();
 					return "translate(" + merc(ll).join(',') + ")"; 
 				});
+			
 
 			node.append("circle")
 				.attr("r", function(d) {
 						return Math.sqrt(d.time_series()[0])*0.1;
 				});
 
-			node.append("text")
+			node
+				.append('a')
+					.attr('xlink:href', "/#TODO")
+				.append("text")
 				.attr("text-anchor", "middle")
 				.text(function(d) {
 					return d.get('name_engli');
@@ -81,7 +87,7 @@ App.modules.MainMap = function(app) {
 			svg.selectAll('g.node')
 				.on('mouseover', function(data, i) {
 					var ll = data.center();
-					var t = "translate(" + merc(ll).join(',') + ") scale(3, 3)";
+					//var t = "translate(" + merc(ll).join(',') + ") scale(3, 3)";
 					var node = d3.select(this);
 					//move node to the back to be rendered first
 					svg.selectAll('g.node').sort(function(a, b) {
@@ -95,7 +101,11 @@ App.modules.MainMap = function(app) {
 
 					d3.select(this)
 						.transition()
-						.attr('transform', t)
+						//.attr('transform', t)
+						.select('circle')
+							.attr('r', 100);
+
+					d3.select(this)
 						.selectAll('text')
 							.transition()
 							.delay(100)
@@ -106,17 +116,17 @@ App.modules.MainMap = function(app) {
 					var ll = data.center();
 					var t = "translate(" + merc(ll).join(',') + ") scale(1, 1)";
 					d3.select(this)
-						//.select('circle')
 						.transition()
-						.attr('transform', t);
-						/*.attr("r", function(d) {
-							return Math.sqrt(d.properties.cumm[0])*0.1;
-						});*/
+						//.attr('transform', t)
+						.select('circle')
+							.attr('r', function(d) {
+								return Math.sqrt(d.time_series()[self.month])*0.1;});
 
 					d3.select(this)
 						.selectAll('text')
-						.transition()
-						.style('opacity', 0);
+							.transition()
+							.delay(100)
+							.style('opacity', 0.0);
 
 
 				});
