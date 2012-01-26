@@ -6,7 +6,6 @@
 
 App.modules.WRIHome= function(app) {
 
-
     /**
      * country list on the home page.
      * Renders a country list
@@ -66,11 +65,13 @@ App.modules.WRIHome= function(app) {
 
       run: function() {
 
-
+		// data
         var countries = new app.Countries();
 
+		// bubble map
         var bubbleMap = new app.MainMap(countries);
 
+		// search widget
         var search = new Search({
           el: $('#autocomplete'),
           countries: countries
@@ -94,6 +95,8 @@ App.modules.WRIHome= function(app) {
             countries: countries
           })
         ];
+
+		//get data
         countries.fetch();
       }
 
