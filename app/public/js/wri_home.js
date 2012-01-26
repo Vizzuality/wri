@@ -7,12 +7,29 @@
 App.modules.WRIHome= function(app) {
 
 
+	var Country = Backbone.Model.extend({
+		center: function() {
+			return JSON.parse(this.get('the_geom')).coordinates;
+		},
+		time_series: function() {
+			return this.get('cumm');
+		}
+	});
     /**
      * countries collection
      */
     var Countries = app.CartoDB.CartoDBCollection.extend({
-      table: 'gadm0',
-      columns: ['unregion1', 'unregion2', 'name_engli'],
+	  model: Country,
+      table: 'country_attributes_live',
+      columns: [
+		'unregion1',
+		'unregion2',
+		'name_engli',
+		'cumm',
+		'total_incr',
+		'start_value',
+		'ST_AsGeoJSON(ST_Centroid(the_geom)) as the_geom'
+	  ],
       cache: true,
       inside: function(area) {
         return this.filter(function(c) {
@@ -71,8 +88,6 @@ App.modules.WRIHome= function(app) {
 
         this.el.autocomplete("option", 'source', country_list_search);
       }
-              
-
     });
 
     /*
@@ -82,9 +97,10 @@ App.modules.WRIHome= function(app) {
 
       run: function() {
 
-        app.MainMap();
 
         var countries = new Countries();
+
+        var bubbleMap = new app.MainMap(countries);
 
         var search = new Search({
           el: $('#autocomplete'),
