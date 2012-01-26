@@ -151,12 +151,4 @@
 		, value: 'January 1, 2009 00:00:00'
 	});
 
-	var test = [{label:'jamon'},{label:'santana'},{label:'Spain'}];
-
-	$( "#autocomplete" ).autocomplete({
-		source: test,
-		minLength: 2,
-		url: '/countries#'
-	});
-
 })( jQuery, window );

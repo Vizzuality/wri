@@ -47,6 +47,34 @@ App.modules.WRIHome= function(app) {
 
     });
 
+    var Search = Backbone.View.extend({
+      initialize: function() {
+        _.bindAll(this, 'render');
+	    var test = [{label:'jamon', per: 40},{label:'santana'},{label:'Spain'}];
+        this.countries = this.options.countries;
+        this.countries.bind('reset', this.render);
+        this.el.autocomplete({
+            source: test,
+            minLength: 2,
+            url: '/country#'
+        });
+      },
+
+      render: function() {
+        // generate list
+        var country_list_search = this.countries.map(function(c) {
+          return {
+            'label': c.get('name_engli'),
+            'per': (Math.random()*100)>>0
+          }
+        });
+
+        this.el.autocomplete("option", 'source', country_list_search);
+      }
+              
+
+    });
+
     /*
      * main controller for home page
      */
@@ -57,6 +85,12 @@ App.modules.WRIHome= function(app) {
         app.MainMap();
 
         var countries = new Countries();
+
+        var search = new Search({
+          el: $('#autocomplete'),
+          countries: countries
+        });
+
         // the 3 country lists
         var views = [
           new CountriesView({
