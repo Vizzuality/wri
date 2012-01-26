@@ -57,63 +57,6 @@ html, body {
 body.tool {
   background-color: #000;
 
-  // .background_map {
-  //   width: 100%;
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   height: 110%;
-  // }
-
-
-  // article.months {
-  //   $h: 70px;
-  //   position: absolute;
-  //   bottom: 0;
-  //   height: $h;
-  //   width: 100%;
-  //   background: #CCC;
-  //   .marker {
-  //     position: relative;
-  //     top: -37px;
-  //     width: 83px;
-  //     height: 35px;
-  //     background: #C00;
-  //     z-index: 1;
-  //   }
-  // }
-
-
-  // article.interactive_map{
-  //   height: 360px;
-  // }
-
-  // header.home {
-  //   color: white;
-  //   h1 {
-  //     margin-top: 20px;
-  //     font-size: 61px;
-  //     line-height: 1em;
-  //   }
-  //   h2 {
-  //     margin-top: 10px;
-  //     font-size: 25px;
-  //     line-height: 1em;
-  //     font-weight: normal;
-  //   }
-  // }
-
-    // article.country_info { 
-  //   position: relative;
-  //   width: 500px;
-  //   left: 50%;
-  //   top: 70px;
-  //   color: white;
-  //   h1 {
-  //     font-size: 45px;
-  //   }
-  // }
-
 
   /* LAYOUT */
   .container {
@@ -129,12 +72,12 @@ body.tool {
 
   /* HEADER */
   header {
-    padding:20px 0;
+    padding:10px 0;
     overflow:hidden;
-    h1 {float:left;}
+    h1 {float:left; margin:0; padding:0;}
     nav {
       float:right;
-      margin:19px 0 0 0;
+      margin:25px 0 0 0;
       a {
         height:18px;
         margin:0 0 0 5px;
@@ -151,8 +94,11 @@ body.tool {
 
   /* HOME SUBHEADER */
   article.subheader {
+    margin:0;
+
     section.title {
-      width:755px
+      width:755px;
+      p {letter-spacing:-1px}
     }
     form {
       position:relative;
@@ -285,6 +231,16 @@ body.tool {
     height:29px;
     z-index:100;
     @include background-image(linear-gradient(#f3f3f3, #cacaca));
+
+    span.shadow {
+      position:absolute;
+      top:-20px;
+      left:0;
+      width:100%;
+      height:20px;
+      @include background-image(linear-gradient(rgba(0,0,0,0),#000000));
+    }
+
     span.canvas {
       position:relative;
       display:block;
@@ -307,8 +263,8 @@ body.tool {
         @include icons-sprite(handle);
         &:focus {outline:none}
       }
-
     }
+
     table {
       position:absolute;
       top:27px;

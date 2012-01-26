@@ -56,7 +56,7 @@
 
 		// PRIVATE LOGIC
 		_addCanvas: function($el) {
-			$el.append('<span class="canvas"></span>');
+			$el.append('<span class="canvas"></span><span class="shadow"></span>');
 
 			// Add years
 			// var table = '<table><tr>';
