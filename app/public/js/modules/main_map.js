@@ -25,7 +25,7 @@ App.modules.MainMap = function(app) {
 			//var min_distance = Math.sqrt(get_min_distance(countries.features));
 			//var r = min_distance/2;
 			var countries = this.countries;
-			var svg = d3.select(".buble_map").append("svg:svg")
+			var svg = d3.select(".bubble_map").append("svg:svg")
 			   .attr("width",  w)
 			   .attr("height", h);
 

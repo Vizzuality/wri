@@ -15,6 +15,7 @@ App.modules.WRIHome= function(app) {
 			return this.get('cumm');
 		}
 	});
+
     /**
      * countries collection
      */
