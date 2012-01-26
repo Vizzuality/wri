@@ -3,15 +3,13 @@
  * bubbels map
  */
 App.modules.MainMap = function(app) {
-        //var CARTODB= 'https://wri-01.cartodb.com/api/v1/sql?q=SELECT ST_Centroid(the_geom) as the_geom, name_engli, deforest FROM gadm0_simple where forma = true&format=geojson';
-        var CARTODB= "https://wri-01.cartodb.com/api/v1/sql?q=SELECT ST_Centroid(the_geom) as the_geom,iso,name_engli, cumm FROM country_attributes_live where forma=true&format=geojson";
 
 	    var w = 1100,
 		    h = 768;
 			merc = d3.geo.mercator()
 				.scale(1027)
 				//this value is calculated using the eye, HAHAHA
-				.translate([30 + (w>>1),h>>2]);
+				.translate([(w>>1)- 50,(h>>2) - 60]);
 
         var MainMap = Class.extend({
 
@@ -21,6 +19,23 @@ App.modules.MainMap = function(app) {
 			this.countries.bind('reset', this.render);
           },
 
+		  set_time: function(month) {
+			var countries = this.countries;
+			this.month = month;
+			// animate
+			var node = this.svg
+				.selectAll("g.node")
+				.select("circle")
+				.data(countries.filter(
+					function(d) { return d.get('cumm'); }
+				))
+				.transition()
+				.duration(30)
+				.attr("r", function(d) {
+						return Math.sqrt(d.time_series()[month])*0.1;
+				});
+		  },
+
 		  render: function() { 
 			//var min_distance = Math.sqrt(get_min_distance(countries.features));
 			//var r = min_distance/2;
@@ -29,6 +44,7 @@ App.modules.MainMap = function(app) {
 			   .attr("width",  w)
 			   .attr("height", h);
 
+			this.svg = svg;
 			var node = svg.selectAll("g.node")
 				.data(countries.filter(
 					function(d) { return d.get('cumm'); }
@@ -67,12 +83,15 @@ App.modules.MainMap = function(app) {
 					var ll = data.center();
 					var t = "translate(" + merc(ll).join(',') + ") scale(3, 3)";
 					var node = d3.select(this);
+					//move node to the back to be rendered first
+					svg.selectAll('g.node').sort(function(a, b) {
+						if (a.cid == data.cid)
+							return 1;
+						else if(b.cid == data.cid)
+							return -1;
+						return 0;
 
-					/*d3.select(this)
-						.select('circle')
-						.transition()
-						.attr('r', 30);
-						*/
+				    });
 
 					d3.select(this)
 						.transition()

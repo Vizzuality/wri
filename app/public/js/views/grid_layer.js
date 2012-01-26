@@ -93,7 +93,6 @@ TimePlayer.prototype.get_time_data = function(tile, coord, zoom) {
     //sql += " AND ST_Intersects(gadm0_simple.the_geom, {0}.the_geom)".format(self.table);
     sql += " AND gadm0_simple.the_geom && {0}.the_geom".format(self.table);
 
-    console.log(sql);
     this.sql(sql, function(data) {
         tile.cells = self.pre_cache_months(data.rows);
     });

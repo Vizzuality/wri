@@ -58,6 +58,7 @@ App.modules.WRIHome= function(app) {
       }
     });
 
+
     /*
      * main controller for home page
      */
@@ -70,6 +71,11 @@ App.modules.WRIHome= function(app) {
 
 		// bubble map
         var bubbleMap = new app.MainMap(countries);
+
+		this.slider = new Slider({el: $(".slider")});
+		this.slider.bind('change', function(month) {
+			bubbleMap.set_time(month);
+		});
 
 		// search widget
         var search = new Search({

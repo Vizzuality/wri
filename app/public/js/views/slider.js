@@ -13,8 +13,11 @@ var Slider = Backbone.View.extend({
         var self = this;
         this.dragging = false;
         this.marker = this.$('.marker');
-        this.el.bind('change.wriSlider', function(ev,data){
-            self.trigger('change', data);
+        this.el.bind('change.wriSlider', function(ev, v){
+              var start = new Date(2006, 1, 1).getTime();
+              var d = v - start;
+              var month = d/(3600*1000*24*30);
+              self.trigger('change', month>>0);
         });
     },
 
