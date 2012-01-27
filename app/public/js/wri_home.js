@@ -8,10 +8,10 @@ App.modules.WRIHome= function(app) {
 
     var StoryView = Backbone.View.extend({
         tagName: 'li',
-        template: _.template($('#story-template').html()),
 
         render: function() {
-            $(this.el).html(this.template(this.model.toJSON()));
+            var template = _.template($('#story-template').html());
+            $(this.el).html(template.template(this.model.toJSON()));
             return this;
         }
     });
