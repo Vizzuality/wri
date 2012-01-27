@@ -11,7 +11,7 @@ App.modules.WRIHome= function(app) {
 
         render: function() {
             var template = _.template($('#story-template').html());
-            $(this.el).html(template.template(this.model.toJSON()));
+            $(this.el).html(template(this.model.toJSON()));
             return this;
         }
     });
