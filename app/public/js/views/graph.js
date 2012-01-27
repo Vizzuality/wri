@@ -28,14 +28,14 @@ var Graph = Backbone.View.extend({
 
       //TODO: move marker
       this.vis.select('.time_line')
-        .transition()
+//        .transition()
         .attr("x1", x(this.month))
         .attr("y1", 0)
         .attr("x2", x(this.month))
         .attr("y2", -1* (this.h));
 
       this.vis.select('.time_circle')
-        .transition()
+        //.transition()
         .attr("cx", x(this.month))
         .attr("cy",  function(d) { return -1*y(data[self.month]); })
     },

@@ -104,16 +104,19 @@ App.modules.WRI= function(app) {
        on_route: function(country, state) {
             var self = this;
 
+            var c = new app.Country({'name_engli': country});
             if(state) {
                 this.app_state.fetch(state);
             } else {
-                var c = new app.Country({'name_engli': country});
-                c.fetch();
                 c.bind('change', function() {
                     self.map.center_map_on(c.get('bbox'));
-                    self.graph.set_country(c);
                 });
             }
+            c.bind('change', function() {
+                    self.graph.set_country(c);
+            });
+            c.fetch();
+
 
             //TODO: make a method
             self.map.show_country(country);
