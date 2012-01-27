@@ -169,6 +169,11 @@ body.tool {
               height:4px;
               @include border-radius(5px);
               background:#1b1c1c;
+              -webkit-transition:box-shadow 0.2s linear;
+            }
+            .growing {
+                -webkit-transition:box-shadow 0.2s linear;
+                @include box-shadow(#FF3333, 0, 0, 5px, 0);
             }
             &:hover span {background:#FF3333}
             &.over {
@@ -197,6 +202,7 @@ body.tool {
                 word-spacing:3px;
                 @include border-radius(0);
               }
+
             }
           }
           p.over {

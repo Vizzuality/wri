@@ -106,6 +106,10 @@ App.modules.CartoDB = function(app) {
 
       _create_sql: function() {
         var sql = 'select ' + this.columns.join(',') + ' from ' + this.table;
+        if (this.where) {
+            sql += " WHERE " + this.where;
+
+        }
         return sql;
       },
 
