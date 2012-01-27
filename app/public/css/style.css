@@ -422,6 +422,10 @@ body.tool article.countries section.column ul li {
   padding: 0 0 9px;
 }
 /* line 159, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+body.tool article.countries section.column ul li .story {
+  max-width: 243px;
+}
+/* line 162, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool article.countries section.column ul li a {
   position: relative;
   display: block;
@@ -429,7 +433,7 @@ body.tool article.countries section.column ul li a {
   padding: 0 0 8px 0;
   font: normal 15px "Open Sans";
 }
-/* line 165, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 168, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool article.countries section.column ul li a span {
   position: absolute;
   left: 0;
@@ -444,18 +448,18 @@ body.tool article.countries section.column ul li a span {
   background: #1b1c1c;
   -webkit-transition: box-shadow 0.2s linear;
 }
-/* line 174, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 177, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool article.countries section.column ul li a .growing {
   -webkit-transition: box-shadow 0.2s linear;
   -moz-box-shadow: #ff3333 0 0 5px 0;
   -webkit-box-shadow: #ff3333 0 0 5px 0;
   box-shadow: #ff3333 0 0 5px 0;
 }
-/* line 178, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 181, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool article.countries section.column ul li a:hover span {
   background: #FF3333;
 }
-/* line 179, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 182, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool article.countries section.column ul li a.over {
   position: absolute;
   left: 0;
@@ -469,11 +473,11 @@ body.tool article.countries section.column ul li a.over {
   z-index: 20;
   background: url("/img/layout/black_hack.png") repeat-y;
 }
-/* line 189, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 192, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool article.countries section.column ul li a.over:hover span {
   color: white;
 }
-/* line 191, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 194, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool article.countries section.column ul li a.over span {
   position: relative;
   margin: 0;
@@ -493,7 +497,7 @@ body.tool article.countries section.column ul li a.over span {
   -khtml-border-radius: 0;
   border-radius: 0;
 }
-/* line 208, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 211, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool article.countries section.column ul li p.over {
   position: absolute;
   left: 0;
@@ -514,7 +518,7 @@ body.tool article.countries section.column ul li p.over {
   -khtml-border-radius: 0;
   border-radius: 0;
 }
-/* line 229, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 232, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool footer.slider {
   position: fixed;
   bottom: 0;
@@ -532,7 +536,7 @@ body.tool footer.slider {
   background-image: -ms-linear-gradient(#f3f3f3, #cacaca);
   background-image: linear-gradient(#f3f3f3, #cacaca);
 }
-/* line 241, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 244, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool footer.slider span.shadow {
   position: absolute;
   top: -20px;
@@ -546,7 +550,7 @@ body.tool footer.slider span.shadow {
   background-image: -ms-linear-gradient(rgba(0, 0, 0, 0), #000000);
   background-image: linear-gradient(rgba(0, 0, 0, 0), #000000);
 }
-/* line 250, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 253, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool footer.slider span.canvas {
   position: relative;
   display: block;
@@ -559,7 +563,7 @@ body.tool footer.slider span.canvas {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 256, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 259, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool footer.slider span.canvas a.ui-slider-handle {
   position: absolute;
   width: 89px;
@@ -575,18 +579,18 @@ body.tool footer.slider span.canvas a.ui-slider-handle {
   z-index: 10;
   background-position: 0 -13px;
 }
-/* line 270, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 273, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool footer.slider span.canvas a.ui-slider-handle:focus {
   outline: none;
 }
-/* line 274, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 277, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool footer.slider table {
   position: absolute;
   top: 27px;
   left: 28px;
   right: 28px;
 }
-/* line 283, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 286, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool .ui-autocomplete {
   width: 228px;
   padding: 60px 18px 0 18px;
@@ -600,13 +604,13 @@ body.tool .ui-autocomplete {
   border-radius: 3px;
   list-style: none;
 }
-/* line 291, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 294, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool .ui-autocomplete li {
   position: relative;
   width: 100%;
   padding: 0 0 9px;
 }
-/* line 295, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 298, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool .ui-autocomplete li a {
   position: relative;
   display: block;
@@ -614,7 +618,7 @@ body.tool .ui-autocomplete li a {
   padding: 0 0 8px 0;
   font: normal 15px "Open Sans";
 }
-/* line 301, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 304, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool .ui-autocomplete li a span {
   position: absolute;
   left: 0;
@@ -628,20 +632,20 @@ body.tool .ui-autocomplete li a span {
   border-radius: 5px;
   background: #1b1c1c;
 }
-/* line 311, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 314, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool .ui-autocomplete li a:hover, body.tool .ui-autocomplete li a.ui-state-hover, body.tool .ui-autocomplete li a.ui-state-active {
   color: white;
 }
-/* line 311, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 314, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.tool .ui-autocomplete li a:hover span, body.tool .ui-autocomplete li a.ui-state-hover span, body.tool .ui-autocomplete li a.ui-state-active span {
   background: #FF3333;
 }
 
-/* line 318, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 321, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.front {
   background-color: #191919;
 }
-/* line 321, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 324, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.front article.error {
   position: absolute;
   top: 50%;
@@ -649,19 +653,19 @@ body.front article.error {
   margin: -250px 0 0 -281px;
   width: 562px;
 }
-/* line 328, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 331, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.front article.error header {
   display: block;
 }
-/* line 330, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 333, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.front article.error header h1 {
   margin: 0 0 0 12px;
 }
-/* line 335, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 338, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.front article.error section {
   position: relative;
 }
-/* line 338, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 341, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.front article.error section.empty {
   display: inline-block;
   width: 530px;
@@ -675,12 +679,12 @@ body.front article.error section.empty {
   -khtml-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 345, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 348, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.front article.error section.empty div.band {
   left: -62px;
   bottom: 40px;
 }
-/* line 346, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 349, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.front article.error section.empty em {
   display: block;
   font: bold 250px "Open Sans";
@@ -688,7 +692,7 @@ body.front article.error section.empty em {
   text-align: center;
   line-height: 290px;
 }
-/* line 349, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 352, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band {
   position: absolute;
   bottom: 74px;
@@ -698,7 +702,7 @@ body.front article.error section div.band {
   padding: 20px 75px;
   background-position: 0 0;
 }
-/* line 358, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 361, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band h2 {
   display: block;
   font: bold 15px "Open Sans";
@@ -707,18 +711,18 @@ body.front article.error section div.band h2 {
   text-align: center;
   line-height: 15px;
 }
-/* line 359, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 362, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band p {
   margin: 3px 0 0 0;
   text-align: center;
   color: #7B1718;
 }
-/* line 363, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 366, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band p a {
   color: #7B1718;
   text-decoration: underline;
 }
-/* line 366, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 369, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band p a:hover {
   color: #3F0B0C;
 }

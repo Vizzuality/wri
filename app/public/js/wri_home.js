@@ -6,6 +6,16 @@
 
 App.modules.WRIHome= function(app) {
 
+    var StoryView = Backbone.View.extend({
+        tagName: 'li',
+        template: _.template($('#story-template').html()),
+
+        render: function() {
+            $(this.el).html(this.template(this.model.toJSON()));
+            return this;
+        }
+    });
+
     var CountryView = Backbone.View.extend({
         tagName: 'li',
         template: '<a href="/country#{0}">{1}<span style="width:50%" class="bar"></span></a>',
@@ -22,7 +32,7 @@ App.modules.WRIHome= function(app) {
         },
 
         set_time: function(month) {
-            var percent =  this.country.get('time_series_normalized')[month]*100.0;
+            var percent =  this.country.def_percent_in_month(month);
             this.$('span').css({width: percent+ '%'});
             if(Math.abs(percent - this.old_percent) > 0.1) {
                 this.$('span').addClass('growing');
@@ -33,6 +43,7 @@ App.modules.WRIHome= function(app) {
 
         render: function() {
           $(this.el).append(this.template.format(this.country.slug(), this.country.get('name_engli')));
+          this.set_time(0);
           return this;
         }
     });
@@ -73,7 +84,7 @@ App.modules.WRIHome= function(app) {
 
     var Search = Backbone.View.extend({
       initialize: function() {
-        _.bindAll(this, 'render');
+        _.bindAll(this, 'render', 'set_time');
         this.countries = this.options.countries;
         this.countries.bind('reset', this.render);
         this.el.autocomplete({
@@ -83,13 +94,19 @@ App.modules.WRIHome= function(app) {
         });
       },
 
+      set_time: function(month) {
+          this.month = month;
+          this.render();
+      },
+
       render: function() {
+        var self = this;
         // generate list
         var country_list_search = this.countries.map(function(c) {
           return {
             'label': c.get('name_engli'),
-            'per': (Math.random()*100)>>0
-          }
+            'per': c.def_percent_in_month(self.month)
+          };
         });
 
         this.el.autocomplete("option", 'source', country_list_search);
@@ -107,6 +124,7 @@ App.modules.WRIHome= function(app) {
 
         // data
         var countries = new app.Countries();
+        var stories = new app.Stories();
 
         // bubble map
         var bubbleMap = new app.MainMap(countries);
@@ -119,8 +137,13 @@ App.modules.WRIHome= function(app) {
           countries: countries
         });
 
-        this.slider.bind('change', function(month) {
-            bubbleMap.set_time(month);
+        this.slider.bind('change', bubbleMap.set_time);
+        this.slider.bind('change', search.set_time);
+
+        stories.bind('reset', function() {
+            _(stories.random(2)).each(function(s) {
+                $('#featured_stories').append(new StoryView({model: s}).render().el);
+            });
         });
 
         // the 3 country lists
@@ -137,7 +160,7 @@ App.modules.WRIHome= function(app) {
           },
           {
             el: $('#south_east_asia'),
-            area: 'Southern Asia',
+            area: ['Southern Asia','South-Eastern Asia'],
             countries: countries
           }
         ];
@@ -148,6 +171,7 @@ App.modules.WRIHome= function(app) {
 
         //get data
         countries.fetch();
+        stories.fetch();
       }
 
     });

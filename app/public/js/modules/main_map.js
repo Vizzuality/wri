@@ -14,7 +14,7 @@ App.modules.MainMap = function(app) {
         var MainMap = Class.extend({
 
           init: function(countries) {
-            _.bindAll(this, 'render');
+            _.bindAll(this, 'render', 'set_time');
             this.month = 0;
             this.countries = countries;
             this.countries.bind('reset', this.render);

@@ -7,7 +7,7 @@ if 'SERVER_SOFTWARE' in os.environ and os.environ['SERVER_SOFTWARE'].startswith(
     PRODUCTION = True
 
 
-DEBUG = True #not PRODUCTION
+DEBUG =  True #not PRODUCTION
 TEMPLATE_DEBUG = DEBUG
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 

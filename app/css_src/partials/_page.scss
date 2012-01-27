@@ -156,6 +156,9 @@ body.tool {
           position:relative;
           width:100%;
           padding:0 0 9px;
+          .story {
+            max-width: 243px;
+          }
           a {
             position:relative;
             display:block;

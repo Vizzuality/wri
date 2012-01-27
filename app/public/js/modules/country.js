@@ -43,6 +43,10 @@ App.modules.Country = function(app) {
                 return def/v;
             })
           });
+      },
+
+      def_percent_in_month: function(month) {
+            return this.get('time_series_normalized')[month]*100.0;
       }
 
     });
@@ -71,9 +75,14 @@ App.modules.Country = function(app) {
           this.bind('reset', this.normalize_deforestation);
       },
 
-      inside: function(area) {
+      inside: function(areas) {
+
+        if(!_.isArray(areas)) {
+            areas = [areas];
+        }
+
         return this.filter(function(c) {
-          return c.get('unregion1') === area;
+          return _.indexOf(areas, c.get('unregion1')) >= 0;
         });
       },
 
@@ -88,6 +97,7 @@ App.modules.Country = function(app) {
               c.gen_normalized_deforestation(max_def);
           });
       }
+
     });
 
     app.Country = Country;
