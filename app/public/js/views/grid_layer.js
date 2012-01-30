@@ -5,7 +5,7 @@
 */
 
 function TimePlayer(table) {
-    this.time = 0;
+    this.time = 40;
     this.canvas_setup = this.get_time_data;
     this.render = this.render_time;
     this.cells = [];
@@ -46,7 +46,7 @@ TimePlayer.prototype.pre_cache_months = function(rows) {
       row = rows[i];
       // filter the spikes in deforestation change
       var def = row.time_series;
-      var last = 0;
+      var last = -10;
 
       for(var d = 0; d < def.length; ++d) {
         if(def[d] > 0) {
@@ -93,9 +93,9 @@ TimePlayer.prototype.get_time_data = function(tile, coord, zoom) {
     //sql += " AND ST_Intersects(gadm0_simple.the_geom, {0}.the_geom)".format(self.table);
     sql += " AND gadm0_simple.the_geom && {0}.the_geom".format(self.table);
 
-    console.log(sql);
     this.sql(sql, function(data) {
         tile.cells = self.pre_cache_months(data.rows);
+        self.redraw();
     });
 }
 

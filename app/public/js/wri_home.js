@@ -6,37 +6,46 @@
 
 App.modules.WRIHome= function(app) {
 
+    var StoryView = Backbone.View.extend({
+        tagName: 'li',
 
-	var Country = Backbone.Model.extend({
-		center: function() {
-			return JSON.parse(this.get('the_geom')).coordinates;
-		},
-		time_series: function() {
-			return this.get('cumm');
-		}
-	});
+        render: function() {
+            var template = _.template($('#story-template').html());
+            $(this.el).html(template(this.model.toJSON()));
+            return this;
+        }
+    });
 
-    /**
-     * countries collection
-     */
-    var Countries = app.CartoDB.CartoDBCollection.extend({
-	  model: Country,
-      table: 'country_attributes_live',
-      columns: [
-		'unregion1',
-		'unregion2',
-		'name_engli',
-		'cumm',
-		'total_incr',
-		'start_value',
-		'ST_AsGeoJSON(ST_Centroid(the_geom)) as the_geom'
-	  ],
-      cache: true,
-      inside: function(area) {
-        return this.filter(function(c) {
-          return c.get('unregion1') === area;
-        });
-      }
+    var CountryView = Backbone.View.extend({
+        tagName: 'li',
+        template: '<a href="/country#{0}">{1}<span style="width:50%" class="bar"></span></a>',
+
+        initialize: function() {
+            _.bindAll(this, '_remove_growing');
+            this.country = this.options.country;
+            this.timeout = null;
+            this.remove_growing = _.debounce(this._remove_growing, 300);
+        },
+
+        _remove_growing: function() {
+            this.$('span').removeClass('growing');
+        },
+
+        set_time: function(month) {
+            var percent =  this.country.def_percent_in_month(month);
+            this.$('span').css({width: percent+ '%'});
+            if(Math.abs(percent - this.old_percent) > 0.1) {
+                this.$('span').addClass('growing');
+                this.remove_growing();
+            }
+            this.old_percent = percent;
+        },
+
+        render: function() {
+          $(this.el).append(this.template.format(this.country.slug(), this.country.get('name_engli')));
+          this.set_time(0);
+          return this;
+        }
     });
 
     /**
@@ -46,50 +55,64 @@ App.modules.WRIHome= function(app) {
     var CountriesView = Backbone.View.extend({
 
       initialize: function() {
-        _.bindAll(this, 'render');
+        _.bindAll(this, 'render', 'set_time');
         this.countries = this.options.countries;
         this.area = this.options.area;
         this.countries.bind('reset', this.render);
+        this.country_views = [];
+      },
+
+      set_time: function(month) {
+          this.month = month;
+          _(this.country_views).each(function(v) {
+              v.set_time(month);
+          });
       },
 
       render: function() {
-        //TODO: manage more than 1 area
-        var names = _.map(this.countries.inside(this.area), function(c) { return c.get('name_engli');});
-        names = _(names).map(function(n) {
-          return '<li><a href="/country#{0}">{0}<span style="width:50%" class="bar"></span></a></li>'.format(n);
-        });
+        var self = this;
         this.el.html('');
-        this.el.append(names.join(''));
-        return this.el;
+        _(this.countries.inside(this.area)).each(function(c) {
+            var v = new CountryView({country: c});
+            self.country_views.push(v);
+            self.el.append(v.render().el);
+        });
+        return this;
       }
 
     });
 
     var Search = Backbone.View.extend({
       initialize: function() {
-        _.bindAll(this, 'render');
-	    var test = [{label:'jamon', per: 40},{label:'santana'},{label:'Spain'}];
+        _.bindAll(this, 'render', 'set_time');
         this.countries = this.options.countries;
         this.countries.bind('reset', this.render);
         this.el.autocomplete({
-            source: test,
+            source: [],
             minLength: 2,
             url: '/country#'
         });
       },
 
+      set_time: function(month) {
+          this.month = month;
+          this.render();
+      },
+
       render: function() {
+        var self = this;
         // generate list
         var country_list_search = this.countries.map(function(c) {
           return {
             'label': c.get('name_engli'),
-            'per': (Math.random()*100)>>0
-          }
+            'per': c.def_percent_in_month(self.month)
+          };
         });
 
         this.el.autocomplete("option", 'source', country_list_search);
       }
     });
+
 
     /*
      * main controller for home page
@@ -97,36 +120,58 @@ App.modules.WRIHome= function(app) {
     app.WRIHome = Class.extend({
 
       run: function() {
+        var self = this;
 
+        // data
+        var countries = new app.Countries();
+        var stories = new app.Stories();
 
-        var countries = new Countries();
-
+        // bubble map
         var bubbleMap = new app.MainMap(countries);
 
+        this.slider = new Slider({el: $(".slider")});
+
+        // search widget
         var search = new Search({
           el: $('#autocomplete'),
           countries: countries
         });
 
+        this.slider.bind('change', bubbleMap.set_time);
+        this.slider.bind('change', search.set_time);
+
+        stories.bind('reset', function() {
+            _(stories.random(2)).each(function(s) {
+                $('#featured_stories').append(new StoryView({model: s}).render().el);
+            });
+        });
+
         // the 3 country lists
         var views = [
-          new CountriesView({
+          {
             el: $('#south_america'),
             area: 'South America',
             countries: countries
-          }),
-          new CountriesView({
+          },
+          {
             el: $('#middle_america'),
             area: 'Central America',
             countries: countries
-          }),
-          new CountriesView({
+          },
+          {
             el: $('#south_east_asia'),
-            area: 'Southern Asia',
+            area: ['Southern Asia','South-Eastern Asia'],
             countries: countries
-          })
+          }
         ];
+        _(views).each(function(v) {
+            var view = new CountriesView(v);
+            self.slider.bind('change', view.set_time);
+        });
+
+        //get data
         countries.fetch();
+        stories.fetch();
       }
 
     });

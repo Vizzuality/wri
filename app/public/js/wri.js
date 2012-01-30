@@ -19,19 +19,6 @@ App.modules.WRI= function(app) {
 
     });
 
-    /**
-     * contry model from gadm0 table in cartodb
-     */
-    var Country = app.CartoDB.CartoDBModel.extend({
-      table: "gadm0",
-      columns: {
-        'id': 'cartodb_id',
-        'name': 'name_engli',
-        'center': 'ST_Centroid(the_geom)',
-        'bbox': 'ST_Envelope(the_geom)'
-      },
-      what: 'name_engli'
-    });
 
     // the app
     app.WRI = Class.extend({
@@ -59,18 +46,18 @@ App.modules.WRI= function(app) {
             this.app_state.set_router(this.router);
             this.state_url = _.debounce(this._state_url, 200);
 
+            //graph
+            this.graph = new Graph({el: $('#graph')});
+
             this.state = [];
             this.level = 0;
 
-
             // slider
             this.slider = new Slider({el: $(".slider")});
-            this.slider.bind('change', function(v) {
+            this.slider.bind('change', function(month) {
                 // timestamp to month
-                var start = new Date(2006, 1, 1).getTime();
-                var d = v - start;
-                var months = d/(3600*1000*24*30);
-                self.map.set_time(months>>0);
+                self.map.set_time(month);
+                self.graph.set_time(month);
             });
 
             this.bus.on('app:route_to', this.on_route_to);
@@ -117,15 +104,19 @@ App.modules.WRI= function(app) {
        on_route: function(country, state) {
             var self = this;
 
+            var c = new app.Country({'name_engli': country});
             if(state) {
                 this.app_state.fetch(state);
             } else {
-                var c = new Country({'name_engli': country});
-                c.fetch();
                 c.bind('change', function() {
                     self.map.center_map_on(c.get('bbox'));
                 });
             }
+            c.bind('change', function() {
+                    self.graph.set_country(c);
+            });
+            c.fetch();
+
 
             //TODO: make a method
             self.map.show_country(country);
