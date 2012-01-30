@@ -74,7 +74,7 @@ App.modules.MainMap = function(app) {
 
             node.append('a')
                     .attr('xlink:href', function(d) {
-                        return "/#" + d.slug();
+                        return "/country#" + d.slug();
                     })
                 .append("text")
                 .attr("text-anchor", "middle")

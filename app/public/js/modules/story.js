@@ -7,8 +7,10 @@ App.modules.Stories = function(app) {
         'iso',
         'text',
         'title',
-        'picture_url'
+        'picture_url',
+        'name_engli'
       ],
+
       cache: true,
 
       random: function(number) {

@@ -105,7 +105,12 @@ App.modules.CartoDB = function(app) {
     var CartoDBCollection = Backbone.Collection.extend({
 
       _create_sql: function() {
-        var sql = 'select ' + this.columns.join(',') + ' from ' + this.table;
+        var tables = this.table;
+        if(!_.isArray(this.table)) {
+            tables = [this.table];
+        }
+        tables = tables.join(',');
+        var sql = 'select ' + this.columns.join(',') + ' from ' + tables;
         if (this.where) {
             sql += " WHERE " + this.where;
 

@@ -28,7 +28,7 @@ App.modules.Country = function(app) {
       },
 
       slug: function() {
-          return this.get('iso');
+          return this.get('name_engli');
       },
 
       max_deforestation: function() {
