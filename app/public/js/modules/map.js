@@ -131,7 +131,7 @@ App.modules.Map = function(app) {
         },
 
         show_country: function(country, iso) {
-            this.country_layer.show_country(country);
+            this.country_layer.show_country(country, iso);
             this.grid_layer.set_country_iso(iso);
         },
 
