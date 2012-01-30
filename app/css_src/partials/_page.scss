@@ -62,14 +62,12 @@ body.tool {
   .container {
     position: relative;
     width: 100%;
-    pointer-events:none;
   }
 
   .inner {
     width:$layout_width;
     margin:0 auto;
     padding:0 0 100px;
-    pointer-event:auto;
   }
 
   /* HEADER */
@@ -138,6 +136,7 @@ body.tool {
 
   /* COUNTRIES LIST */
   article.countries {
+    @include inline-block();
     width:100%;
     letter-spacing:-4px;
 
@@ -328,7 +327,7 @@ body.tool {
 
   /* AUTOCOMPLETE */
   .ui-autocomplete {
-    width:228px;
+    width:227px;
     padding:60px 18px 0 18px;
     margin:-90px 0 0 -27px;
     border:1px solid #333333;
