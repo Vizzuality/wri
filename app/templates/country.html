@@ -1,34 +1,87 @@
 {% extends "base.html" %}
 {% load webdesign %}
 
-{% block container %} 
+{% block container %}
+  <div class="background_map country">
+    {% include "_map.html" %} 
+  </div>
 
-<div class="background_map">
-  {% include "_map.html" %} 
+  <div class="slider"></div>
+
+  <div class="container">
+    <div class="inner">
+
+      <div class="float_elements">
+        <span class="bar l top"></span>
+        <span class="bar r top"></span>
+        <span class="bar l darker bottom"></span>
+        <span class="bar r darker bottom"></span>
+        <a href="#todo" class="pag right">rigth</a>
+        <a href="#todo" class="pag left">left</a>
+      </div>
+
+      <header class="country">
+        <h1 class="left">
+          <a href="/">
+            <img src="/img/logos/wri_black.png" alt="WORLD RESOURCES INSTITUTE" title="WORLD RESOURCES INSTITUTE"/>
+          </a>
+        </h1>
+        <nav class="right">
+          <a href="/stories">Stories</a>
+          <a href="/about">About</a>
+        </nav>
+      </header>
+
+      <article class="country">
+        <h2>{{country}}</h2>
+        <div>
+        </div>
+        <div id="graph" style="position: absolute; width: 500px; height:200px;">
+        </div>
+        <div class="content">
+          <h4 class="margin45">{{country}}’S SITUATION</h4>
+          <p>{{description}} Brazil holds about one-third of the world’s remaining rainforests, including a majority of the Amazon rainforest. It is also overwhelmingly the most biodiverse country on Earth, with more than 56,000 described species of plants, 1,700 species of birds, 695 amphibians, 578 mammals, and 651 reptiles. In many tropical countries, the majority of deforestation results from the actions of poor subsistence cultivators.</p>
+          <p>Today deforestation in the Amazon is the result of several activities including clearing for cattle pasture, colonization and subsequent subsistence agriculture, infrastructure improvements, commercial agriculture (e.g. soy) and logging.</p>
+          <h4 class="margin45">{{country}}’S MOST DEFORESTED REGIONS</h4>
+          <ul id=""></ul>
+          <h4 class="margin45">ALSO...</h4>
+          <ul>
+            <li>
+              <img src="http://placehold.it/480x180" alt="x" title="x"/>
+              <a href="#todo" class="over"><span>{{place}}</span></a>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <footer>
+        <div class="left">
+          <ul>
+            <li>
+              <h4>A PROJECT BY</h4>
+              <a href="#todo">
+                <img src="/img/logos/wri_grey.png" alt="WORLD RESOURCES INSTITUTE" title="WORLD RESOURCES INSTITUTE"/>
+              </a>
+            </li>
+            <li>
+              <h4>KNOW MORE</h4>
+              <nav>
+                <a href="#todo">Support</a>
+                <a href="#todo">Contact us</a>
+                <a href="#todo">Feedback</a>
+              </nav>
+            </li>
+          </ul>
+        </div>
+        <div class="right">
+          <h4>CAREFULLY MADE BY</h4>
+          <a href="http://www.vizzuality.com"><img src="/img/logos/vizzuality.png" alt="Vizzuality" title="Vizzuality"/></a>
+        </div>
+      </footer>
+    </div>
+  </div>
 </div>
 
-<div id="graph" style="position: absolute; width: 500px; height:200px;">
-</div>
-
-<article class="country_info" >
-  <h1>Country</h1>
-  <h2>Deforestation in Brazil has been incremented in 5% the last 6 months</h2>
-  <section class="graph">
-    &nbsp;
-  </section>
-  <section>
-      <h3>Brazil situation</h3>
-      {% lorem 1 %}
-      <h3>Most deforested regions</h3>
-      {% lorem 1 %}
-      <h3>also</h3>
-      {% lorem 1 %}
-  </section>
-</article>
-
-
-
-<footer class="slider"></footer>
 {% endblock %}
 
 {% block js %}
