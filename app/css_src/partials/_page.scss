@@ -57,11 +57,11 @@ html, body {
 body.tool {
   background-color: #000;
 
-
   /* LAYOUT */
   .container {
     position: relative;
     width: 100%;
+    height:100%;
   }
 
   .inner {
@@ -90,6 +90,7 @@ body.tool {
         &:hover {border-color:rgba(255,255,255,0.7)}
       }
     }
+    &.country {position:relative; z-index:10}
   }
 
   /* HOME SUBHEADER */
@@ -230,10 +231,12 @@ body.tool {
 
   /* MAIN COUNTRY */
   article.country {
+    position:absolute;
     float:right;
-    display:block;
+    left:50%;
     width:500px;
-    margin:0 65px 0 0;
+    margin:0 -500px 0 0;
+    z-index:10;
   }
 
   /* COUNTRY FLOAT ELEMENTS */
@@ -243,33 +246,12 @@ body.tool {
     background:white;
 
     &.l {left:0; width:50%; min-width:510px; margin-left:-60px}
-    &.r {right:0; width:50%; min-width:65px; margin-right:-500px}
+    &.r {right:0; width:50%; min-width:65px; margin-right:-420px}
     &.top {top:110px;}
     &.bottom {bottom:200px;}
     &.darker {background:#2A2B2C}
   }
 
-  footer {
-    display:inline-block;
-    width:100%;
-    margin:50px 0 0 0;
-
-    ul {
-      width:auto;
-      li {
-        @include inline-block();
-        margin:0 60px 0 0;
-        nav {
-          width:240px;
-          margin:0;
-          letter-spacing:-4px;
-          a {@include inline-block(); width:120px; letter-spacing:0; font:normal 13px "Open Sans"}
-        }
-      }
-    }
-
-    h4 {color:#373939; font:bold 11px "Open Sans";}
-  }
 
   /* SLIDER */
   .slider {
@@ -359,6 +341,34 @@ body.tool {
     }
   }
 
+  /* GRAPH */
+  #graph {
+    @include inline-block();
+  }
+
+
+  /* FOOTER */
+  footer {
+    display:inline-block;
+    width:100%;
+    margin:50px 0 0 0;
+
+    ul {
+      width:auto;
+      li {
+        @include inline-block();
+        margin:0 60px 0 0;
+        nav {
+          width:240px;
+          margin:0;
+          letter-spacing:-4px;
+          a {@include inline-block(); width:120px; letter-spacing:0; font:normal 13px "Open Sans"}
+        }
+      }
+    }
+
+    h4 {color:#373939; font:bold 11px "Open Sans";}
+  }
 
 }
 
