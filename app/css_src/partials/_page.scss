@@ -67,7 +67,6 @@ body.tool {
   .inner {
     width:$layout_width;
     margin:0 auto;
-    padding:0 0 100px;
   }
 
   /* HEADER */
@@ -90,7 +89,7 @@ body.tool {
         &:hover {border-color:rgba(255,255,255,0.7)}
       }
     }
-    &.country {position:relative; z-index:10}
+    &.country {position:relative; padding:0; z-index:10}
   }
 
   /* HOME SUBHEADER */
@@ -231,11 +230,10 @@ body.tool {
 
   /* MAIN COUNTRY */
   article.country {
-    position:absolute;
-    float:right;
-    left:50%;
+    position:relative;
+    @include inline-block();
     width:500px;
-    margin:0 -500px 0 0;
+    margin:0 0 0 50%;
     z-index:10;
   }
 
@@ -244,11 +242,12 @@ body.tool {
     position:absolute;
     height:2px;
     background:white;
+    z-index:5;
 
     &.l {left:0; width:50%; min-width:510px; margin-left:-60px}
-    &.r {right:0; width:50%; min-width:65px; margin-right:-420px}
+    &.r {right:0; width:50%; min-width:65px; margin-right:-520px}
     &.top {top:110px;}
-    &.bottom {bottom:200px;}
+    &.bottom {bottom:170px;}
     &.darker {background:#2A2B2C}
   }
 
@@ -344,15 +343,14 @@ body.tool {
   /* GRAPH */
   #graph {
     @include inline-block();
+    border-bottom:1px solid white;
   }
 
 
   /* FOOTER */
   footer {
-    display:inline-block;
-    width:100%;
-    margin:50px 0 0 0;
-
+    position:relative;
+    padding:60px 0 150px;
     ul {
       width:auto;
       li {

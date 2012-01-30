@@ -8,17 +8,15 @@
 
   <div class="container">
 
-    <div class="background_map">
-      {% include "_map.html" %} 
-    </div>
-
     <div class="float_elements">
       <span class="bar l top"></span>
       <span class="bar r top"></span>
-      <span class="bar l darker bottom"></span>
-      <span class="bar r darker bottom"></span>
       <a href="#todo" class="pag right">rigth</a>
       <a href="#todo" class="pag left">left</a>
+    </div>
+
+    <div class="background_map">
+      {% include "_map.html" %} 
     </div>
 
     <header class="country inner">
@@ -34,8 +32,11 @@
     </header>
 
     <article class="country">
-      <h2>{{country}}</h2>
-      <div>
+      <h2>{{country}} Brazil</h2>
+      <div class="stats">
+        <h4>10% increase in the last six months</h4>
+        <h4>1% decrease in December 2012</h4>
+        <h4>132 deforestation events since January, 1st</h4>
       </div>
       <div id="graph">
       </div>
@@ -55,7 +56,11 @@
       </div>
     </article>
 
-    <footer class="inner padding100">
+    <footer class="inner">
+      
+      <span class="bar l darker bottom"></span>
+      <span class="bar r darker bottom"></span>
+
       <div class="left">
         <ul>
           <li>
