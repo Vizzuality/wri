@@ -111,6 +111,7 @@ App.modules.WRI= function(app) {
             } else {
                 c.bind('change', function() {
                     self.map.center_map_on(c.get('bbox'));
+                    self.map.displace(255, 0);
                 });
             }
             c.bind('change', function() {
@@ -118,9 +119,6 @@ App.modules.WRI= function(app) {
                 self.map.show_country(country, c.get('iso'));
             });
             c.fetch();
-
-
-            //TODO: make a method
         },
 
         on_route_to: function(route) {

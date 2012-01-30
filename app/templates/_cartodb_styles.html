@@ -1,0 +1,45 @@
+
+<script type="carto" id="border_style">
+
+@adm1_line_color:#FFF;
+@adm1_line_glowColor:#000;
+
+#country_attributes_live {
+    line-color: @adm1_line_color;
+    [zoom<=4]{
+        line-opacity: 1;
+        line-width:0.5;
+        line-dasharray:2,5;
+    }
+    [zoom<6]{
+        line-opacity: 1;
+        line-width:1;
+        line-dasharray:4,5;
+    }
+    [zoom>=6]{
+        line-opacity: 1;
+        line-width:2;
+    }
+    polygon-opacity:1;
+    polygon-fill: transparent;
+    ::glow{
+        line-color:@adm1_line_glowColor;
+        line-opacity:0.1;
+        line-width:4;
+    }
+}
+
+</script>
+
+<script type="carto" id="selected_countries_pas">
+
+#selected_countries_pas[is_point=0] {
+    line-color:#594;
+    line-width:0;
+    polygon-opacity:1;
+    polygon-fill:#333;
+    polygon-pattern-file:url(/home/ubuntu/tilemill/pas_b.png);
+}
+
+</script>
+

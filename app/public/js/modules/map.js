@@ -107,6 +107,14 @@ App.modules.Map = function(app) {
               this.map.map.fitBounds(b);
         },
 
+        displace: function(px, py) {
+            var p = this.map.projector.transformCoordinates(this.map.get_center());
+            p.x += px;
+            p.y += py;
+            var ll = this.map.projector.untransformCoordinates(p);
+            this.map.set_center(ll);
+        },
+
         // enable suitable grid size for each zoom
         zoom_changed: function(z) {
             var self = this;
@@ -131,7 +139,7 @@ App.modules.Map = function(app) {
         },
 
         show_country: function(country, iso) {
-            this.country_layer.show_country(country);
+            this.country_layer.show_country(country, iso);
             this.grid_layer.set_country_iso(iso);
         },
 
