@@ -30,6 +30,7 @@ App.modules.WRI= function(app) {
        initialize: function() {
            this.template = this.el.html();
            this.model.bind('change', this.render, this);
+           this.stories = this.options.stories;
        },
 
        set_time: function(t) {
@@ -39,11 +40,11 @@ App.modules.WRI= function(app) {
        render: function() {
            var self = this;
            var m = this.model;
+
            var html = template(this.template, {
                country: m.get('name_engli'),
                description: m.get('description')
            });
-
 
            this.el.fadeOut(300, function() {
              self.el.html(html);
@@ -73,6 +74,7 @@ App.modules.WRI= function(app) {
             this.bus = new app.Bus();
             app.bus = this.bus;
 
+            this.stories = new app.Stories();
             this.country = new app.Country({'name_engli': ''});
 
             // the map
@@ -88,7 +90,8 @@ App.modules.WRI= function(app) {
             //info panel
             this.panel = new CountryPanel({
                 el: $('#country_info'),
-                model: this.country
+                model: this.country,
+                stories: this.stories
             });
 
             this.state = [];
