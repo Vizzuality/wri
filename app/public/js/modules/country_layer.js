@@ -1,6 +1,43 @@
 
 
 /**
+ * quick'n'dirty tilemill on top of cartodb
+ */
+
+var MiniTilemill = function(user, map) {
+    this.layers = [];
+    this.user_name = user;
+    this.map = map;
+};
+
+MiniTilemill.prototype.addLayer = function(style, table) {
+
+    var layer = new google.maps.CartoDBLayer({
+        map_canvas: 'map_canvas',
+        map: this.map,
+        user_name: this.user_name,
+        table_name: table,
+        map_style: false,
+        infowindow: false,
+        auto_bound: false,
+        tile_style: style,
+        index: this.layers.length
+    });
+
+    this.layers.push({
+        layer: layer,
+        table: table
+    });
+    return layer;
+};
+
+MiniTilemill.prototype.update_query = function(q) {
+    var sql = "select * from country_attributes_live where iso = '{0}'";
+    sql = sql.format(iso);
+    self.country_border.update(sql);
+};
+
+/**
  * manages rendering and events of countries borders
  */
 App.modules.CountryLayer = function(app) {
@@ -17,7 +54,7 @@ App.modules.CountryLayer = function(app) {
             self.state = [];
             self.map = map;
 
-            var boder_map_carto = $('#border_style').html();
+            this.tilemill = new MiniTilemill("wri-01", map.map.map);
 
             //TODO: extract to constants
             var cartodb = new CartoDB({
@@ -29,24 +66,21 @@ App.modules.CountryLayer = function(app) {
                 shader: {
                     'point-color': '#fff',
                     'line-color': '#D7D7D8',
-                    'line-width': '1',
+                    'line-width': '0.1',
                     'polygon-fill': 'rgba(255,255, 255,0.01)'
                 }
             });
             map.map.add_layer('vector0', {name: 'v0', enabled: true}, cartodb.layer);
             self.layer = cartodb;
 
-            this.country_border = new google.maps.CartoDBLayer({
-                map_canvas: 'map_canvas',
-                map: map.map.map,
-                user_name:"wri-01",
-                table_name: 'country_attributes_live',
-                //query: "SELECT * FROM test",
-                map_style: false,
-                infowindow: false,
-                auto_bound: false,
-                tile_style: boder_map_carto
-            });
+            this.pas_layer = this.tilemill.addLayer(
+                $('#selected_countries_pas').html(),
+                'selected_countries_pas'
+            );
+            this.country_border = this.tilemill.addLayer(
+                $('#border_style').html(),
+                'country_attributes_live'
+            );
 
             //bindings
             this.map.map.bind('mousemove', this.mousemove);
@@ -82,12 +116,16 @@ App.modules.CountryLayer = function(app) {
                 table: 'gadm1',
                 columns:['name_0', 'name_1', 'cartodb_id']
             });
-            //self.map.enable_layer('vector0', true);
+            self.map.enable_layer('vector0', true);
             self.layer.layer.redraw();
             self.vec_cache = {};
             var sql = "select * from country_attributes_live where iso = '{0}'";
             sql = sql.format(iso);
             self.country_border.update(sql);
+
+            sql = "select * from selected_countries_pas where iso = '{0}'";
+            sql = sql.format(iso);
+            self.pas_layer.update(sql);
         },
 
         show_region: function(region) {
