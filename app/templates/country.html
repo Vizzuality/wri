@@ -3,11 +3,9 @@
 
 {% block container %}
 
-
   <div class="slider"></div>
 
   <div class="container">
-
     <div class="float_elements">
       <span class="bar l top"></span>
       <span class="bar r top"></span>
@@ -26,7 +24,12 @@
         </a>
       </h1>
       <nav class="right">
-        <a href="/stories">Stories</a>
+        <div class="select" data-initial="{{continent}}">{{continent}}</div>
+        <form>
+          <input id="autocomplete" type="text" placeholder="Seach for a country"/>
+          <input type="submit" value=""/>
+        </form>
+        <span class="select">Stories</span>
         <a href="/about">About</a>
       </nav>
     </header>
