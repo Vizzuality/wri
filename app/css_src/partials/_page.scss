@@ -115,8 +115,11 @@ body.tool {
         font:normal 17px "Open Sans";
         line-height:normal;
         color:white;
+        //@include single-box-shadow(red 2px 2px 2px);
+
+        outline: none;
         &:focus {
-          outline:none;
+          border: 1px solid #FFFFFF;
         }
       }
       input[type="submit"] {
@@ -344,6 +347,20 @@ body.tool {
   #graph {
     @include inline-block();
     border-bottom:1px solid white;
+  }
+
+
+  /* ABOUT */
+  section.info {
+    width:460px;
+    padding:0 0 50px;
+    p {margin:40px 0 0; font-size:23px; color:#CCCCCC; line-height:28px}
+  }
+  section.partners {
+    ul {letter-spacing:-4px}
+    li {@include inline-block(); width:457px; margin:0 50px 0 0; letter-spacing:0; &:last-child {margin:none}}
+    p {margin:15px 0 0 0; font-size:17px; color:#CCCCCC;}
+    a {display:block; width:154px; height:76px;}
   }
 
 
