@@ -138,7 +138,7 @@ if (typeof(google.maps.CartoDBLayer) === "undefined") {
         description: false
 	    };
 	    params.layer = new google.maps.ImageMapType(cartodb_layer);
-	    params.map.overlayMapTypes.insertAt(0,params.layer);
+	    params.map.overlayMapTypes.insertAt(params.index || 0,params.layer);
 	  }
 	  
 	  
@@ -169,7 +169,7 @@ if (typeof(google.maps.CartoDBLayer) === "undefined") {
       
       params.layer = new wax.g.connector(params.tilejson);
 
-      params.map.overlayMapTypes.insertAt(0,params.layer);
+      params.map.overlayMapTypes.insertAt(params.index || 0,params.layer);
       params.interaction = wax.g.interaction(params.map, params.tilejson, params.waxOptions);
 	  }
   
@@ -189,7 +189,7 @@ if (typeof(google.maps.CartoDBLayer) === "undefined") {
 
         // Add map tiles
         params.layer = new wax.g.connector(params.tilejson);
-        params.map.overlayMapTypes.insertAt(0,params.layer);
+        params.map.overlayMapTypes.insertAt(params.index || 0,params.layer);
 
         // Add interaction
         params.interaction.remove();
@@ -221,7 +221,7 @@ if (typeof(google.maps.CartoDBLayer) === "undefined") {
   	    };
   	    
   	    params.layer = new google.maps.ImageMapType(cartodb_layer);
-  	    params.map.overlayMapTypes.insertAt(0,params.layer);
+  	    params.map.overlayMapTypes.insertAt(params.index || 0,params.layer);
       }
     }
     
