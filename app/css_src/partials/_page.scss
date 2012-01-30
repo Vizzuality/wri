@@ -71,8 +71,8 @@ body.tool {
 
   /* HEADER */
   header {
+    height:88px;
     padding:10px 0;
-    overflow:hidden;
     h1 {float:left; margin:0; padding:0;}
     nav {
       float:right;
@@ -101,39 +101,9 @@ body.tool {
       p {letter-spacing:-1px}
     }
     form {
-      position:relative;
       width:253px;
       margin:64px 0 0;
-
-      input[type="text"] {
-        display:block;
-        width:219px;
-        padding:11px 22px 11px 9px;
-        border:1px solid rgba(255,255,255,0.15);
-        @include border-radius(3px);
-        background:none;
-        font:normal 17px "Open Sans";
-        line-height:normal;
-        color:white;
-        //@include single-box-shadow(red 2px 2px 2px);
-
-        outline: none;
-        &:focus {
-          border: 1px solid #FFFFFF;
-        }
-      }
-      input[type="submit"] {
-        position:absolute;
-        top:19px;
-        right:10px;
-        width:14px;
-        height:14px;
-        @include icons-sprite(lens);
-        border:none;
-        &:focus {
-          outline:none;
-        }
-      }
+      input {font:normal 17px "Open Sans";}
     }
   }
 
@@ -255,7 +225,10 @@ body.tool {
   }
 
 
-  /* SLIDER */
+
+  /* ELEMENTS */
+
+  /* slider */
   .slider {
     position:fixed;
     bottom:0;
@@ -309,7 +282,7 @@ body.tool {
     }
   }
 
-  /* AUTOCOMPLETE */
+  /* autocomplete */
   .ui-autocomplete {
     width:227px;
     padding:60px 18px 0 18px;
@@ -343,11 +316,101 @@ body.tool {
     }
   }
 
-  /* GRAPH */
+  /* form */
+  form {
+    position:relative;
+
+    input[type="text"] {
+      display:block;
+      width:219px;
+      padding:11px 22px 11px 9px;
+      border:1px solid rgba(255,255,255,0.15);
+      @include border-radius(3px);
+      background:none;
+      font:normal 13px "Open Sans";
+      line-height:normal;
+      color:white;
+      @include box-shadow(rgba(255,255,255,0), 0, 0, 0, 0);
+      @include transition-property(box-shadow);
+      @include transition-duration(300ms);
+      outline: none;
+      &:focus {
+        border: 1px solid #FFFFFF;
+        @include box-shadow(rgba(255,255,255,0.8), 0, 0, 5px, 0);
+        @include transition-property(box-shadow);
+        @include transition-duration(300ms);
+      }
+    }
+    input[type="submit"] {
+      position:absolute;
+      top:19px;
+      right:10px;
+      width:14px;
+      height:14px;
+      @include icons-sprite(lens);
+      border:none;
+      &:focus {
+        outline:none;
+      }
+    }
+  }
+
+  /* grap */
   #graph {
     @include inline-block();
     border-bottom:1px solid white;
   }
+
+  /* select */
+  span.select {
+    position:relative;
+    width:auto;
+    margin:0 0 0 5px;
+    padding:4px 10px 4px 5px;
+    border:1px solid rgba(255,255,255,0.1);
+    @include border-radius(3px);
+    font:normal 17px "Open Sans";
+    color:white;
+    letter-spacing:-1px;
+    &:hover {border-color:rgba(255,255,255,0.7)}
+    &.active {border-color:rgba(255,255,255,0.7); div.options {display:block}}
+
+    a.init {
+      height:18px;
+      padding:0 10px 0 0;
+      @include icons-sprite(down_arrow, $offset-x:100%, $offset-y:12px);      
+      border:none;
+    }
+
+    div.options {
+      position:absolute;
+      display:none;
+      top:22px;
+      right:0;
+      max-height:166px;
+      width:277px;
+      margin:22px 0;
+      background:url('/img/layout/options.png') repeat-y -277px 0;
+      z-index:200000;
+
+      ul {        
+        display:block;
+        padding:0 30px;
+
+        li {
+          padding:8px 0;
+          border-bottom:1px solid #757575;
+          a {padding:0; background:none; color:#CCCCCC; border:none; &:hover {color:white; border:none}}
+          &:last-child {border:none;}
+        }
+      }
+
+      div.t {position:absolute; top:-22px; left:0; width:277px; height:22px; background:url('/img/layout/options.png') right 0;}
+      div.b {position:absolute; bottom:-22px; left:0; width:277px; height:22px; background:url('/img/layout/options.png') left 0;}
+    }
+  }
+
+  /* END ELEMENTS */
 
 
   /* ABOUT */
@@ -443,5 +506,3 @@ body.front {
     }
   }  
 }
-
-
