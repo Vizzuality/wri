@@ -11,6 +11,11 @@ var Slider = Backbone.View.extend({
     initialize: function() {
         _.bindAll(this, 'startDrag', 'onDrag', 'endDrag');
         var self = this;
+      this.el.wriSlider({
+           start: 'January 1, 2006 00:00:00', 
+           end: 'February 1, 2012 00:00:00',
+           value: 'January 1, 2009 00:00:00'
+       });
         this.dragging = false;
         this.marker = this.$('.marker');
         this.el.bind('change.wriSlider', function(ev, v){

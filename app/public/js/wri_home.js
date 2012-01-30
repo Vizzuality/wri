@@ -6,15 +6,6 @@
 
 App.modules.WRIHome= function(app) {
 
-    var StoryView = Backbone.View.extend({
-        tagName: 'li',
-
-        render: function() {
-            var template = _.template($('#story-template').html());
-            $(this.el).html(template(this.model.toJSON()));
-            return this;
-        }
-    });
 
     var CountryView = Backbone.View.extend({
         tagName: 'li',
@@ -142,7 +133,7 @@ App.modules.WRIHome= function(app) {
 
         stories.bind('reset', function() {
             _(stories.random(2)).each(function(s) {
-                $('#featured_stories').append(new StoryView({model: s}).render().el);
+                $('#featured_stories').append(new app.StoryView({model: s}).render().el);
             });
         });
 

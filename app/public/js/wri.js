@@ -50,6 +50,12 @@ App.modules.WRI= function(app) {
              self.el.html(html);
              self.graph = new Graph({el: self.$('#graph')});
              self.graph.set_country(self.model);
+
+             self.$('.story').append(
+                new app.StoryView({
+                    model: self.stories.random(1)[0]
+                }).render().el
+             );
              self.el.fadeIn();
            });
        }
@@ -75,6 +81,7 @@ App.modules.WRI= function(app) {
             app.bus = this.bus;
 
             this.stories = new app.Stories();
+            this.stories.fetch();
             this.country = new app.Country({'name_engli': ''});
 
             // the map
@@ -162,7 +169,7 @@ App.modules.WRI= function(app) {
             var self = this;
 
             var c = this.country;
-            c.set({'name_engli': country});
+            c.set({'name_engli': country}, {silent: true});
             if(state) {
                 this.app_state.fetch(state);
             } else {
