@@ -111,11 +111,11 @@ App.modules.Map = function(app) {
         zoom_changed: function(z) {
             var self = this;
             console.log("zoom: ", z);
-            var table_name = 'asia_500m_18_jan_8x_grid';
+            var table_name = 'global_8x_grid';
             if(z < 6) {
-                table_name = 'asia_500m_18_jan_40x_grid';
+                table_name = 'global_8x_grid';
             } else if(z >= 9) {
-                table_name = 'asia_500m_18_jan_4x_grid';
+                table_name = 'global_4x_grid';
             }
             self.grid_layer.set_table(table_name);
             console.log("table_name: ", table_name);
@@ -130,9 +130,9 @@ App.modules.Map = function(app) {
             this.layer_editor.render();
         },
 
-        show_country: function(country) {
+        show_country: function(country, iso) {
             this.country_layer.show_country(country);
-            this.grid_layer.set_country(country);
+            this.grid_layer.set_country_iso(iso);
         },
 
         enter_on: function(region_name) {

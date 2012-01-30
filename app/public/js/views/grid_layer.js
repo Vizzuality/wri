@@ -26,7 +26,7 @@ TimePlayer.prototype.set_table = function(table) {
   this.redraw();
 };
 
-TimePlayer.prototype.set_country = function(country) {
+TimePlayer.prototype.set_country_iso = function(country) {
   this.country = country;
   this.recreate();
   this.redraw();
@@ -80,10 +80,8 @@ TimePlayer.prototype.get_time_data = function(tile, coord, zoom) {
     //TODO: remove not used
     var sql = "SELECT upper_left_x, upper_left_y, cell_width, cell_height, pixels, total_incr as events, cummulative, boxpoly, time_series, time_series FROM " + this.table;
 
-    // only inside the country
-    sql += " INNER JOIN gadm0_simple ON ";
-    sql += "gadm0_simple.name_engli = '{0}'".format(self.country);
-
+    // inside the country
+    sql += " WHERE iso = '{0}'".format(self.country);
     // get cells only tile bounding box
     sql += " AND {0}.the_geom && ST_SetSRID(ST_MakeBox2D(".format(self.table);
     sql += "ST_Point(" + bbox[0].lng() + "," + bbox[0].lat() +"),";
@@ -91,7 +89,6 @@ TimePlayer.prototype.get_time_data = function(tile, coord, zoom) {
 
     // and inside the country
     //sql += " AND ST_Intersects(gadm0_simple.the_geom, {0}.the_geom)".format(self.table);
-    sql += " AND gadm0_simple.the_geom && {0}.the_geom".format(self.table);
 
     this.sql(sql, function(data) {
         tile.cells = self.pre_cache_months(data.rows);

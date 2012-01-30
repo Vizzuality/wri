@@ -113,13 +113,13 @@ App.modules.WRI= function(app) {
                 });
             }
             c.bind('change', function() {
-                    self.graph.set_country(c);
+                self.graph.set_country(c);
+                self.map.show_country(country, c.get('iso'));
             });
             c.fetch();
 
 
             //TODO: make a method
-            self.map.show_country(country);
         },
 
         on_route_to: function(route) {
