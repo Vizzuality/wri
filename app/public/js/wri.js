@@ -38,7 +38,7 @@ App.modules.WRI= function(app) {
 
         init: function() {
             _.bindAll(this, 'on_route');
-            $('html,body').css({overflow: 'hidden'});
+            $('html,body').css({'overflow-x': 'hidden'});
         },
 
         run: function() {

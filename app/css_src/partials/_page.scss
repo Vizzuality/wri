@@ -62,12 +62,14 @@ body.tool {
   .container {
     position: relative;
     width: 100%;
+    pointer-events:none;
   }
 
   .inner {
-    overflow:hidden;
     width:$layout_width;
     margin:0 auto;
+    padding:0 0 100px;
+    pointer-event:auto;
   }
 
   /* HEADER */
@@ -137,7 +139,6 @@ body.tool {
   /* COUNTRIES LIST */
   article.countries {
     width:100%;
-    padding:0 0 90px;
     letter-spacing:-4px;
 
     section.column {
@@ -219,8 +220,51 @@ body.tool {
     }
   }
 
+  /* MAIN COUNTRY */
+  article.country {
+    float:right;
+    display:block;
+    width:500px;
+    margin:0 65px 0 0;
+  }
+
+  /* COUNTRY FLOAT ELEMENTS */
+  span.bar {
+    position:absolute;
+    height:2px;
+    background:white;
+
+    &.l {left:0; width:50%; min-width:510px; margin-left:-60px}
+    &.r {right:0; width:50%; min-width:65px; margin-right:-500px}
+    &.top {top:110px;}
+    &.bottom {bottom:200px;}
+    &.darker {background:#2A2B2C}
+  }
+
+  footer {
+    display:inline-block;
+    width:100%;
+    margin:50px 0 0 0;
+
+    ul {
+      width:auto;
+      li {
+        @include inline-block();
+        margin:0 60px 0 0;
+        nav {
+          width:240px;
+          margin:0;
+          letter-spacing:-4px;
+          a {@include inline-block(); width:120px; letter-spacing:0; font:normal 13px "Open Sans"}
+        }
+      }
+    }
+
+    h4 {color:#373939; font:bold 11px "Open Sans";}
+  }
+
   /* SLIDER */
-  footer.slider {
+  .slider {
     position:fixed;
     bottom:0;
     left:0;
@@ -306,6 +350,8 @@ body.tool {
       }
     }
   }
+
+
 }
 
 
