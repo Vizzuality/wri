@@ -13,7 +13,8 @@ App.modules.Country = function(app) {
         'cumm': 'cumm',
         'iso': 'iso',
         'total_incr': 'total_incr',
-        'start_value': 'start_value'
+        'start_value': 'start_value',
+        'description': 'description'
       },
       what: 'name_engli',
 

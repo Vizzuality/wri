@@ -119,6 +119,7 @@ App.modules.CountryLayer = function(app) {
             self.map.enable_layer('vector0', true);
             self.layer.layer.redraw();
             self.vec_cache = {};
+
             var sql = "select * from country_attributes_live where iso = '{0}'";
             sql = sql.format(iso);
             self.country_border.update(sql);

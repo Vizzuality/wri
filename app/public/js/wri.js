@@ -19,6 +19,42 @@ App.modules.WRI= function(app) {
 
     });
 
+    function template(s,d){
+     for(var p in d)
+       s=s.replace(new RegExp('{'+p+'}','g'), d[p]);
+     return s;
+    }
+
+   var CountryPanel = Backbone.View.extend({
+
+       initialize: function() {
+           this.template = this.el.html();
+           this.model.bind('change', this.render, this);
+       },
+
+       set_time: function(t) {
+           this.graph.set_time(t);
+       },
+
+       render: function() {
+           var self = this;
+           var m = this.model;
+           var html = template(this.template, {
+               country: m.get('name_engli'),
+               description: m.get('description')
+           });
+
+
+           this.el.fadeOut(300, function() {
+             self.el.html(html);
+             self.graph = new Graph({el: self.$('#graph')});
+             self.graph.set_country(self.model);
+             self.el.fadeIn();
+           });
+       }
+
+   });
+
 
     // the app
     app.WRI = Class.extend({
@@ -37,6 +73,8 @@ App.modules.WRI= function(app) {
             this.bus = new app.Bus();
             app.bus = this.bus;
 
+            this.country = new app.Country({'name_engli': ''});
+
             // the map
             this.map = new app.Map(this.bus);
 
@@ -47,8 +85,11 @@ App.modules.WRI= function(app) {
             this.app_state.set_router(this.router);
             this.state_url = _.debounce(this._state_url, 200);
 
-            //graph
-            this.graph = new Graph({el: $('#graph')});
+            //info panel
+            this.panel = new CountryPanel({
+                el: $('#country_info'),
+                model: this.country
+            });
 
             this.state = [];
             this.level = 0;
@@ -58,7 +99,7 @@ App.modules.WRI= function(app) {
             this.slider.bind('change', function(month) {
                 // timestamp to month
                 self.map.set_time(month);
-                self.graph.set_time(month);
+                self.panel.set_time(month);
             });
 
             this.bus.on('app:route_to', this.on_route_to);
@@ -102,22 +143,32 @@ App.modules.WRI= function(app) {
           self.map.map.set_zoom(st.zoom);
        },
 
+       country_changed: function() {
+            var self = this;
+            var c = this.country;
+            self.map.show_country(c.get('name_engli'), c.get('iso'));
+       },
+
+       move_map_to: function(c) {
+            var self = this;
+            self.map.center_map_on(c.get('bbox'));
+            self.map.displace(255, 0);
+       },
+
        on_route: function(country, state) {
             var self = this;
 
-            var c = new app.Country({'name_engli': country});
+            var c = this.country;
+            c.set({'name_engli': country});
             if(state) {
                 this.app_state.fetch(state);
             } else {
-                c.bind('change', function() {
-                    self.map.center_map_on(c.get('bbox'));
-                    self.map.displace(255, 0);
-                });
+                c.unbind('change', this.move_map_to);
+                c.bind('change', this.move_map_to, this);
             }
-            c.bind('change', function() {
-                self.graph.set_country(c);
-                self.map.show_country(country, c.get('iso'));
-            });
+            c.unbind('change', this.country_changed);
+            c.bind('change', this.country_changed, self);
+
             c.fetch();
         },
 

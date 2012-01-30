@@ -85,7 +85,7 @@ App.modules.Map = function(app) {
             //grid layer
             self.grid_layer = new TimePlayer('asia_500m_18_jan_40x_grid');
             self.map.add_layer('time', {name: 't'}, self.grid_layer);
-            self.map.enable_layer('time', true);
+            //self.map.enable_layer('time', true);
 
             self.show_controls(false);
         },
@@ -119,7 +119,7 @@ App.modules.Map = function(app) {
         zoom_changed: function(z) {
             var self = this;
             console.log("zoom: ", z);
-            var table_name = 'global_8x_grid';
+            var table_name = 'global_32x_grid';
             if(z < 6) {
                 table_name = 'global_8x_grid';
             } else if(z >= 9) {
