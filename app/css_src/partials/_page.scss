@@ -187,7 +187,7 @@ body.tool {
     left:0;
     right:0;
     display:block;
-    padding:20px;
+    padding:21px 21px 21px 82px;
     margin:0;
     height:29px;
     z-index:100;
@@ -224,6 +224,36 @@ body.tool {
         @include icons-sprite(handle);
         &:focus {outline:none}
       }
+    }
+
+    a.animation {
+      position:absolute;
+      display:block;
+      top:18px;
+      left:16px;
+      border:1px solid #999999;
+      @include box-shadow(white,0,1px,0,0);
+      width:55px;
+      height:33px;
+      text-indent:-9999px;
+      text-transform:uppercase;
+      line-height:0;
+      font-size:0;
+      @include border-radius(3px);
+      @include background-image(linear-gradient(#f3f3f3, #cacaca));
+      
+      span {
+        position:absolute;
+        top:50%;
+        left:50%;
+        margin:-5px 0 0 -6px;
+        height:13px;
+        width:12px;
+        @include icons-sprite(play);
+      }
+      &.play span {@include icons-sprite(pause);}
+      &:hover {@include background-image(linear-gradient(#cacaca, #f3f3f3));}
+      &:active {@include background-image(linear-gradient(#aaaaaa, #f3f3f3));}
     }
 
     table {

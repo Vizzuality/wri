@@ -79,7 +79,7 @@
     },
 
     _initializeButton: function($el) {
-      $el.append('<a href="#play" class="animation">play</a>');
+      $el.append('<a href="#play" class="animation"><span>play</span></a>');
     },
 
     _initializeSlider: function($el) {
@@ -117,7 +117,7 @@
       if (ev)
         ev.preventDefault();
 
-      var $button = $(ev.target);
+      var $button = $(ev.target).closest('a');
 
       if ($button.hasClass('play')) {
         Core._stopAnimation($button);
@@ -128,13 +128,13 @@
 
     _stopAnimation: function($button) {
       $button.removeClass('play');
-      $button.text('play');
+      $button.find('span').text('play');
       clearInterval($button.data('interval'));
     },
 
     _startAnimation: function($button) {
       $button.addClass('play');
-      $button.text('pause');
+      $button.find('span').text('pause');
       var interval = setInterval(function(){
         var $el = $button.closest('.slider').find('span.canvas')
           , value = $el.slider('value') + 2500000000
