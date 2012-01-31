@@ -128,6 +128,11 @@ App.modules.WRIHome= function(app) {
           countries: countries
         });
 
+        var stories_dropdown = new app.StoryListView({
+            el: $('span.select'),
+            stories: stories
+        });
+
         this.slider.bind('change', bubbleMap.set_time);
         this.slider.bind('change', search.set_time);
 

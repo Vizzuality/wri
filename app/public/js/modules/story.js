@@ -14,6 +14,25 @@ App.modules.Stories = function(app) {
         }
     });
 
+  var StoryListView = Backbone.View.extend({
+
+    initialize: function() {
+        this.stories = this.options.stories;
+        this.stories.bind('reset', this.render, this);
+    },
+
+    render: function() {
+        var st = this.stories.map(function(s) {
+            return {
+              name: s.get('title'),
+              url: '#TODO'
+            }
+        });
+        this.el.dropdown({ source: st });
+    }
+
+  });
+
   var Stories = app.CartoDB.CartoDBCollection.extend({
       table: 'geostories',
       columns: [
@@ -38,4 +57,5 @@ App.modules.Stories = function(app) {
   // exports
   app.Stories = Stories;
   app.StoryView = StoryView;
+  app.StoryListView = StoryListView;
 };

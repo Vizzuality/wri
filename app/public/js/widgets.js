@@ -276,8 +276,9 @@
 
   // $('.slider').wriSlider('update',[3423445]);
 
-  $('span.select').dropdown({
+  /*$('span.select').dropdown({
     source: [{name:'vizz',url:'#where'},{name:'asdf asdf asdf asdf',url:'#where'},{name:'asdf asdf asdf asdf asdf',url:'#where'},{name:'as dfas fasd fdsaf',url:'#where'}]
   });
+  */
 
 })( jQuery, window );
