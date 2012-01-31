@@ -78,12 +78,13 @@ body.tool {
       float:right;
       margin:25px 0 0 0;
       a {
-        height:18px;
+        @include inline-block();
         margin:0 0 0 5px;
-        padding:4px 10px;
+        padding:4px 10px 4px;
         border:1px solid rgba(255,255,255,0.1);
         @include border-radius(3px);
         font:normal 17px "Open Sans";
+        
         color:white;
         letter-spacing:-1px;
         &:hover {border-color:rgba(255,255,255,0.7)}
@@ -101,7 +102,6 @@ body.tool {
       p {letter-spacing:-1px}
     }
     form {
-      width:253px;
       margin:64px 0 0;
       input {font:normal 17px "Open Sans";}
     }
@@ -326,6 +326,7 @@ body.tool {
   /* form */
   form {
     position:relative;
+    @include inline-block();
 
     input[type="text"] {
       display:block;
@@ -371,6 +372,7 @@ body.tool {
   /* select */
   span.select {
     position:relative;
+    @include inline-block();
     width:auto;
     margin:0 0 0 5px;
     padding:4px 10px 4px 5px;

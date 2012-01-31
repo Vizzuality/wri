@@ -24,6 +24,8 @@ var Slider = Backbone.View.extend({
               var month = d/(3600*1000*24*30);
               self.trigger('change', month>>0);
         });
+
+        //setTimeout(function(){self.el.wriSlider('update',1280770000000)},1000);
     },
 
     startDrag: function(e) {

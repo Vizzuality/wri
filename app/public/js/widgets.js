@@ -14,6 +14,7 @@
         monthNames : [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" ]
       };
 
+  
 
     /***************************************************************************
     * Private methods
@@ -52,9 +53,7 @@
         $.event.trigger( eventName, data );
       }
     },
- 
 
-    // PRIVATE LOGIC
     _addCanvas: function($el) {
       $el.append('<span class="canvas"></span><span class="shadow"></span>');
 
@@ -92,6 +91,10 @@
           $(ev.target).find('a.ui-slider-handle').text(date);
           var value = ui.value;
           Core._trigger('change',[value],$(ev.target));
+        },
+        change: function(ev,ui) {
+          var date = Core.options.monthNames[new Date(ui.value).getMonth()] + ' ' + new Date(ui.value).getFullYear();
+          $(ev.target).find('a.ui-slider-handle').text(date);
         }
       });
     },
@@ -108,7 +111,10 @@
   * Public methods
   **************************************************************************/
   API = {
-    // YOUR PLUGIN PUBLIC LOGIC HERE
+    update: function(timestamp) {
+      var $el = this;
+      $el.find('span.canvas').slider('value',timestamp);
+    }
   };
 
 
@@ -267,6 +273,8 @@
   //   , end: 'February 1, 2012 00:00:00'
   //   , value: 'January 1, 2009 00:00:00'
   // });
+
+  // $('.slider').wriSlider('update',[3423445]);
 
   $('span.select').dropdown({
     source: [{name:'vizz',url:'#where'},{name:'asdf asdf asdf asdf',url:'#where'},{name:'asdf asdf asdf asdf asdf',url:'#where'},{name:'as dfas fasd fdsaf',url:'#where'}]
