@@ -24,7 +24,7 @@ App.modules.MainMap = function(app) {
           // to bubble size.
           // this is an artifact to improve visualization
           def_to_size: function(def) {
-                return Math.sqrt(def)*0.1;
+                return Math.sqrt(def);
           },
 
           set_time: function(month) {
@@ -41,7 +41,7 @@ App.modules.MainMap = function(app) {
                 //.transition()
                 //.duration(30)
                 .attr("r", function(d) {
-                        return self.def_to_size(d.time_series()[month]);
+                        return self.def_to_size(d.time_series_deltas()[month]);
                 });
           },
 
@@ -69,7 +69,7 @@ App.modules.MainMap = function(app) {
 
             node.append("circle")
                 .attr("r", function(d) {
-                        return self.def_to_size(d.time_series()[self.month]);
+                        return self.def_to_size(d.time_series_deltas()[self.month]);
                 });
 
             node.append('a')
@@ -126,7 +126,7 @@ App.modules.MainMap = function(app) {
                         //.attr('transform', t)
                         .select('circle')
                             .attr('r', function(d) {
-                                return self.def_to_size(d.time_series()[self.month]);
+                                return self.def_to_size(d.time_series_deltas()[self.month]);
                             });
 
                     d3.select(this)

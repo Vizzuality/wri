@@ -136,7 +136,7 @@ App.modules.CountryLayer = function(app) {
                 table: 'gadm2',
                 columns:['name_0', 'name_1', 'cartodb_id']
             });
-            //self.map.enable_layer('vector0', true);
+            self.map.enable_layer('vector0', true);
             self.layer.layer.redraw();
             self.vec_cache = {};
         },

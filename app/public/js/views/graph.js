@@ -19,6 +19,12 @@ var Graph = Backbone.View.extend({
       this.render();
     },
 
+    date_range: function() {
+        var start = new Date(2006, 0, 1).getTime();
+        var d = new Date().getTime() - start;
+        return (d/(3600*1000*24*30))>>0;
+    },
+
     set_time: function(t) {
       var self = this;
       this.month = t;
@@ -54,7 +60,7 @@ var Graph = Backbone.View.extend({
 
 
       var x = d3.scale.linear()
-          .domain([0, data.length])
+          .domain([0, self.date_range()])
           .range([0,this.w]);
       this.x_scale = x;
       this.y_scale = y;

@@ -165,6 +165,8 @@ App.modules.WRIHome= function(app) {
         stories.fetch();
       }
 
+      //this.slider.set_time(0);
+
     });
 }
 

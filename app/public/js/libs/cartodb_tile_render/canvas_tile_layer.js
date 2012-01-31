@@ -65,6 +65,10 @@ CanvasTileLayer.prototype.recreate= function() {
     }
 };
 
+CanvasTileLayer.prototype.redraw_tile= function(tile) {
+        this.render(tile, tile.coord, tile.zoom);
+};
+
 CanvasTileLayer.prototype.redraw= function() {
     for(var t in this.tiles) {
         var tile = this.tiles[t];

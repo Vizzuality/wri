@@ -21,6 +21,7 @@ TimePlayer.prototype.set_time = function(t) {
 };
 
 TimePlayer.prototype.set_table = function(table) {
+  if(this.table === table) return;
   this.table = table;
   this.recreate();
   this.redraw();
@@ -92,7 +93,7 @@ TimePlayer.prototype.get_time_data = function(tile, coord, zoom) {
 
     this.sql(sql, function(data) {
         tile.cells = self.pre_cache_months(data.rows);
-        self.redraw();
+        self.redraw_tile(tile);
     });
 }
 
