@@ -200,14 +200,28 @@
 
   .area_popup {
     position: absolute;
-    /*display: none;*/
+    display: none;
     top: 0;
     left: 0;
     width:150px;
     height:30px;
     h1, h2 {
-        font-size: 16px;
-        background: #E33;
+     background: #E33;
+     letter-spacing: 0;
+     line-height: 1em;
+     font-weight: normal;
+     color: white;
+     line-height: 1.2em;
+     font-family: $base-font-family;
+    }
+    h1 {
+        display: inline;
+        font-size: 21px;
+        padding: 3px 5px;
+    }
+    h2 {
+        font-size: 13px;
+        padding: 4px;
     }
   }
 

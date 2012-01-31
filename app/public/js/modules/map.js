@@ -19,6 +19,7 @@ App.modules.Map = function(app) {
             var self = this;
             var px = this.map.projector.transformCoordinates(at);
             this.set_pos(px);
+            this.$('h1').html(info.zone);
         },
 
         set_pos: function(p) {
@@ -92,7 +93,9 @@ App.modules.Map = function(app) {
 
         //shows the popup when the user hovers some area
         show_area_info: function(e, area) {
-            this.popup.show(e.latLng, "TODO");
+            this.popup.show(e.latLng, {
+                zone: area.properties.name_1
+            });
         },
 
         set_time: function(month) {
