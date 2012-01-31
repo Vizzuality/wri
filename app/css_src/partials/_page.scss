@@ -205,8 +205,9 @@ body.tool {
     span.canvas {
       position:relative;
       display:block;
-      height:29px;
-      background:rgba(0,0,0,.10);
+      height:27px;
+      @include background-image(linear-gradient(#cecece, #cdcdcd));
+      border: 1px solid #B4B4B4;
       @include border-radius(5px);
       a.ui-slider-handle {
         position:absolute;
