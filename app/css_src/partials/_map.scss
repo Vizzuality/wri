@@ -81,28 +81,39 @@
   div.zoom_control {
     display: none;
     position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 26px;
-    height: 50px;
+    top: 175px;
+    left: 50%;
+    width: auto;
+    margin:0 0 0 -550px;
+    height: 30px;
     z-index: 10;
+    letter-spacing:-4px;
 
     a {
-      display: block;
-      width: 26px;
-      height: 26px;
-      text-indent: -9999px;
-      background: url('../img/icons/zoom.png') no-repeat 0 0;
-      &.zoom_in {
-        &:hover {
-          background-position: -26px 0px;
-        }
+      @include inline-block();
+      letter-spacing:0;
+      min-width:15px;
+      padding:5px;
+      font:normal 13px "Open Sans";
+      color:white;
+      text-align:center;
+      border:1px solid #1F2121;
+      background:#060708;
+      @include border-radius(2px);
+      &:hover {border-color:white;}
 
+      &.zoom_in {
+        @include border-left-radius(2px);
+        @include border-right-radius(0);
       }
       &.zoom_out {
-        background-position: 0 -26px;
+        margin:0 10px 0 0;
+        border-left:none;
+        @include border-left-radius(0);
+        @include border-right-radius(2px);
         &:hover {
-          background-position: -26px -26px;
+          padding:5px 5px 5px 4px;
+          border-left:1px solid white;
         }
       }
     }

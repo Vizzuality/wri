@@ -77,20 +77,25 @@ body.tool {
     nav {
       float:right;
       width:610px;
-      margin:25px 0 0 0;
+      margin:21px 0 0 0;
       a {
         margin:0 0 0 10px;
         padding:4px 10px 4px;
         border:1px solid #252525;
         @include border-radius(3px);
         font:normal 17px "Open Sans";
-        
         color:white;
         letter-spacing:-1px;
         &:hover {border-color:rgba(255,255,255,0.7)}
       }
     }
-    &.country {position:relative; padding:0; z-index:100}
+    &.country {
+      position:relative;
+      height:65px;
+      padding:25px 0 0 0;
+      z-index:100;
+    }
+
     form {
       margin:0 7px 0 0;
       width:180px;
@@ -153,7 +158,7 @@ body.tool {
 
     &.l {left:0; width:50%; min-width:510px; margin-left:-100px}
     &.r {right:0; width:50%; min-width:65px; margin-right:-487px}
-    &.top {top:110px;}
+    &.top {top:120px;}
     &.bottom {position:relative; margin:20px 0 0 0; display:block; width:100%;}
     &.darker {background:#2A2B2C}
   }
@@ -508,7 +513,7 @@ body.tool {
       }
     }
 
-    h4 {color:#373939; font:bold 11px "Open Sans";}
+    h4 {color:#373939; font:bold 11px "Open Sans"; font-weight:800;}
   }
 
 }
