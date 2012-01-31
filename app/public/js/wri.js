@@ -51,7 +51,7 @@ App.modules.WRI= function(app) {
              self.graph = new Graph({el: self.$('#graph')});
              self.graph.set_country(self.model);
 
-             self.$('.story').append(
+             self.$('.stories').append(
                 new app.StoryView({
                     model: self.stories.random(1)[0]
                 }).render().el

@@ -76,12 +76,12 @@ body.tool {
     h1 {float:left; margin:0; padding:0;}
     nav {
       float:right;
+      width:610px;
       margin:25px 0 0 0;
       a {
-        @include inline-block();
-        margin:0 0 0 5px;
+        margin:0 0 0 10px;
         padding:4px 10px 4px;
-        border:1px solid rgba(255,255,255,0.1);
+        border:1px solid #252525;
         @include border-radius(3px);
         font:normal 17px "Open Sans";
         
@@ -90,7 +90,13 @@ body.tool {
         &:hover {border-color:rgba(255,255,255,0.7)}
       }
     }
-    &.country {position:relative; padding:0; z-index:10}
+    &.country {position:relative; padding:0; z-index:100}
+    form {
+      margin:0 7px 0 0;
+      width:180px;
+      input[type="text"] {width:145px; padding:4px 26px 5px 9px; margin:0; font-size:16px; letter-spacing:-1px}
+      input[type="submit"] {top:10px; right:5px;}
+    }
   }
 
   /* HOME SUBHEADER */
@@ -102,8 +108,9 @@ body.tool {
       p {letter-spacing:-1px}
     }
     form {
+      width:250px;
       margin:64px 0 0;
-      input {font:normal 17px "Open Sans";}
+      input[type="text"] {width:219px; font:normal 17px "Open Sans";}
     }
   }
 
@@ -122,81 +129,6 @@ body.tool {
 
       ul {
         margin:15px 0 0 0;
-        padding:0;
-        list-style:none;
-
-        li {
-          position:relative;
-          width:100%;
-          padding:0 0 9px;
-          .story {
-            max-width: 243px;
-          }
-          a {
-            position:relative;
-            display:block;
-            width:100%;
-            padding:0 0 8px 0;
-            font:normal 15px "Open Sans";
-            span {
-              position:absolute;
-              left:0;
-              bottom:0;
-              height:4px;
-              @include border-radius(5px);
-              background:#1b1c1c;
-              -webkit-transition:box-shadow 0.2s linear;
-            }
-            .growing {
-                -webkit-transition:box-shadow 0.2s linear;
-                @include box-shadow(#FF3333, 0, 0, 5px, 0);
-            }
-            &:hover span {background:#FF3333}
-            &.over {
-              position:absolute;
-              left:0;
-              bottom:29px;
-              @include inline-block();
-              width:230px;
-              padding:0 0 0 3px;
-              z-index:20;
-              background:url('/img/layout/black_hack.png') repeat-y;
-
-              &:hover span {color:white}
-
-              span {
-                position:relative;
-                margin: 0;
-                padding: 0 5px 2px 0;
-                background-color: #000000;
-                z-index: 15;
-                color: #CCCCCC;
-                font: normal 17px "Open Sans";
-                line-height: 24px;
-                letter-spacing:0px;
-                white-space: pre-wrap;
-                word-spacing:3px;
-                @include border-radius(0);
-              }
-
-            }
-          }
-          p.over {
-            position:absolute;
-            left:0;
-            bottom:9px;
-            padding: 1px 5px 3px 5px;
-            background-color: #000000;
-            z-index: 15;
-            color: #666666;
-            font: normal 13px "Open Sans";
-            line-height: normal;
-            letter-spacing:-1px;
-            white-space: pre-wrap;
-            word-spacing:3px;
-            @include border-radius(0);
-          }
-        }
       }
     }
   }
@@ -205,16 +137,11 @@ body.tool {
   article.country {
     position:relative;
     @include inline-block();
-    width:500px;
+    width:530px;
     margin:0 0 0 50%;
+    right:55px;
     z-index:10;
     display: none;
-
-    .story {
-      img {
-        max-width: 100%;
-      }
-    }
   }
 
   /* COUNTRY FLOAT ELEMENTS */
@@ -224,12 +151,25 @@ body.tool {
     background:white;
     z-index:5;
 
-    &.l {left:0; width:50%; min-width:510px; margin-left:-60px}
-    &.r {right:0; width:50%; min-width:65px; margin-right:-520px}
+    &.l {left:0; width:50%; min-width:510px; margin-left:-100px}
+    &.r {right:0; width:50%; min-width:65px; margin-right:-487px}
     &.top {top:110px;}
-    &.bottom {bottom:170px;}
+    &.bottom {position:relative; margin:20px 0 0 0; display:block; width:100%;}
     &.darker {background:#2A2B2C}
   }
+  a.pag {
+    position:absolute;
+    top:50%;
+    margin:-30px 0 0 0;
+    padding:25px 5px;
+    background: #FF3333;
+    z-index:100;
+    color:#333333;
+    &.left {left:0}
+    &.right {right:0}
+    &:hover {color:white; cursor:pointer}
+  }
+
 
 
 
@@ -323,16 +263,14 @@ body.tool {
     }
   }
 
-  /* form */
+  /* search form */
   form {
     position:relative;
-    @include inline-block();
 
     input[type="text"] {
       display:block;
-      width:219px;
       padding:11px 22px 11px 9px;
-      border:1px solid rgba(255,255,255,0.15);
+      border:1px solid #252525;
       @include border-radius(3px);
       background:none;
       font:normal 13px "Open Sans";
@@ -361,6 +299,9 @@ body.tool {
         outline:none;
       }
     }
+    &:hover input[type="text"]{
+      border: 1px solid rgba(255,255,255,0.7);
+    }
   }
 
   /* grap */
@@ -376,7 +317,7 @@ body.tool {
     width:auto;
     margin:0 0 0 5px;
     padding:4px 10px 4px 5px;
-    border:1px solid rgba(255,255,255,0.1);
+    border:1px solid #252525;
     @include border-radius(3px);
     font:normal 17px "Open Sans";
     color:white;
@@ -386,7 +327,8 @@ body.tool {
 
     a.init {
       height:18px;
-      padding:0 10px 0 0;
+      padding:0 10px 0 5px;
+      margin:0;
       @include icons-sprite(down_arrow, $offset-x:100%, $offset-y:12px);      
       border:none;
     }
@@ -395,8 +337,7 @@ body.tool {
       position:absolute;
       display:none;
       top:22px;
-      right:0;
-      max-height:166px;
+      right:-16px;
       width:277px;
       margin:22px 0;
       background:url('/img/layout/options.png') repeat-y -277px 0;
@@ -409,7 +350,7 @@ body.tool {
         li {
           padding:8px 0;
           border-bottom:1px solid #757575;
-          a {padding:0; background:none; color:#CCCCCC; border:none; &:hover {color:white; border:none}}
+          a {padding:0; margin:0; background:none; color:#CCCCCC; border:none; &:hover {color:white; border:none}}
           &:last-child {border:none;}
         }
       }
@@ -419,7 +360,120 @@ body.tool {
     }
   }
 
+  /* country li */
+  ul.countries {
+    list-style:none;
+    width:100%;
+    letter-spacing:-4px;
+
+    li {
+      position:relative;
+      @include inline-block();
+      width:262px;
+      padding:0 0 9px;
+      letter-spacing:0;
+
+      a {
+        position:relative;
+        display:block;
+        width:100%;
+        padding:0 0 8px 0;
+        font:normal 15px "Open Sans";
+        span {
+          position:absolute;
+          left:0;
+          bottom:0;
+          height:4px;
+          @include border-radius(5px);
+          background:#1b1c1c;
+          -webkit-transition:box-shadow 0.2s linear;
+        }
+        .growing {
+          -webkit-transition:box-shadow 0.2s linear;
+          @include box-shadow(#FF3333, 0, 0, 5px, 0);
+        }
+        &:hover span {background:#FF3333}
+      }
+    }
+  }
+
+  /* image with over text */
+  ul.stories {
+    list-style:none;
+    width:100%;
+    letter-spacing:-4px;
+
+    li {
+      position:relative;
+      @include inline-block();
+      width:262px;
+      height:154px;
+      overflow:hidden;
+      margin:0 0 25px;
+      padding:0;
+      letter-spacing:0;
+
+      img {width:242px;}
+
+      a {
+        position:absolute;
+        left:0;
+        bottom:20px;
+        @include inline-block();
+        width:230px;
+        padding:0 0 0 3px;
+        z-index:20;
+        background:url('/img/layout/black_hack.png') repeat-y;
+
+        &:hover span {color:white}
+
+        span {
+          position:relative;
+          margin: 0;
+          padding: 0 5px 2px 0;
+          background-color: #000000;
+          z-index: 15;
+          color: #CCCCCC;
+          font: normal 17px "Open Sans";
+          line-height: 24px;
+          letter-spacing:0px;
+          white-space: pre-wrap;
+          word-spacing:3px;
+          @include border-radius(0);
+        }
+      }
+      p.over {
+        position:absolute;
+        left:0;
+        bottom:0;
+        padding: 1px 5px 3px 5px;
+        background-color: #000000;
+        z-index: 15;
+        color: #666666;
+        font: normal 13px "Open Sans";
+        line-height: normal;
+        letter-spacing:-1px;
+        white-space: pre-wrap;
+        word-spacing:3px;
+        @include border-radius(0);
+      }
+    }
+
+    &.long li {
+      display:block;
+      width:100%;
+      height:180px;
+      img {width:100%}
+    }
+  }
+
+  /* layer */
+  div.layers {
+    display:none!important;
+  }
   /* END ELEMENTS */
+
+
 
 
   /* ABOUT */
@@ -439,7 +493,7 @@ body.tool {
   /* FOOTER */
   footer {
     position:relative;
-    padding:60px 0 150px;
+    padding:30px 0 150px;
     ul {
       width:auto;
       li {

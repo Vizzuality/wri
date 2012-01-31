@@ -243,9 +243,6 @@
 
     _bind: function($el) {
       $el.find('a.init').bind({'click':Core._onClick});
-
-      // GOD??
-      //$('body').bind({'click':Core._close});
     },
 
 
@@ -287,14 +284,26 @@
 
       var $el = $(ev.target).closest('span.select');
       if ($el.hasClass('active')) {
-        $el.removeClass('active');
+        Core._close($el);
       } else {
-        $el.addClass('active');
+        Core._open($el);
       }
+    },
+
+    _open: function($el) {
+      $el.addClass('active');
+      $('body').click(function(ev) {
+        if (!$(ev.target).closest('span.select').length) {
+          Core._close($el);
+          $('body').unbind('click');
+        };
+      });
+    },
+
+    _close: function($el) {
+      $el.removeClass('active');
+      $('body').unbind('click');
     }
-
-
-
   };
 
 
