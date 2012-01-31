@@ -30,14 +30,13 @@
   {% endblock %}
   <!-- JavaScript at the bottom for fast page loading -->
 
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry""></script>
+
   <script src="js/libs/d3.js"></script>
   <script src="js/libs/d3.geo.js"></script>
   <script src="js/libs/jquery.min.js"></script>
   <script src="js/libs/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry""></script>
-  <script>window.JSON || document.write("<script src='js/libs/json2.js'>\x3C/script>")</script>
-
-  <!-- scripts concatenated and minified via ant build script-->
+  <script src='js/libs/json2.js'></script>
   <!-- libraries -->
   <script src="js/libs/jquery.mousewheel.js"></script>
   <!--<script src="js/libs/jquery.jscrollpane.min.js"></script>-->
@@ -64,20 +63,8 @@
   <script src="js/modules/config.js"></script>
   <script src="js/modules/bus.js"></script>
   <script src="js/modules/map.js"></script>
-
   <script src="js/views/projector.js"></script>
   <script src="js/modules/models.js"></script>
-
-  <!--
-  <script src="js/modules/start_banner.js"></script>
-  <script src="js/modules/ws.js"></script>
-  <script src="js/modules/header.js"></script>
-  <script src="js/modules/error.js"></script>
-
-  <script src="js/views/report.js"></script>
-  <script src="js/views/polygon.js"></script>
-  <script src="js/views/sharepopup.js"></script>
-  -->
   <script src="js/modules/cartodb.js"></script>
   <script src="js/modules/country.js"></script>
   <script src="js/modules/story.js"></script>
@@ -88,18 +75,15 @@
   <script src="js/views/grid_layer.js"></script>
   <script src="js/views/draw_tool.js"></script>
   <script src="js/views/layers.js"></script>
-  <script src="js/views/searchbox.js"></script>
   <script src="js/views/slider.js"></script>
   <script src="js/views/graph.js"></script>
-
   <script src="js/views/map.js"></script>
-
   <script src="js/wri.js"></script>
   <script src="js/wri_home.js"></script>
+  <script src="js/widgets.js"></script>
 
   <!-- todo: add production compressed js -->
 
-  <script src="js/widgets.js"></script>
 
   {% block js %}
   {% endblock %}
