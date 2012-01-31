@@ -81,9 +81,15 @@ App.modules.WRI= function(app) {
             app.bus = this.bus;
 
             this.stories = new app.Stories();
-            this.stories.fetch();
             this.country = new app.Country({'name_engli': ''});
 
+            var stories_dropdown = new app.StoryListView({
+                el: $('span.select'),
+                stories: stories
+            });
+
+            // fetch as soon as posible
+            this.stories.fetch();
             // the map
             this.map = new app.Map(this.bus);
 
