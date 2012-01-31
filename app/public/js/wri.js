@@ -85,7 +85,7 @@ App.modules.WRI= function(app) {
 
             var stories_dropdown = new app.StoryListView({
                 el: $('span.select'),
-                stories: stories
+                stories: this.stories
             });
 
             // fetch as soon as posible
