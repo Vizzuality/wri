@@ -155,7 +155,8 @@ TimePlayer.prototype.render_time = function(tile, coord, zoom) {
         'rgba(255, 51, 51, 0.9)',
         'rgba(170, 52, 51, 0.6)',
         'rgba(104, 48, 59, 0.6)',
-        'rgba(84, 48, 59, 0.6)'
+        'rgba(104, 48, 59, 0.6)',
+        //'rgba(84, 48, 59, 0.6)'
     ];
 
     var extra = 0;
@@ -177,7 +178,8 @@ TimePlayer.prototype.render_time = function(tile, coord, zoom) {
       if(cell.months) {
         var c =  cell.months[month];
         var a =  cell.months_accum[month];
-        idx = 3 - c;
+        //idx = 3 - c;
+        idx = c-1;
         fillStyle = colors[idx];
         //"rgb(" + c + ",0, 0)";
 
@@ -193,13 +195,14 @@ TimePlayer.prototype.render_time = function(tile, coord, zoom) {
         } else {
           a = 4 - a;
           //idx ;
-          fillStyle = colors[Math.min(3, a + idx)];//3 - Math.min(3, a)];
+          fillStyle = colors[Math.max(0, Math.min(3, a - idx))];//3 - Math.min(3, a)];
         }
+        //fillStyle = colors[idx];
 
       }
       // render
       var s = size[0] >> 0;
-      s+=extra;
+      //s+=extra;
       ctx.fillStyle = fillStyle;
       ctx.fillRect(x, y, s, s);
     }

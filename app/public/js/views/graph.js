@@ -5,7 +5,7 @@
 var Graph = Backbone.View.extend({
     initialize: function() {
       this.w = 500;
-      this.h = 200;
+      this.h = 160;
       var vis = d3.select(this.el[0])
         .append("svg")
           .attr("width", this.w)
@@ -52,7 +52,7 @@ var Graph = Backbone.View.extend({
       this.vis.selectAll().remove();
 
       var g = this.vis.append("svg:g")
-        .attr("transform", "translate(0, 300)");
+        .attr("transform", "translate(0, " + this.h + ")");
 
       var y = d3.scale.linear()
         .domain([0, d3.max(data)])

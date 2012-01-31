@@ -40,7 +40,8 @@
 
 
     _bind: function($el) {
-      $(window).resize(Core._resetSlider)
+      $(window).resize(Core._resetSlider);
+      $el.find('a.animation').bind({click: Core._animate});
     },
 
 
@@ -72,7 +73,13 @@
 
       //$el.append(table);
 
+
+      Core._initializeButton($el);
       Core._initializeSlider($el);
+    },
+
+    _initializeButton: function($el) {
+      $el.append('<a href="#play" class="animation"><span>play</span></a>');
     },
 
     _initializeSlider: function($el) {
@@ -87,22 +94,62 @@
           $(ev.target).find('a.ui-slider-handle').text(date);
         },
         slide: function(ev,ui) {
+
+          // If click or move
+
           var date = Core.options.monthNames[new Date(ui.value).getMonth()] + ' ' + new Date(ui.value).getFullYear();
           $(ev.target).find('a.ui-slider-handle').text(date);
-          var value = ui.value;
-          Core._trigger('change',[value],$(ev.target));
+          Core._trigger('change',[ui.value],$(ev.target));
         },
         change: function(ev,ui) {
           var date = Core.options.monthNames[new Date(ui.value).getMonth()] + ' ' + new Date(ui.value).getFullYear();
           $(ev.target).find('a.ui-slider-handle').text(date);
+          Core._trigger('change',[ui.value],$(ev.target));
         }
       });
     },
 
     _resetSlider: function(ev) {
       //console.log(ev);
-    }
+    },
 
+    _animate: function(ev) {
+      if (ev)
+        ev.preventDefault();
+
+      var $button = $(ev.target).closest('a');
+
+      if ($button.hasClass('play')) {
+        Core._stopAnimation($button);
+      } else {
+        Core._startAnimation($button);
+      }
+    },
+
+    _stopAnimation: function($button) {
+      $button.removeClass('play');
+      $button.find('span').text('play');
+      clearInterval($button.data('interval'));
+    },
+
+    _startAnimation: function($button) {
+      $button.addClass('play');
+      $button.find('span').text('pause');
+      var interval = setInterval(function(){
+        var $el = $button.closest('.slider').find('span.canvas')
+          , value = $el.slider('value') + 2500000000
+          , max = $el.slider('option','max');
+        
+        // Check if it is the end, if not goes on
+        if (value<max) {
+          $el.slider('value',value);
+        } else {
+          Core._stopAnimation($button);
+        }
+        
+      },500);
+      $button.data('interval',interval);
+    }
 
   };
 
@@ -149,6 +196,12 @@
 })( jQuery, window );
 
 
+
+
+
+
+
+
 /**************************************************************************
 * DROPDOWN PLUGIN
 **************************************************************************/
@@ -190,9 +243,6 @@
 
     _bind: function($el) {
       $el.find('a.init').bind({'click':Core._onClick});
-
-      // GOD??
-      //$('body').bind({'click':Core._close});
     },
 
 
@@ -234,14 +284,26 @@
 
       var $el = $(ev.target).closest('span.select');
       if ($el.hasClass('active')) {
-        $el.removeClass('active');
+        Core._close($el);
       } else {
-        $el.addClass('active');
+        Core._open($el);
       }
+    },
+
+    _open: function($el) {
+      $el.addClass('active');
+      $('body').click(function(ev) {
+        if (!$(ev.target).closest('span.select').length) {
+          Core._close($el);
+          $('body').unbind('click');
+        };
+      });
+    },
+
+    _close: function($el) {
+      $el.removeClass('active');
+      $('body').unbind('click');
     }
-
-
-
   };
 
 
