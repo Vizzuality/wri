@@ -146,7 +146,7 @@ p.darker {
 /* icons */
 /* line 75, ../../icons */
 .icons-sprite, .icons-crosshair_map, .icons-down_arrow, .icons-handle, .icons-help, .icons-lens, .icons-list, .icons-list_green, .icons-pause, .icons-play, body.tool .slider span.canvas a.ui-slider-handle, body.tool .slider a.animation span, body.tool .slider a.animation.play span, body.tool form input[type="submit"], body.tool span.select a.init {
-  background: url('/img/icons-s3beae20283.png') no-repeat;
+  background: url('/img/icons-s5e9f1ebc58.png') no-repeat;
 }
 
 /* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -166,32 +166,32 @@ p.darker {
 
 /* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-help {
-  background-position: 0 -82px;
+  background-position: 0 -98px;
 }
 
 /* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-lens {
-  background-position: 0 -90px;
+  background-position: 0 -106px;
 }
 
 /* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-list {
-  background-position: 0 -104px;
+  background-position: 0 -120px;
 }
 
 /* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-list_green {
-  background-position: 0 -111px;
+  background-position: 0 -127px;
 }
 
 /* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-pause {
-  background-position: 0 -118px;
+  background-position: 0 -134px;
 }
 
 /* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-play {
-  background-position: 0 -131px;
+  background-position: 0 -147px;
 }
 
 /* layout */
@@ -633,8 +633,8 @@ body.tool .slider span.canvas {
 body.tool .slider span.canvas a.ui-slider-handle {
   position: absolute;
   width: 89px;
-  height: 30px;
-  top: -34px;
+  height: 46px;
+  top: -36px;
   left: 0;
   padding: 11px 0 0 0;
   margin: 0 0 0 -44px;
@@ -686,11 +686,11 @@ body.tool .slider a.animation span {
   margin: -5px 0 0 -6px;
   height: 13px;
   width: 12px;
-  background-position: 0 -131px;
+  background-position: 0 -147px;
 }
 /* line 255, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .slider a.animation.play span {
-  background-position: 0 -118px;
+  background-position: 0 -134px;
 }
 /* line 256, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .slider a.animation:hover {
@@ -821,7 +821,7 @@ body.tool form input[type="submit"] {
   right: 10px;
   width: 14px;
   height: 14px;
-  background-position: 0 -90px;
+  background-position: 0 -106px;
   border: none;
 }
 /* line 334, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
