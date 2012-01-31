@@ -65,7 +65,7 @@ App.modules.CountryLayer = function(app) {
                 where: 'forma=true',
                 shader: {
                     'point-color': '#fff',
-                    'line-color': '#D7D7D8',
+                    'line-color': 'rgba(0,0,0,0)',//'#D7D7D8',
                     'line-width': '0.1',
                     'polygon-fill': 'rgba(255,255, 255,0.01)'
                 }
@@ -80,6 +80,14 @@ App.modules.CountryLayer = function(app) {
             this.country_border = this.tilemill.addLayer(
                 $('#border_style').html(),
                 'country_attributes_live'
+            );
+            this.rivers = this.tilemill.addLayer(
+                $('#rivers').html(),
+                'rivers'
+            );
+            this.places = this.tilemill.addLayer(
+                $('#places').html(),
+                'places'
             );
 
             //bindings
@@ -127,6 +135,12 @@ App.modules.CountryLayer = function(app) {
             sql = "select * from selected_countries_pas where iso = '{0}'";
             sql = sql.format(iso);
             self.pas_layer.update(sql);
+
+            sql = "select * from rivers"
+            self.rivers.update(sql);
+
+            sql = "select * from places";
+            self.places.update(sql);
         },
 
         show_region: function(region) {

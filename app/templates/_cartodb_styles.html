@@ -43,3 +43,41 @@
 
 </script>
 
+<script type="carto" id="rivers">
+#rivers {
+  [zoom<=6]{
+    line-width:0;
+  }
+  [zoom>=8]{
+    line-width:2;
+  }
+  line-color:#168;
+  line-opacity:0.4;
+}
+</script>
+
+<script type="carto" id="places">
+
+@sans:"DejaVu Sans Book";
+
+#places[zoom>=7] {
+  text-name:"[name]";
+  text-face-name:@sans;
+  text-size:12;
+  text-halo-radius:1;
+  text-fill:#FFF;
+  text-halo-fill:rgba(0,0,0,0.75);
+  text-allow-overlap:true;
+  text-dy: -5px;
+
+  marker-fill:#FFF;
+  marker-line-width:0;
+  marker-opacity:0.68;
+  marker-width:3px;
+  marker-placement:point;
+  marker-type:ellipse;
+  marker-allow-overlap:true;
+
+}
+</script>
+
