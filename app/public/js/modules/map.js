@@ -117,17 +117,21 @@ App.modules.Map = function(app) {
         zoom_changed: function(z) {
             var self = this;
             console.log("zoom: ", z);
+            var size = 32;
             var table_name = 'global_32x_grid';
-            if(z >= 6) {
+            if(z == 6) {
+                size = 16;
                 table_name = 'global_16x_grid';
             } 
-            if(z >= 8) {
+            if(z == 7) {
                 table_name = 'global_8x_grid';
+                size = 8;
             } 
-            if(z >= 9) {
+            if(z >= 8) {
                 table_name = 'global_4x_grid';
+                size = 4;
             }
-            self.grid_layer.set_table(table_name);
+            self.grid_layer.set_table(table_name, size);
             console.log("table_name: ", table_name);
         },
 

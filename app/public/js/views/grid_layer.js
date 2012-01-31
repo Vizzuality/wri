@@ -5,7 +5,7 @@
 */
 
 function TimePlayer(table) {
-    this.time = 40;
+    this.time = 0;
     this.canvas_setup = this.get_time_data;
     this.render = this.render_time;
     this.cells = [];
@@ -20,9 +20,10 @@ TimePlayer.prototype.set_time = function(t) {
     this.redraw();
 };
 
-TimePlayer.prototype.set_table = function(table) {
+TimePlayer.prototype.set_table = function(table, size) {
   if(this.table === table) return;
   this.table = table;
+  this.pixel_size = size;
   this.recreate();
   this.redraw();
 };
@@ -56,12 +57,22 @@ TimePlayer.prototype.pre_cache_months = function(rows) {
         def[d] = Math.max(0, (9 - (d - last))>>1);
       }
 
+      var acumm_normalized = [];
+      var cumm = row.cummulative;
+      var max = this.pixel_size*this.pixel_size;
+
+      for(var d = 0, l = cumm.length; d < l; ++d) {
+          acumm_normalized[d] = (4*((cumm[d] - cumm[0])/(max - cumm[0]))) >> 0;
+      }
+
+      //var buffer = new ArrayBuffer(row.);
+
       cells[i] = {
         x: row.upper_left_x,
         y: row.upper_left_y,
         w: row.cell_width,
         h: row.cell_height,
-        months_accum: row.cummulative,
+        months_accum: acumm_normalized,//row.cummulative,
         months: row.time_series
       }
     }
@@ -79,7 +90,7 @@ TimePlayer.prototype.get_time_data = function(tile, coord, zoom) {
     var projection = new MercatorProjection();
     var bbox = projection.tileBBox(coord.x, coord.y, zoom);
     //TODO: remove not used
-    var sql = "SELECT upper_left_x, upper_left_y, cell_width, cell_height, pixels, total_incr as events, cummulative, boxpoly, time_series, time_series FROM " + this.table;
+    var sql = "SELECT upper_left_x, upper_left_y, cell_width, cell_height, pixels, total_incr, cummulative, boxpoly, time_series, time_series FROM " + this.table;
 
     // inside the country
     sql += " WHERE iso = '{0}'".format(self.country);
@@ -175,10 +186,16 @@ TimePlayer.prototype.render_time = function(tile, coord, zoom) {
           extra = 1;
         }
 
+        
         //no deforestation already
-        if(a === 0) {
+        if(a <= 0) {
           fillStyle = 'rgba(0,0,0,0)';
+        } else {
+          a = 4 - a;
+          //idx ;
+          fillStyle = colors[Math.min(3, a + idx)];//3 - Math.min(3, a)];
         }
+
       }
       // render
       var s = size[0] >> 0;
