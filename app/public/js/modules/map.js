@@ -45,7 +45,6 @@ App.modules.Map = function(app) {
             var self = this;
             this.bus = bus;
             this.map = new MapView({el: $('.map_container')});
-            this.seachbox = new Searchbox({el: $('.map_container .search')});
             this.popup = new Popup({mapview: this.map});
             this.movement_timeout = -1;
             this.report_polygons = {};
@@ -72,10 +71,6 @@ App.modules.Map = function(app) {
 
             this.map.bind('zoom_changed', this.zoom_changed);
 
-            this.seachbox.bind('goto', function(latlng, zoom) {
-                self.map.set_center(latlng);
-                self.map.set_zoom(zoom);
-            });
 
             // prebuil layers
             self.country_layer = new app.CountryLayer(self);
