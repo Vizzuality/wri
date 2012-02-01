@@ -4,9 +4,7 @@
  */
 var Slider = Backbone.View.extend({
 
-    events: {
-        'mousedown .marker': 'startDrag',
-    },
+    START:  new Date(2006, 0, 1),
 
     initialize: function() {
         _.bindAll(this, 'startDrag', 'onDrag', 'endDrag');
@@ -19,16 +17,24 @@ var Slider = Backbone.View.extend({
         this.dragging = false;
         this.marker = this.$('.marker');
         this.el.bind('change.wriSlider', function(ev, v){
-              var start = new Date(2006, 0, 1).getTime();
+              var start = self.START.getTime();
               var d = v - start;
               var month = d/(3600*1000*24*30);
               self.trigger('change', month>>0);
         });
 
-        //setTimeout(function(){self.el.wriSlider('update',1280770000000)},1000);
+    },
+
+    month_to_date: function(month) {
+      var months = month % 12;
+      var years = (month/12)>>0;
+      return new Date(this.START.getFullYear() + years, this.START.getMonth() + months, 1);
     },
 
     set_time: function(month) {
+        var self = this;
+        var t = this.month_to_date(month);
+        self.el.wriSlider('update', t.getTime());
     },
 
     startDrag: function(e) {

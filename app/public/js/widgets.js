@@ -135,11 +135,15 @@
     _startAnimation: function($button) {
       $button.addClass('play');
       $button.find('span').text('pause');
-      var interval = setInterval(function(){
-        var $el = $button.closest('.slider').find('div.horizontal')
-          , value = $el.slider('value')
+      var $el = $button.closest('.slider').find('div.horizontal')
           , max = $el.slider('option','max');
-        
+
+      //rewind
+      if($el.slider('value') == max) {
+          $el.slider('value', 0);
+      }
+      var interval = setInterval(function(){
+        var value = $el.slider('value');
         // Check if it is the end, if not goes on
         if (value<max) {
           $el.slider('value',value + 2500000000);
@@ -148,7 +152,6 @@
         } else {
           Core._stopAnimation($button);
         }
-        
       },250);
       $button.data('interval',interval);
     }
@@ -161,8 +164,8 @@
   **************************************************************************/
   API = {
     update: function(timestamp) {
-      var $el = this;
-      $el.find('span.canvas').slider('value',timestamp);
+      var $el = this.find('div.horizontal');
+      $el.slider('value',timestamp);
     }
   };
 

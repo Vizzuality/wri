@@ -96,10 +96,9 @@ App.modules.WRI= function(app) {
               countries: this.countries
             });
 
-            // fetch as soon as posible
-            this.stories.fetch();
-            this.countries.fetch();
-
+            // change the next/prev country buttons
+            // when country is selected and country list
+            // are ready
             var f = _.after(2, function() {
                 var next_prev = self.countries.next_country(self.country.get('name_engli'));
                 if(next_prev) {
@@ -113,6 +112,10 @@ App.modules.WRI= function(app) {
             });
             this.countries.bind('reset', f);
             this.country.bind('change', f);
+
+            // fetch as soon as posible
+            this.stories.fetch();
+            this.countries.fetch();
 
             // the map
             this.map = new app.Map(this.bus);

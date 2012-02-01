@@ -138,9 +138,12 @@ App.modules.WRIHome= function(app) {
         //get data
         countries.fetch();
         stories.fetch();
+        countries.bind('reset', function() {
+            this.slider.set_time(0);
+        }, this);
+
       }
 
-      //this.slider.set_time(0);
 
     });
 }
