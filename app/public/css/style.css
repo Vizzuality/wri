@@ -1218,6 +1218,10 @@ body.front {
   background-color: #191919;
 }
 /* line 588, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+body.front section.subheader h2 {
+  font-size: 61px;
+}
+/* line 590, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error {
   position: absolute;
   top: 50%;
@@ -1225,19 +1229,19 @@ body.front article.error {
   margin: -250px 0 0 -281px;
   width: 562px;
 }
-/* line 595, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 597, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error header {
   display: block;
 }
-/* line 597, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 599, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error header h1 {
   margin: 0 0 0 12px;
 }
-/* line 602, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 604, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section {
   position: relative;
 }
-/* line 605, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 607, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section.empty {
   display: inline-block;
   width: 530px;
@@ -1251,12 +1255,12 @@ body.front article.error section.empty {
   -khtml-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 612, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 614, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section.empty div.band {
   left: -62px;
   bottom: 40px;
 }
-/* line 613, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 615, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section.empty em {
   display: block;
   font: bold 250px "Open Sans";
@@ -1264,7 +1268,7 @@ body.front article.error section.empty em {
   text-align: center;
   line-height: 290px;
 }
-/* line 616, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 618, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band {
   position: absolute;
   bottom: 74px;
@@ -1274,7 +1278,7 @@ body.front article.error section div.band {
   padding: 20px 75px;
   background-position: 0 0;
 }
-/* line 625, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 627, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band h2 {
   display: block;
   font: bold 15px "Open Sans";
@@ -1283,18 +1287,18 @@ body.front article.error section div.band h2 {
   text-align: center;
   line-height: 15px;
 }
-/* line 626, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 628, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band p {
   margin: 3px 0 0 0;
   text-align: center;
   color: #7B1718;
 }
-/* line 630, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 632, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band p a {
   color: #7B1718;
   text-decoration: underline;
 }
-/* line 633, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 635, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band p a:hover {
   color: #3F0B0C;
 }
@@ -1362,7 +1366,7 @@ body.front article.error section div.band p a:hover {
   right: 0;
   bottom: 0;
   width: 200%;
-  height: 100%;
+  height: 200%;
   margin: 0 0 0 -400px;
   background-image: -webkit-gradient(radial, 25% 450px, 0, 25% 450px, 600, color-stop(11.667%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.95)));
   background-image: -webkit-radial-gradient(25% 450px, rgba(0, 0, 0, 0) 70px, rgba(0, 0, 0, 0.95) 600px);
