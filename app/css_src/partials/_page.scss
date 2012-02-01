@@ -379,7 +379,7 @@ body.tool {
 
     a.init {
       height:18px;
-      padding:0 10px 0 5px;
+      padding:0 12px 0 5px;
       margin:0;
       @include icons-sprite(down_arrow, $offset-x:100%, $offset-y:12px);      
       border:none;

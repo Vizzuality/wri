@@ -2,12 +2,12 @@
 import os
 import logging
 
-PRODUCTION = False
+PRODUCTION = False 
 if 'SERVER_SOFTWARE' in os.environ and os.environ['SERVER_SOFTWARE'].startswith('Google App Engine'):
     PRODUCTION = True
 
 
-DEBUG =  True #not PRODUCTION
+DEBUG =  not PRODUCTION
 TEMPLATE_DEBUG = DEBUG
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
@@ -52,6 +52,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.gzip.GZipMiddleware'
 )
+
 
 ROOT_URLCONF = 'urls'
 
