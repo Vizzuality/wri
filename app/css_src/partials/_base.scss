@@ -55,7 +55,7 @@ p {font:normal 15px "Open Sans"; color:white; &.bigger {font-size:23px;} &.darke
 
 // Sprite background
 @mixin background($lr,$tb,$r) {
-  background:url('/img/sprite.png') $lr $tb $r;
+  //background:url('/img/sprite.png') $lr $tb $r;
 }
 
 // Box shadow
