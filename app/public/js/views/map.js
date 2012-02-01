@@ -76,6 +76,12 @@ var MapView = Backbone.View.extend({
        this.projector = new Projector(this.map);
        this.projector.draw = this.ready;
        this.signals_on = true;
+
+       // Bye google
+       setTimeout(function(){
+        $('.map').find('img[src="http://maps.gstatic.com/mapfiles/google_white.png"]').closest('a').hide();
+        $('.map').find('a:contains("Terms of Use")').closest('div').hide();
+       },2000)
     },
 
     adjustSize: function() {

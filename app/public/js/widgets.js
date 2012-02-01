@@ -368,7 +368,4 @@
     $('span.select').dropdown('update',[{name:'asdf asdf asdf asdf asdf',url:'#where'}]);
     alert('jamon');
   },5000);*/
-  
-  
-
 })( jQuery, window );
