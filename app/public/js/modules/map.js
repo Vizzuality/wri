@@ -79,7 +79,7 @@ App.modules.Map = function(app) {
             self.map.bind('zoom_changed', self.popup.hide);
 
             //grid layer
-            self.grid_layer = new TimePlayer('asia_500m_18_jan_40x_grid');
+            self.grid_layer = new TimePlayer('global_32x');
             self.map.add_layer('time', {name: 't'}, self.grid_layer);
             self.map.enable_layer('time', true);
 
@@ -122,14 +122,12 @@ App.modules.Map = function(app) {
             if(z == 6) {
                 size = 16;
                 table_name = 'global_16x_grid';
-            } 
-            if(z == 7) {
-                table_name = 'global_8x_grid';
+            } else if(z == 7) {
                 size = 8;
-            } 
-            if(z >= 8) {
-                table_name = 'global_4x_grid';
+                table_name = 'global_8x_grid';
+            } else if(z >= 8) {
                 size = 4;
+                table_name = 'global_4x_grid';
             }
             self.grid_layer.set_table(table_name, size);
             console.log("table_name: ", table_name);

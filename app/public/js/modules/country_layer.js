@@ -157,18 +157,6 @@ App.modules.CountryLayer = function(app) {
 
 
         _enter: function(b, geometry) {
-            //not used
-            /*var levels = [
-                {
-                    'columns': ['name_engli', 'cartodb_id']
-                },
-                {
-                    'columns': ['name_0', 'name_1', 'cartodb_id']
-                },
-                {
-                    'columns': ['name_0', 'name_1', 'name_2', 'cartodb_id']
-                }
-            ];*/
             if(this.level == this.LEVEL_COUNTRY) {
                 //update level
                 this.state.push(b);
@@ -177,11 +165,12 @@ App.modules.CountryLayer = function(app) {
                 this.show_region(area_name);
                 this.trigger('changed_area_name', area_name);
                 this.map.map.map.fitBounds(b);
-                //this.map.map.unbind('mousemove', this.mousemove);
-            } else if(this.level == this.LEVEL_REGION) {
+                this.map.map.unbind('mousemove', this.mousemove);
+            }
+            /* else if(this.level == this.LEVEL_REGION) {
                 this.map.map.unbind('mousemove', this.mousemove);
                 this.map.map.map.fitBounds(b);
-            }
+            }*/
             this.remove_hover();
         },
 
