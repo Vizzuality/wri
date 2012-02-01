@@ -56,7 +56,7 @@
     },
 
     _addCanvas: function($el) {
-      $el.append('<span class="canvas"></span><span class="shadow"></span>');
+      $el.append('<span class="canvas"></span><span class="shadow"></span><div class="horizontal"></div>');
 
       // Add years
       // var table = '<table><tr>';
@@ -83,7 +83,7 @@
     },
 
     _initializeSlider: function($el) {
-      $el.find('span.canvas').slider({
+      $el.find('div.horizontal').slider({
         min: new Date(Core.options.start).getTime(),
         max: new Date(Core.options.end).getTime(),
         value: new Date(Core.options.value).getTime(),
@@ -136,18 +136,20 @@
       $button.addClass('play');
       $button.find('span').text('pause');
       var interval = setInterval(function(){
-        var $el = $button.closest('.slider').find('span.canvas')
-          , value = $el.slider('value') + 2500000000
+        var $el = $button.closest('.slider').find('div.horizontal')
+          , value = $el.slider('value')
           , max = $el.slider('option','max');
         
         // Check if it is the end, if not goes on
         if (value<max) {
-          $el.slider('value',value);
+          $el.slider('value',value + 2500000000);
+        } else if (value>max) {
+          $el.slider('value',max);
         } else {
           Core._stopAnimation($button);
         }
         
-      },500);
+      },250);
       $button.data('interval',interval);
     }
 
