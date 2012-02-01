@@ -153,7 +153,7 @@ body.tool {
 
   /* ABOUT */
   article.about.illustration {
-    background:url('/img/about.jpg') no-repeat right 40px;
+    background:url('/img/about.jpg') no-repeat 600px 40px;
   }
 
   /* COUNTRY FLOAT ELEMENTS */
@@ -172,17 +172,18 @@ body.tool {
   a.pag {
     position:absolute;
     top:50%;
-    margin:-30px 0 0 0;
-    padding:25px 5px;
-    background: #FF3333;
+    width:33px;
+    height:66px;
+    @include icons-sprite(pag_arrow,$offset-x:8px,$offset-y:27px);
+    background-color: #FF3333;
+    text-indent:-9999px;
+    text-transform:uppercase;
     z-index:100;
     color:#333333;
-    &.left {left:-30px}
-    &.right {right:-30px;}
-    &:hover {color:white; cursor:pointer}
+    &.left {left:0; }
+    &.right {right:0; transform:rotate(180deg); -webkit-transform:rotate(180deg); -moz-transform:rotate(180deg);}
+    &:hover {@include icons-sprite(pag_arrow_white,$offset-x:8px,$offset-y:27px); background-color:#FF3333}
   }
-
-
 
 
   /* ELEMENTS */
