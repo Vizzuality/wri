@@ -1,4 +1,4 @@
-/* line 17, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,57 +20,57 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 20, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 20, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
 }
 
-/* line 22, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 24, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 26, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 28, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 101, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 101, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 30, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 114, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 114, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
 /* Golden ratio scale from http://modularscale.com/scale/?px1=12&px2=48&ra1=1.618&ra2=0
 ---------------------------------------- */
-/* line 37, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 37, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 html, body {
   height: 100%;
 }
 
-/* line 38, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 38, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 h2 {
   font: bold 52px "Open Sans";
   color: white;
@@ -79,65 +79,65 @@ h2 {
   font-weight: 800!important;
 }
 
-/* line 39, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 39, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 h4 {
   padding: 0 0 10px;
   font-weight: 800!important;
 }
-/* line 39, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 39, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 h4.red {
   color: #FF3333;
 }
-/* line 39, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 39, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 h4.lighter {
   color: white;
 }
 
-/* line 40, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 40, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 p {
   font: normal 15px "Open Sans";
   color: white;
 }
-/* line 40, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 40, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 p.bigger {
   font-size: 23px;
 }
-/* line 40, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 40, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 p.darker {
   color: #CCCCCC;
 }
 
-/* line 42, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 42, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 .left {
   float: left!important;
 }
 
-/* line 43, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 43, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 .right {
   float: right!important;
 }
 
-/* line 44, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 44, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 .margin5 {
   margin-top: 5px;
 }
 
-/* line 45, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 45, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 .margin10 {
   margin-top: 10px;
 }
 
-/* line 46, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 46, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 .margin45 {
   margin-top: 45px;
 }
 
-/* line 47, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 47, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 .margin300 {
   margin-top: 300px;
 }
 
-/* line 48, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 48, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 .padding100 {
   padding-bottom: 100px;
 }
@@ -149,47 +149,47 @@ p.darker {
   background: url('/img/icons-s5e9f1ebc58.png') no-repeat;
 }
 
-/* line 60, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-crosshair_map {
   background-position: 0 0;
 }
 
-/* line 60, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-down_arrow {
   background-position: -83px -25px;
 }
 
-/* line 60, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-handle {
   background-position: 0 -41px;
 }
 
-/* line 60, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-help {
   background-position: 0 -98px;
 }
 
-/* line 60, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-lens {
   background-position: 0 -106px;
 }
 
-/* line 60, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-list {
   background-position: 0 -120px;
 }
 
-/* line 60, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-list_green {
   background-position: 0 -127px;
 }
 
-/* line 60, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-pause {
   background-position: 0 -134px;
 }
 
-/* line 60, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .icons-play {
   background-position: 0 -147px;
 }
@@ -200,34 +200,34 @@ p.darker {
   background: url('/img/layout-s9778c6734b.png') no-repeat;
 }
 
-/* line 60, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .layout-band {
   background-position: 0 0;
 }
 
-/* line 60, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .layout-black_hack {
   background-position: 0 -84px;
 }
 
-/* line 60, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .layout-browser {
   background-position: 0 -119px;
 }
 
-/* line 60, /Users/javi/.rvm/gems/ruby-1.9.2-p180@imazon/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, /Users/jmedina/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .layout-options {
   background-position: 0 -508px;
 }
 
 /* Golden ratio scale from http://modularscale.com/scale/?px1=12&px2=48&ra1=1.618&ra2=0
 ---------------------------------------- */
-/* line 37, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 37, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 html, body {
   height: 100%;
 }
 
-/* line 38, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 38, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 h2 {
   font: bold 52px "Open Sans";
   color: white;
@@ -236,108 +236,108 @@ h2 {
   font-weight: 800!important;
 }
 
-/* line 39, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 39, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 h4 {
   padding: 0 0 10px;
   font-weight: 800!important;
 }
-/* line 39, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 39, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 h4.red {
   color: #FF3333;
 }
-/* line 39, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 39, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 h4.lighter {
   color: white;
 }
 
-/* line 40, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 40, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 p {
   font: normal 15px "Open Sans";
   color: white;
 }
-/* line 40, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 40, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 p.bigger {
   font-size: 23px;
 }
-/* line 40, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 40, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 p.darker {
   color: #CCCCCC;
 }
 
-/* line 42, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 42, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 .left {
   float: left!important;
 }
 
-/* line 43, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 43, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 .right {
   float: right!important;
 }
 
-/* line 44, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 44, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 .margin5 {
   margin-top: 5px;
 }
 
-/* line 45, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 45, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 .margin10 {
   margin-top: 10px;
 }
 
-/* line 46, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 46, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 .margin45 {
   margin-top: 45px;
 }
 
-/* line 47, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 47, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 .margin300 {
   margin-top: 300px;
 }
 
-/* line 48, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_base.scss */
+/* line 48, /Users/jmedina/Workspace/wri/app/css_src/partials/_base.scss */
 .padding100 {
   padding-bottom: 100px;
 }
 
-/* line 9, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 9, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body, select, input, textarea {
   color: #444444;
 }
 
-/* line 16, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 16, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
-/* line 22, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 22, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 h4 {
   font: bold 13px "Open Sans";
   color: #999999;
   text-transform: uppercase;
 }
 
-/* line 24, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 24, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 a, a:active, a:visited {
   color: #666666;
   text-decoration: none;
 }
 
-/* line 25, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 25, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 a:hover {
   color: white;
 }
 
-/* line 27, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 27, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 strong, th {
   font-weight: bold;
 }
 
-/* line 31, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 31, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 small {
   font-size: 11px;
 }
 
-/* line 40, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 40, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 input:invalid, textarea:invalid {
   -moz-border-radius: 1px;
   -webkit-border-radius: 1px;
@@ -350,19 +350,19 @@ input:invalid, textarea:invalid {
   box-shadow: red 0 0 5px 0;
 }
 
-/* line 45, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 45, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 .no-boxshadow input:invalid,
 .no-boxshadow textarea:invalid {
   background-color: #f0dddd;
 }
 
-/* line 52, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 52, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 html, body {
   width: 100%;
   height: 100%;
 }
 
-/* line 57, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 57, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool {
   background-color: #000;
   /* LAYOUT */
@@ -385,35 +385,35 @@ body.tool {
   /* ABOUT */
   /* FOOTER */
 }
-/* line 61, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 61, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .container {
   position: relative;
   width: 100%;
   height: 100%;
 }
-/* line 67, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 67, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .inner {
   width: 1100px;
   margin: 0 auto;
 }
-/* line 73, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 73, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool header {
   height: 88px;
   padding: 10px 0;
 }
-/* line 76, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 76, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool header h1 {
   float: left;
   margin: 0;
   padding: 0;
 }
-/* line 77, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 77, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool header nav {
   float: right;
   width: 610px;
   margin: 21px 0 0 0;
 }
-/* line 81, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 81, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool header nav a {
   margin: 0 0 0 10px;
   padding: 4px 10px 4px;
@@ -428,23 +428,23 @@ body.tool header nav a {
   color: white;
   letter-spacing: -1px;
 }
-/* line 89, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 89, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool header nav a:hover {
   border-color: rgba(255, 255, 255, 0.7);
 }
-/* line 92, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 92, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool header.country {
   position: relative;
   height: 65px;
   padding: 25px 0 0 0;
   z-index: 15;
 }
-/* line 99, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 99, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool header form {
   margin: 0 7px 0 0;
   width: 180px;
 }
-/* line 102, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 102, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool header form input[type="text"] {
   width: 145px;
   padding: 4px 26px 5px 9px;
@@ -452,34 +452,34 @@ body.tool header form input[type="text"] {
   font-size: 16px;
   letter-spacing: -1px;
 }
-/* line 103, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 103, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool header form input[type="submit"] {
   top: 10px;
   right: 5px;
 }
-/* line 108, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 108, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool article.subheader {
   margin: 0;
 }
-/* line 111, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 111, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool article.subheader section.title {
   width: 755px;
 }
-/* line 113, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 113, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool article.subheader section.title p {
   letter-spacing: -1px;
 }
-/* line 115, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 115, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool article.subheader form {
   width: 250px;
   margin: 64px 0 0;
 }
-/* line 118, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 118, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool article.subheader form input[type="text"] {
   width: 219px;
   font: normal 17px "Open Sans";
 }
-/* line 123, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 123, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool article.countries {
   display: inline-block;
   vertical-align: top;
@@ -488,7 +488,7 @@ body.tool article.countries {
   width: 100%;
   letter-spacing: -4px;
 }
-/* line 128, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 128, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool article.countries section.column {
   display: inline-block;
   vertical-align: top;
@@ -498,15 +498,15 @@ body.tool article.countries section.column {
   margin-right: 20px;
   letter-spacing: 0;
 }
-/* line 133, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 133, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool article.countries section.column section.column:last-child {
   margin: 0;
 }
-/* line 135, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 135, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool article.countries section.column ul {
   margin: 15px 0 0 0;
 }
-/* line 142, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 142, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool article.country {
   position: relative;
   display: inline-block;
@@ -519,43 +519,43 @@ body.tool article.country {
   z-index: 10;
   display: none;
 }
-/* line 153, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 153, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.bar {
   position: absolute;
   height: 2px;
   background: white;
   z-index: 5;
 }
-/* line 159, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 159, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.bar.l {
   left: 0;
   width: 50%;
   min-width: 510px;
   margin-left: -100px;
 }
-/* line 160, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 160, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.bar.r {
   right: 0;
   width: 50%;
   min-width: 65px;
   margin-right: -487px;
 }
-/* line 161, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 161, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.bar.top {
   top: 120px;
 }
-/* line 162, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 162, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.bar.bottom {
   position: relative;
   margin: 20px 0 0 0;
   display: block;
   width: 100%;
 }
-/* line 163, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 163, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.bar.darker {
   background: #2A2B2C;
 }
-/* line 165, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 165, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool a.pag {
   position: absolute;
   top: 50%;
@@ -565,20 +565,20 @@ body.tool a.pag {
   z-index: 100;
   color: #333333;
 }
-/* line 173, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 173, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool a.pag.left {
   left: -30px;
 }
-/* line 174, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 174, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool a.pag.right {
   right: -30px;
 }
-/* line 175, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 175, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool a.pag:hover {
   color: white;
   cursor: pointer;
 }
-/* line 184, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 184, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .slider {
   position: fixed;
   bottom: 0;
@@ -596,7 +596,7 @@ body.tool .slider {
   background-image: -ms-linear-gradient(#f3f3f3, #cacaca);
   background-image: linear-gradient(#f3f3f3, #cacaca);
 }
-/* line 196, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 196, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .slider span.shadow {
   position: absolute;
   top: -20px;
@@ -610,7 +610,7 @@ body.tool .slider span.shadow {
   background-image: -ms-linear-gradient(rgba(0, 0, 0, 0), #000000);
   background-image: linear-gradient(rgba(0, 0, 0, 0), #000000);
 }
-/* line 205, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 205, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .slider span.canvas {
   position: relative;
   display: block;
@@ -629,7 +629,7 @@ body.tool .slider span.canvas {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 214, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 214, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .slider div.horizontal {
   position: absolute;
   left: 100px;
@@ -639,7 +639,7 @@ body.tool .slider div.horizontal {
   height: 15px;
   z-index: 10;
 }
-/* line 223, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 223, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .slider div.horizontal a.ui-slider-handle {
   position: absolute;
   width: 89px;
@@ -655,11 +655,11 @@ body.tool .slider div.horizontal a.ui-slider-handle {
   z-index: 10;
   background-position: 0 -41px;
 }
-/* line 237, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 237, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .slider div.horizontal a.ui-slider-handle:focus {
   outline: none;
 }
-/* line 241, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 241, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .slider a.animation {
   position: absolute;
   display: block;
@@ -688,7 +688,7 @@ body.tool .slider a.animation {
   background-image: -ms-linear-gradient(#f3f3f3, #cacaca);
   background-image: linear-gradient(#f3f3f3, #cacaca);
 }
-/* line 257, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 257, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .slider a.animation span {
   position: absolute;
   top: 50%;
@@ -698,11 +698,11 @@ body.tool .slider a.animation span {
   width: 12px;
   background-position: 0 -147px;
 }
-/* line 266, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 266, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .slider a.animation.play span {
   background-position: 0 -134px;
 }
-/* line 267, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 267, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .slider a.animation:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cacaca), color-stop(100%, #f3f3f3));
   background-image: -webkit-linear-gradient(#cacaca, #f3f3f3);
@@ -711,7 +711,7 @@ body.tool .slider a.animation:hover {
   background-image: -ms-linear-gradient(#cacaca, #f3f3f3);
   background-image: linear-gradient(#cacaca, #f3f3f3);
 }
-/* line 268, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 268, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .slider a.animation:active {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #aaaaaa), color-stop(100%, #f3f3f3));
   background-image: -webkit-linear-gradient(#aaaaaa, #f3f3f3);
@@ -720,17 +720,16 @@ body.tool .slider a.animation:active {
   background-image: -ms-linear-gradient(#aaaaaa, #f3f3f3);
   background-image: linear-gradient(#aaaaaa, #f3f3f3);
 }
-/* line 271, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 271, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .slider table {
   position: absolute;
   top: 27px;
   left: 28px;
   right: 28px;
 }
-/* line 280, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 280, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .ui-autocomplete {
-  width: 227px;
-  padding: 60px 18px 0 18px;
+  width: 263px;
   border: 1px solid #333333;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -739,23 +738,26 @@ body.tool .ui-autocomplete {
   -khtml-border-radius: 3px;
   border-radius: 3px;
   list-style: none;
-  z-index: 100000;
+  pointer-events: none;
 }
-/* line 289, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 287, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .ui-autocomplete li {
   position: relative;
-  width: 100%;
-  padding: 0 0 9px;
+  display: block;
+  padding: 0 18px 9px;
+  background: rgba(0, 0, 0, 0.9);
+  pointer-events: auto;
 }
-/* line 293, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 294, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .ui-autocomplete li a {
   position: relative;
   display: block;
   width: 100%;
   padding: 0 0 8px 0;
   font: normal 15px "Open Sans";
+  pointer-events: auto;
 }
-/* line 299, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 302, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .ui-autocomplete li a span {
   position: absolute;
   left: 0;
@@ -769,19 +771,19 @@ body.tool .ui-autocomplete li a span {
   border-radius: 5px;
   background: #1b1c1c;
 }
-/* line 309, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 312, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .ui-autocomplete li a:hover, body.tool .ui-autocomplete li a.ui-state-hover, body.tool .ui-autocomplete li a.ui-state-active {
   color: white;
 }
-/* line 309, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 312, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .ui-autocomplete li a:hover span, body.tool .ui-autocomplete li a.ui-state-hover span, body.tool .ui-autocomplete li a.ui-state-active span {
   background: #FF3333;
 }
-/* line 315, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 318, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool form {
   position: relative;
 }
-/* line 318, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 321, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool form input[type="text"] {
   display: block;
   padding: 11px 22px 11px 9px;
@@ -809,7 +811,7 @@ body.tool form input[type="text"] {
   transition-duration: 300ms;
   outline: none;
 }
-/* line 331, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 334, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool form input[type="text"]:focus {
   border: 1px solid #FFFFFF;
   -moz-box-shadow: rgba(255, 255, 255, 0.8) 0 0 5px 0;
@@ -824,7 +826,7 @@ body.tool form input[type="text"]:focus {
   -o-transition-duration: 300ms;
   transition-duration: 300ms;
 }
-/* line 338, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 341, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool form input[type="submit"] {
   position: absolute;
   top: 19px;
@@ -834,15 +836,15 @@ body.tool form input[type="submit"] {
   background-position: 0 -106px;
   border: none;
 }
-/* line 346, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 349, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool form input[type="submit"]:focus {
   outline: none;
 }
-/* line 350, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 353, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool form:hover input[type="text"] {
   border: 1px solid rgba(255, 255, 255, 0.7);
 }
-/* line 356, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 359, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool #graph {
   display: inline-block;
   vertical-align: top;
@@ -851,7 +853,7 @@ body.tool #graph {
   margin: 40px 0 0;
   border-bottom: 1px solid white;
 }
-/* line 363, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 366, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.select {
   position: relative;
   display: inline-block;
@@ -872,27 +874,27 @@ body.tool span.select {
   color: white;
   letter-spacing: -1px;
 }
-/* line 374, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 377, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.select:hover {
   border-color: rgba(255, 255, 255, 0.7);
 }
-/* line 375, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 378, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.select.active {
   border-color: rgba(255, 255, 255, 0.7);
 }
-/* line 375, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 378, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.select.active div.options {
   display: block;
 }
-/* line 377, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 380, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.select a.init {
   height: 18px;
-  padding: 0 10px 0 5px;
+  padding: 0 12px 0 5px;
   margin: 0;
   background-position: 100% -13px;
   border: none;
 }
-/* line 385, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 388, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.select div.options {
   position: absolute;
   display: none;
@@ -903,17 +905,17 @@ body.tool span.select div.options {
   background: url("/img/layout/options.png") repeat-y -277px 0;
   z-index: 200000;
 }
-/* line 395, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 398, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.select div.options ul {
   display: block;
   padding: 0 30px;
 }
-/* line 399, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 402, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.select div.options ul li {
   padding: 8px 0;
   border-bottom: 1px solid #757575;
 }
-/* line 402, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 405, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.select div.options ul li a {
   padding: 0;
   margin: 0;
@@ -921,16 +923,16 @@ body.tool span.select div.options ul li a {
   color: #CCCCCC;
   border: none;
 }
-/* line 402, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 405, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.select div.options ul li a:hover {
   color: white;
   border: none;
 }
-/* line 403, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 406, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.select div.options ul li:last-child {
   border: none;
 }
-/* line 407, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 410, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.select div.options div.t {
   position: absolute;
   top: -22px;
@@ -939,7 +941,7 @@ body.tool span.select div.options div.t {
   height: 22px;
   background: url("/img/layout/options.png") right 0;
 }
-/* line 408, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 411, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.select div.options div.b {
   position: absolute;
   bottom: -22px;
@@ -948,13 +950,13 @@ body.tool span.select div.options div.b {
   height: 22px;
   background: url("/img/layout/options.png") left 0;
 }
-/* line 413, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 416, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.countries {
   list-style: none;
   width: 100%;
   letter-spacing: -4px;
 }
-/* line 418, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 421, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.countries li {
   position: relative;
   display: inline-block;
@@ -965,7 +967,7 @@ body.tool ul.countries li {
   padding: 0 0 9px;
   letter-spacing: 0;
 }
-/* line 425, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 428, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.countries li a {
   position: relative;
   display: block;
@@ -973,7 +975,7 @@ body.tool ul.countries li a {
   padding: 0 0 8px 0;
   font: normal 15px "Open Sans";
 }
-/* line 431, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 434, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.countries li a span {
   position: absolute;
   left: 0;
@@ -988,24 +990,24 @@ body.tool ul.countries li a span {
   background: #1b1c1c;
   -webkit-transition: box-shadow 0.2s linear;
 }
-/* line 440, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 443, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.countries li a .growing {
   -webkit-transition: box-shadow 0.2s linear;
   -moz-box-shadow: #ff3333 0 0 5px 0;
   -webkit-box-shadow: #ff3333 0 0 5px 0;
   box-shadow: #ff3333 0 0 5px 0;
 }
-/* line 444, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 447, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.countries li a:hover span {
   background: #FF3333;
 }
-/* line 450, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 453, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.stories {
   list-style: none;
   width: 100%;
   letter-spacing: -4px;
 }
-/* line 455, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 458, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.stories li {
   position: relative;
   display: inline-block;
@@ -1019,11 +1021,11 @@ body.tool ul.stories li {
   padding: 0;
   letter-spacing: 0;
 }
-/* line 465, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 468, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.stories li img {
   width: 242px;
 }
-/* line 467, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 470, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.stories li a {
   position: absolute;
   left: 0;
@@ -1037,11 +1039,11 @@ body.tool ul.stories li a {
   z-index: 20;
   background: url("/img/layout/black_hack.png") repeat-y;
 }
-/* line 477, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 480, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.stories li a:hover span {
   color: white;
 }
-/* line 479, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 482, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.stories li a span {
   position: relative;
   margin: 0;
@@ -1061,7 +1063,7 @@ body.tool ul.stories li a span {
   -khtml-border-radius: 0;
   border-radius: 0;
 }
-/* line 494, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 497, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.stories li p.over {
   position: absolute;
   left: 0;
@@ -1082,24 +1084,24 @@ body.tool ul.stories li p.over {
   -khtml-border-radius: 0;
   border-radius: 0;
 }
-/* line 511, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 514, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.stories.long li {
   display: block;
   width: 100%;
   height: 180px;
 }
-/* line 515, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 518, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool ul.stories.long li img {
   width: 100%;
 }
-/* line 520, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 523, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool div.statistics {
   position: relative;
   width: 100%;
   height: 27px;
   margin: 1px 0 0 0;
 }
-/* line 525, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 528, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool div.statistics span {
   position: relative;
   display: inline-block;
@@ -1108,15 +1110,15 @@ body.tool div.statistics span {
   *display: inline;
   height: 27px;
 }
-/* line 529, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 532, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool div.statistics span.green {
   background: #00CC66;
 }
-/* line 530, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 533, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool div.statistics span.red {
   background: #FF3333;
 }
-/* line 532, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 535, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool div.statistics p {
   position: absolute;
   letter-spacing: -1px;
@@ -1125,27 +1127,27 @@ body.tool div.statistics p {
   z-index: 3;
   line-height: 24px;
 }
-/* line 536, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 539, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool div.layers {
   display: none!important;
 }
-/* line 545, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 548, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool section.info {
   width: 460px;
   padding: 0 0 50px;
 }
-/* line 548, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 551, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool section.info p {
   margin: 40px 0 0;
   font-size: 23px;
   color: #CCCCCC;
   line-height: 28px;
 }
-/* line 551, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 554, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool section.partners ul {
   letter-spacing: -4px;
 }
-/* line 552, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 555, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool section.partners li {
   display: inline-block;
   vertical-align: top;
@@ -1155,32 +1157,32 @@ body.tool section.partners li {
   margin: 0 50px 0 0;
   letter-spacing: 0;
 }
-/* line 552, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 555, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool section.partners li:last-child {
   margin: none;
 }
-/* line 553, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 556, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool section.partners p {
   margin: 15px 0 0 0;
   font-size: 17px;
   color: #CCCCCC;
 }
-/* line 554, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 557, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool section.partners a {
   display: block;
   width: 154px;
   height: 76px;
 }
-/* line 559, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 562, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool footer {
   position: relative;
   padding: 30px 0 150px;
 }
-/* line 562, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 565, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool footer ul {
   width: auto;
 }
-/* line 564, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 567, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool footer ul li {
   display: inline-block;
   vertical-align: top;
@@ -1188,13 +1190,13 @@ body.tool footer ul li {
   *display: inline;
   margin: 0 60px 0 0;
 }
-/* line 567, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 570, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool footer ul li nav {
   width: 240px;
   margin: 0;
   letter-spacing: -4px;
 }
-/* line 571, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 574, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool footer ul li nav a {
   display: inline-block;
   vertical-align: top;
@@ -1204,18 +1206,18 @@ body.tool footer ul li nav a {
   letter-spacing: 0;
   font: normal 13px "Open Sans";
 }
-/* line 576, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 579, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool footer h4 {
   color: #373939;
   font: bold 11px "Open Sans";
   font-weight: 800;
 }
 
-/* line 582, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 585, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front {
   background-color: #191919;
 }
-/* line 585, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 588, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error {
   position: absolute;
   top: 50%;
@@ -1223,19 +1225,19 @@ body.front article.error {
   margin: -250px 0 0 -281px;
   width: 562px;
 }
-/* line 592, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 595, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error header {
   display: block;
 }
-/* line 594, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 597, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error header h1 {
   margin: 0 0 0 12px;
 }
-/* line 599, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 602, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section {
   position: relative;
 }
-/* line 602, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 605, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section.empty {
   display: inline-block;
   width: 530px;
@@ -1249,12 +1251,12 @@ body.front article.error section.empty {
   -khtml-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 609, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 612, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section.empty div.band {
   left: -62px;
   bottom: 40px;
 }
-/* line 610, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 613, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section.empty em {
   display: block;
   font: bold 250px "Open Sans";
@@ -1262,7 +1264,7 @@ body.front article.error section.empty em {
   text-align: center;
   line-height: 290px;
 }
-/* line 613, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 616, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band {
   position: absolute;
   bottom: 74px;
@@ -1272,7 +1274,7 @@ body.front article.error section div.band {
   padding: 20px 75px;
   background-position: 0 0;
 }
-/* line 622, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 625, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band h2 {
   display: block;
   font: bold 15px "Open Sans";
@@ -1281,51 +1283,51 @@ body.front article.error section div.band h2 {
   text-align: center;
   line-height: 15px;
 }
-/* line 623, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 626, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band p {
   margin: 3px 0 0 0;
   text-align: center;
   color: #7B1718;
 }
-/* line 627, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 630, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band p a {
   color: #7B1718;
   text-decoration: underline;
 }
-/* line 630, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_page.scss */
+/* line 633, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band p a:hover {
   color: #3F0B0C;
 }
 
-/* line 2, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 2, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .bubble_map {
   width: 1100px;
   height: 550px;
   background: url("/img/home_map.jpg") repeat-x -70px -95px black;
 }
-/* line 7, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 7, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .bubble_map circle {
   fill: #FF3333;
 }
-/* line 11, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 11, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .bubble_map circle.ortho {
   fill: #971c20;
 }
-/* line 14, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 14, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .bubble_map text {
   opacity: 0;
   fill: #FFF;
   color: #FFF;
   font: bold 20px sans-serif;
 }
-/* line 20, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 20, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .bubble_map text.small {
   fill: #FFF;
   color: #FFF;
   font: 10px sans-serif;
 }
 
-/* line 27, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 27, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .background_map {
   position: absolute;
   width: 100%;
@@ -1335,20 +1337,42 @@ body.front article.error section div.band p a:hover {
   right: 0;
   bottom: 0;
   z-index: 1;
+  background: black;
 }
 
-/* line 38, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 39, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container {
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  background: black;
 }
-/* line 43, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 46, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .map {
   width: 100%;
   height: 100%;
 }
-/* line 49, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 51, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+.map_container div.mamufas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 200%;
+  height: 100%;
+  margin: 0 0 0 -400px;
+  background-image: -webkit-gradient(radial, 25% 450px, 0, 25% 450px, 600, color-stop(11.667%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.95)));
+  background-image: -webkit-radial-gradient(25% 450px, rgba(0, 0, 0, 0) 70px, rgba(0, 0, 0, 0.95) 600px);
+  background-image: -moz-radial-gradient(25% 450px, rgba(0, 0, 0, 0) 70px, rgba(0, 0, 0, 0.95) 600px);
+  background-image: -o-radial-gradient(25% 450px, rgba(0, 0, 0, 0) 70px, rgba(0, 0, 0, 0.95) 600px);
+  background-image: -ms-radial-gradient(25% 450px, rgba(0, 0, 0, 0) 70px, rgba(0, 0, 0, 0.95) 600px);
+  background-image: radial-gradient(25% 450px, rgba(0, 0, 0, 0) 70px, rgba(0, 0, 0, 0.95) 600px);
+  z-index: 10;
+  pointer-events: none;
+}
+/* line 65, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .cartodb_logo {
   display: block;
   position: absolute;
@@ -1357,7 +1381,7 @@ body.front article.error section div.band p a:hover {
   width: 69px;
   height: 27px;
 }
-/* line 59, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 75, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.layer_editor {
   display: none;
   position: absolute;
@@ -1365,21 +1389,21 @@ body.front article.error section div.band p a:hover {
   right: 30px;
   z-index: 21;
 }
-/* line 66, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 82, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.layer_editor .layer_raster {
   display: block;
   width: 22px;
   height: 23px;
   background: url("../img/layers_editor.png") no-repeat 0 0;
 }
-/* line 72, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 88, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.layer_editor .layer_google_maps {
   display: block;
   width: 22px;
   height: 22px;
   background: url("../img/layers_editor.png") no-repeat 0 -23px;
 }
-/* line 81, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 97, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.zoom_control {
   display: none;
   position: absolute;
@@ -1391,7 +1415,7 @@ body.front article.error section div.band p a:hover {
   z-index: 10;
   letter-spacing: -4px;
 }
-/* line 92, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 108, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.zoom_control a {
   display: inline-block;
   vertical-align: top;
@@ -1412,11 +1436,11 @@ body.front article.error section div.band p a:hover {
   -khtml-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 103, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 119, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.zoom_control a:hover {
   border-color: white;
 }
-/* line 105, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 121, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.zoom_control a.zoom_in {
   -moz-border-radius-topleft: 2px;
   -webkit-border-top-left-radius: 2px;
@@ -1443,7 +1467,7 @@ body.front article.error section div.band p a:hover {
   -khtml-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-/* line 109, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 125, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.zoom_control a.zoom_out {
   margin: 0 10px 0 0;
   border-left: none;
@@ -1472,24 +1496,24 @@ body.front article.error section div.band p a:hover {
   -khtml-border-bottom-right-radius: 2px;
   border-bottom-right-radius: 2px;
 }
-/* line 114, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 130, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.zoom_control a.zoom_out:hover {
   padding: 5px 5px 5px 4px;
   border-left: 1px solid white;
 }
-/* line 122, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 138, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.crosshair {
   display: none;
   position: absolute;
   top: 50%;
   left: 50%;
 }
-/* line 127, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 143, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.crosshair img {
   margin-left: -7px;
   margin-top: -7px;
 }
-/* line 134, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 150, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text {
   position: absolute;
   display: none;
@@ -1498,26 +1522,26 @@ body.front article.error section div.band p a:hover {
   width: 193px;
   height: 80px;
 }
-/* line 144, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 160, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text .top {
   padding: 18px 18px 0 18px;
   width: 100%;
   height: 0px;
 }
-/* line 151, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 167, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text .center {
   padding: 0px 18px 0 18px;
   width: 100%;
   float: left;
 }
-/* line 157, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 173, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text .bottom {
   padding: 0px 18px 18px 18px;
   width: 100%;
   float: left;
   height: 48px;
 }
-/* line 165, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 181, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text h1.name {
   font: bold 13px "WhitneyBookRegular","Myriad Pro";
   color: #333333;
@@ -1526,18 +1550,18 @@ body.front article.error section div.band p a:hover {
   letter-spacing: -1px;
   padding-bottom: 5px;
 }
-/* line 172, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 188, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text h1.name a {
   color: #333333;
   text-decoration: none;
 }
-/* line 177, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 193, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text .close {
   float: right;
   width: 12px;
   height: 17px;
 }
-/* line 183, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 199, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text #add_protected {
   float: left;
   width: auto;
@@ -1551,18 +1575,18 @@ body.front article.error section div.band p a:hover {
   text-shadow: 0 1px 0 #3c7d7d;
   text-decoration: none;
 }
-/* line 197, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 213, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text #add_protected span {
   float: left;
   width: auto;
   height: 14px;
   padding: 8px 12px 8px 0;
 }
-/* line 205, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 221, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text #add_protected:hover {
   text-decoration: underline;
 }
-/* line 209, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 225, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .area_popup {
   position: absolute;
   display: none;
@@ -1571,7 +1595,7 @@ body.front article.error section div.band p a:hover {
   width: 150px;
   height: 30px;
 }
-/* line 216, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 232, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .area_popup h1, .map_container .area_popup h2 {
   background: #E33;
   letter-spacing: 0;
@@ -1581,18 +1605,18 @@ body.front article.error section div.band p a:hover {
   line-height: 1.2em;
   font-family: sans-serif;
 }
-/* line 225, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 241, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .area_popup h1 {
   display: inline;
   font-size: 21px;
   padding: 3px 5px;
 }
-/* line 230, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 246, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .area_popup h2 {
   font-size: 13px;
   padding: 4px;
 }
-/* line 236, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 252, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .search {
   display: none;
   position: absolute;
@@ -1603,7 +1627,7 @@ body.front article.error section div.band p a:hover {
   z-index: 10;
   padding: 5px 0px 3px 8px;
 }
-/* line 246, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 262, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .search h1 {
   margin: 0;
   padding: 0;
@@ -1613,7 +1637,7 @@ body.front article.error section div.band p a:hover {
   color: #333333;
   letter-spacing: -1px;
 }
-/* line 255, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 271, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .search input {
   outline: none;
   width: 105px;
@@ -1621,11 +1645,11 @@ body.front article.error section div.band p a:hover {
   border: 0;
   font: normal 13px "Helvetica";
 }
-/* line 262, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 278, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .search a {
   text-decoration: none;
 }
-/* line 267, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 283, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers {
   display: none;
   position: absolute;
@@ -1634,7 +1658,7 @@ body.front article.error section div.band p a:hover {
   width: 224px;
   z-index: 100;
 }
-/* line 275, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 291, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers a.view {
   float: right;
   display: block;
@@ -1643,7 +1667,7 @@ body.front article.error section div.band p a:hover {
   padding: 0 0 0 15px;
   text-decoration: none;
 }
-/* line 284, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 300, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers a.view span {
   float: left;
   height: 13px;
@@ -1654,11 +1678,11 @@ body.front article.error section div.band p a:hover {
   text-indent: 0px;
   text-decoration: none;
 }
-/* line 295, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 311, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers a.view span strong {
   font: bold 13px "WhitneyBold","Myriad Pro";
 }
-/* line 301, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 317, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show {
   position: absolute;
   top: 21px;
@@ -1667,13 +1691,13 @@ body.front article.error section div.band p a:hover {
   width: 224px;
   z-index: -1;
 }
-/* line 309, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 325, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show span.top {
   float: right;
   width: 100%;
   height: 12px;
 }
-/* line 316, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 332, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul {
   float: right;
   width: 212px;
@@ -1682,7 +1706,7 @@ body.front article.error section div.band p a:hover {
   list-style: none;
   text-align: left;
 }
-/* line 325, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 341, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul:last-child {
   border: none;
   -moz-border-radius-bottomleft: 4px;
@@ -1698,7 +1722,7 @@ body.front article.error section div.band p a:hover {
   -khtml-border-bottom-right-radius: 4px;
   border-bottom-right-radius: 4px;
 }
-/* line 330, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 346, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li {
   padding: 5px 9px;
   border: none;
@@ -1706,32 +1730,32 @@ body.front article.error section div.band p a:hover {
   font: normal 13px "Helvetica Neue";
   color: #333333;
 }
-/* line 337, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 353, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li span.color {
   width: 7px;
   height: 7px;
   margin-right: 10px;
   display: inline-block;
 }
-/* line 370, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 386, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.last {
   border: none;
 }
-/* line 374, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 390, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li:hover {
   background-color: #EDEDED;
   cursor: pointer!important;
 }
-/* line 380, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 396, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.enabled {
   font-weight: bold;
 }
-/* line 384, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 400, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.moving {
   border-top: 1px solid #CCCCCC;
   border-bottom: 1px solid #CCCCCC;
 }
-/* line 390, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 406, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul a.expand {
   display: block;
   width: 100%;
@@ -1740,19 +1764,19 @@ body.front article.error section div.band p a:hover {
   font-size: 0;
   line-height: 0;
 }
-/* line 398, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 414, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul a.expand:hover {
   background-position: 0 -1452px;
 }
-/* line 406, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 422, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers.open a.view {
   background-position: left -1072px;
 }
-/* line 409, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 425, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers.open a.view span {
   background-position: right -1072px;
 }
-/* line 414, /Users/javi/wrk/viz/wri/wri/app/css_src/partials/_map.scss */
+/* line 430, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers.open .show {
   display: block;
 }
