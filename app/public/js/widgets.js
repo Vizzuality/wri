@@ -364,11 +364,8 @@
   //   source: [{name:'vizz',url:'#where'},{name:'asdf asdf asdf asdf',url:'#where'},{name:'asdf asdf asdf asdf asdf',url:'#where'},{name:'as dfas fasd fdsaf',url:'#where'}]
   // });
 
-  setTimeout(function(){
-    $('span.select').dropdown('update',[{name:'asdf asdf asdf asdf asdf',url:'#where'}]);
-    alert('jamon');
-  },5000);
-  
-  
-
+  // setTimeout(function(){
+  //   $('span.select').dropdown('update',[{name:'asdf asdf asdf asdf asdf',url:'#where'}]);
+  //   alert('jamon');
+  // },5000);
 })( jQuery, window );
