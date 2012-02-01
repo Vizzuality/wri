@@ -46,6 +46,7 @@
   .map {
     width: 100%;
     height: 100%;
+    background:black;
   }
 
   div.mamufas {
@@ -117,6 +118,7 @@
       background:#060708;
       @include border-radius(2px);
       &:hover {border-color:white;}
+      &:active {color:black; background:white;}
 
       &.zoom_in {
         @include border-left-radius(2px);
@@ -130,6 +132,10 @@
         &:hover {
           padding:5px 5px 5px 4px;
           border-left:1px solid white;
+        }
+        &:active {
+          padding:5px;
+          border-left:none;
         }
       }
     }

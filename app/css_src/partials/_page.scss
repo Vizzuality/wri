@@ -332,7 +332,7 @@ body.tool {
       @include transition-duration(300ms);
       outline: none;
       &:focus {
-        border: 1px solid #FFFFFF;
+        border: 1px solid #FFFFFF!important;
         @include box-shadow(rgba(255,255,255,0.8), 0, 0, 5px, 0);
         @include transition-property(box-shadow);
         @include transition-duration(300ms);
