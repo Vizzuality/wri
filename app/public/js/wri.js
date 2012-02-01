@@ -111,6 +111,7 @@ App.modules.WRI= function(app) {
                 }).render().el
              );
              self.el.fadeIn();
+             self.set_time(self.time);
            });
        }
 
@@ -231,6 +232,7 @@ App.modules.WRI= function(app) {
 
             // slider
             this.slider = new Slider({el: $(".slider")});
+            this.slider.set_time(0);
             this.slider.bind('change', function(month) {
                 // timestamp to month
                 self.map.set_time(month);
@@ -279,6 +281,7 @@ App.modules.WRI= function(app) {
             var self = this;
             var c = this.country;
             self.map.show_country(c.get('name_engli'), c.get('iso'));
+            //self.slider.set_time(0);
        },
 
        move_map_to: function(c) {
@@ -290,6 +293,7 @@ App.modules.WRI= function(app) {
        on_route: function(country, state) {
             var self = this;
 
+            this.slider.stop();
             var c = this.country;
             c.set({'name_engli': country}, {silent: true});
             if(state) {

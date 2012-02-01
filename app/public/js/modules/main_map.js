@@ -38,8 +38,8 @@ App.modules.MainMap = function(app) {
                 /*.data(countries.filter(
                     function(d) { return d.get('cumm'); }
                 ))*/
-                //.transition()
-                //.duration(30)
+                .transition()
+                .duration(300)
                 .attr("r", function(d) {
                         return self.def_to_size(d.time_series_deltas()[month]);
                 });

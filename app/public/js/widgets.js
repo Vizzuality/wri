@@ -166,6 +166,10 @@
     update: function(timestamp) {
       var $el = this.find('div.horizontal');
       $el.slider('value',timestamp);
+    },
+    stop: function() {
+      var $el = this.find('a.animation');
+      Core._stopAnimation($el);
     }
   };
 
