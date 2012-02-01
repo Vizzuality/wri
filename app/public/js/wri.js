@@ -26,15 +26,53 @@ App.modules.WRI= function(app) {
     }
 
    var CountryPanel = Backbone.View.extend({
+       START:  new Date(2006, 0, 1),
+       MONTHS: [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
+       
 
        initialize: function() {
            this.template = this.el.html();
            this.model.bind('change', this.render, this);
            this.stories = this.options.stories;
+           this.time = 0;
        },
 
        set_time: function(t) {
+           this.time = t;
            this.graph.set_time(t);
+           this.set_headlines();
+       },
+
+       month_to_date: function(month) {
+          var months = month % 12;
+          var years = (month/12)>>0;
+          return new Date(this.START.getFullYear() + years, this.START.getMonth() + months, 1);
+       },
+
+       set_headlines: function() {
+           var six = 100*this.model.change_since(this.time - 6, this.time);
+           var last = 100*this.model.change_since(this.time - 1, this.time);
+           var stat = {
+               '.inc_last_six_months': six.toFixed(0),
+               '.inc_last_month': last.toFixed(0)
+           };
+           _(stat).each(function(percent, el) {
+                this.$(el).html(percent);
+                if(percent > 3) {
+                    this.$(el + "_percent")
+                        .removeClass('green')
+                        .addClass('red');
+                } else {
+                    this.$(el + "_percent")
+                        .addClass('green')
+                        .removeClass('red');
+                }
+           });
+           var d = this.month_to_date(this.time);
+           this.$('.inc_date').html(
+                this.MONTHS[d.getMonth()] + " " +
+                d.getFullYear()
+           );
        },
 
        render: function() {

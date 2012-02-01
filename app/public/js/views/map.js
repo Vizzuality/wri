@@ -17,13 +17,15 @@ function CoordMapType() {
 }
 
 CoordMapType.prototype.tileSize = new google.maps.Size(256,256);
-CoordMapType.prototype.maxZoom = 19;
+CoordMapType.prototype.maxZoom = 8;
 
 CoordMapType.prototype.getTile = function(coord, zoom, ownerDocument) {
   var img = new Image();
-  var src = "http://a.tiles.mapbox.com/v3/mapbox.mapbox-light/{z}/{x}/{y}.png";
+  //var src = "http://a.tiles.mapbox.com/v3/mapbox.mapbox-light/
+  var src = "http://wri-basemap.s3.amazonaws.com/tiles/{z}/{x}/{y}.png";
+  var tiles = 1 << zoom;
   img.src = src.replace('{x}', coord.x)
-     .replace('{y}', coord.y)
+     .replace('{y}', tiles - coord.y - 1)
      .replace('{z}', zoom);
   return img;
 };
@@ -68,7 +70,7 @@ var MapView = Backbone.View.extend({
        var coordinateMapType = new CoordMapType();
        this.map.mapTypes.set('coordinate',coordinateMapType);
 
-       //this.map.setMapTypeId('coordinate');
+       this.map.setMapTypeId('coordinate');
        google.maps.event.addListener(this.map, 'center_changed', this.center_changed);
        google.maps.event.addListener(this.map, 'zoom_changed', this.zoom_changed);
        google.maps.event.addListener(this.map, 'click', this.click);
