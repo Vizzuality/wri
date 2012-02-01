@@ -1337,40 +1337,42 @@ body.front article.error section div.band p a:hover {
   right: 0;
   bottom: 0;
   z-index: 1;
+  background: black;
 }
 
-/* line 38, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 39, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background: black;
 }
-/* line 44, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 46, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .map {
   width: 100%;
   height: 100%;
 }
-/* line 49, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 51, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.mamufas {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100%;
+  width: 200%;
   height: 100%;
-  margin: 0 0 0 -500px;
-  background-image: -webkit-gradient(radial, 50% 450px, 0, 50% 450px, 600, color-stop(11.667%, rgba(0, 0, 0, 0)), color-stop(100%, #000000));
-  background-image: -webkit-radial-gradient(50% 450px, rgba(0, 0, 0, 0) 70px, #000000 600px);
-  background-image: -moz-radial-gradient(50% 450px, rgba(0, 0, 0, 0) 70px, #000000 600px);
-  background-image: -o-radial-gradient(50% 450px, rgba(0, 0, 0, 0) 70px, #000000 600px);
-  background-image: -ms-radial-gradient(50% 450px, rgba(0, 0, 0, 0) 70px, #000000 600px);
-  background-image: radial-gradient(50% 450px, rgba(0, 0, 0, 0) 70px, #000000 600px);
+  margin: 0 0 0 -400px;
+  background-image: -webkit-gradient(radial, 25% 450px, 0, 25% 450px, 600, color-stop(11.667%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.95)));
+  background-image: -webkit-radial-gradient(25% 450px, rgba(0, 0, 0, 0) 70px, rgba(0, 0, 0, 0.95) 600px);
+  background-image: -moz-radial-gradient(25% 450px, rgba(0, 0, 0, 0) 70px, rgba(0, 0, 0, 0.95) 600px);
+  background-image: -o-radial-gradient(25% 450px, rgba(0, 0, 0, 0) 70px, rgba(0, 0, 0, 0.95) 600px);
+  background-image: -ms-radial-gradient(25% 450px, rgba(0, 0, 0, 0) 70px, rgba(0, 0, 0, 0.95) 600px);
+  background-image: radial-gradient(25% 450px, rgba(0, 0, 0, 0) 70px, rgba(0, 0, 0, 0.95) 600px);
   z-index: 10;
   pointer-events: none;
 }
-/* line 63, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 65, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .cartodb_logo {
   display: block;
   position: absolute;
@@ -1379,7 +1381,7 @@ body.front article.error section div.band p a:hover {
   width: 69px;
   height: 27px;
 }
-/* line 73, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 75, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.layer_editor {
   display: none;
   position: absolute;
@@ -1387,21 +1389,21 @@ body.front article.error section div.band p a:hover {
   right: 30px;
   z-index: 21;
 }
-/* line 80, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 82, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.layer_editor .layer_raster {
   display: block;
   width: 22px;
   height: 23px;
   background: url("../img/layers_editor.png") no-repeat 0 0;
 }
-/* line 86, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 88, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.layer_editor .layer_google_maps {
   display: block;
   width: 22px;
   height: 22px;
   background: url("../img/layers_editor.png") no-repeat 0 -23px;
 }
-/* line 95, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 97, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.zoom_control {
   display: none;
   position: absolute;
@@ -1413,7 +1415,7 @@ body.front article.error section div.band p a:hover {
   z-index: 10;
   letter-spacing: -4px;
 }
-/* line 106, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 108, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.zoom_control a {
   display: inline-block;
   vertical-align: top;
@@ -1434,11 +1436,11 @@ body.front article.error section div.band p a:hover {
   -khtml-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 117, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 119, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.zoom_control a:hover {
   border-color: white;
 }
-/* line 119, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 121, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.zoom_control a.zoom_in {
   -moz-border-radius-topleft: 2px;
   -webkit-border-top-left-radius: 2px;
@@ -1465,7 +1467,7 @@ body.front article.error section div.band p a:hover {
   -khtml-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-/* line 123, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 125, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.zoom_control a.zoom_out {
   margin: 0 10px 0 0;
   border-left: none;
@@ -1494,24 +1496,24 @@ body.front article.error section div.band p a:hover {
   -khtml-border-bottom-right-radius: 2px;
   border-bottom-right-radius: 2px;
 }
-/* line 128, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 130, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.zoom_control a.zoom_out:hover {
   padding: 5px 5px 5px 4px;
   border-left: 1px solid white;
 }
-/* line 136, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 138, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.crosshair {
   display: none;
   position: absolute;
   top: 50%;
   left: 50%;
 }
-/* line 141, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 143, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container div.crosshair img {
   margin-left: -7px;
   margin-top: -7px;
 }
-/* line 148, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 150, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text {
   position: absolute;
   display: none;
@@ -1520,26 +1522,26 @@ body.front article.error section div.band p a:hover {
   width: 193px;
   height: 80px;
 }
-/* line 158, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 160, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text .top {
   padding: 18px 18px 0 18px;
   width: 100%;
   height: 0px;
 }
-/* line 165, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 167, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text .center {
   padding: 0px 18px 0 18px;
   width: 100%;
   float: left;
 }
-/* line 171, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 173, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text .bottom {
   padding: 0px 18px 18px 18px;
   width: 100%;
   float: left;
   height: 48px;
 }
-/* line 179, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 181, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text h1.name {
   font: bold 13px "WhitneyBookRegular","Myriad Pro";
   color: #333333;
@@ -1548,18 +1550,18 @@ body.front article.error section div.band p a:hover {
   letter-spacing: -1px;
   padding-bottom: 5px;
 }
-/* line 186, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 188, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text h1.name a {
   color: #333333;
   text-decoration: none;
 }
-/* line 191, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 193, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text .close {
   float: right;
   width: 12px;
   height: 17px;
 }
-/* line 197, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 199, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text #add_protected {
   float: left;
   width: auto;
@@ -1573,18 +1575,18 @@ body.front article.error section div.band p a:hover {
   text-shadow: 0 1px 0 #3c7d7d;
   text-decoration: none;
 }
-/* line 211, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 213, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text #add_protected span {
   float: left;
   width: auto;
   height: 14px;
   padding: 8px 12px 8px 0;
 }
-/* line 219, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 221, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .popup_text #add_protected:hover {
   text-decoration: underline;
 }
-/* line 223, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 225, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .area_popup {
   position: absolute;
   display: none;
@@ -1593,7 +1595,7 @@ body.front article.error section div.band p a:hover {
   width: 150px;
   height: 30px;
 }
-/* line 230, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 232, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .area_popup h1, .map_container .area_popup h2 {
   background: #E33;
   letter-spacing: 0;
@@ -1603,18 +1605,18 @@ body.front article.error section div.band p a:hover {
   line-height: 1.2em;
   font-family: sans-serif;
 }
-/* line 239, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 241, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .area_popup h1 {
   display: inline;
   font-size: 21px;
   padding: 3px 5px;
 }
-/* line 244, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 246, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .area_popup h2 {
   font-size: 13px;
   padding: 4px;
 }
-/* line 250, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 252, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .search {
   display: none;
   position: absolute;
@@ -1625,7 +1627,7 @@ body.front article.error section div.band p a:hover {
   z-index: 10;
   padding: 5px 0px 3px 8px;
 }
-/* line 260, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 262, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .search h1 {
   margin: 0;
   padding: 0;
@@ -1635,7 +1637,7 @@ body.front article.error section div.band p a:hover {
   color: #333333;
   letter-spacing: -1px;
 }
-/* line 269, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 271, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .search input {
   outline: none;
   width: 105px;
@@ -1643,11 +1645,11 @@ body.front article.error section div.band p a:hover {
   border: 0;
   font: normal 13px "Helvetica";
 }
-/* line 276, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 278, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .search a {
   text-decoration: none;
 }
-/* line 281, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 283, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers {
   display: none;
   position: absolute;
@@ -1656,7 +1658,7 @@ body.front article.error section div.band p a:hover {
   width: 224px;
   z-index: 100;
 }
-/* line 289, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 291, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers a.view {
   float: right;
   display: block;
@@ -1665,7 +1667,7 @@ body.front article.error section div.band p a:hover {
   padding: 0 0 0 15px;
   text-decoration: none;
 }
-/* line 298, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 300, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers a.view span {
   float: left;
   height: 13px;
@@ -1676,11 +1678,11 @@ body.front article.error section div.band p a:hover {
   text-indent: 0px;
   text-decoration: none;
 }
-/* line 309, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 311, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers a.view span strong {
   font: bold 13px "WhitneyBold","Myriad Pro";
 }
-/* line 315, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 317, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show {
   position: absolute;
   top: 21px;
@@ -1689,13 +1691,13 @@ body.front article.error section div.band p a:hover {
   width: 224px;
   z-index: -1;
 }
-/* line 323, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 325, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show span.top {
   float: right;
   width: 100%;
   height: 12px;
 }
-/* line 330, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 332, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul {
   float: right;
   width: 212px;
@@ -1704,7 +1706,7 @@ body.front article.error section div.band p a:hover {
   list-style: none;
   text-align: left;
 }
-/* line 339, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 341, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul:last-child {
   border: none;
   -moz-border-radius-bottomleft: 4px;
@@ -1720,7 +1722,7 @@ body.front article.error section div.band p a:hover {
   -khtml-border-bottom-right-radius: 4px;
   border-bottom-right-radius: 4px;
 }
-/* line 344, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 346, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li {
   padding: 5px 9px;
   border: none;
@@ -1728,32 +1730,32 @@ body.front article.error section div.band p a:hover {
   font: normal 13px "Helvetica Neue";
   color: #333333;
 }
-/* line 351, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 353, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li span.color {
   width: 7px;
   height: 7px;
   margin-right: 10px;
   display: inline-block;
 }
-/* line 384, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 386, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.last {
   border: none;
 }
-/* line 388, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 390, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li:hover {
   background-color: #EDEDED;
   cursor: pointer!important;
 }
-/* line 394, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 396, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.enabled {
   font-weight: bold;
 }
-/* line 398, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 400, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul li.moving {
   border-top: 1px solid #CCCCCC;
   border-bottom: 1px solid #CCCCCC;
 }
-/* line 404, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 406, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul a.expand {
   display: block;
   width: 100%;
@@ -1762,19 +1764,19 @@ body.front article.error section div.band p a:hover {
   font-size: 0;
   line-height: 0;
 }
-/* line 412, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 414, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers div.show ul a.expand:hover {
   background-position: 0 -1452px;
 }
-/* line 420, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 422, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers.open a.view {
   background-position: left -1072px;
 }
-/* line 423, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 425, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers.open a.view span {
   background-position: right -1072px;
 }
-/* line 428, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
+/* line 430, /Users/jmedina/Workspace/wri/app/css_src/partials/_map.scss */
 .map_container .layers.open .show {
   display: block;
 }
