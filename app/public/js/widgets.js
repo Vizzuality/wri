@@ -276,7 +276,12 @@
         '</div>'
       );
 
+      Core._addItems($el);
+    },
+
+    _addItems: function($el) {
       var list = $el.find('ul');
+      list.html('');
       _.each(Core.options.source, function(v,i){
         list.append('<li><a href="' + v.url + '">' + v.name + '</a></li>');
       });
@@ -296,6 +301,9 @@
     },
 
     _open: function($el) {
+      // Close rest of the dropdowns
+      $('.select').removeClass('active');
+
       $el.addClass('active');
       $('body').click(function(ev) {
         if (!$(ev.target).closest('span.select').length) {
@@ -312,6 +320,15 @@
   };
 
 
+  /***************************************************************************
+  * Public methods
+  **************************************************************************/
+  API = {
+    update: function(source) {
+      Core.options.source = source;
+      Core._addItems($(this));
+    }
+  };
 
 
   /***************************************************************************
@@ -343,9 +360,15 @@
 
   // $('.slider').wriSlider('update',[3423445]);
 
-  /*$('span.select').dropdown({
-    source: [{name:'vizz',url:'#where'},{name:'asdf asdf asdf asdf',url:'#where'},{name:'asdf asdf asdf asdf asdf',url:'#where'},{name:'as dfas fasd fdsaf',url:'#where'}]
-  });
-  */
+  // $('span.select').dropdown({
+  //   source: [{name:'vizz',url:'#where'},{name:'asdf asdf asdf asdf',url:'#where'},{name:'asdf asdf asdf asdf asdf',url:'#where'},{name:'as dfas fasd fdsaf',url:'#where'}]
+  // });
+
+  setTimeout(function(){
+    $('span.select').dropdown('update',[{name:'asdf asdf asdf asdf asdf',url:'#where'}]);
+    alert('jamon');
+  },5000);
+  
+  
 
 })( jQuery, window );

@@ -93,7 +93,7 @@ body.tool {
       position:relative;
       height:65px;
       padding:25px 0 0 0;
-      z-index:100;
+      z-index:15;
     }
 
     form {
@@ -280,10 +280,11 @@ body.tool {
   .ui-autocomplete {
     width:227px;
     padding:60px 18px 0 18px;
-    margin:-90px 0 0 -27px;
+    //margin:-90px 0 0 -27px;
     border:1px solid #333333;
     @include border-radius(3px);
     list-style:none;
+    z-index:100000;
 
     li {
       position:relative;
