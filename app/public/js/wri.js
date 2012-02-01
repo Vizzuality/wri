@@ -34,6 +34,12 @@ App.modules.WRI= function(app) {
            this.template = this.el.html();
            this.model.bind('change', this.render, this);
            this.stories = this.options.stories;
+           this.regions = new app.Regions();
+           this.regions.bind('reset', this.render_regions, this);
+           this.model.bind('change', function() {
+               this.regions.set_iso(this.model.get('iso'));
+               this.regions.fetch();
+           }, this);
            this.time = 0;
        },
 
@@ -73,6 +79,16 @@ App.modules.WRI= function(app) {
                 this.MONTHS[d.getMonth()] + " " +
                 d.getFullYear()
            );
+       },
+
+       render_regions: function() {
+           this.regions.normalize();
+           var ul = this.$('.countries');
+           ul.html('');
+           this.regions.each(function(r) {
+               ul.append(
+          '<li><a href="/country#{0}">{0}<span style="width:{1}%" class="bar"></span></a></li>'.format(r.get('name'), 70*r.get('normalized')));
+           });
        },
 
        render: function() {

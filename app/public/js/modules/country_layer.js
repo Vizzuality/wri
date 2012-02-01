@@ -121,7 +121,7 @@ App.modules.CountryLayer = function(app) {
         show_country: function(country, iso) {
             var self = this;
             _.extend(self.layer.options, {
-                where: "name_0 = '{0}'".format(country),
+                where: "name_0 = '{0}'".format(country.replace("'", "''")),
                 table: 'gadm1',
                 columns:['name_0', 'name_1', 'cartodb_id']
             });

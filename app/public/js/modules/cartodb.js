@@ -57,7 +57,7 @@ App.modules.CartoDB = function(app) {
     var CartoDBModel = Backbone.Model.extend({
 
       _create_sql: function() {
-        var where = " where {0} = '{1}'".format(this.what, this.get(this.what));
+        var where = " where {0} = '{1}'".format(this.what, this.get(this.what).replace("'", "''"));
         var select = [];
         for(var k in this.columns) {
           var w = this.columns[k];
@@ -120,10 +120,13 @@ App.modules.CartoDB = function(app) {
 
       fetch: function() {
         var self = this;
-        var sql = this._create_sql();
+        var sql = this.sql || this._create_sql();
+        if(typeof(sql) === "function") {
+          sql = sql.call(this);
+        }
         var item = this.cache ? cache.getItem(sql): false;
         if(!item) {
-            app.CartoDB.query(this._create_sql(), function(data) {
+            app.CartoDB.query(sql, function(data) {
               if(this.cache) {
                   try {
                     cache.setItem(sql, JSON.stringify(data.rows));
