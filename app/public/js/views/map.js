@@ -13,6 +13,24 @@ var Layer = Class.extend({
 });
 */
 
+function CoordMapType() {
+}
+
+CoordMapType.prototype.tileSize = new google.maps.Size(256,256);
+CoordMapType.prototype.maxZoom = 19;
+
+CoordMapType.prototype.getTile = function(coord, zoom, ownerDocument) {
+  var img = new Image();
+  var src = "http://a.tiles.mapbox.com/v3/mapbox.mapbox-light/{z}/{x}/{y}.png";
+  img.src = src.replace('{x}', coord.x)
+     .replace('{y}', coord.y)
+     .replace('{z}', zoom);
+  return img;
+};
+
+CoordMapType.prototype.name = "Tile #s";
+CoordMapType.prototype.alt = "Tile Coordinate Map Type";
+
 // google maps map
 var MapView = Backbone.View.extend({
     mapOptions: {
@@ -46,6 +64,11 @@ var MapView = Backbone.View.extend({
        // hide controls until map is ready
        this.hide_controls();
        this.map = new google.maps.Map(this.$('.map')[0], this.mapOptions);
+
+       var coordinateMapType = new CoordMapType();
+       this.map.mapTypes.set('coordinate',coordinateMapType);
+
+       //this.map.setMapTypeId('coordinate');
        google.maps.event.addListener(this.map, 'center_changed', this.center_changed);
        google.maps.event.addListener(this.map, 'zoom_changed', this.zoom_changed);
        google.maps.event.addListener(this.map, 'click', this.click);

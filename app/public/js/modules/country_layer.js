@@ -15,6 +15,7 @@ MiniTilemill.prototype.addLayer = function(style, table) {
     var layer = new google.maps.CartoDBLayer({
         map_canvas: 'map_canvas',
         map: this.map,
+        //user_name: 'tiles' + _(['01', '02', '03', '04']).shuffle()[0] + "." + this.user_name,
         user_name: this.user_name,
         table_name: table,
         map_style: false,
@@ -144,7 +145,7 @@ App.modules.CountryLayer = function(app) {
         },
 
         show_region: function(region) {
-            var self = this;
+            /*var self = this;
             _.extend(self.layer.options, {
                 where: "name_1 = '{0}'".format(region),
                 table: 'gadm2',
@@ -153,17 +154,18 @@ App.modules.CountryLayer = function(app) {
             self.map.enable_layer('vector0', true);
             self.layer.layer.redraw();
             self.vec_cache = {};
+            */
         },
 
 
         _enter: function(b, geometry) {
             if(this.level == this.LEVEL_COUNTRY) {
                 //update level
-                this.state.push(b);
-                this.level = this.LEVEL_REGION;
-                var area_name = geometry.properties.name_1;
-                this.show_region(area_name);
-                this.trigger('changed_area_name', area_name);
+                //this.state.push(b);
+                //this.level = this.LEVEL_REGION;
+                //var area_name = geometry.properties.name_1;
+                //this.show_region(area_name);
+                //this.trigger('changed_area_name', area_name);
                 this.map.map.map.fitBounds(b);
                 this.map.map.unbind('mousemove', this.mousemove);
             }

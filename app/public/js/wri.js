@@ -62,6 +62,37 @@ App.modules.WRI= function(app) {
 
    });
 
+   // dropdown
+   var CountriesListView = Backbone.View.extend({
+
+    initialize: function() {
+        this.countries = this.options.countries;
+        this.country = this.options.country;
+        this.countries.bind('reset',function() {
+            if(this.continent) {
+                this.render();
+            }
+        }, this);
+        this.country.bind('change', function() {
+            this.continent = this.country.get('unregion1');
+            if(this.countries.models.length > 0)
+                this.render();
+        }, this);
+        this.el.dropdown({source: []});
+    },
+
+    render: function() {
+        var st = _(this.countries.inside(this.continent)).map(function(s) {
+            return {
+              name: s.get('name_engli'),
+              url: 'country/#' + s.get('name_engli')
+            };
+        });
+        this.el.dropdown('option', 'source', st);
+    }
+
+   });
+
 
     // the app
     app.WRI = Class.extend({
@@ -87,9 +118,15 @@ App.modules.WRI= function(app) {
 
             // widgets
             var stories_dropdown = new app.StoryListView({
-                el: $('span.select'),
+                el: $('#stories_drop'),
                 stories: this.stories
             });
+
+            /*var countries_dropdown = new CountriesListView({
+                el: $('#continent_drop'),
+                countries: this.countries,
+                country: this.country
+            });*/
 
             var search = new app.Search({
               el: $('#autocomplete'),
@@ -159,9 +196,6 @@ App.modules.WRI= function(app) {
             //this.add_test_layer();
             //this.add_time_layer();
         },
-
-
-
 
 
         _state_url: function() {

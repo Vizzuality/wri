@@ -26,7 +26,7 @@ App.modules.Stories = function(app) {
             return {
               name: s.get('title'),
               url: '#TODO'
-            }
+            };
         });
         this.el.dropdown({ source: st });
     }
