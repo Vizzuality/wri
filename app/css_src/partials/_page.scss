@@ -278,24 +278,27 @@ body.tool {
 
   /* autocomplete */
   .ui-autocomplete {
-    width:227px;
-    padding:60px 18px 0 18px;
-    //margin:-90px 0 0 -27px;
+    width:263px;
     border:1px solid #333333;
     @include border-radius(3px);
     list-style:none;
-    z-index:100000;
+    pointer-events:none;
 
     li {
       position:relative;
-      width:100%;
-      padding:0 0 9px;
+      display:block;
+      padding:0 18px 9px;
+      background:rgba(0,0,0,0.9);
+      pointer-events:auto;
+
       a {
         position:relative;
         display:block;
         width:100%;
         padding:0 0 8px 0;
         font:normal 15px "Open Sans";
+        pointer-events:auto;
+
         span {
           position:absolute;
           left:0;
