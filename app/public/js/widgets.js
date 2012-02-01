@@ -296,6 +296,9 @@
     },
 
     _open: function($el) {
+      // Close rest of the dropdowns
+      $('.select').removeClass('active');
+
       $el.addClass('active');
       $('body').click(function(ev) {
         if (!$(ev.target).closest('span.select').length) {
