@@ -554,13 +554,13 @@ body.tool {
   /* ABOUT */
   section.info {
     overflow:hidden;
-    width:570px;
+    width:525px;
     padding:0 0 65px;
     p {margin:40px 0 0; font-size:21px; color:#CCCCCC; line-height:normal}
   }
   section.partners {
     ul {letter-spacing:-4px}
-    li {@include inline-block(); width:457px; margin:0 50px 0 0; letter-spacing:0; &:last-child {margin:none}}
+    li {@include inline-block(); width:525px; margin:0 50px 0 0; letter-spacing:0; &:last-child {margin:0}}
     p {margin:15px 0 0 0; font-size:17px; color:#CCCCCC;}
     a {display:block; width:154px; height:76px;}
   }

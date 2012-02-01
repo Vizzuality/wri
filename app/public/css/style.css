@@ -1168,7 +1168,7 @@ body.tool div.layers {
 /* line 555, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool section.info {
   overflow: hidden;
-  width: 570px;
+  width: 525px;
   padding: 0 0 65px;
 }
 /* line 559, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
@@ -1188,13 +1188,13 @@ body.tool section.partners li {
   vertical-align: top;
   zoom: 1;
   *display: inline;
-  width: 457px;
+  width: 525px;
   margin: 0 50px 0 0;
   letter-spacing: 0;
 }
 /* line 563, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool section.partners li:last-child {
-  margin: none;
+  margin: 0;
 }
 /* line 564, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool section.partners p {
