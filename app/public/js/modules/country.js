@@ -60,6 +60,13 @@ App.modules.Country = function(app) {
 
       def_percent_in_month: function(month) {
             return this.get('time_series_normalized')[month]*100.0;
+      },
+      // return the change in a range of months
+      change_since: function(month0, month1) {
+          var series = this.time_series();
+          var t0 = series[Math.max(0, month0)];
+          var t1 = series[month1];
+          return (t1 - t0)/t0;
       }
 
     });
@@ -127,6 +134,7 @@ App.modules.Country = function(app) {
           }
           return null;
       }
+
 
     });
 

@@ -10,7 +10,7 @@ function TimePlayer(table) {
     this.render = this.render_time;
     this.cells = [];
     this.table = table;
-    this.base_url = 'http://wri-01.cartodb.com/api/v2/sql';
+    this.base_url = 'http://sql.wri-01.cartodb.com/api/v2/sql';
 }
 
 TimePlayer.prototype = new CanvasTileLayer();
@@ -188,14 +188,15 @@ TimePlayer.prototype.render_time = function(tile, coord, zoom) {
           extra = 1;
         }
 
-        
         //no deforestation already
         if(a <= 0) {
-          fillStyle = 'rgba(0,0,0,0)';
+          fillStyle = 'rgba(0,0,0,255)';
+          continue; //LO-VE-LY
         } else {
           a = 4 - a;
           //idx ;
           fillStyle = colors[Math.max(0, Math.min(3, a - idx))];//3 - Math.min(3, a)];
+          //fillStyle = 'rgba(220,220,0,250)';
         }
         //fillStyle = colors[idx];
 
