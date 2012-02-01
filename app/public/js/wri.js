@@ -85,10 +85,11 @@ App.modules.WRI= function(app) {
         var st = _(this.countries.inside(this.continent)).map(function(s) {
             return {
               name: s.get('name_engli'),
-              url: 'country/#' + s.get('name_engli')
+              url: '/country#' + s.get('name_engli')
             };
         });
-        this.el.dropdown('option', 'source', st);
+        this.el.dropdown('update', st);
+        this.$('.init').html(this.continent);
     }
 
    });
@@ -122,11 +123,11 @@ App.modules.WRI= function(app) {
                 stories: this.stories
             });
 
-            /*var countries_dropdown = new CountriesListView({
+            var countries_dropdown = new CountriesListView({
                 el: $('#continent_drop'),
                 countries: this.countries,
                 country: this.country
-            });*/
+            });
 
             var search = new app.Search({
               el: $('#autocomplete'),
