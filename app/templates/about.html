@@ -2,8 +2,8 @@
 
 {% block container %}
 
-  <div class="container">
-    <div class="inner padding100">
+  <div class="container about">
+    <div class="inner">
       <header class="home">
         <h1 class="left">
           <a href="/">
@@ -11,28 +11,38 @@
           </a>
         </h1>
         <nav class="right">
-          <a href="/about" class="right">About</a>
-          <a href="/stories" class="right">Stories</a>
+          <a class="right" href="/about">About</a>
+          <span id="stories_drop"class="select right">Stories</span>
+          <form class="right">
+            <input id="autocomplete" type="text" placeholder="Seach for a country"/>
+            <input type="submit" value=""/>
+          </form> 
         </nav>
       </header>
 
       <article class="subheader">
-          <h2>Learn more about Global Forest <br/>Watch 2.0</h2>
+          <h2 class="bigger">Learn more about Global Forest Watch 2.0</h2>
       </article>
 
-      <article class="about">
+      <article class="about illustration">
         <section class="info">
           <p>Global Forest Watch 2.0 is an initiative that unites technology, transparency, and human networks to mobilize faster, more effective forest conservation and reduced greenhouse gas emissions.</p>
 
           <p>It combines a novel near-real-time deforestation alert system, complementary satellite data and systems, WRI’s treasure trove of maps, mobile technology, and a networked world to create never-before-possible transparency.</p>
 
           <p>This transparency will empower NGOs, the media, and progressive public and private sector leaders to hold governments and companies publicly accountable for forest conservation at a pace that matches the modern world and the threats facing forests.</p>
-        </section>
+        </section>      
+      </article>
+    </div>
+  </div>
 
+  <div class="container about grey">
+    <div class="inner padding60">
+      <article class="about">
         <section class="partners">
           <ul>
             <li>
-              <h4 class="red">WORLD RESOURCES INSTITUTE</h4>
+              <h4 class="lighter">WORLD RESOURCES INSTITUTE</h4>
               <a href="http://www.wri.org/">
                 <img src="/img/logos/wri_black.png" alt="WORLD RESOURCES INSTITUTE" title="WORLD RESOURCES INSTITUTE"/>
               </a>
@@ -40,17 +50,16 @@
               <p>WRI’s transformative ideas protect the earth and promote development because sustainability is essential to meeting human needs and fulfilling human aspirations in the future.</p>
             </li>
             <li>
-              <h4 class="red">PARTNERS - CENTER FOR GLOBAL DEVELOPMENT</h4>
+              <h4 class="lighter">PARTNERS - CENTER FOR GLOBAL DEVELOPMENT</h4>
               <a href="http://www.cgdev.org/">
-                <img src="/img/logos/center_dev.png" alt="CENTER FOR GLOBAL DEVELOPMENT" title="CENTER FOR GLOBAL DEVELOPMENT"/>
+                <img src="/img/logos/center_dev.jpg" alt="CENTER FOR GLOBAL DEVELOPMENT" title="CENTER FOR GLOBAL DEVELOPMENT"/>
               </a>
               <p>The Center for Global Development works to reduce global poverty and inequality through rigorous research and active engagement with the policy community to make the world a more prosperous, just, and safe place for us all. A nimble, independent, nonpartisan, and nonprofit think tank, CGD combines world-class research with policy analysis and innovative communications to turn ideas into action.</p>
               <p>CGD developed the FORMA near-real-time alert system and is delighted to contribute this powerful data source to this site.</p>
             </li>
           </ul>
         </section>
-
-      </article>
+      </article>    
     </div>
   </div>
 
