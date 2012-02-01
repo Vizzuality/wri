@@ -109,6 +109,23 @@ App.modules.Country = function(app) {
           this.each(function(c) {
               c.gen_normalized_deforestation(max_def);
           });
+      },
+
+      next_country: function(country) {
+          var m = this.models;
+          for(var i = 0; i < m.length; ++i) {
+              var c = m[i];
+              if(c.get('name_engli') === country) {
+                  var prev = i - 1;
+                  if(prev < 0) {
+                      prev += m.length;
+                  }
+                  prev = prev % m.length;
+                  var next = (i + 1) % m.length;
+                  return [m[prev], m[next]];
+              }
+          }
+          return null;
       }
 
     });

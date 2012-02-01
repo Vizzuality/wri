@@ -170,8 +170,8 @@ body.tool {
     background: #FF3333;
     z-index:100;
     color:#333333;
-    &.left {left:0}
-    &.right {right:0}
+    &.left {left:-30px}
+    &.right {right:-30px;}
     &:hover {color:white; cursor:pointer}
   }
 

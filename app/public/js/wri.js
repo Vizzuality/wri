@@ -80,16 +80,40 @@ App.modules.WRI= function(app) {
             this.bus = new app.Bus();
             app.bus = this.bus;
 
+            // models
             this.stories = new app.Stories();
             this.country = new app.Country({'name_engli': ''});
+            this.countries = new app.Countries();
 
+            // widgets
             var stories_dropdown = new app.StoryListView({
                 el: $('span.select'),
                 stories: this.stories
             });
 
+            var search = new app.Search({
+              el: $('#autocomplete'),
+              countries: this.countries
+            });
+
             // fetch as soon as posible
             this.stories.fetch();
+            this.countries.fetch();
+
+            var f = _.after(2, function() {
+                var next_prev = self.countries.next_country(self.country.get('name_engli'));
+                if(next_prev) {
+                    var prev = next_prev[0];
+                    var next = next_prev[1];
+                    $('.pag.left').attr('href', 'country#' + prev.get('name_engli'))
+                        .animate({'left': 0});
+                    $('.pag.right').attr('href', 'country#' + next.get('name_engli'))
+                        .animate({'right': 0});
+                } 
+            });
+            this.countries.bind('reset', f);
+            this.country.bind('change', f);
+
             // the map
             this.map = new app.Map(this.bus);
 
