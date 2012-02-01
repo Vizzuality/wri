@@ -15,8 +15,8 @@ MiniTilemill.prototype.addLayer = function(style, table) {
     var layer = new google.maps.CartoDBLayer({
         map_canvas: 'map_canvas',
         map: this.map,
-        //user_name: 'tiles' + _(['01', '02', '03', '04']).shuffle()[0] + "." + this.user_name,
-        user_name: this.user_name,
+        user_name: 'tiles' + ['01', '02', '03', '04'][this.layers.length%3] + "." + this.user_name,
+        //user_name: this.user_name,
         table_name: table,
         map_style: false,
         infowindow: false,
