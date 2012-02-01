@@ -120,8 +120,8 @@ App.modules.WRIHome= function(app) {
             countries: countries
           },
           {
-            el: $('#middle_america'),
-            area: 'Central America',
+            el: $('#africa'),
+            area: ['Eastern Africa', 'Western Africa', 'Middle Africa'],
             countries: countries
           },
           {
