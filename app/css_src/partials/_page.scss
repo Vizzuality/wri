@@ -329,6 +329,12 @@ body.tool {
         &.ui-state-hover,
         &.ui-state-active { color:white; span {background:#FF3333}}
       }
+
+      p {
+        font-size:13px;
+        color:#666;
+        text-align:center;
+      }
     }
   }
 
