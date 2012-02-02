@@ -3,16 +3,12 @@
 
 {% block container %}
 
-  <div class="slider"></div>
+  <!-- FIXED -->
+  <article class="fixed">
+    <div class="background_map">
+      {% include "_map.html" %} 
+    </div>
 
-  <div class="background_map">
-    {% include "_map.html" %} 
-  </div>
-
-
-
-  <div class="container">
-  
     <div class="float_elements">
       <span class="bar l top"></span>
       <span class="bar r top"></span>
@@ -20,24 +16,31 @@
       <a href="#todo" class="pag left">&#8592; </a>
     </div>
 
-
     <header class="country inner">
-      <h1 class="left">
-        <a href="/">
-          <img src="/img/logos/wri_black.png" alt="WORLD RESOURCES INSTITUTE" title="WORLD RESOURCES INSTITUTE"/>
-        </a>
-      </h1>
-      <nav class="right">
-        <span id="continent_drop" class="select left"></span>
-        <a class="right" href="/about">About</a>
-        <span id="stories_drop"class="select right">Stories</span>
-        <form class="right">
-          <input id="autocomplete" type="text" placeholder="Seach for a country"/>
-          <input type="submit" value=""/>
-        </form> 
-      </nav>
+      <div class="inner">
+        <h1 class="left">
+          <a href="/">
+            <img src="/img/logos/wri_black.png" alt="WORLD RESOURCES INSTITUTE" title="WORLD RESOURCES INSTITUTE"/>
+          </a>
+        </h1>
+        <nav class="right">
+          <span id="continent_drop" class="select left"></span>
+          <a class="right" href="/about">About</a>
+          <span id="stories_drop"class="select right">Stories</span>
+          <form class="right">
+            <input id="autocomplete" type="text" placeholder="Seach for a country"/>
+            <input type="submit" value=""/>
+          </form> 
+        </nav>
+      </div>
     </header>
 
+    <div class="slider"></div>
+  </div>
+
+
+  <!-- RELATIVE -->
+  <div class="container">
     <article id="country_info" class="country">
       <h2>{country}</h2>
       <div class="margin10">
@@ -55,14 +58,8 @@
             </span> 
             in the last six months</p>
         </div>
-        <!-- <div class="statistics">
-          <span class="green" style="width:30%"></span>
-          <p class="bigger">132 deforestation events since January, 1st</p>
-        </div> 
-        -->
       </div>
-      <div id="graph">
-      </div>
+      <div id="graph"></div>
       <div class="content">
         <h4 class="margin45 lighter">{country}’S SITUATION</h4>
         <p class="darker">{description}</p>
@@ -77,28 +74,30 @@
 
     <span class="bar darker bottom"></span>
 
-    <footer class="inner">
-      <div class="left">
-        <ul>
-          <li>
-            <h4>A PROJECT BY</h4>
-            <a href="#todo">
-              <img src="/img/logos/wri_grey.png" alt="WORLD RESOURCES INSTITUTE" title="WORLD RESOURCES INSTITUTE"/>
-            </a>
-          </li>
-          <li>
-            <h4>KNOW MORE</h4>
-            <nav>
-              <a href="#todo">Support</a>
-              <a href="#todo">Contact us</a>
-              <a href="#todo">Feedback</a>
-            </nav>
-          </li>
-        </ul>
-      </div>
-      <div class="right">
-        <h4>CAREFULLY MADE BY</h4>
-        <a href="http://www.vizzuality.com"><img src="/img/logos/vizzuality.png" alt="Vizzuality" title="Vizzuality"/></a>
+    <footer class="country">
+      <div class="inner">
+        <div class="left">
+          <ul>
+            <li>
+              <h4>A PROJECT BY</h4>
+              <a href="#todo">
+                <img src="/img/logos/wri_grey.png" alt="WORLD RESOURCES INSTITUTE" title="WORLD RESOURCES INSTITUTE"/>
+              </a>
+            </li>
+            <li>
+              <h4>KNOW MORE</h4>
+              <nav>
+                <a href="#todo">Support</a>
+                <a href="#todo">Contact us</a>
+                <a href="#todo">Feedback</a>
+              </nav>
+            </li>
+          </ul>
+        </div>
+        <div class="right">
+          <h4>CAREFULLY MADE BY</h4>
+          <a href="http://www.vizzuality.com"><img src="/img/logos/vizzuality.png" alt="Vizzuality" title="Vizzuality"/></a>
+        </div>
       </div>
     </footer>
   </div>
