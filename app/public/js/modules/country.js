@@ -32,7 +32,7 @@ App.modules.Country = function(app) {
           if(this._time_series_deltas) return this._time_series_deltas;
           var ts = this.time_series();
           var deltas = [];
-          deltas.push(0);
+          //deltas.push(0);
           for(var i = 1, l = ts.length; i < l; ++i) {
               deltas.push(ts[i] - ts[i-1]);
           }

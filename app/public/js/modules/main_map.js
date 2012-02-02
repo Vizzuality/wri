@@ -14,7 +14,7 @@ App.modules.MainMap = function(app) {
         var MainMap = Class.extend({
 
           init: function(countries) {
-            _.bindAll(this, 'render', 'set_time');
+            _.bindAll(this, 'render', 'set_time', 'update');
             this.month = 0;
             this.countries = countries;
             this.countries.bind('reset', this.render);
@@ -24,7 +24,56 @@ App.modules.MainMap = function(app) {
           // to bubble size.
           // this is an artifact to improve visualization
           def_to_size: function(def) {
-                return Math.sqrt(def);
+                return Math.pow(def, 0.3)*3;
+          },
+
+          update: function() {
+            var self = this;
+            var all = self.countries_data;
+            var abs = Math.abs;
+            var month = self.month;
+            var delta = 0.05;
+            var node = this.svg.selectAll("g.node")
+                .attr("transform", function(p) { 
+                    var pos = p.pos;
+                    var r =  self.def_to_size(p.time_series_deltas()[month]);
+                    var forces = false;
+                    //adjust pos with the rest of balls 
+                    //using very basic constrait
+                    for(var i=0, l = all.length; i<l; ++i) {
+                        var c = all[i];
+                        if(p.cid !== c.cid) {
+                            //distance
+                            var other_pos = c.pos;
+                            var dx = pos[0] - other_pos[0];
+                            var dy = pos[1] - other_pos[1];
+                            var len = Math.sqrt(dx*dx + dy*dy);
+                            var r_other =  self.def_to_size(c.time_series_deltas()[month]);
+                            var diff = (len - (r+r_other))/len;
+                            var desired_len = r+r_other;
+                            if(len <= desired_len) {
+                                //move each other depending on the "mass" 
+                                //of the system
+                                var f1 = r/desired_len;
+                                var f2 = r_other/desired_len;
+                                pos[0] -= delta*f2*diff*dx;
+                                pos[1] -= delta*f2*diff*dy;
+                                other_pos[0] += delta*f1*diff*dx;
+                                other_pos[1] += delta*f1*diff*dy;
+                                forces = true;
+                            }
+                        }
+
+                    }
+                    // if no force applied return to the original point
+                    if(!forces) {
+                        var original = merc(p.center());
+                        pos[0] += (original[0] - pos[0])*2*delta;
+                        pos[1] += (original[1] - pos[1])*2*delta;
+                    }
+
+                    return "translate(" + pos.join(',') + ")"; 
+                });
           },
 
           set_time: function(month) {
@@ -39,7 +88,7 @@ App.modules.MainMap = function(app) {
                     function(d) { return d.get('cumm'); }
                 ))*/
                 .transition()
-                .duration(300)
+                .duration(100)
                 .attr("r", function(d) {
                         return self.def_to_size(d.time_series_deltas()[month]);
                 });
@@ -54,17 +103,21 @@ App.modules.MainMap = function(app) {
                .attr("width",  w)
                .attr("height", h);
 
+            this.countries_data = countries.filter(
+                    function(d) { return d.get('cumm'); }
+            );
+
             this.svg = svg;
             var node = svg.selectAll("g.node")
-                .data(countries.filter(
-                    function(d) { return d.get('cumm'); }
-                ))
+                .data(this.countries_data)
                 .enter()
                 .append("g")
                 .attr("class", "node")
                 .attr("transform", function(p) { 
                     var ll = p.center();
-                    return "translate(" + merc(ll).join(',') + ")"; 
+                    var pos = merc(ll);
+                    p.pos = pos;
+                    return "translate(" + pos.join(',') + ")"; 
                 });
 
             node.append("circle")
@@ -89,6 +142,8 @@ App.modules.MainMap = function(app) {
                 .text(function(d) {
                     return "123123 events";
                 });
+
+            setInterval(this.update, 30);
 
 
 
