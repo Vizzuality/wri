@@ -60,7 +60,7 @@ App.modules.CountryLayer = function(app) {
             //TODO: extract to constants
             var cartodb = new CartoDB({
                 user: 'wri-01',
-                table: 'gadm0_simple',
+                table: 'admin1_attributes_live',
                 columns: ['iso', 'shape_area', 'cartodb_id'],
                 debug: false,
                 where: 'forma=true',
