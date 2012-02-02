@@ -84,6 +84,7 @@ var MapView = Backbone.View.extend({
         $('.map').find('img[src="http://maps.gstatic.com/mapfiles/google_white.png"]').closest('a').hide();
         $('.map').find('a:contains("Terms of Use")').closest('div').hide();
        },2000)
+
     },
 
     adjustSize: function() {
