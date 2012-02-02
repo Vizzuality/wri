@@ -224,7 +224,7 @@ body.tool {
     span.canvas {
       position:relative;
       display:block;
-      padding:5px 10px;
+      padding:5px 21px;
       height:17px;
       @include background-image(linear-gradient(#cecece, #cdcdcd));
       border: 1px solid #B4B4B4;
@@ -233,23 +233,26 @@ body.tool {
       table {
         position:relative;
         width:100%;
+
+        td {position:relative; height:27px; background:url('/img/icons/slider_point.png') repeat-x 15px 8px;}
                 
         label {
+          position:absolute;
+          left:-12px;
+          top:2px;
+          padding:0 2px;
           font:bold 10px "Open Sans";
           color:#333333;
           background:#CECECE;
-        }
-        div {
-          background:url('/img/icons/slider_point.png') repeat-x 15px 8px;
         }
       }
     }
 
     div.horizontal {
       position:absolute;
-      left:100px;
-      top:28px;
-      right:38px;
+      left:104px;
+      top:27px;
+      right:46px;
       display:block;
       height:15px;
       z-index:10;
@@ -258,7 +261,7 @@ body.tool {
         position:absolute;
         width:89px;
         height:46px;
-        top:-42px;
+        top:-41px;
         left:0;
         padding:11px 0 0 0;
         margin:0 0 0 -44px;
