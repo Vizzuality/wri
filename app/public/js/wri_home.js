@@ -80,8 +80,20 @@ App.modules.WRIHome= function(app) {
      */
     app.WRIHome = Class.extend({
 
+      set_headline: function() {
+          var headlines = [
+            "Monitoring the world's forests",
+            "Keeping an eye on the world's forests",
+            "Monitor deforestation hotspots in the tropics",
+            "Monthly deforestation hotspots in the tropics"
+          ];
+          var t = headlines[(Math.random()*headlines.length)>>0];
+          $('section.title').find('h2').html(t);
+      },
+
       run: function() {
         var self = this;
+        //self.set_headline();
 
         // data
         var countries = new app.Countries();

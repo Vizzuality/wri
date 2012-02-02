@@ -5,11 +5,11 @@
 App.modules.MainMap = function(app) {
 
         var w = 1100,
-            h = 768;
+            h = 562;
             merc = d3.geo.mercator()
                 .scale(1027)
                 //this value is calculated using the eye, HAHAHA
-                .translate([(w>>1)- 50,(h>>2) - 60]);
+                .translate([(w>>1)- 50,(h>>1)+30]);
 
         var MainMap = Class.extend({
 
@@ -138,7 +138,7 @@ App.modules.MainMap = function(app) {
             node.append("text")
                 .attr("text-anchor", "middle")
                 .attr('class', 'small')
-                .attr("transform", 'translate (0, 14)')
+                .attr("transform", 'translate (0, 10)')
                 .text(function(d) {
                     return "123123 events";
                 });
