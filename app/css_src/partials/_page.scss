@@ -69,12 +69,16 @@ body.tool {
   .inner {
     width:$layout_width;
     margin:0 auto;
+    &.home {position:relative; z-index:100}
   }
 
   /* HEADER */
   header {
+    position:relative;
     height:88px;
     padding:10px 0;
+    z-index:15;
+
     h1 {float:left; margin:0; padding:0;}
     nav {
       float:right;
@@ -108,7 +112,9 @@ body.tool {
 
   /* HOME SUBHEADER */
   article.subheader {
+    position:relative;
     margin:0;
+    z-index:15;
 
     section.title {
       width:755px;
@@ -125,6 +131,7 @@ body.tool {
   article.countries {
     @include inline-block();
     width:100%;
+    margin:400px 0 0 0;
     letter-spacing:-4px;
 
     section.column {

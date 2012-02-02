@@ -203,10 +203,6 @@
 
 
 
-
-
-
-
 /**************************************************************************
 * DROPDOWN PLUGIN
 **************************************************************************/
@@ -248,6 +244,7 @@
 
     _bind: function($el) {
       $el.find('a.init').bind({'click':Core._onClick});
+      $el.find('li a').bind({'click':Core._onListClick});
     },
 
 
@@ -299,6 +296,13 @@
         Core._open($el);
       }
     },
+
+
+    _onListClick: function(ev) {
+      var $el = $(ev.target).closest('span.select');
+      Core._close($el);
+    },
+
 
     _open: function($el) {
       // Close rest of the dropdowns
