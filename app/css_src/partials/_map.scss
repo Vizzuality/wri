@@ -1,14 +1,13 @@
 
 .bubble_map {
   position:absolute;
-  top:200px;
+  top:140px;
   left:0;
   width: 1100px;
-  height: 560px;
+  height: 500px;
   padding:0;
-  background: url('/img/home_map.jpg') repeat-x -70px 0 black;
-  border:1px solid red;
-  z-index:1;
+  background: url('/img/home_map.jpg') repeat-x -75px -130px black;
+  z-index:0;
 
   circle {
     fill: #FF3333;
