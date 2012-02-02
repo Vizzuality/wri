@@ -83,7 +83,15 @@ body.tool {
     padding:10px 0;
     z-index:50;
 
-    h1 {float:left; margin:0; padding:0;}
+    h1 {
+      float:left; margin:0; padding:13px 0 0 0;
+      a {
+        font:normal 21px "Georgia"; color:white;
+        span {display:block; font-size:13px; color:#737374}
+        &:hover {}
+      }
+
+    }
     nav {
       float:right;
       width:610px;
@@ -106,7 +114,7 @@ body.tool {
       left:0;
       width:100%;
       height:65px;
-      padding:28px 0 12px 0;
+      padding:22px 0 12px 0;
       z-index:15;
       //@include background-image(linear-gradient(rgba(0,0,0,1), rgba(0,0,0,) 90%, rgba(0,0,0,0)));
     }
@@ -238,7 +246,10 @@ body.tool {
         position:relative;
         width:100%;
 
-        td {position:relative; height:27px; background:url('/img/icons/slider_point.png') repeat-x 15px 8px;}
+        td {
+          position:relative!important; height:27px; background:url('/img/icons/slider_point.png') repeat-x 15px 8px;
+          div {position:relative; height:100%;}  
+        }
                 
         label {
           position:absolute;
