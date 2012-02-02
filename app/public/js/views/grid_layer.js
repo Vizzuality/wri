@@ -44,25 +44,40 @@ TimePlayer.prototype.sql = function(sql, callback) {
 TimePlayer.prototype.pre_cache_months = function(rows) {
     var row;
     var cells = [];
+    var d;
     for(var i in rows) {
       row = rows[i];
       // filter the spikes in deforestation change
-      var def = row.time_series;
-      var last = -10;
 
-      for(var d = 0; d < def.length; ++d) {
-        if(def[d] > 0) {
-          last = d;
-        }
-        def[d] = Math.max(0, (9 - (d - last))>>1);
-      }
 
       var acumm_normalized = [];
       var cumm = row.cummulative;
       var max = this.pixel_size*this.pixel_size;
+      var max_p = max >>4;
 
-      for(var d = 0, l = cumm.length; d < l; ++d) {
-          acumm_normalized[d] = (4*((cumm[d] - cumm[0])/(max - cumm[0]))) >> 0;
+      for(d = 0, l = cumm.length; d < l; ++d) {
+          //acumm_normalized[d] = (4*((cumm[d] - cumm[0])/(max - cumm[0]))) >> 0;
+          if((cumm[d] - cumm[0]) > max_p) {
+            acumm_normalized[d] = 1 + ((3*((cumm[d] - cumm[0])/(max - cumm[0]))) >> 0);
+          } else {
+            acumm_normalized[d] = 0;
+          }
+      }
+
+      // steps!
+      var def = row.time_series;
+      var steps = row.time_series;
+      var last = -10;
+
+      steps[0] = 0;
+      for(d = 1; d < def.length; ++d) {
+        if(def[d] > 0) {
+          last = d;
+        }
+        steps[d] = 0;
+        if(acumm_normalized[d] > 0) {
+            steps[d] = Math.max(0, 3 - (d - last));
+        }
       }
 
       //var buffer = new ArrayBuffer(row.);
@@ -152,16 +167,16 @@ TimePlayer.prototype.render_time = function(tile, coord, zoom) {
     point = projection.tilePoint(coord.x, coord.y, zoom);
 
     var colors = [
-        'rgba(255, 51, 51, 0.9)',
-        'rgba(170, 52, 51, 0.6)',
+        'rgba(84, 48, 59, 0.6)',
         'rgba(104, 48, 59, 0.6)',
-        //'rgba(104, 48, 59, 0.6)'
-        'rgba(84, 48, 59, 0.6)'
+        'rgba(170, 52, 51, 0.6)',
+        'rgba(255, 51, 51, 0.9)'
     ];
 
     var extra = 0;
     var fillStyle;
     size = meterToPixelsDist(cells[0].w, cells[0].w, zoom);
+
     // render cells
     for(i = 0; i < cells.length; ++i) {
 
@@ -174,36 +189,27 @@ TimePlayer.prototype.render_time = function(tile, coord, zoom) {
       x = pixels[0] - point[0];
       y = pixels[1] - point[1];
 
-      fillStyle = 'rgba(84, 48, 59, 0.6)';
+      //fillStyle = 'rgba(84, 48, 59, 0.6)';
+      fillStyle = 'rgba(255, 255, 255, 1.0)';
       if(cell.months) {
-        var c =  cell.months[month];
+        var delta =  cell.months[month];
         var a =  cell.months_accum[month];
-        //idx = 3 - c;
-        idx = c-1;
-        fillStyle = colors[idx];
-        //"rgb(" + c + ",0, 0)";
 
         // when is totally red draw the pixel a little bit big
-        if(idx === 0) {
+        if(delta === 3) {
           extra = 1;
         }
 
         //no deforestation already
-        if(a <= 0) {
-          fillStyle = 'rgba(0,0,0,255)';
+        if(a === 0) {
           continue; //LO-VE-LY
         } else {
-          a = 4 - a;
-          //idx ;
-          fillStyle = colors[Math.max(0, Math.min(3, a - idx))];//3 - Math.min(3, a)];
-          //fillStyle = 'rgba(220,220,0,250)';
+          fillStyle = colors[Math.max(0, Math.min(3, a + delta))];
         }
-        //fillStyle = colors[idx];
-
       }
       // render
       var s = size[0] >> 0;
-      //s+=extra;
+      s+=extra;
       ctx.fillStyle = fillStyle;
       ctx.fillRect(x, y, s, s);
     }
