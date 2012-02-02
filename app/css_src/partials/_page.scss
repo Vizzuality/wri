@@ -224,7 +224,7 @@ body.tool {
     span.canvas {
       position:relative;
       display:block;
-      padding:5px;
+      padding:5px 10px;
       height:17px;
       @include background-image(linear-gradient(#cecece, #cdcdcd));
       border: 1px solid #B4B4B4;
@@ -237,6 +237,10 @@ body.tool {
         label {
           font:bold 10px "Open Sans";
           color:#333333;
+          background:#CECECE;
+        }
+        div {
+          background:url('/img/icons/slider_point.png') repeat-x 15px 8px;
         }
       }
     }
