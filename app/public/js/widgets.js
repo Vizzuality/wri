@@ -11,7 +11,9 @@
   // default options
     , defaultOptions = {
         globalEvents : [],
-        monthNames : [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" ]
+        monthNames : [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" ],
+        animation_time: 250,
+        step : (30*3600*24*1000) / 2
       };
 
   
@@ -87,16 +89,13 @@
         min: new Date(Core.options.start).getTime(),
         max: new Date(Core.options.end).getTime(),
         value: new Date(Core.options.value).getTime(),
-        step: 100000000,
+        step: Core.options.step,
         create: function(ev, ui) {
           var value = new Date(Core.options.value);
           var date = Core.options.monthNames[value.getMonth()] + ' ' + value.getFullYear();
           $(ev.target).find('a.ui-slider-handle').text(date);
         },
         slide: function(ev,ui) {
-
-          // If click or move
-
           var date = Core.options.monthNames[new Date(ui.value).getMonth()] + ' ' + new Date(ui.value).getFullYear();
           $(ev.target).find('a.ui-slider-handle').text(date);
           Core._trigger('change',[ui.value],$(ev.target));
@@ -145,14 +144,15 @@
       var interval = setInterval(function(){
         var value = $el.slider('value');
         // Check if it is the end, if not goes on
+
         if (value<max) {
-          $el.slider('value',value + 2500000000);
+          $el.slider('value',value + Core.options.step);
         } else if (value>max) {
           $el.slider('value',max);
         } else {
           Core._stopAnimation($button);
         }
-      },250);
+      },Core.options.animation_time);
       $button.data('interval',interval);
     }
 
