@@ -61,19 +61,19 @@
       $el.append('<span class="canvas"></span><span class="shadow"></span><div class="horizontal"></div>');
 
       // Add years
-      // var table = '<table><tr>';
+      var table = '<table><tbody><tr>';
 
-      // for (var i=2006, length=2013; i<length; i++) {
-      //   if (i!=2012) {
-      //     table += '<td width="16%"><div>' + i + '</div></td>'
-      //   } else {
-      //     table += '<td width="2%"><div>' + i + '</div></td>'
-      //   }
-      // }
+      for (var i=2006, length=2013; i<length; i++) {
+        if (i!=2012) {
+          table += '<td width="16%"><div><label>' + i + '</label></div></td>'
+        } else {
+          table += '<td width="2%"><div><label>' + i + '</label></div></td>'
+        }
+      }
 
-      // table += '</tr></table>';
+      table += '</tr></tbody></table>';
 
-      //$el.append(table);
+      $el.find('span.canvas').append(table);
 
 
       Core._initializeButton($el);

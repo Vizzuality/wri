@@ -224,10 +224,21 @@ body.tool {
     span.canvas {
       position:relative;
       display:block;
-      height:27px;
+      padding:5px;
+      height:17px;
       @include background-image(linear-gradient(#cecece, #cdcdcd));
       border: 1px solid #B4B4B4;
       @include border-radius(5px);
+
+      table {
+        position:relative;
+        width:100%;
+                
+        label {
+          font:bold 10px "Open Sans";
+          color:#333333;
+        }
+      }
     }
 
     div.horizontal {
@@ -285,13 +296,6 @@ body.tool {
       &.play span {@include icons-sprite(pause);}
       &:hover {@include background-image(linear-gradient(#cacaca, #f3f3f3));}
       &:active {@include background-image(linear-gradient(#aaaaaa, #f3f3f3));}
-    }
-
-    table {
-      position:absolute;
-      top:27px;
-      left:28px;
-      right:28px;
     }
   }
 
