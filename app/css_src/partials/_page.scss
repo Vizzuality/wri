@@ -94,6 +94,7 @@ body.tool {
         color:white;
         letter-spacing:-1px;
         &:hover {border-color:rgba(255,255,255,0.7)}
+        &:active {color:black; background:white;}
       }
     }
     &.country {
@@ -392,7 +393,12 @@ body.tool {
     color:white;
     letter-spacing:-1px;
     &:hover {border-color:rgba(255,255,255,0.7)}
-    &.active {border-color:rgba(255,255,255,0.7); div.options {display:block}}
+    &.active {
+      border-color:rgba(255,255,255,0.7);
+      background:white;
+      a.init {color:black; @include icons-sprite(down_arrow_black, $offset-x:100%, $offset-y:12px);}
+      div.options {display:block}
+    }
 
     a.init {
       height:18px;
