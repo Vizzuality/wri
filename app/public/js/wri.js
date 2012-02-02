@@ -298,7 +298,7 @@ App.modules.WRI= function(app) {
             this.map.map.unbind('fullscreen', this.go_fullscreen);
             this.map.map.bind('fullscreen', this.go_normal, this);
 
-            self.app_state.set({fullscreen: true});
+            self.app_state.set({fullscreen: true}, {silent:true});
             self.app_state.save({silent: true});
 
         },
@@ -319,7 +319,7 @@ App.modules.WRI= function(app) {
             $('.fullscreen').html('fullscreen');
             this.map.map.unbind('fullscreen', this.go_normal);
             this.map.map.bind('fullscreen', this.go_fullscreen, this);
-            self.app_state.set({fullscreen: false});
+            self.app_state.set({fullscreen: false}, {silent: true});
             self.app_state.save({silent: true});
         },
 

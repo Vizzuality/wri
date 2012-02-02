@@ -67,7 +67,7 @@ App.modules.CountryLayer = function(app) {
                 shader: {
                     'point-color': '#fff',
                     'line-color': 'rgba(0,0,0,0)',//'#D7D7D8',
-                    'line-width': '0.1',
+                    'line-width': '0',
                     'polygon-fill': 'rgba(255,255, 255,0.01)'
                 }
             });
@@ -122,7 +122,7 @@ App.modules.CountryLayer = function(app) {
             var self = this;
             _.extend(self.layer.options, {
                 where: "name_0 = '{0}'".format(country.replace("'", "''")),
-                table: 'gadm1',
+                table: 'admin1_attributes_live',
                 columns:['name_0', 'name_1', 'cartodb_id']
             });
             self.map.enable_layer('vector0', true);
@@ -140,7 +140,7 @@ App.modules.CountryLayer = function(app) {
             sql = sql.format(iso);
             self.pas_layer.update(sql);
 
-            sql = "select * from rivers"
+            sql = "select * from rivers";
             self.rivers.update(sql);
 
             sql = "select * from places";
@@ -214,7 +214,7 @@ App.modules.CountryLayer = function(app) {
             var opts = {
                     "strokeColor": "#FFFFFF",
                     "strokeOpacity": 0.8,
-                    "strokeWeight": 4,
+                    "strokeWeight": 6,
                     "fillColor": "#FFF366",
                     "fillOpacity": 0.0,
                     'clickable': false

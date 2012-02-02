@@ -73,7 +73,8 @@ CartoDB.prototype.tile_data = function(x, y, zoom , callback) {
       the_geom = 'ST_SimplifyPreserveTopology("'+geom_column+'",4.0) as the_geom'
     }
     the_geom = 'ST_SimplifyPreserveTopology("'+geom_column+'", 0.5) as the_geom';
-      the_geom = geom_column
+
+    the_geom = geom_column;
 
     var columns = [the_geom].concat(opts.columns).join(',');
     var sql = "select " + columns +" from " + opts.table + " WHERE the_geom && ST_SetSRID(ST_MakeBox2D(";
