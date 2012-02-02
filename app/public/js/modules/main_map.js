@@ -7,9 +7,9 @@ App.modules.MainMap = function(app) {
         var w = 1100,
             h = 562;
             merc = d3.geo.mercator()
-                .scale(1027)
+                .scale(1100)
                 //this value is calculated using the eye, HAHAHA
-                .translate([(w>>1)- 50,(h>>1)+30]);
+                .translate([(w>>1)-60,(h>>1)+30]);
 
         var MainMap = Class.extend({
 
@@ -24,7 +24,7 @@ App.modules.MainMap = function(app) {
           // to bubble size.
           // this is an artifact to improve visualization
           def_to_size: function(def) {
-                return 5 + Math.pow(def, 0.3)*3;
+                return 2 + Math.pow(def, 0.3)*3;
           },
 
           update: function() {
@@ -32,7 +32,7 @@ App.modules.MainMap = function(app) {
             var all = self.countries_data;
             var abs = Math.abs;
             var month = self.month;
-            var delta = 0.05;
+            var delta = 0.03;
             var node = this.svg.selectAll("g.node")
                 .attr("transform", function(p) { 
                     var pos = p.pos;
@@ -78,6 +78,7 @@ App.modules.MainMap = function(app) {
 
           set_time: function(month) {
             var self = this;
+            if(month === this.month) return;
             var countries = this.countries;
             this.month = month;
             // animate
@@ -88,7 +89,8 @@ App.modules.MainMap = function(app) {
                     function(d) { return d.get('cumm'); }
                 ))*/
                 .transition()
-                .duration(100)
+                .duration(500)
+                .ease('cubic')
                 .attr("r", function(d) {
                         return self.def_to_size(d.time_series_deltas()[month]);
                 });

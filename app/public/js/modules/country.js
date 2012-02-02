@@ -36,8 +36,23 @@ App.modules.Country = function(app) {
           for(var i = 1, l = ts.length; i < l; ++i) {
               deltas.push(ts[i] - ts[i-1]);
           }
-          this._time_series_deltas = deltas;
-          return deltas;
+          //now some smoothing, moving average
+          var crop = function(a, b, t) {
+              if(t < a) return 0;
+              if(t > b) return 0;
+              return t;
+          };
+          var smooth = [];
+          var SMOOTH_MONTHS = 6;
+          for(i = 0, l = deltas.length; i < l; ++i) {
+              var sum = 0;
+              for(var j=0; j < SMOOTH_MONTHS; ++j) {
+                  sum += deltas[crop(0, l-1, i + j - ((SMOOTH_MONTHS/2)>>0))];
+              }
+              smooth.push(sum/SMOOTH_MONTHS);
+          }
+          this._time_series_deltas = smooth;
+          return smooth;
       },
 
       slug: function() {
