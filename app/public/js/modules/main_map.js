@@ -138,7 +138,7 @@ App.modules.MainMap = function(app) {
             node.append("text")
                 .attr("text-anchor", "middle")
                 .attr('class', 'small')
-                .attr("transform", 'translate (0, 10)')
+                .attr("transform", 'translate (0, 14)')
                 .text(function(d) {
                     return "123123 events";
                 });
