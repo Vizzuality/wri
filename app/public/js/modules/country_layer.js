@@ -129,7 +129,10 @@ App.modules.CountryLayer = function(app) {
             self.layer.layer.redraw();
             self.vec_cache = {};
 
-            var sql = "select * from country_attributes_live where iso = '{0}'";
+            var sql = "select 0 as lid, the_geom_webmercator, 'dummy' as name_1 from country_attributes_live where iso = '{0}'";
+
+            sql += " UNION ";
+            sql += "select 1 as lid, the_geom_webmercator, name_1 from admin1_attributes_live where iso = '{0}'";
             sql = sql.format(iso);
             self.country_border.update(sql);
 

@@ -1,31 +1,56 @@
 
 <script type="carto" id="border_style">
 
+@sans:"DejaVu Sans Book";
 @adm1_line_color:#FFF;
 @adm1_line_glowColor:#000;
 
 #country_attributes_live {
-    line-color: @adm1_line_color;
-    [zoom<=4]{
-        line-opacity: 1;
-        line-width:0.5;
-        line-dasharray:2,5;
-    }
-    [zoom<6]{
-        line-opacity: 1;
-        line-width:1;
-        line-dasharray:4,5;
-    }
-    [zoom>=6]{
-        line-opacity: 1;
+
+
+    //#country_attributes_live
+    [lid=0] {
+        line-color:#FFF;
         line-width:2;
+        polygon-opacity:0;
+        polygon-fill: #242A30;
+
+        ::glow{
+            line-color:#000;
+            line-opacity:0.1;
+            line-width:7;
+        }
     }
-    polygon-opacity:1;
-    polygon-fill: transparent;
-    ::glow{
-        line-color:@adm1_line_glowColor;
-        line-opacity:0.1;
-        line-width:4;
+
+    //#admin1_attributes_live
+    [lid=1] {
+
+        line-color: @adm1_line_color; 
+        [zoom<=4] { 
+            line-opacity: 1; line-width:0.5; line-dasharray:2,5; 
+        } 
+        [zoom<6]{ 
+            line-opacity: 1; line-width:1; line-dasharray:4,5; 
+        } 
+        [zoom>=6]{ 
+            line-opacity: 1; line-width:2; 
+        } 
+        polygon-opacity:1; polygon-fill: transparent; 
+        ::glow{ 
+            line-color: @adm1_line_glowColor;
+            line-opacity:0.1;
+            line-width:4;
+        }
+
+        text-name:"[name_1]"; 
+        text-face-name:@sans;
+        text-halo-radius:2;
+        text-fill:#FFF;
+        text-halo-fill:rgba(0,0,0,0.75);
+        text-allow-overlap:true; 
+        [zoom=6]{ text-size:13; } 
+        [zoom=5]{ text-size:11; } 
+        [zoom>6]{ text-opacity:0; }
     }
 }
 
