@@ -28,9 +28,11 @@
   }
   text {
     opacity: 0;
-    fill: #FFF!important;
-    color: #FFF!important;
-    font: bold 20px sans-serif;
+    fill: #FFFFFF!important;
+    color: #FFFFFF!important;
+    font: bold 27px "Open Sans";
+    font-weight:800;
+    text-transform:uppercase;
   }
 
   a:visited {
@@ -38,9 +40,9 @@
   }
 
   text.small {
-    fill: #FFF;
-    color: #FFF;
-    font: 10px sans-serif;
+    fill: #FF8d8d;
+    color: #FF8d8d;
+    font: normal 10px "Open Sans";
   }
 }
 
