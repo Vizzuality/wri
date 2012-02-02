@@ -78,7 +78,7 @@ body.tool {
     position:relative;
     height:88px;
     padding:10px 0;
-    z-index:15;
+    z-index:50;
 
     h1 {float:left; margin:0; padding:0;}
     nav {
@@ -102,6 +102,7 @@ body.tool {
       height:65px;
       padding:25px 0 0 0;
       z-index:15;
+      @include background-image(linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.2)));
     }
 
     form {
@@ -223,10 +224,25 @@ body.tool {
     span.canvas {
       position:relative;
       display:block;
-      height:27px;
+      padding:5px 10px;
+      height:17px;
       @include background-image(linear-gradient(#cecece, #cdcdcd));
       border: 1px solid #B4B4B4;
       @include border-radius(5px);
+
+      table {
+        position:relative;
+        width:100%;
+                
+        label {
+          font:bold 10px "Open Sans";
+          color:#333333;
+          background:#CECECE;
+        }
+        div {
+          background:url('/img/icons/slider_point.png') repeat-x 15px 8px;
+        }
+      }
     }
 
     div.horizontal {
@@ -284,13 +300,6 @@ body.tool {
       &.play span {@include icons-sprite(pause);}
       &:hover {@include background-image(linear-gradient(#cacaca, #f3f3f3));}
       &:active {@include background-image(linear-gradient(#aaaaaa, #f3f3f3));}
-    }
-
-    table {
-      position:absolute;
-      top:27px;
-      left:28px;
-      right:28px;
     }
   }
 
