@@ -24,7 +24,7 @@ App.modules.MainMap = function(app) {
           // to bubble size.
           // this is an artifact to improve visualization
           def_to_size: function(def) {
-                return Math.pow(def, 0.3)*3;
+                return 15 + Math.pow(def, 0.3)*3;
           },
 
           update: function() {
