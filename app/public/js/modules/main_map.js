@@ -94,6 +94,19 @@ App.modules.MainMap = function(app) {
                 .attr("r", function(d) {
                         return self.def_to_size(d.time_series_deltas()[month]);
                 });
+
+            node = this.svg
+                .selectAll("g.node")
+                .select('text.small')
+                .text(function(d) {
+                    var deltas = d.time_series_deltas();
+                    if(month == 0) return '';
+                    if(deltas[month] - deltas[month-1] > 0) {
+                        return 'going up';
+                    } else {
+                        return 'going down';
+                    }
+                });
           },
 
           render: function() { 
@@ -142,7 +155,7 @@ App.modules.MainMap = function(app) {
                 .attr('class', 'small')
                 .attr("transform", 'translate (0, 15)')
                 .text(function(d) {
-                    return "123123 events";
+                    return "going up";
                 });
 
             setInterval(this.update, 30);
