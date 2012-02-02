@@ -1,18 +1,11 @@
 
-/*
 //=======================================
 // map layer
 //
 //  a map layer is defined by its name and its source
 //=======================================
-var Layer = Class.extend({
 
-    init: function() {
-    }
-
-});
-*/
-
+// base tile layer
 function CoordMapType() {
 }
 
@@ -21,7 +14,6 @@ CoordMapType.prototype.maxZoom = 8;
 
 CoordMapType.prototype.getTile = function(coord, zoom, ownerDocument) {
   var img = new Image();
-  //var src = "http://a.tiles.mapbox.com/v3/mapbox.mapbox-light/
   var src = "http://wri-basemap.s3.amazonaws.com/tiles/{z}/{x}/{y}.png";
   var tiles = 1 << zoom;
   img.src = src.replace('{x}', coord.x)
@@ -36,7 +28,7 @@ CoordMapType.prototype.alt = "Tile Coordinate Map Type";
 // google maps map
 var MapView = Backbone.View.extend({
     mapOptions: {
-            zoom: 2,
+            zoom: 5,
             //center: new google.maps.LatLng(26.44106, 63.48967773437),
             //center: new google.maps.LatLng(1.205654311994188, 101.74681884765117),
             center: new google.maps.LatLng(-22.616552001620068, 14.735100097651177),
@@ -54,7 +46,8 @@ var MapView = Backbone.View.extend({
 
     events: {
             'click .zoom_in': 'zoom_in',
-            'click .zoom_out': 'zoom_out'
+            'click .zoom_out': 'zoom_out',
+            'click .fullscreen': 'fullscreen'
     },
     //el: $("#map"),
 
@@ -89,6 +82,11 @@ var MapView = Backbone.View.extend({
 
     adjustSize: function() {
         google.maps.event.trigger(this.map, "resize");
+    },
+
+    fullscreen: function() {
+        this.trigger('fullscreen');
+        return false;
     },
 
     hide_controls: function() {

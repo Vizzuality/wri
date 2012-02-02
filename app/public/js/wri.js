@@ -31,6 +31,7 @@ App.modules.WRI= function(app) {
        
 
        initialize: function() {
+           this.showing = true;
            this.template = this.el.html();
            this.model.bind('change', this.render, this);
            this.stories = this.options.stories;
@@ -110,11 +111,22 @@ App.modules.WRI= function(app) {
                     model: self.stories.random(1)[0]
                 }).render().el
              );
-             self.el.fadeIn();
+             if(self.showing) {
+                self.el.fadeIn();
+             }
              self.set_time(self.time);
            });
-       }
+       },
 
+       hide: function() {
+            this.el.fadeOut();
+            this.showing = false;
+       },
+
+       show: function() {
+            this.el.fadeIn();
+            this.showing = true;
+       }
    });
 
    // dropdown
@@ -137,11 +149,16 @@ App.modules.WRI= function(app) {
     },
 
     render: function() {
+        var self = this;
         var st = _(this.countries.inside(this.continent)).map(function(s) {
             return {
               name: s.get('name_engli'),
               url: '/country#' + s.get('name_engli')
             };
+        });
+        //remove the curren country
+        st = _(st).filter(function(c){
+            return c.name != self.country.get('name_engli');
         });
         this.el.dropdown('update', st);
         this.$('.init').html(this.continent);
@@ -245,6 +262,12 @@ App.modules.WRI= function(app) {
             this.map.map.bind('zoom_changed', this.state_url);
             this.map.show_controls(true);
             this.app_state.bind('change:map', this.set_state);
+            this.app_state.bind('change:fullscreen', function() {
+                if(self.app_state.get('fullscreen')) {
+                    self.go_fullscreen(true);
+                }
+            });
+            this.map.map.bind('fullscreen', this.go_fullscreen, this);
 
 
             // ready, luanch
@@ -254,6 +277,51 @@ App.modules.WRI= function(app) {
             //this.add_time_layer();
         },
 
+        go_fullscreen: function(no_displace) {
+            var self = this;
+            //hide footer and panel
+            $('footer').hide();
+            $('.bar.darker.bottom').hide();// darker bottom¡
+            self.panel.hide();
+            $('.mamufas').fadeOut();
+            //move map
+            //TODO: smooth
+            if(!no_displace)
+                self.map.displace(-255, 0);
+            // hide next/prev
+            $('.pag.left').animate({'left': -40});
+            $('.pag.right').animate({'right': -40});
+
+            $('.fullscreen').html("back to " + self.country.get('name_engli'));
+
+            //change binding
+            this.map.map.unbind('fullscreen', this.go_fullscreen);
+            this.map.map.bind('fullscreen', this.go_normal, this);
+
+            self.app_state.set({fullscreen: true});
+            self.app_state.save({silent: true});
+
+        },
+
+        go_normal: function() {
+            var self = this;
+            //hide footer and panel
+            self.panel.show();
+            $('footer').show();
+            $('.mamufas').fadeIn();
+            //move map
+            //TODO: smooth
+            self.map.displace(255, 0);
+            // hide next/prev
+            $('.pag.left').animate({'left': 0});
+            $('.pag.right').animate({'right': 0});
+
+            $('.fullscreen').html('fullscreen');
+            this.map.map.unbind('fullscreen', this.go_normal);
+            this.map.map.bind('fullscreen', this.go_fullscreen, this);
+            self.app_state.set({fullscreen: false});
+            self.app_state.save({silent: true});
+        },
 
         _state_url: function() {
             var self = this;

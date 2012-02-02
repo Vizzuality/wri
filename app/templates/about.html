@@ -67,3 +67,20 @@
 
 {% endblock %}
 
+{% block js %}
+  <script>
+    function init() {
+      App(function(app) {
+        var wri = new app.WRIAbout();
+        wri.run();
+        //debug
+        window.wri = wri;
+        window._app= app;
+      });
+    }
+    $(document).ready(function() {
+      init();
+    });
+  </script>
+{% endblock %}
+
