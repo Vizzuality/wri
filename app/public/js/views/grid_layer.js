@@ -70,7 +70,8 @@ TimePlayer.prototype.pre_cache_months = function(rows) {
       var last = -10;
 
       steps[0] = 0;
-      for(d = 1; d < def.length; ++d) {
+      steps[1] = 0;
+      for(d = 2; d < def.length; ++d) {
         if(def[d] > 0) {
           last = d;
         }
@@ -86,7 +87,7 @@ TimePlayer.prototype.pre_cache_months = function(rows) {
         x: row.upper_left_x,
         y: row.upper_left_y,
         w: row.cell_width,
-        h: row.cell_height,
+        h: row.cell_width,
         months_accum: acumm_normalized,//row.cummulative,
         months: row.time_series
       }
@@ -105,7 +106,7 @@ TimePlayer.prototype.get_time_data = function(tile, coord, zoom) {
     var projection = new MercatorProjection();
     var bbox = projection.tileBBox(coord.x, coord.y, zoom);
     //TODO: remove not used
-    var sql = "SELECT upper_left_x, upper_left_y, cell_width, cell_height, pixels, total_incr, cummulative, boxpoly, time_series, time_series FROM " + this.table;
+    var sql = "SELECT upper_left_x, upper_left_y, cell_width, cummulative, time_series FROM " + this.table;
 
     // inside the country
     sql += " WHERE iso = '{0}'".format(self.country);
