@@ -155,8 +155,8 @@ TimePlayer.prototype.render_time = function(tile, coord, zoom) {
         'rgba(255, 51, 51, 0.9)',
         'rgba(170, 52, 51, 0.6)',
         'rgba(104, 48, 59, 0.6)',
-        'rgba(104, 48, 59, 0.6)',
-        //'rgba(84, 48, 59, 0.6)'
+        //'rgba(104, 48, 59, 0.6)'
+        'rgba(84, 48, 59, 0.6)'
     ];
 
     var extra = 0;

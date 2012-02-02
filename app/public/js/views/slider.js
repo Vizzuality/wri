@@ -12,7 +12,7 @@ var Slider = Backbone.View.extend({
         this.el.wriSlider({
            start: 'January 1, 2006 00:00:00', 
            end: 'February 1, 2012 00:00:00',
-           value: 'January 1, 2009 00:00:00'
+           value: 'January 1, 2006 00:00:00'
         });
         this.dragging = false;
         this.marker = this.$('.marker');
@@ -34,6 +34,10 @@ var Slider = Backbone.View.extend({
       var months = month % 12;
       var years = (month/12)>>0;
       return new Date(this.START.getFullYear() + years, this.START.getMonth() + months, 1);
+    },
+
+    stop: function() {
+        this.el.wriSlider('stop');
     },
 
     set_time: function(month) {

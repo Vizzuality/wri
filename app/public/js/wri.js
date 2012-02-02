@@ -34,6 +34,12 @@ App.modules.WRI= function(app) {
            this.template = this.el.html();
            this.model.bind('change', this.render, this);
            this.stories = this.options.stories;
+           this.regions = new app.Regions();
+           this.regions.bind('reset', this.render_regions, this);
+           this.model.bind('change', function() {
+               this.regions.set_iso(this.model.get('iso'));
+               this.regions.fetch();
+           }, this);
            this.time = 0;
        },
 
@@ -75,6 +81,16 @@ App.modules.WRI= function(app) {
            );
        },
 
+       render_regions: function() {
+           this.regions.normalize();
+           var ul = this.$('.countries');
+           ul.html('');
+           this.regions.each(function(r) {
+               ul.append(
+          '<li><a href="/country#{0}">{0}<span style="width:{1}%" class="bar"></span></a></li>'.format(r.get('name'), 70*r.get('normalized')));
+           });
+       },
+
        render: function() {
            var self = this;
            var m = this.model;
@@ -95,6 +111,7 @@ App.modules.WRI= function(app) {
                 }).render().el
              );
              self.el.fadeIn();
+             self.set_time(self.time);
            });
        }
 
@@ -215,6 +232,7 @@ App.modules.WRI= function(app) {
 
             // slider
             this.slider = new Slider({el: $(".slider")});
+            this.slider.set_time(0);
             this.slider.bind('change', function(month) {
                 // timestamp to month
                 self.map.set_time(month);
@@ -263,6 +281,7 @@ App.modules.WRI= function(app) {
             var self = this;
             var c = this.country;
             self.map.show_country(c.get('name_engli'), c.get('iso'));
+            //self.slider.set_time(0);
        },
 
        move_map_to: function(c) {
@@ -274,6 +293,7 @@ App.modules.WRI= function(app) {
        on_route: function(country, state) {
             var self = this;
 
+            this.slider.stop();
             var c = this.country;
             c.set({'name_engli': country}, {silent: true});
             if(state) {

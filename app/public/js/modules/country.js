@@ -32,7 +32,7 @@ App.modules.Country = function(app) {
           if(this._time_series_deltas) return this._time_series_deltas;
           var ts = this.time_series();
           var deltas = [];
-          deltas.push(0);
+          //deltas.push(0);
           for(var i = 1, l = ts.length; i < l; ++i) {
               deltas.push(ts[i] - ts[i-1]);
           }
@@ -71,6 +71,28 @@ App.modules.Country = function(app) {
 
     });
 
+    var Regions = app.CartoDB.CartoDBCollection.extend({
+
+        sql: function() {
+            var s = "SELECT global_4x_grid.id1, sum(global_4x_grid.total_incr) as total, admin_attributes_live.name_1 as name FROM global_4x_grid,admin_attributes_live where global_4x_grid.iso='{0}' AND admin_attributes_live.id1 = global_4x_grid.id1 group by global_4x_grid.id1,admin_attributes_live.name_1 ORDER BY total DESC";
+            return s.format(this.country_iso);
+        },
+
+        set_iso: function(iso) {
+            this.country_iso = iso;
+        },
+
+        normalize: function() {
+            var values = this.map(function(r) { return r.get('total'); });
+            var max = _.max(values);
+            if(max > 0) {
+                this.each(function(r) {
+                    r.set({'normalized': r.get('total')/max});
+                });
+            }
+        }
+
+    });
 
     /**
      * countries collection
@@ -140,4 +162,5 @@ App.modules.Country = function(app) {
 
     app.Country = Country;
     app.Countries = Countries;
+    app.Regions = Regions;
 }
