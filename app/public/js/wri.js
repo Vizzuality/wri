@@ -137,11 +137,16 @@ App.modules.WRI= function(app) {
     },
 
     render: function() {
+        var self = this;
         var st = _(this.countries.inside(this.continent)).map(function(s) {
             return {
               name: s.get('name_engli'),
               url: '/country#' + s.get('name_engli')
             };
+        });
+        //remove the curren country
+        st = _(st).filter(function(c){
+            return c.name != self.country.get('name_engli');
         });
         this.el.dropdown('update', st);
         this.$('.init').html(this.continent);
