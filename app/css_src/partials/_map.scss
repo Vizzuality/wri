@@ -27,15 +27,20 @@
     fill:#971c20;
   }
   text {
-      opacity: 0;
-      fill: #FFF;
-      color: #FFF;
-      font: bold 20px sans-serif;
+    opacity: 0;
+    fill: #FFF!important;
+    color: #FFF!important;
+    font: bold 20px sans-serif;
   }
+
+  a:visited {
+    background:white;  
+  }
+
   text.small {
-      fill: #FFF;
-      color: #FFF;
-      font: 10px sans-serif;
+    fill: #FFF;
+    color: #FFF;
+    font: 10px sans-serif;
   }
 }
 
