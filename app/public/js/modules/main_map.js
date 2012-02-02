@@ -49,8 +49,8 @@ App.modules.MainMap = function(app) {
                             var dy = pos[1] - other_pos[1];
                             var len = Math.sqrt(dx*dx + dy*dy);
                             var r_other =  self.def_to_size(c.time_series_deltas()[month]);
-                            var diff = (len - (r+r_other))/len;
-                            var desired_len = r+r_other;
+                            var desired_len = r + r_other + 2;//5 pixels distance
+                            var diff = (len - desired_len)/len;
                             if(len <= desired_len) {
                                 //move each other depending on the "mass" 
                                 //of the system
