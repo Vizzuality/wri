@@ -1,13 +1,23 @@
 
 .bubble_map {
   position:absolute;
-  top:140px;
+  top:0;
   left:0;
   width: 1100px;
-  height: 500px;
-  padding:0;
-  background: url('/img/home_map.jpg') repeat-x -75px -130px black;
+  height: 800px;
+  padding:130px 0 0 0;
+  background: url('/img/home_map.png') repeat-x -60px -110px;
   z-index:0;
+
+  div.mamufas {
+    position:absolute;
+    top:0;
+    left:0;
+    width:1100px;
+    height:930px;
+    @include background-image(radial-gradient(580px 450px,rgba(0,0,0,0) 40%, rgba(0,0,0,1) 520px));
+    pointer-events:none;
+  }
 
   circle {
     fill: #FF3333;
@@ -30,7 +40,7 @@
 }
 
 .background_map {
-  position: absolute;
+  position: fixed;
   height:100%;
   top: 0;
   left:0;

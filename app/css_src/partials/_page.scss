@@ -50,6 +50,7 @@ input:invalid, textarea:invalid {
 //-----------------------------------
 
 html, body {
+  position:relative;
   width: 100%;
   height: 100%;
 }
@@ -62,6 +63,8 @@ body.tool {
     position: relative;
     width: 100%;
     height:100%;
+    padding:0;
+    margin:0;
 
     &.about {height:auto;}
     &.grey {padding:60px 0 0 0; background:#191919}
@@ -98,11 +101,14 @@ body.tool {
       }
     }
     &.country {
-      position:relative;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
       height:65px;
-      padding:25px 0 0 0;
+      padding:28px 0 12px 0;
       z-index:15;
-      @include background-image(linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.2)));
+      //@include background-image(linear-gradient(rgba(0,0,0,1), rgba(0,0,0,) 90%, rgba(0,0,0,0)));
     }
 
     form {
@@ -117,16 +123,11 @@ body.tool {
   article.subheader {
     position:relative;
     margin:0;
-    z-index:15;
 
     section.title {
-      width:755px;
-      p {letter-spacing:-1px}
-    }
-    form {
-      width:250px;
-      margin:64px 0 0;
-      input[type="text"] {width:219px; font:normal 17px "Open Sans";}
+      width:735px;
+      p {margin:7px 0 0 0; letter-spacing:-1px;}
+      h2 {font-size:56px; line-height:60px; word-spacing:5px}
     }
   }
 
@@ -142,6 +143,9 @@ body.tool {
       width:255px;
       margin-right:20px;
       letter-spacing:0;
+
+      h4 {position:relative;}
+
       section.column:last-child {margin:0}
 
       ul {
@@ -155,7 +159,7 @@ body.tool {
     position:relative;
     @include inline-block();
     width:530px;
-    margin:0 0 0 50%;
+    margin:90px 0 0 50%;
     right:55px;
     z-index:10;
     display: none;
@@ -168,7 +172,7 @@ body.tool {
 
   /* COUNTRY FLOAT ELEMENTS */
   span.bar {
-    position:absolute;
+    position:fixed;
     height:2px;
     background:white;
     z-index:5;
@@ -176,11 +180,11 @@ body.tool {
     &.l {left:0; width:50%; min-width:510px; margin-left:-100px}
     &.r {right:0; width:50%; min-width:65px; margin-right:-487px}
     &.top {top:120px;}
-    &.bottom {position:relative; margin:20px 0 0 0; display:block; width:100%;}
+    &.bottom {position:relative; margin:80px 0 0 0; display:block; width:100%;}
     &.darker {background:#2A2B2C}
   }
   a.pag {
-    position:absolute;
+    position:fixed;
     top:50%;
     width:33px;
     height:66px;
@@ -313,12 +317,12 @@ body.tool {
     @include border-radius(3px);
     list-style:none;
     pointer-events:none;
+    background:rgba(0,0,0,0.9);
 
     li {
       position:relative;
       display:block;
       padding:0 18px 9px;
-      background:rgba(0,0,0,0.9);
       pointer-events:auto;
 
       a {
@@ -345,7 +349,7 @@ body.tool {
       p {
         font-size:13px;
         color:#666;
-        text-align:center;
+        text-align:left;
       }
     }
   }
@@ -354,12 +358,22 @@ body.tool {
   form {
     position:relative;
 
+    &.home {
+      position:absolute;
+      left:50%;
+      top:110px;
+      width:250px;
+      margin:64px 0 0 298px;
+      z-index:110;
+      input[type="text"] {width:219px; font:normal 17px "Open Sans";}
+    }
+
     input[type="text"] {
       display:block;
       padding:11px 22px 11px 9px;
       border:1px solid #252525;
       @include border-radius(3px);
-      background:none;
+      background:black;
       font:normal 13px "Open Sans";
       line-height:normal;
       color:white;
@@ -410,6 +424,8 @@ body.tool {
     font:normal 17px "Open Sans";
     color:white;
     letter-spacing:-1px;
+    background:black;
+
     &:hover {border-color:rgba(255,255,255,0.7)}
     &.active {
       border-color:rgba(255,255,255,0.7);
@@ -603,9 +619,11 @@ body.tool {
   /* FOOTER */
   footer {
     position:relative;
+    display:block;
     padding:30px 0 150px;
     z-index:20;
     background:rgba(0,0,0,0.9);
+    &.country {width:100%;}
 
     ul {
       width:auto;

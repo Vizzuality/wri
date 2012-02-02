@@ -4,8 +4,16 @@
 
   <div class="container">
 
+    <!-- HACK FOR AUTOCOMPLETE -->
+    <form class="home">
+      <input id="autocomplete" type="text" placeholder="Seach for a country"/>
+      <input type="submit" value=""/>
+    </form>
+
     <div class="inner padding100 home">
-      <div class="bubble_map"></div>
+      <div class="bubble_map">
+        <div class="mamufas"></div>
+      </div>
 
       <header class="home">
         <h1 class="left">
@@ -22,12 +30,8 @@
       <article class="subheader">
           <section class="title left">
 	          <h2>Find out where tropical deforestation happened last month</h2>
-            <p class="bigger margin10">Browse the map or select a country from the list below.</p>
+            <p class="bigger">Browse the map or select a country from the list below.</p>
           </section>
-          <form class="right">
-            <input id="autocomplete" type="text" placeholder="Seach for a country"/>
-            <input type="submit" value=""/>
-          </form>
       </article>
 
       <article class="countries">
@@ -54,9 +58,10 @@
         </section>
       </article>
     </div>
+
+    <footer class="slider"></footer>
   </div>
 
-  <footer class="slider"></footer>
   {% include "_backbone_templates.html" %}
 
 
