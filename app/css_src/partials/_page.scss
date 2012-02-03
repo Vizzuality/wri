@@ -84,14 +84,9 @@ body.tool {
     z-index:50;
 
     h1 {
-      float:left; margin:0; padding:13px 0 0 0;
-      a {
-        font:normal 21px "Georgia"; color:white;
-        span {display:block; font-size:13px; color:#737374}
-        &:hover {}
-      }
-
+      float:left; margin:20px 0 0 0;
     }
+
     nav {
       float:right;
       width:610px;
