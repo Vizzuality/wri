@@ -89,7 +89,7 @@ App.modules.Country = function(app) {
     var Regions = app.CartoDB.CartoDBCollection.extend({
 
         sql: function() {
-            var s = "SELECT global_4x_grid.id1, sum(global_4x_grid.total_incr) as total, admin_attributes_live.name_1 as name FROM global_4x_grid,admin_attributes_live where global_4x_grid.iso='{0}' AND admin_attributes_live.id1 = global_4x_grid.id1 group by global_4x_grid.id1,admin_attributes_live.name_1 ORDER BY total DESC";
+            var s = "SELECT global_4x_grid.id1, sum(global_4x_grid.total_incr) as total, admin1_attributes_live.name_1 as name FROM global_4x_grid,admin1_attributes_live where global_4x_grid.iso='{0}' AND admin1_attributes_live.id1 = global_4x_grid.id1 group by global_4x_grid.id1,admin1_attributes_live.name_1 ORDER BY total DESC";
             return s.format(this.country_iso);
         },
 
