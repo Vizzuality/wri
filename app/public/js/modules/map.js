@@ -118,7 +118,7 @@ App.modules.Map = function(app) {
             var self = this;
             console.log("zoom: ", z);
             var size = 32;
-            var table_name = 'global_32x_grid';
+            var table_name = 'global_64x_grid';
             if(z == 6) {
                 size = 16;
                 table_name = 'global_16x_grid';
