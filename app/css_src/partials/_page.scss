@@ -73,7 +73,7 @@ body.tool {
   .inner {
     width:$layout_width;
     margin:0 auto;
-    &.home {position:relative; z-index:100}
+    &.home {position:relative;}
   }
 
   /* HEADER */
@@ -81,7 +81,7 @@ body.tool {
     position:relative;
     height:88px;
     padding:10px 0;
-    z-index:50;
+    z-index:150;
 
     h1 {
       float:left; margin:20px 0 0 0;
@@ -468,7 +468,7 @@ body.tool {
       width:277px;
       margin:22px 0;
       background:url('/img/layout/options.png') repeat-y -277px 0;
-      z-index:200000;
+      z-index:100;
 
       ul {        
         display:block;

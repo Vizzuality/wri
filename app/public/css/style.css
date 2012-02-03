@@ -452,14 +452,13 @@ body.tool .inner {
 /* line 76, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool .inner.home {
   position: relative;
-  z-index: 100;
 }
 /* line 80, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool header {
   position: relative;
   height: 88px;
   padding: 10px 0;
-  z-index: 50;
+  z-index: 150;
 }
 /* line 86, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool header h1 {
@@ -1057,7 +1056,7 @@ body.tool span.select div.options {
   width: 277px;
   margin: 22px 0;
   background: url("/img/layout/options.png") repeat-y -277px 0;
-  z-index: 200000;
+  z-index: 100;
 }
 /* line 473, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.tool span.select div.options ul {
