@@ -25,11 +25,42 @@ App.modules.WRI= function(app) {
      return s;
     }
 
+   var RegionView = Backbone.View.extend({
+
+       tagName: 'li',
+
+       events: {
+           'click .region': 'click'
+       },
+
+       initialize: function() {
+       },
+
+       click: function(e) {
+           e.preventDefault();
+           this.trigger('move_to', this.model);
+       },
+
+       render: function() {
+           var r = this.model;
+           $(this.el).html('<a href="#" class="region">{0}<span style="width:{1}%" class="bar"></span></a></li>'.format(r.get('name'), 70*r.get('normalized')));
+           return this;
+
+       },
+
+       close: function() {
+           this.unbind();
+           this.remove();
+       }
+   });
+
    var CountryPanel = Backbone.View.extend({
        START:  new Date(2006, 0, 1),
        MONTHS: [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
-       
 
+       events: {
+
+       },
        initialize: function() {
            this.showing = true;
            this.template = this.el.html();
@@ -42,6 +73,7 @@ App.modules.WRI= function(app) {
                this.regions.fetch();
            }, this);
            this.time = 0;
+           this.regions_views = [];
        },
 
        set_time: function(t) {
@@ -83,12 +115,19 @@ App.modules.WRI= function(app) {
        },
 
        render_regions: function() {
+           var self = this;
            this.regions.normalize();
            var ul = this.$('.countries');
            ul.html('');
+           _(this.regions_views).each(function(v) {
+               v.close();
+           });
+           this.regions_views = [];
            this.regions.each(function(r) {
-               ul.append(
-          '<li><a href="/country#{0}">{0}<span style="width:{1}%" class="bar"></span></a></li>'.format(r.get('name'), 70*r.get('normalized')));
+               var view = new RegionView({model: r});
+               self.regions_views.push(view);
+               view.bind('move_to', self.move_map_to, self);
+               ul.append(view.render().el);
            });
        },
 
@@ -116,6 +155,10 @@ App.modules.WRI= function(app) {
              }
              self.set_time(self.time);
            });
+       },
+
+       move_map_to: function(regions) {
+           this.trigger('move_to', regions);
        },
 
        hide: function() {
@@ -268,6 +311,7 @@ App.modules.WRI= function(app) {
                 }
             });
             this.map.map.bind('fullscreen', this.go_fullscreen, this);
+            this.panel.bind('move_to', this.move_map_to, this);
 
 
             // ready, luanch

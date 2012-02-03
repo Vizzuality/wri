@@ -86,10 +86,24 @@ App.modules.Country = function(app) {
 
     });
 
+    //var Region = app.CartoDB.CartoDBModel.extend({ });
+
     var Regions = app.CartoDB.CartoDBCollection.extend({
 
+        cache: true,
+
+        initialize: function() {
+            this.bind('reset', function() {
+                this.each(function(r) {
+                    r.set({
+                        'bbox': JSON.parse(r.get('bbox'))
+                    }, {silent: true});
+                });
+
+            });
+        },
         sql: function() {
-            var s = "SELECT global_4x_grid.id1, sum(global_4x_grid.total_incr) as total, admin1_attributes_live.name_1 as name FROM global_4x_grid,admin1_attributes_live where global_4x_grid.iso='{0}' AND admin1_attributes_live.id1 = global_4x_grid.id1 group by global_4x_grid.id1,admin1_attributes_live.name_1 ORDER BY total DESC";
+            var s = "WITH foo AS (SELECT ST_AsGeoJSON(ST_Centroid(ST_Envelope(admin1_attributes_live.the_geom))) as center, ST_AsGeoJSON(ST_Envelope(admin1_attributes_live.the_geom)) as bbox, name_1 as name, id1 FROM admin1_attributes_live WHERE admin1_attributes_live.iso = '{0}') SELECT center, bbox, foo.name, foo.id1, sum(global_4x_grid.total_incr) as total FROM foo,global_4x_grid WHERE global_4x_grid.iso='{0}' AND global_4x_grid.id1 = foo.id1 group by foo.id1, foo.name, center, bbox ORDER BY total DESC";
             return s.format(this.country_iso);
         },
 
