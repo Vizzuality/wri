@@ -746,6 +746,10 @@ body {
       @include transition-duration(300ms);
     }
 
+    span#continent_drop {
+      display:none;
+    }
+
     span.bar {
       &.l {
         width:50%;

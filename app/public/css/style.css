@@ -1538,7 +1538,11 @@ body.fullscreen article.country {
   -o-transition-duration: 300ms;
   transition-duration: 300ms;
 }
-/* line 750, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 749, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+body.fullscreen span#continent_drop {
+  display: none;
+}
+/* line 754, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.fullscreen span.bar.l {
   width: 50%;
   margin-left: 0;
@@ -1551,7 +1555,7 @@ body.fullscreen span.bar.l {
   -o-transition-duration: 300ms;
   transition-duration: 300ms;
 }
-/* line 756, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 760, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.fullscreen span.bar.r {
   width: 51%;
   margin-right: 0;
@@ -1564,7 +1568,7 @@ body.fullscreen span.bar.r {
   -o-transition-duration: 300ms;
   transition-duration: 300ms;
 }
-/* line 764, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 768, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.fullscreen div.mamufas, body.fullscreen footer, body.fullscreen .bar.darker.bottom {
   opacity: 0;
   -moz-transition-property: all;
@@ -1577,11 +1581,11 @@ body.fullscreen div.mamufas, body.fullscreen footer, body.fullscreen .bar.darker
   transition-duration: 300ms;
 }
 
-/* line 774, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 778, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front {
   background-color: #191919;
 }
-/* line 777, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 781, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error {
   position: absolute;
   top: 50%;
@@ -1589,19 +1593,19 @@ body.front article.error {
   margin: -250px 0 0 -281px;
   width: 562px;
 }
-/* line 784, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 788, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error header {
   display: block;
 }
-/* line 786, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 790, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error header h1 {
   margin: 0 0 0 12px;
 }
-/* line 791, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 795, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section {
   position: relative;
 }
-/* line 794, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 798, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section.empty {
   display: inline-block;
   width: 530px;
@@ -1615,12 +1619,12 @@ body.front article.error section.empty {
   -khtml-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 801, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 805, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section.empty div.band {
   left: -62px;
   bottom: 40px;
 }
-/* line 802, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 806, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section.empty em {
   display: block;
   font: bold 250px "Open Sans";
@@ -1628,7 +1632,7 @@ body.front article.error section.empty em {
   text-align: center;
   line-height: 290px;
 }
-/* line 805, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 809, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band {
   position: absolute;
   bottom: 74px;
@@ -1638,7 +1642,7 @@ body.front article.error section div.band {
   padding: 20px 75px;
   background-position: 0 0;
 }
-/* line 814, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 818, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band h2 {
   display: block;
   font: bold 15px "Open Sans";
@@ -1647,18 +1651,18 @@ body.front article.error section div.band h2 {
   text-align: center;
   line-height: 15px;
 }
-/* line 815, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 819, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band p {
   margin: 3px 0 0 0;
   text-align: center;
   color: #7B1718;
 }
-/* line 819, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 823, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band p a {
   color: #7B1718;
   text-decoration: underline;
 }
-/* line 822, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
+/* line 826, /Users/jmedina/Workspace/wri/app/css_src/partials/_page.scss */
 body.front article.error section div.band p a:hover {
   color: #3F0B0C;
 }
