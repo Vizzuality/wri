@@ -170,6 +170,9 @@ body.tool {
     right:55px;
     z-index:10;
     display: none;
+    opacity:1;
+    @include transition-property("margin,opacity");
+    @include transition-duration(300ms);
   }
 
   /* ABOUT */
@@ -664,7 +667,7 @@ body.tool {
 
 }
 
-// Header trick
+// Fullscreen and scroll tricks
 body {
   div.own_header {
     position:absolute;
@@ -717,6 +720,51 @@ body {
         @include transition-property(all);
         @include transition-duration(300ms);
       }
+    }
+  }
+
+  &.fullscreen {
+    overflow:hidden!important;
+
+    header {
+      @include background-image(linear-gradient(#000000, rgba(0,0,0,0.8)));
+      @include transition-property(all);
+      @include transition-duration(300ms);
+    }
+
+    div.own_header {
+      position:fixed;
+      top:43px;
+      @include transition-property(top);
+      @include transition-duration(300ms);
+    }
+
+    article.country {
+      margin-left:100%;
+      opacity:0;
+      @include transition-property(all);
+      @include transition-duration(300ms);
+    }
+
+    span.bar {
+      &.l {
+        width:50%;
+        margin-left:0;
+        @include transition-property(all);
+        @include transition-duration(300ms);
+      }
+      &.r {
+        width:51%;
+        margin-right:0;
+        @include transition-property(all);
+        @include transition-duration(300ms);
+      }
+    }
+
+    div.mamufas,footer,.bar.darker.bottom {
+      opacity:0;
+      @include transition-property(all);
+      @include transition-duration(300ms);
     }
   }
 }
