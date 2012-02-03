@@ -14,6 +14,14 @@
       <span class="bar r top"></span>
       <a href="#todo" class="pag right">&#8594; </a>
       <a href="#todo" class="pag left">&#8592; </a>
+      <div class="own_header">
+        <span id="continent_drop" class="select left"></span>
+        <span id="stories_drop"class="select right">Stories</span>
+        <form class="right">
+          <input id="autocomplete" type="text" placeholder="Seach for a country"/>
+          <input type="submit" value=""/>
+        </form>
+      </div>
     </div>
 
     <header class="country inner">
@@ -25,17 +33,10 @@
           </a>
         </h1>
         <nav class="right">
-          <span id="continent_drop" class="select left"></span>
           <a class="right" href="/about">About</a>
-          <span id="stories_drop"class="select right">Stories</span>
-          <form class="right">
-            <input id="autocomplete" type="text" placeholder="Seach for a country"/>
-            <input type="submit" value=""/>
-          </form> 
         </nav>
       </div>
     </header>
-
     <div class="slider"></div>
   </div>
 
@@ -43,6 +44,7 @@
   <!-- RELATIVE -->
   <div class="container">
     <article id="country_info" class="country">
+
       <h2>{country}</h2>
       <div class="margin10">
         <div class="statistics">

@@ -114,9 +114,8 @@ body.tool {
       left:0;
       width:100%;
       height:65px;
-      padding:22px 0 12px 0;
+      padding:22px 0 33px 0;
       z-index:15;
-      //@include background-image(linear-gradient(rgba(0,0,0,1), rgba(0,0,0,) 90%, rgba(0,0,0,0)));
     }
 
     form {
@@ -185,8 +184,16 @@ body.tool {
     background:white;
     z-index:5;
 
-    &.l {left:0; width:50%; min-width:510px; margin-left:-100px}
-    &.r {right:0; width:50%; min-width:65px; margin-right:-487px}
+    &.l {
+      left:0; width:50%; min-width:510px; margin-left:-100px;
+      @include transition-property(all);
+      @include transition-duration(300ms);
+    }
+    &.r {
+      right:0; width:50%; min-width:65px; margin-right:-487px;
+      @include transition-property(all);
+      @include transition-duration(300ms);
+    }
     &.top {top:120px;}
     &.bottom {position:relative; margin:80px 0 0 0; display:block; width:100%;}
     &.darker {background:#2A2B2C}
@@ -450,6 +457,7 @@ body.tool {
       height:18px;
       padding:0 12px 0 5px;
       margin:0;
+      color:white;
       @include icons-sprite(down_arrow, $offset-x:100%, $offset-y:12px);      
       border:none;
     }
@@ -655,6 +663,64 @@ body.tool {
   }
 
 }
+
+// Header trick
+body {
+  div.own_header {
+    position:absolute;
+    width:530px;
+    display:block;
+    left:50%;
+    top:-47px;
+    margin:0 0 0 -55px;
+    z-index:110;
+    @include transition-property(top);
+    @include transition-duration(300ms);
+
+    span.select.left {margin-left:0;}
+    form {
+      margin:0 7px 0 0;
+      width:180px;
+      input[type="text"] {width:145px; padding:4px 26px 5px 9px; margin:0; font-size:16px; letter-spacing:-1px}
+      input[type="submit"] {top:10px; right:5px;}
+    }
+    &.about {
+      top:31px;
+      @include transition-property(none);
+    }
+  }
+  &.scrolled {
+
+    header {
+      @include background-image(linear-gradient(#000000, rgba(0,0,0,0.8)));
+      @include transition-property(all);
+      @include transition-duration(300ms);
+    }
+
+    div.own_header {
+      position:fixed;
+      top:43px;
+      @include transition-property(top);
+      @include transition-duration(300ms);
+    }
+
+    span.bar {
+      &.l {
+        width:50%;
+        margin-left:0;
+        @include transition-property(all);
+        @include transition-duration(300ms);
+      }
+      &.r {
+        width:51%;
+        margin-right:0;
+        @include transition-property(all);
+        @include transition-duration(300ms);
+      }
+    }
+  }
+}
+
 
 
 body.front {

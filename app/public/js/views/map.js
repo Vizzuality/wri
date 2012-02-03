@@ -78,6 +78,19 @@ var MapView = Backbone.View.extend({
         $('.map').find('a:contains("Terms of Use")').closest('div').hide();
        },2000)
 
+       // Scroll thingy -> Move header and then close it :)
+       $(document).scroll(function(ev){
+         if ($(this).scrollTop()>142) {
+           if (!$('body').hasClass('scrolled')) {
+             $('body').addClass('scrolled');
+           }
+         } else {
+           if ($('body').hasClass('scrolled')) {
+             $('body').removeClass('scrolled');
+           }
+         }
+       });
+
     },
 
     adjustSize: function() {
