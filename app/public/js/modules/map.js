@@ -50,7 +50,7 @@ App.modules.Map = function(app) {
             this.report_polygons = {};
 
             //map style
-            this.map.map.setOptions({'styles': app.Config.MAP_STYLE});
+            //this.map.map.setOptions({'styles': app.Config.MAP_STYLE});
 
             // add layers to the map
             _(app.Config.MAP_LAYERS).each(function(layer) {

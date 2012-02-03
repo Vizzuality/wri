@@ -12,17 +12,6 @@ var Layer = Backbone.View.extend({
     initialize: function(layer) {
         var self = this;
         this.layer = this.options.layer;
-        this.bus = this.options.bus;
-        this.bus.on('map:enable_layer', function(name, enabled) {
-            if(name === self.layer.name) {
-                if(enabled) {
-                    $(self.el).addClass('enabled');
-                }
-                else {
-                    $(self.el).removeClass('enabled');
-                }
-            }
-        });
     },
 
     render: function() {
@@ -40,16 +29,13 @@ var Layer = Backbone.View.extend({
     },
 
     toggle: function() {
-        this.bus.emit('map:enable_layer', this.layer.name, !this.layer.enabled);
     }
 
 });
 
 var LayerEditor = Backbone.View.extend({
 
-
     events: {
-        'click .expand': 'expand',
         'mouseleave': 'hiding',
         'click': 'open'
     },
@@ -63,37 +49,25 @@ var LayerEditor = Backbone.View.extend({
         this.render();
     },
 
-    expand: function(e) {
-        if(e) {
-            e.preventDefault();
-        }
-        this.render(this.layers.length);
-    },
-
     render: function(howmany, order) {
-        howmany = howmany || 3;
         var self = this;
-        var el = this.$('.dropdown');
-        el.find('li').each(function(i,el){$(el).remove()});
-        _(this.layers.slice(0, howmany)).each(function(layer) {
+        var el = this.$('ul');
+        el.find('li').each(function(i,el){
+            $(el).remove()
+        });
+        _(this.layers).each(function(layer) {
             var v = self.views[layer.name];
             if (v) {
                 delete self.views[layer.name];
             }
-            var v = new Layer({
+            v = new Layer({
                     layer: layer,
                     bus: self.bus
             });
             self.views[layer.name] = v;
-            el.find('a.expand').before(v.render().el);
-            //el.append(v.render().el);
+            el.append(v.render().el);
         });
-        if(howmany === self.layers.length) {
-            this.$('a.expand').hide();
-        } else {
-            this.$('a.expand').show();
-        }
-        el.sortable({
+        /*el.sortable({
           revert: false,
           items: '.sortable',
           axis: 'y',
@@ -110,6 +84,7 @@ var LayerEditor = Backbone.View.extend({
           }
         });
         this.updateLayerNumber();
+        */
         return this;
     },
 
