@@ -36,7 +36,13 @@
   }
 
   a:visited {
-    background:white;  
+    fill: #FFFFFF!important;
+    color: #FFFFFF!important;
+    
+    text {
+      fill: #FFFFFF!important;
+      color: #FFFFFF!important;
+    }
   }
 
   text.small {
