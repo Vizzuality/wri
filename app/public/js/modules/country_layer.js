@@ -8,6 +8,7 @@ var MiniTilemill = function(user, map) {
     this.layers = [];
     this.user_name = user;
     this.map = map;
+    this.use_cartodb_styles = false;
 };
 
 MiniTilemill.prototype.addLayer = function(style, table) {
@@ -21,7 +22,7 @@ MiniTilemill.prototype.addLayer = function(style, table) {
         map_style: false,
         infowindow: false,
         auto_bound: false,
-        tile_style: style,
+        tile_style: this.use_cartodb_styles?null: style,
         index: this.layers.length
     });
 
@@ -75,7 +76,8 @@ App.modules.CountryLayer = function(app) {
             self.layer = cartodb;
 
             this.pas_layer = this.tilemill.addLayer(
-                $('#selected_countries_pas').html(),
+                //$('#selected_countries_pas').html(),
+                null,
                 'selected_countries_pas'
             );
             this.country_border = this.tilemill.addLayer(
@@ -83,11 +85,13 @@ App.modules.CountryLayer = function(app) {
                 'country_attributes_live'
             );
             this.rivers = this.tilemill.addLayer(
-                $('#rivers').html(),
+                //$('#rivers').html(),
+                null,
                 'rivers'
             );
             this.places = this.tilemill.addLayer(
-                $('#places').html(),
+                //$('#places').html(),
+                null,
                 'places'
             );
 
@@ -136,14 +140,15 @@ App.modules.CountryLayer = function(app) {
             sql = sql.format(iso);
             self.country_border.update(sql);
 
-            sql = "select * from selected_countries_pas where iso = '{0}'";
+            sql = "select the_geom_webmercator, is_point from selected_countries_pas where iso = '{0}'";
             sql = sql.format(iso);
             self.pas_layer.update(sql);
 
-            sql = "select * from rivers";
+            //sql = "select * from rivers";
+            sql = "SELECT rivers.the_geom_webmercator, scalerank FROM rivers, simple_countries where ST_Intersects(rivers.the_geom,simple_countries.the_geom) and simple_countries.iso = '{0}'".format(iso);
             self.rivers.update(sql);
 
-            sql = "select * from places";
+            sql = "select the_geom_webmercator, name from places";
             self.places.update(sql);
         },
 
