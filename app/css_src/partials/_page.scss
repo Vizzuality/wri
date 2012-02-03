@@ -211,7 +211,7 @@ body.tool {
     background-color: #FF3333;
     text-indent:-9999px;
     text-transform:uppercase;
-    z-index:10;
+    z-index:110;
     color:#333333;
     &.left {left:0;}
     &.right {right:0; transform:rotate(180deg); -webkit-transform:rotate(180deg); -moz-transform:rotate(180deg);}
