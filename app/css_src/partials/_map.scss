@@ -38,7 +38,7 @@
   a:visited {
     fill: #FFFFFF!important;
     color: #FFFFFF!important;
-    
+
     text {
       fill: #FFFFFF!important;
       color: #FFFFFF!important;
@@ -85,7 +85,7 @@
     width:200%;
     height:200%;
     margin:0 0 0 -400px;
-    @include background-image(radial-gradient(25% 450px,rgba(0,0,0,0) 70px, rgba(0,0,0,0.95) 600px));
+    @include background-image(radial-gradient(25% 450px,rgba(0,0,0,0) 10%, rgba(0,0,0,0.95) 500px));
     z-index:10;
     pointer-events:none;
   }
@@ -136,8 +136,8 @@
     a {
       @include inline-block();
       letter-spacing:0;
-      min-width:15px;
-      padding:5px;
+      min-width:11px;
+      padding:5px 7px;
       font:normal 13px "Open Sans";
       color:white;
       text-align:center;
@@ -157,11 +157,11 @@
         @include border-left-radius(0);
         @include border-right-radius(2px);
         &:hover {
-          padding:5px 5px 5px 4px;
+          padding:5px 7px 5px 6px;
           border-left:1px solid white;
         }
         &:active {
-          padding:5px;
+          padding:5px 7px;
           border-left:none;
         }
       }

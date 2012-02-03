@@ -216,7 +216,6 @@ App.modules.WRI= function(app) {
         init: function() {
             _.bindAll(this, 'on_route');
             $('body').css({'overflow-x': 'hidden', 'overflow-y': 'auto'});
-            //$('html').css({'overflow': 'hidden'});
         },
 
         run: function() {
@@ -323,20 +322,15 @@ App.modules.WRI= function(app) {
 
         go_fullscreen: function(no_displace) {
             var self = this;
-            //hide footer and panel
-            $('footer').hide();
-            $('.bar.darker.bottom').hide();// darker bottom¡
-            self.panel.hide();
-            $('.mamufas').fadeOut();
+
+            $('body').addClass('fullscreen');
+ 
             //move map
             //TODO: smooth
             if(!no_displace)
                 self.map.displace(-255, 0);
-            // hide next/prev
-            $('.pag.left').animate({'left': -40});
-            $('.pag.right').animate({'right': -40});
 
-            $('.fullscreen').html("back to " + self.country.get('name_engli'));
+            $('a.fullscreen').html("Normal map");
 
             //change binding
             this.map.map.unbind('fullscreen', this.go_fullscreen);
@@ -348,19 +342,15 @@ App.modules.WRI= function(app) {
         },
 
         go_normal: function() {
+            
+            $('body').removeClass('fullscreen');
+
             var self = this;
-            //hide footer and panel
-            self.panel.show();
-            $('footer').show();
-            $('.mamufas').fadeIn();
             //move map
             //TODO: smooth
             self.map.displace(255, 0);
-            // hide next/prev
-            $('.pag.left').animate({'left': 0});
-            $('.pag.right').animate({'right': 0});
 
-            $('.fullscreen').html('fullscreen');
+            $('a.fullscreen').html('Fullscreen map');
             this.map.map.unbind('fullscreen', this.go_normal);
             this.map.map.bind('fullscreen', this.go_fullscreen, this);
             self.app_state.set({fullscreen: false}, {silent: true});

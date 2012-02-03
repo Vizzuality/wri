@@ -248,7 +248,7 @@
 
     _bind: function($el) {
       $el.find('a.init').bind({'click':Core._onClick});
-      $el.find('li a').bind({'click':Core._onListClick});
+      $el.find('ul').on('click','a',function(ev){Core._onListClick(ev)});
     },
 
 
