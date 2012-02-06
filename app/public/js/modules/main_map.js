@@ -167,7 +167,10 @@ App.modules.MainMap = function(app) {
                         .text('GOING UP')
                 });
 
+
             setInterval(this.update, 30);
+            node.selectAll('text')
+                .style('display', 'none');
 
 
 
@@ -194,6 +197,7 @@ App.modules.MainMap = function(app) {
 
                     d3.select(this)
                         .selectAll('text')
+                            .style('display', 'block')
                             .transition()
                             .delay(100)
                             .style('opacity', 1.0);
@@ -212,7 +216,10 @@ App.modules.MainMap = function(app) {
                         .selectAll('text')
                             .transition()
                             .delay(100)
-                            .style('opacity', 0.0);
+                            .style('opacity', 0.0)
+                            .each('end', function() {
+                                d3.select(this).style('display', 'none');
+                            });
 
                 });
           }
