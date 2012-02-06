@@ -169,7 +169,7 @@ CartoDB.prototype.convert_geometry = function(geometry, zoom, x, y) {
         //do not manage inner polygons!
         'Polygon': function(x, y, zoom, coordinates) {
               var coords = [];
-              if(coordinates.length === 0) return null;
+              if(coordinates.length === 0) return [];
               for(var i=0; i < coordinates[0].length; ++i) {
                 coords.push(map_latlon(coordinates[0][i], x, y, zoom));
              }
@@ -180,7 +180,7 @@ CartoDB.prototype.convert_geometry = function(geometry, zoom, x, y) {
               var pc = primitive_conversion['Polygon'];
               for(var i=0; i < coordinates.length; ++i) {
                   var p = pc(x, y, zoom, coordinates[i]);
-                  if(p) {
+                  if(p.length > 0) {
                     polys.push(p);
                   }
               }

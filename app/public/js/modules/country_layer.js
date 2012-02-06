@@ -151,7 +151,7 @@ App.modules.CountryLayer = function(app) {
             sql = "SELECT rivers.the_geom_webmercator, scalerank FROM rivers, simple_countries where ST_Intersects(rivers.the_geom,simple_countries.the_geom) and simple_countries.iso = '{0}'".format(iso);
             self.rivers.update(sql);
 
-            sql = "select the_geom_webmercator, name from places where iso='{0}' order by gn_pop limit 10".format(iso);
+            sql = "select the_geom_webmercator, name from places where iso='{0}' order by gn_pop limit 20".format(iso);
             self.places.update(sql);
         },
 
