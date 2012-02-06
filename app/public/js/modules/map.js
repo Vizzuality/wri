@@ -123,7 +123,11 @@ App.modules.Map = function(app) {
             console.log("zoom: ", z);
             var size = 32;
             var table_name = 'global_64x_grid';
-            if(z == 6) {
+
+            if(z == 5) {
+                size = 32
+                table_name = 'global_32x_grid';
+            } else if(z == 6) {
                 size = 16;
                 table_name = 'global_16x_grid';
             } else if(z == 7) {

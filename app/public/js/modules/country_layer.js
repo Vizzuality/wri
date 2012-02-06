@@ -30,6 +30,12 @@ MiniTilemill.prototype.toggle = function(table) {
     l.show(!l.showing);
 }
 
+MiniTilemill.prototype.update_layers = function() {
+    for(var ly in this.layers) {
+        this.map.update_layer(ly);
+    }
+}
+
 
 /**
  * manages rendering and events of countries borders
@@ -69,28 +75,29 @@ App.modules.CountryLayer = function(app) {
 
             this.pas_layer = this.tilemill.addLayer(
                 //$('#selected_countries_pas').html(),
-                null,
+                'select 0 as lid, the_geomwebmercator from selected_countries_pas limit 1',
                 'selected_countries_pas',
-                'protected areas'
+                'Protected Areas'
 
             );
             this.rivers = this.tilemill.addLayer(
                 //$('#rivers').html(),
                 null,
                 'rivers',
-                'rivers'
+                'Rivers'
             );
             this.places = this.tilemill.addLayer(
                 //$('#places').html(),
                 null,
                 'places',
-                'cities'
+                'Populated places'
             );
             this.country_border = this.tilemill.addLayer(
                 $('#border_style').html(),
                 'country_attributes_live',
-                'admin'
+                'Borders'
             );
+            this.tilemill.update_layers();
 
             //bindings
             this.map.map.bind('mousemove', this.mousemove);
@@ -131,7 +138,6 @@ App.modules.CountryLayer = function(app) {
             self.vec_cache = {};
 
             var sql = "select 0 as lid, the_geom_webmercator, 'dummy' as name_1 from country_attributes_live where iso = '{0}'";
-
             sql += " UNION ";
             sql += "select 1 as lid, the_geom_webmercator, name_1 from admin1_attributes_live where iso = '{0}'";
             sql = sql.format(iso);
@@ -145,7 +151,7 @@ App.modules.CountryLayer = function(app) {
             sql = "SELECT rivers.the_geom_webmercator, scalerank FROM rivers, simple_countries where ST_Intersects(rivers.the_geom,simple_countries.the_geom) and simple_countries.iso = '{0}'".format(iso);
             self.rivers.update(sql);
 
-            sql = "select the_geom_webmercator, name from places";
+            sql = "select the_geom_webmercator, name from places where iso='{0}' order by gn_pop limit 10".format(iso);
             self.places.update(sql);
         },
 
@@ -173,6 +179,7 @@ App.modules.CountryLayer = function(app) {
                 //this.trigger('changed_area_name', area_name);
                 this.map.map.map.fitBounds(b);
                 this.map.map.unbind('mousemove', this.mousemove);
+                this.map.displace(250, 0);
             }
             /* else if(this.level == this.LEVEL_REGION) {
                 this.map.map.unbind('mousemove', this.mousemove);

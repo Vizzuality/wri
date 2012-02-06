@@ -211,7 +211,7 @@ var MapView = Backbone.View.extend({
 
     update_layer: function(name) {
         var layer = this.layers[name];
-        self.map.overlayMapTypes.setAt(layer.idx, layer.layer);
+        this.map.overlayMapTypes.setAt(layer.idx, layer.layer);
     },
 
     enable_layer: function(name, enable) {
