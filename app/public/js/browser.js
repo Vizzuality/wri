@@ -24,6 +24,8 @@ var BrowserDetect = {
 		}
 	},
 	isValid: function (data) {
+	    if(location.search.indexOf('debug=true') != -1)
+	        return true;
 		// Safari && iOS
 		if (data.browser == "Safari" && data.version > 3.2) {
 			return true;
