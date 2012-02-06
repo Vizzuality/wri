@@ -74,7 +74,7 @@ App.modules.Country = function(app) {
       },
 
       def_percent_in_month: function(month) {
-            return this.get('time_series_normalized')[month]*100.0;
+            return Math.sqrt(this.get('time_series_normalized')[month])*100.0;
       },
       // return the change in a range of months
       change_since: function(month0, month1) {
