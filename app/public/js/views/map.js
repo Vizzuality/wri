@@ -55,7 +55,6 @@ var MapView = Backbone.View.extend({
         _.bindAll(this, 'center_changed', 'ready', 'click', 'set_center', 'zoom_changed', 'zoom_in', 'zoom_out', 'adjustSize', 'set_zoom_silence', 'set_center_silence');
        var self = this;
        this.layers = {};
-       this.layers_order = [];
        // hide controls until map is ready
        this.hide_controls();
        this.map = new google.maps.Map(this.$('.map')[0], this.mapOptions);
@@ -199,59 +198,41 @@ var MapView = Backbone.View.extend({
 
     // add a new tiled layer
     add_layer: function(name, layer_info, layer) {
-          var opacity = 1.0;
-          if(layer_info.opacity !== undefined) {
-            opacity = layer_info.opacity;
-          }
-          layer = layer || new google.maps.ImageMapType({
-              getTileUrl: function(tile, zoom) {
-                var y = tile.y;
-                var tileRange = 1 << zoom;
-                if (y < 0 || y  >= tileRange) {
-                  return null;
-                }
-                var x = tile.x;
-                if (x < 0 || x >= tileRange) {
-                  x = (x % tileRange + tileRange) % tileRange;
-                }
-                return this.urlPattern.replace("{X}",x).replace("{Y}",y).replace("{Z}",zoom);
-              },
-              tileSize: new google.maps.Size(256, 256),
-              opacity: opacity,
-              isPng: true,
-              urlPattern:layer_info.url
-         });
-         this.layers[name] = {
-            layer: layer,
-            name: name
-         };
-         this.layers_order.push(name);
+         layer.name = name;
+         layer.enabled = true;
+         this.layers[name] = layer;
          this.reorder_layers();
          this.trigger('changed:layers');
     },
 
     get_layers: function() {
-        var self = this;
-        return _(this.layers_order).map(function(name) {
-            return self.layers[name];
-        });
+        return this.layers;
+    },
+
+    update_layer: function(name) {
+        var layer = this.layers[name];
+        self.map.overlayMapTypes.setAt(layer.idx, layer.layer);
     },
 
     enable_layer: function(name, enable) {
-        this.layers[name].enabled = enable;
-        this.reorder_layers();
+        var layer = this.layers[name];
+        layer.enabled = enable;
+        //this.reorder_layers();
+        this.map.overlayMapTypes.setAt(layer.idx, enable?layer.layer:null);
+    },
+
+    toggle_layer: function(name) {
+        this.enable_layer(name, !this.layers[name].enabled);
     },
 
     reorder_layers: function(names) {
         var self = this;
         var idx = 0;
-        this.layers_order = names || this.layers_order;
         self.map.overlayMapTypes.clear();
-        var order = _.clone(this.layers_order).reverse();
-        _(order).each(function(name) {
-            var layer = self.layers[name];
+        _(self.layers).each(function(layer) {
             if(layer.enabled) {
                 self.map.overlayMapTypes.setAt(idx, layer.layer);
+                layer.idx = idx;
             }
             idx++;
         });

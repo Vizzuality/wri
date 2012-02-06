@@ -1,43 +1,35 @@
 
-
 /**
  * quick'n'dirty tilemill on top of cartodb
  */
 
 var MiniTilemill = function(user, map) {
-    this.layers = [];
+    this.layers = {};
     this.user_name = user;
     this.map = map;
     this.use_cartodb_styles = false;
 };
 
-MiniTilemill.prototype.addLayer = function(style, table) {
+MiniTilemill.prototype.addLayer = function(style, table, name_editor) {
 
-    var layer = new google.maps.CartoDBLayer({
-        map_canvas: 'map_canvas',
-        map: this.map,
-        user_name: 'tiles' + ['01', '02', '03', '04'][this.layers.length%3] + "." + this.user_name,
-        //user_name: this.user_name,
-        table_name: table,
-        map_style: false,
-        infowindow: false,
-        auto_bound: false,
-        tile_style: this.use_cartodb_styles?null: style,
-        index: this.layers.length
-    });
+    var layer = new CartoDBLayer(
+        this.user_name,
+        null,
+        table,
+        style
+    )
 
-    this.layers.push({
-        layer: layer,
-        table: table
-    });
+    this.layers[name_editor] = layer;
+    this.map.add_layer(name_editor, {name: table, enabled: true}, layer);
+    //this.map.enable_layer(table, true);
     return layer;
 };
 
-MiniTilemill.prototype.update_query = function(q) {
-    var sql = "select * from country_attributes_live where iso = '{0}'";
-    sql = sql.format(iso);
-    self.country_border.update(sql);
-};
+MiniTilemill.prototype.toggle = function(table) {
+    var l = this.layers[table];
+    l.show(!l.showing);
+}
+
 
 /**
  * manages rendering and events of countries borders
@@ -56,7 +48,7 @@ App.modules.CountryLayer = function(app) {
             self.state = [];
             self.map = map;
 
-            this.tilemill = new MiniTilemill("wri-01", map.map.map);
+            this.tilemill = new MiniTilemill("wri-01", map.map);
 
             //TODO: extract to constants
             var cartodb = new CartoDB({
@@ -72,27 +64,32 @@ App.modules.CountryLayer = function(app) {
                     'polygon-fill': 'rgba(255,255, 255,0.01)'
                 }
             });
-            map.map.add_layer('vector0', {name: 'v0', enabled: true}, cartodb.layer);
+            map.map.add_layer('vector0', {name: 'v0', enabled: true}, cartodb);
             self.layer = cartodb;
 
             this.pas_layer = this.tilemill.addLayer(
                 //$('#selected_countries_pas').html(),
                 null,
-                'selected_countries_pas'
-            );
-            this.country_border = this.tilemill.addLayer(
-                $('#border_style').html(),
-                'country_attributes_live'
+                'selected_countries_pas',
+                'protected areas'
+
             );
             this.rivers = this.tilemill.addLayer(
                 //$('#rivers').html(),
                 null,
+                'rivers',
                 'rivers'
             );
             this.places = this.tilemill.addLayer(
                 //$('#places').html(),
                 null,
-                'places'
+                'places',
+                'cities'
+            );
+            this.country_border = this.tilemill.addLayer(
+                $('#border_style').html(),
+                'country_attributes_live',
+                'admin'
             );
 
             //bindings

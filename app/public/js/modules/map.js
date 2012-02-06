@@ -50,7 +50,7 @@ App.modules.Map = function(app) {
             this.report_polygons = {};
 
             //map style
-            this.map.map.setOptions({'styles': app.Config.MAP_STYLE});
+            //this.map.map.setOptions({'styles': app.Config.MAP_STYLE});
 
             // add layers to the map
             _(app.Config.MAP_LAYERS).each(function(layer) {
@@ -62,6 +62,10 @@ App.modules.Map = function(app) {
                 el: $('.layers'),
                 bus: bus,
                 layers: this.map.get_layers()
+            });
+
+            this.layer_editor.bind('layer_changed', function(name) {
+                self.country_layer.tilemill.toggle(name);
             });
 
             this.map.bind('changed:layers', function() {
@@ -80,7 +84,7 @@ App.modules.Map = function(app) {
 
             //grid layer
             self.grid_layer = new TimePlayer('global_32x');
-            self.map.add_layer('time', {name: 't'}, self.grid_layer);
+            self.map.add_layer('time', {name: 't'}, {layer: self.grid_layer});
             self.map.enable_layer('time', true);
 
             self.show_controls(false);
