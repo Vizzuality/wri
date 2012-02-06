@@ -268,17 +268,23 @@
      line-height: 1em;
      font-weight: normal;
      color: white;
-     line-height: 1.2em;
-     font-family: $base-font-family;
+     font-family:"Open Sans";
+
     }
     h1 {
-        display: inline;
-        font-size: 21px;
-        padding: 3px 5px;
+
+      display: inline;
+      font-size: 21px;
+      padding: 1px 8px 1px 5px;
+      letter-spacing:-1px;
+      line-height:21px;
     }
     h2 {
-        font-size: 13px;
-        padding: 4px;
+      display:inline-block;
+      width:auto;
+      padding: 1px 5px 2px 5px;
+      font:normal 13px "Open Sans"!important;
+      line-height:normal;
     }
   }
 
