@@ -84,7 +84,7 @@ App.modules.Map = function(app) {
 
             //grid layer
             self.grid_layer = new TimePlayer('global_32x');
-            self.map.add_layer('time', {name: 't'}, self.grid_layer);
+            self.map.add_layer('time', {name: 't'}, {layer: self.grid_layer});
             self.map.enable_layer('time', true);
 
             self.show_controls(false);
