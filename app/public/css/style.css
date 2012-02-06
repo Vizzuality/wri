@@ -1750,12 +1750,12 @@ body.front article.error section div.band p a:hover {
   width: 200%;
   height: 200%;
   margin: 0 0 0 -400px;
-  background-image: -webkit-gradient(radial, 25% 450px, 0, 25% 450px, 500, color-stop(10%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.95)));
-  background-image: -webkit-radial-gradient(25% 450px, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.95) 500px);
-  background-image: -moz-radial-gradient(25% 450px, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.95) 500px);
-  background-image: -o-radial-gradient(25% 450px, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.95) 500px);
-  background-image: -ms-radial-gradient(25% 450px, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.95) 500px);
-  background-image: radial-gradient(25% 450px, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.95) 500px);
+  background-image: -webkit-gradient(radial, 25% 545px, 0, 25% 545px, 370, color-stop(10%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.9)));
+  background-image: -webkit-radial-gradient(25% 545px, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.9) 370px);
+  background-image: -moz-radial-gradient(25% 545px, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.9) 370px);
+  background-image: -o-radial-gradient(25% 545px, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.9) 370px);
+  background-image: -ms-radial-gradient(25% 545px, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.9) 370px);
+  background-image: radial-gradient(25% 545px, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.9) 370px);
   z-index: 10;
   pointer-events: none;
 }

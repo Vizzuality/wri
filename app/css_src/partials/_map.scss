@@ -85,7 +85,7 @@
     width:200%;
     height:200%;
     margin:0 0 0 -400px;
-    @include background-image(radial-gradient(25% 450px,rgba(0,0,0,0) 10%, rgba(0,0,0,0.95) 500px));
+    @include background-image(radial-gradient(25% 545px,rgba(0,0,0,0) 10%, rgba(0,0,0,0.9) 370px));
     z-index:10;
     pointer-events:none;
   }
