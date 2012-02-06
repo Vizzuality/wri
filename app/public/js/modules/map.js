@@ -157,12 +157,12 @@ App.modules.Map = function(app) {
         show_controls: function(show) {
             if(show) {
                 this.map.show_controls();
-                $('.layers').show();
-                $('.search').show();
+                //$('.layers').show();
+                //$('.search').show();
             } else {
                 this.map.hide_controls();
-                $('.layers').hide();
-                $('.search').hide();
+                //$('.layers').hide();
+                //$('.search').hide();
             }
         }
     });

@@ -761,6 +761,10 @@ body {
       @include transition-property(all);
       @include transition-duration(300ms);
     }
+
+    .layers {
+      display:block;
+    }
   }
 }
 

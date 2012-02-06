@@ -1,7 +1,7 @@
 
 var Layer = Backbone.View.extend({
 
-    template: _.template('<span class="color <%=normalized_name%>">&nbsp</span><%= name %>'),
+    template: _.template('<a href="#"><%= name %></a>'),
 
     tagName: 'li',
 
@@ -28,7 +28,8 @@ var Layer = Backbone.View.extend({
         return this;
     },
 
-    toggle: function() {
+    toggle: function(e) {
+        e.preventDefault();
         var e = !this.layer.showing;
         var el = $(this.el);
         if(e) {

@@ -317,10 +317,10 @@
    }
 
   .layers {
-    //display: none;
+    display: none;
     position: absolute;
     top: 50%;
-    right: 375px - 352px;
+    right: 100px;
     width:224px;
     z-index:100;
 
@@ -340,36 +340,25 @@
         }
 
         li {
-          padding: 5px 9px;
-          border:none;
-          border-bottom: 1px solid #F2F2F2;
-          font:normal 13px "Helvetica Neue";
-          color:#333333;
-
-          span.color {
-            width: 7px;
-            height: 7px;
-            @include background(no-repeat,-224px,-2491px);
-            margin-right: 10px;
-            display: inline-block;
-          }
-
-          &.last {
-            border:none;
+          text-align: right;
+          padding: 3px 9px;
+          margin-bottom: 1px;
+          a{
+            padding: 3px 9px;
+            font: normal 13px "Open Sans";
+            color:#FFF;
+            background-color: #000;
           }
 
           &:hover {
-            background-color:#EDEDED;
-            cursor:pointer!important;
           }
 
           &.enabled {
-            font-weight:bold;
+            a{
+                background-color: #FF3333;
+            }
           }
-
           &.moving {
-            border-top:1px solid #CCCCCC;
-            border-bottom:1px solid #CCCCCC;
           }
         }
       }
