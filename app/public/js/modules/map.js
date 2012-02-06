@@ -64,6 +64,10 @@ App.modules.Map = function(app) {
                 layers: this.map.get_layers()
             });
 
+            this.layer_editor.bind('layer_changed', function(name) {
+                self.country_layer.tilemill.toggle(name);
+            });
+
             this.map.bind('changed:layers', function() {
                 self.layer_editor.layers = self.map.get_layers();
                 self.layer_editor.render();

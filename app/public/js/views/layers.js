@@ -29,6 +29,19 @@ var Layer = Backbone.View.extend({
     },
 
     toggle: function() {
+        var e = !this.layer.showing;
+        var el = $(this.el);
+        if(e) {
+            el.addClass('enabled');
+        } else {
+            el.removeClass('enabled');
+        }
+        this.trigger('changed', this.layer.name);
+    },
+
+    close: function() {
+        this.unbind();
+        this.remove();
     }
 
 });
@@ -36,14 +49,12 @@ var Layer = Backbone.View.extend({
 var LayerEditor = Backbone.View.extend({
 
     events: {
-        'mouseleave': 'hiding',
         'click': 'open'
     },
 
     initialize: function() {
         var self = this;
         this.layers = this.options.layers;
-        this.bus = this.options.bus;
         this.open = false;
         this.views = {};
         this.render();
@@ -52,20 +63,22 @@ var LayerEditor = Backbone.View.extend({
     render: function(howmany, order) {
         var self = this;
         var el = this.$('ul');
-        el.find('li').each(function(i,el){
+        /*el.find('li').each(function(i,el){
             $(el).remove()
-        });
+        });*/
         _(this.layers).each(function(layer) {
-            var v = self.views[layer.name];
-            if (v) {
-                delete self.views[layer.name];
+            if(layer.editable) {
+                var v = self.views[layer.name];
+                if (v) {
+                    v.close();
+                }
+                v = new Layer({ layer: layer });
+                v.bind('changed', function(name) {
+                    self.trigger('layer_changed', name);
+                });
+                self.views[layer.name] = v;
+                el.append(v.render().el);
             }
-            v = new Layer({
-                    layer: layer,
-                    bus: self.bus
-            });
-            self.views[layer.name] = v;
-            el.append(v.render().el);
         });
         /*el.sortable({
           revert: false,
@@ -83,17 +96,8 @@ var LayerEditor = Backbone.View.extend({
             $(ui.item).addClass('moving');
           }
         });
-        this.updateLayerNumber();
         */
         return this;
-    },
-
-    updateLayerNumber: function() {
-        var t = 0;
-        _(this.layers).each(function(a) {
-            if(a.enabled) t++;
-        });
-        this.$('.layer_number').html(t + " LAYER"+ (t>1?'S':''));
     },
 
     sortLayers: function() {
@@ -101,7 +105,8 @@ var LayerEditor = Backbone.View.extend({
         this.$('li').each(function(i, el) {
             order.push($(el).attr('id'));
         });
-        this.bus.emit("map:reorder_layers", order);
+        this.trigger('layers_changed');
+        //this.bus.emit("map:reorder_layers", order);
     },
 
     open: function(e) {
@@ -123,25 +128,6 @@ var LayerEditor = Backbone.View.extend({
              _(layers_order).indexOf(b.name);
         });
         this.open = true;
-        this.hiding();
     },
-
-    hiding: function(e) {
-        if(!this.open) return;
-        // put first what are showing
-        this.layers.sort(function(a, b) {
-            if(a.enabled && !b.enabled) {
-                return -1;
-            } else if(!a.enabled && b.enabled) {
-                return 1;
-            }
-            return 0;
-        });
-        layers = _(this.layers).pluck('name');
-        this.bus.emit("map:reorder_layers", layers);
-        this.order = layers;
-        this.render(3);
-        this.close();
-    }
 
 });
