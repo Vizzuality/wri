@@ -26,7 +26,7 @@
   circle.ortho {
     fill:#971c20;
   }
-  text {
+  text,div {
     opacity: 0;
     fill: #FFFFFF!important;
     color: #FFFFFF!important;
@@ -265,19 +265,16 @@
     h1, h2 {
      background: #E33;
      letter-spacing: 0;
-     line-height: 1em;
      font-weight: normal;
      color: white;
      font-family:"Open Sans";
-
     }
     h1 {
-
       display: inline;
       font-size: 21px;
       padding: 1px 8px 1px 5px;
       letter-spacing:-1px;
-      line-height:21px;
+      line-height:normal;
     }
     h2 {
       display:inline-block;

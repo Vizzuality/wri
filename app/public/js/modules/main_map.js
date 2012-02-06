@@ -141,21 +141,30 @@ App.modules.MainMap = function(app) {
                 });
 
             node.append('a')
-                    .attr('xlink:href', function(d) {
-                        return "/country#" + d.slug();
-                    })
-                .append("text")
+                .attr('xlink:href', function(d) {
+                    return "/country#" + d.slug();
+                }).append("text")
+                .attr('width',100)
                 .attr("text-anchor", "middle")
-                .text(function(d) {
-                    return d.get('name_engli');
+                .each(function(d){
+                    var self = this;
+                    var words = d.get('name_engli').split(' ');
+                    d.words = words.length;
+                    _.each(words,function(w,i){
+                        d3.select(self).append('tspan').attr('y',26*i).attr('x','0').text(w);
+                    })
+                    var height_ = self.getBBox().height;
+                    d3.select(self).attr("transform", 'translate (0, ' + (20 - (height_/2)) + ')')
                 });
+           
+
 
             node.append("text")
                 .attr("text-anchor", "middle")
                 .attr('class', 'small')
-                .attr("transform", 'translate (0, 15)')
-                .text(function(d) {
-                    return "going up";
+                .each(function(d) {
+                    d3.select(this).attr("transform", 'translate (0, ' + (d.words * 14) + ')')    
+                        .text('GOING UP')
                 });
 
             setInterval(this.update, 30);
