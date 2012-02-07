@@ -8,6 +8,7 @@ App.modules.Country = function(app) {
         'name': 'name_engli',
         'center': 'ST_Centroid(the_geom)',
         'bbox': 'ST_Envelope(the_geom)',
+        'sqkm': 'sqkm',
         'unregion1': 'unregion1',
         'unregion2': 'unregion2',
         'cumm': 'cumm',
@@ -49,7 +50,7 @@ App.modules.Country = function(app) {
               for(var j=0; j < SMOOTH_MONTHS; ++j) {
                   sum += deltas[crop(0, l-1, i + j - ((SMOOTH_MONTHS/2)>>0))];
               }
-              smooth.push(sum/SMOOTH_MONTHS);
+              smooth.push(100000*sum/(SMOOTH_MONTHS*this.get('sqkm')));
           }
           this._time_series_deltas = smooth;
           return smooth;
@@ -134,6 +135,7 @@ App.modules.Country = function(app) {
         'unregion2',
         'name_engli',
         'cumm',
+        'sqkm',
         'total_incr',
         'start_value',
         'iso',

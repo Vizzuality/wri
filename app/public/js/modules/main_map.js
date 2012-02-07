@@ -24,7 +24,7 @@ App.modules.MainMap = function(app) {
           // to bubble size.
           // this is an artifact to improve visualization
           def_to_size: function(def) {
-                return 2 + Math.pow(def, 0.3)*3;
+                return 2 + Math.pow(def, 0.5)*2;
           },
 
           update: function() {
@@ -119,7 +119,9 @@ App.modules.MainMap = function(app) {
                .attr("height", h);
 
             this.countries_data = countries.filter(
-                    function(d) { return d.get('cumm'); }
+                    function(d) { 
+                        return d.get('cumm');
+                    }
             );
 
             this.svg = svg;
