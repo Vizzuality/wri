@@ -60,7 +60,7 @@ App.modules.CountryLayer = function(app) {
             var cartodb = new CartoDB({
                 user: 'wri-01',
                 table: 'admin1_attributes_live',
-                columns: ['iso', 'shape_area', 'cartodb_id'],
+                columns: ['iso', 'shape_area', 'cartodb_id', 'cumm'],
                 debug: false,
                 where: 'forma=true',
                 shader: {
@@ -86,17 +86,18 @@ App.modules.CountryLayer = function(app) {
                 'rivers',
                 'Rivers'
             );
-            this.places = this.tilemill.addLayer(
-                //$('#places').html(),
-                null,
-                'places',
-                'Populated places'
-            );
             this.country_border = this.tilemill.addLayer(
                 $('#border_style').html(),
                 'country_attributes_live',
                 'Borders',
                 'select 0 as lid, name, the_geomwebmercator from country_attributes_live limit 1'
+            );
+
+            this.places = this.tilemill.addLayer(
+                //$('#places').html(),
+                null,
+                'places',
+                'Populated places'
             );
 
             //bindings
@@ -131,7 +132,7 @@ App.modules.CountryLayer = function(app) {
             _.extend(self.layer.options, {
                 where: "name_0 = '{0}'".format(country.replace("'", "''")),
                 table: 'admin1_attributes_live',
-                columns:['name_0', 'name_1', 'cartodb_id']
+                columns:['name_0', 'name_1', 'cartodb_id', 'cumm']
             });
             self.map.enable_layer('vector0', true);
             self.layer.layer.redraw();

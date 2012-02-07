@@ -20,6 +20,7 @@ App.modules.Map = function(app) {
             var px = this.map.projector.transformCoordinates(at);
             this.set_pos(px);
             this.$('h1').html(info.zone);
+            this.$('h2').html(info.events + " events this month");
         },
 
         set_pos: function(p) {
@@ -48,6 +49,7 @@ App.modules.Map = function(app) {
             this.popup = new Popup({mapview: this.map});
             this.movement_timeout = -1;
             this.report_polygons = {};
+            this.month = 0;
 
             //map style
             //this.map.map.setOptions({'styles': app.Config.MAP_STYLE});
@@ -92,12 +94,15 @@ App.modules.Map = function(app) {
 
         //shows the popup when the user hovers some area
         show_area_info: function(e, area) {
+            self = this;
             this.popup.show(e.latLng, {
-                zone: area.properties.name_1
+                zone: area.properties.name_1,
+                events: area.properties.cumm[self.month]
             });
         },
 
         set_time: function(month) {
+            this.month = month;
             this.grid_layer.set_time(month);
         },
 
