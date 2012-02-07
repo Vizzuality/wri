@@ -147,7 +147,8 @@ App.modules.WRI= function(app) {
 
              self.$('.stories').append(
                 new app.StoryView({
-                    model: self.stories.random(1)[0]
+                    model: self.stories.random(1)[0],
+                    template_id: "#story-template-large"
                 }).render().el
              );
              if(self.showing) {

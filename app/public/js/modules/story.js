@@ -40,6 +40,7 @@ App.modules.Stories = function(app) {
         'text',
         'title',
         'picture_url',
+        'picture_large_url',
         'name_engli'
       ],
 
