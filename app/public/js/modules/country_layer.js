@@ -10,11 +10,11 @@ var MiniTilemill = function(user, map) {
     this.use_cartodb_styles = false;
 };
 
-MiniTilemill.prototype.addLayer = function(style, table, name_editor) {
+MiniTilemill.prototype.addLayer = function(style, table, name_editor, sql) {
 
     var layer = new CartoDBLayer(
         this.user_name,
-        null,
+        sql,
         table,
         style
     )
@@ -75,7 +75,7 @@ App.modules.CountryLayer = function(app) {
 
             this.pas_layer = this.tilemill.addLayer(
                 //$('#selected_countries_pas').html(),
-                'select 0 as lid, the_geomwebmercator from selected_countries_pas limit 1',
+                null,
                 'selected_countries_pas',
                 'Protected Areas'
 
@@ -95,9 +95,9 @@ App.modules.CountryLayer = function(app) {
             this.country_border = this.tilemill.addLayer(
                 $('#border_style').html(),
                 'country_attributes_live',
-                'Borders'
+                'Borders',
+                'select 0 as lid, name, the_geomwebmercator from country_attributes_live limit 1'
             );
-            this.tilemill.update_layers();
 
             //bindings
             this.map.map.bind('mousemove', this.mousemove);
@@ -153,6 +153,8 @@ App.modules.CountryLayer = function(app) {
 
             sql = "select the_geom_webmercator, name from places where iso='{0}' order by gn_pop limit 20".format(iso);
             self.places.update(sql);
+
+            this.tilemill.update_layers();
         },
 
         show_region: function(region) {
