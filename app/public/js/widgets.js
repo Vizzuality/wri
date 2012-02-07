@@ -42,7 +42,7 @@
 
 
     _bind: function($el) {
-      $(window).resize(Core._resetSlider);
+      //$(window).resize(Core._resetSlider);
       $el.find('a.animation').bind({click: Core._animate});
     },
 
@@ -98,6 +98,10 @@
         slide: function(ev,ui) {
           var date = Core.options.monthNames[new Date(ui.value).getMonth()] + ' ' + new Date(ui.value).getFullYear();
           $(ev.target).find('a.ui-slider-handle').text(date);
+
+          // If animation is playing, stop it!
+          var $button = $(ev.target).closest('.slider').find('a.animation');
+          Core._stopAnimation($button);
           Core._trigger('change',[ui.value],$(ev.target));
         },
         change: function(ev,ui) {
@@ -108,9 +112,7 @@
       });
     },
 
-    _resetSlider: function(ev) {
-      //console.log(ev);
-    },
+    _resetSlider: function(ev) {},
 
     _animate: function(ev) {
       if (ev)
@@ -129,6 +131,7 @@
       $button.removeClass('play');
       $button.find('span').text('play');
       clearInterval($button.data('interval'));
+      $button.data('interval',null);
     },
 
     _startAnimation: function($button) {
@@ -138,13 +141,13 @@
           , max = $el.slider('option','max');
 
       //rewind
-      if($el.slider('value') == max) {
-          $el.slider('value', 0);
+      if ($el.slider('value') == max) {
+        $el.slider('value', 0);
       }
+
       var interval = setInterval(function(){
         var value = $el.slider('value');
         // Check if it is the end, if not goes on
-
         if (value<max) {
           $el.slider('value',value + Core.options.step);
         } else if (value>max) {
@@ -354,26 +357,4 @@
       $.error( 'You cannot invoke ' + name + ' jQuery plugin with the arguments: ' + userInput );
     }
   };
-})( jQuery, window );
-
-
-
-
-(function(){
-  // $('.slider').wriSlider({
-  //     start: 'January 1, 2006 00:00:00'
-  //   , end: 'February 1, 2012 00:00:00'
-  //   , value: 'January 1, 2009 00:00:00'
-  // });
-
-  // $('.slider').wriSlider('update',[3423445]);
-
-  // $('span.select').dropdown({
-  //   source: [{name:'vizz',url:'#where'},{name:'asdf asdf asdf asdf',url:'#where'},{name:'asdf asdf asdf asdf asdf',url:'#where'},{name:'as dfas fasd fdsaf',url:'#where'}]
-  // });
-
-  /*setTimeout(function(){
-    $('span.select').dropdown('update',[{name:'asdf asdf asdf asdf asdf',url:'#where'}]);
-    alert('jamon');
-  },5000);*/
 })( jQuery, window );
