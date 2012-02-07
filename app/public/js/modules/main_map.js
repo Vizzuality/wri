@@ -20,7 +20,7 @@ App.modules.MainMap = function(app) {
             this.countries.bind('reset', this.render);
           },
 
-          // convert deforestation related value 
+          // convert deforestation related value
           // to bubble size.
           // this is an artifact to improve visualization
           def_to_size: function(def) {
@@ -34,11 +34,11 @@ App.modules.MainMap = function(app) {
             var month = self.month;
             var delta = 0.03;
             var node = this.svg.selectAll("g.node")
-                .attr("transform", function(p) { 
+                .attr("transform", function(p) {
                     var pos = p.pos;
                     var r =  self.def_to_size(p.time_series_deltas()[month]);
                     var forces = false;
-                    //adjust pos with the rest of balls 
+                    //adjust pos with the rest of balls
                     //using very basic constrait
                     for(var i=0, l = all.length; i<l; ++i) {
                         var c = all[i];
@@ -52,7 +52,7 @@ App.modules.MainMap = function(app) {
                             var desired_len = r + r_other + 2;//5 pixels distance
                             var diff = (len - desired_len)/len;
                             if(len <= desired_len) {
-                                //move each other depending on the "mass" 
+                                //move each other depending on the "mass"
                                 //of the system
                                 var f1 = r/desired_len;
                                 var f2 = r_other/desired_len;
@@ -72,7 +72,7 @@ App.modules.MainMap = function(app) {
                         pos[1] += (original[1] - pos[1])*2*delta;
                     }
 
-                    return "translate(" + pos.join(',') + ")"; 
+                    return "translate(" + pos.join(',') + ")";
                 });
           },
 
@@ -109,7 +109,7 @@ App.modules.MainMap = function(app) {
                 });
           },
 
-          render: function() { 
+          render: function() {
             var self = this;
             //var min_distance = Math.sqrt(get_min_distance(countries.features));
             //var r = min_distance/2;
@@ -128,11 +128,11 @@ App.modules.MainMap = function(app) {
                 .enter()
                 .append("g")
                 .attr("class", "node")
-                .attr("transform", function(p) { 
+                .attr("transform", function(p) {
                     var ll = p.center();
                     var pos = merc(ll);
                     p.pos = pos;
-                    return "translate(" + pos.join(',') + ")"; 
+                    return "translate(" + pos.join(',') + ")";
                 });
 
             node.append("circle")
@@ -150,20 +150,21 @@ App.modules.MainMap = function(app) {
                     var self = this;
                     var words = d.get('name_engli').split(' ');
                     d.words = words.length;
+                    var offset = d.words*26/2 - 13;
                     _.each(words,function(w,i){
-                        d3.select(self).append('tspan').attr('y',26*i).attr('x','0').text(w);
-                    })
+                        d3.select(self).append('tspan').attr('y',26*i - offset).attr('x','0').text(w);
+                    });
                     var height_ = self.getBBox().height;
-                    d3.select(self).attr("transform", 'translate (0, ' + (20 - (height_/2)) + ')')
+                    d3.select(self).attr("transform", 'translate (0, ' + (20 - (height_/2)) + ')');
                 });
-           
+
 
 
             node.append("text")
                 .attr("text-anchor", "middle")
                 .attr('class', 'small')
                 .each(function(d) {
-                    d3.select(this).attr("transform", 'translate (0, ' + (d.words * 14) + ')')    
+                    d3.select(this).attr("transform", 'translate (0, ' + (d.words * 14) + ')')
                         .text('GOING UP')
                 });
 
