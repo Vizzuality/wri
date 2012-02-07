@@ -90,7 +90,7 @@ App.modules.CountryLayer = function(app) {
                 $('#border_style').html(),
                 'country_attributes_live',
                 'Borders',
-                "select 0 as lid,'dummy' as name_1 the_geomwebmercator from country_attributes_live limit 1"
+                "select 0 as lid,'dummy' as name_1 the_geom_webmercator from country_attributes_live limit 1"
             );
 
             this.places = this.tilemill.addLayer(
@@ -156,6 +156,11 @@ App.modules.CountryLayer = function(app) {
             self.places.update(sql);
 
             this.tilemill.update_layers();
+
+            this.map.map.unbind('mousemove', this.mousemove);
+            this.map.map.bind('mousemove', this.mousemove);
+            this.map.map.unbind('click', this.map_click);
+            this.map.map.bind('click', this.map_click);
         },
 
         show_region: function(region) {
