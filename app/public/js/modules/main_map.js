@@ -148,14 +148,17 @@ App.modules.MainMap = function(app) {
                 .attr("text-anchor", "middle")
                 .each(function(d){
                     var self = this;
-                    var words = d.get('name_engli').split(' ');
+                    var words = d.get('name_engli').toUpperCase().split(' ');
                     d.words = words.length;
-                    var offset = d.words*26/2 - 13;
+                    var offset = (d.words-1)*26/2;
                     _.each(words,function(w,i){
-                        d3.select(self).append('tspan').attr('y',26*i - offset).attr('x','0').text(w);
+                        d3.select(self)
+                            .append('tspan')
+                            .attr('y',26*i - offset)
+                            .attr('x','0').text(w);
                     });
                     var height_ = self.getBBox().height;
-                    d3.select(self).attr("transform", 'translate (0, ' + (20 - (height_/2)) + ')');
+                    //d3.select(self).attr("transform", 'translate (0, ' + (20 - (height_/2)) + ')');
                 });
 
 
