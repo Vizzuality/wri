@@ -20,7 +20,11 @@ App.modules.Map = function(app) {
             var px = this.map.projector.transformCoordinates(at);
             this.set_pos(px);
             this.$('h1').html(info.zone);
-            this.$('h2').html(info.events + " events this month");
+            if(info.events) {
+                this.$('h2').html(info.events + " events this month");
+            } else {
+                this.$('h2').html("no events");
+            }
         },
 
         set_pos: function(p) {
@@ -95,9 +99,11 @@ App.modules.Map = function(app) {
         //shows the popup when the user hovers some area
         show_area_info: function(e, area) {
             self = this;
+            var c = area.properties.cumm;
+            var ev = c && c[self.month];
             this.popup.show(e.latLng, {
                 zone: area.properties.name_1,
-                events: area.properties.cumm[self.month]
+                events: ev
             });
         },
 
