@@ -263,8 +263,8 @@
     display: none;
     top: 0;
     left: 0;
-    width:200px;
     height:30px;
+
     h1, h2 {
      background: #E33;
      letter-spacing: 0;
@@ -273,14 +273,14 @@
      font-family:"Open Sans";
     }
     h1 {
-      display: inline;
+      display: block;
       font-size: 21px;
       padding: 1px 8px 1px 5px;
       letter-spacing:-1px;
       line-height:normal;
     }
     h2 {
-      display:inline-block;
+      display:inline;
       width:auto;
       padding: 1px 5px 2px 5px;
       font:normal 13px "Open Sans"!important;
