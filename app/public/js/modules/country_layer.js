@@ -53,6 +53,7 @@ App.modules.CountryLayer = function(app) {
             self.level = this.LEVEL_COUNTRY;
             self.state = [];
             self.map = map;
+            self.zoom_country = 8;
 
             this.tilemill = new MiniTilemill("wri-01", map.map);
 
@@ -103,6 +104,11 @@ App.modules.CountryLayer = function(app) {
             //bindings
             this.map.map.bind('mousemove', this.mousemove);
             this.map.map.bind('click', this.map_click);
+            this.map.map.bind('zoom_changed', function(z) {
+                if(z <= self.zoom_country) {
+                    self.enable_map_interaction();
+                }
+            });
 
         },
 
@@ -127,16 +133,37 @@ App.modules.CountryLayer = function(app) {
            }
         },
 
+        get_country_zoom: function(bbox) {
+            var b = new google.maps.LatLngBounds();
+            _(bbox.coordinates[0]).each(function(ll) {
+                b.extend(new google.maps.LatLng(ll[1], ll[0]));
+            });
+            //adapted from http://stackoverflow.com/questions/6048975/google-maps-v3-how-to-calculate-the-zoom-level-for-a-given-bounds
+            var GLOBE_WIDTH = 256; // a constant in Google's map projection
+            var west = b.getSouthWest().lat();
+            var east = b.getNorthEast().lat();
+            var angle = east - west;
+            if (angle < 0) {
+              angle += 360;
+            }
+            var pixelWidth = $(this.map.map.map.getDiv()).height();
+            var zoom = Math.floor(Math.log(pixelWidth * 180/ angle / GLOBE_WIDTH) / Math.LN2);
+            //return this.map.map.map.getBoundsZoomLevel(b);
+            return zoom;
+        },
+
         show_country: function(country, iso) {
             var self = this;
+            self.zoom_country = self.get_country_zoom(country.get('bbox'));
+            console.log("country zoom", self.zoom_country);
             _.extend(self.layer.options, {
-                where: "name_0 = '{0}'".format(country.replace("'", "''")),
+                where: "name_0 = '{0}'".format(country.get('name_engli').replace("'", "''")),
                 table: 'admin1_attributes_live',
                 columns:['name_0', 'name_1', 'cartodb_id', 'cumm']
             });
+
             self.map.enable_layer('vector0', true);
             self.layer.layer.redraw();
-            self.vec_cache = {};
 
             var sql = "select 0 as lid, the_geom_webmercator, 'dummy' as name_1 from country_attributes_live where iso = '{0}'";
             sql += " UNION ";
@@ -157,55 +184,29 @@ App.modules.CountryLayer = function(app) {
 
             this.tilemill.update_layers();
 
-            this.map.map.unbind('mousemove', this.mousemove);
-            this.map.map.bind('mousemove', this.mousemove);
-            this.map.map.unbind('click', this.map_click);
-            this.map.map.bind('click', this.map_click);
+            this.enable_map_interaction();
         },
 
-        show_region: function(region) {
-            /*var self = this;
-            _.extend(self.layer.options, {
-                where: "name_1 = '{0}'".format(region),
-                table: 'gadm2',
-                columns:['name_0', 'name_1', 'cartodb_id']
-            });
-            self.map.enable_layer('vector0', true);
-            self.layer.layer.redraw();
-            self.vec_cache = {};
-            */
+        enable_map_interaction: function() {
+            this.map.map.unbind('mousemove', this.mousemove);
+            this.map.map.bind  ('mousemove', this.mousemove);
+            this.map.map.unbind('click', this.map_click);
+            this.map.map.bind  ('click', this.map_click);
+        },
+
+        disable_map_interaction: function() {
+            this.map.map.unbind('mousemove', this.mousemove);
+            this.map.map.unbind('click', this.map_click);
         },
 
 
         _enter: function(b, geometry) {
             if(this.level == this.LEVEL_COUNTRY) {
-                //update level
-                //this.state.push(b);
-                //this.level = this.LEVEL_REGION;
-                //var area_name = geometry.properties.name_1;
-                //this.show_region(area_name);
-                //this.trigger('changed_area_name', area_name);
                 this.map.map.map.fitBounds(b);
-                this.map.map.unbind('mousemove', this.mousemove);
+                this.disable_map_interaction();
                 this.map.displace(250, 0);
             }
-            /* else if(this.level == this.LEVEL_REGION) {
-                this.map.map.unbind('mousemove', this.mousemove);
-                this.map.map.map.fitBounds(b);
-            }*/
             this.remove_hover();
-        },
-
-        back: function() {
-            if(this.level == this.LEVEL_REGION) {
-                var country = this.state.push(b);
-                this.show_country(country);
-                this.trigger('changed_area_name', country);
-                this.level = this.LEVEL_COUNTRY;
-                //always unbind to not bind twice
-                this.map.map.unbind('mousemove', this.mousemove);
-                this.map.map.bind('mousemove', this.mousemove);
-            }
         },
 
         mousemove: function(e) {

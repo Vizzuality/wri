@@ -150,6 +150,7 @@ App.modules.Map = function(app) {
             }
             self.grid_layer.set_table(table_name, size);
             console.log("table_name: ", table_name);
+
         },
 
         enable_layer: function(name, enable) {

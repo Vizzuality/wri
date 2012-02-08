@@ -383,7 +383,7 @@ App.modules.WRI= function(app) {
        country_changed: function() {
             var self = this;
             var c = this.country;
-            self.map.show_country(c.get('name_engli'), c.get('iso'));
+            self.map.show_country(c, c.get('iso'));
             //self.slider.set_time(0);
        },
 

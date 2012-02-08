@@ -68,6 +68,7 @@
         return [px, py];
   }
 
+
   MercatorProjection.prototype.latLngToTilePoint = function(latLng, x, y, zoom) {
         var numTiles = 1 << zoom;
         var projection = this;
@@ -92,3 +93,5 @@
                 Math.floor(pixelCoordinate.x / TILE_SIZE),
                 Math.floor(pixelCoordinate.y / TILE_SIZE));
   }
+
+
