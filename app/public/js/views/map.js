@@ -11,6 +11,7 @@ function CoordMapType() {
 
 CoordMapType.prototype.tileSize = new google.maps.Size(256,256);
 CoordMapType.prototype.maxZoom = 8;
+CoordMapType.prototype.minZoom = 5;
 
 CoordMapType.prototype.getTile = function(coord, zoom, ownerDocument) {
   var img = new Image();
@@ -60,6 +61,7 @@ var MapView = Backbone.View.extend({
        this.map = new google.maps.Map(this.$('.map')[0], this.mapOptions);
 
        var coordinateMapType = new CoordMapType();
+       this.coordinateMapType = coordinateMapType;
        this.map.mapTypes.set('coordinate',coordinateMapType);
 
        this.map.setMapTypeId('coordinate');
@@ -144,8 +146,19 @@ var MapView = Backbone.View.extend({
     },
 
     zoom_changed: function() {
+        var z = this.map.getZoom();
         if(this.signals_on) {
-            this.trigger('zoom_changed', this.map.getZoom());
+            this.trigger('zoom_changed', z);
+        }
+
+        this.$('.zoom_in').css({opacity: 1.0});
+        this.$('.zoom_out').css({opacity: 1.0});
+
+        if(z == this.coordinateMapType.minZoom) {
+            this.$('.zoom_out').css({opacity: 0.5});
+            
+        } else if(z == this.coordinateMapType.maxZoom) {
+            this.$('.zoom_in').css({opacity: 0.5});
         }
     },
 
