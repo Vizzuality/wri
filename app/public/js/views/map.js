@@ -142,7 +142,10 @@ var MapView = Backbone.View.extend({
 
     zoom_out: function(e) {
         e.preventDefault();
-        this.map.setZoom(this.map.getZoom() - 1);
+        var z = this.map.getZoom() - 1;
+        if(z >= this.coordinateMapType.minZoom) {
+            this.map.setZoom(z);
+        }
     },
 
     zoom_changed: function() {
@@ -159,6 +162,13 @@ var MapView = Backbone.View.extend({
             
         } else if(z == this.coordinateMapType.maxZoom) {
             this.$('.zoom_in').css({opacity: 0.2});
+        }
+    },
+
+    set_min_zoom: function(z) {
+        this.coordinateMapType.minZoom = z;
+        if(z == this.coordinateMapType.minZoom) {
+            this.$('.zoom_out').css({opacity: 0.2});
         }
     },
 

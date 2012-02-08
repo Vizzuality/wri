@@ -155,7 +155,9 @@ App.modules.CountryLayer = function(app) {
         show_country: function(country, iso) {
             var self = this;
             self.zoom_country = self.get_country_zoom(country.get('bbox'));
+            self.map.map.set_min_zoom(self.zoom_country);
             console.log("country zoom", self.zoom_country);
+
             _.extend(self.layer.options, {
                 where: "name_0 = '{0}'".format(country.get('name_engli').replace("'", "''")),
                 table: 'admin1_attributes_live',
