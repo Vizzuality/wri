@@ -155,10 +155,10 @@ var MapView = Backbone.View.extend({
         this.$('.zoom_out').css({opacity: 1.0});
 
         if(z == this.coordinateMapType.minZoom) {
-            this.$('.zoom_out').css({opacity: 0.5});
+            this.$('.zoom_out').css({opacity: 0.2});
             
         } else if(z == this.coordinateMapType.maxZoom) {
-            this.$('.zoom_in').css({opacity: 0.5});
+            this.$('.zoom_in').css({opacity: 0.2});
         }
     },
 

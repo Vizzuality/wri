@@ -147,7 +147,7 @@ App.modules.CountryLayer = function(app) {
               angle += 360;
             }
             var pixelWidth = $(this.map.map.map.getDiv()).height();
-            var zoom = Math.floor(Math.log(pixelWidth * 180/ angle / GLOBE_WIDTH) / Math.LN2);
+            var zoom = Math.round(Math.log(pixelWidth * 180/ angle / GLOBE_WIDTH) / Math.LN2);
             //return this.map.map.map.getBoundsZoomLevel(b);
             return zoom;
         },
