@@ -227,6 +227,7 @@ CartoDB.prototype._init_layer = function() {
 CartoDB.prototype.geometry_at = function(latLng, point, zoom) {
     var self = this;
     var coord = self.projection.latLngToTile(latLng, zoom);
+    point = self.projection.fromLatLngToPoint(latLng);
 
     // get saved tile id from cartodb layer
     var tile_id = coord.x + '_' + coord.y + '_' + zoom;

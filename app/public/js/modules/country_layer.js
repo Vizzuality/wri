@@ -90,7 +90,7 @@ App.modules.CountryLayer = function(app) {
                 $('#border_style').html(),
                 'country_attributes_live',
                 'Borders',
-                "select 0 as lid,'dummy' as name_1 the_geom_webmercator from country_attributes_live limit 1"
+                "select 0 as lid,'dummy' as name_1, the_geom_webmercator from country_attributes_live limit 1"
             );
 
             this.places = this.tilemill.addLayer(
