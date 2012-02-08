@@ -24,9 +24,52 @@
       <em>?</em>
       <div class="band">
         <h2>Oops! It looks like you are looking for a page that doesn’t exist.</h2>
-        <p>Go back to our <a href="/">homepage</a> or go to a <a href="/country/1230">random country</a>.</p>
+        <p>Go back to our <a href="/">homepage</a> or go to a <a id="random_country" href="/country/#brazil">random country</a>.</p>
       </div>
     </section>
   </article>
 </body>
+<script>
+    window.onload = function() {
+        var countries = [
+            "Kenya",
+            "Indonesia",
+            "Côte d'Ivoire",
+            "Burundi",
+            "Guinea",
+            "Australia",
+            "Brazil",
+            "Philippines",
+            "Venezuela",
+            "Vietnam",
+            "Angola",
+            "Bangladesh",
+            "Myanmar",
+            "Malaysia",
+            "Nigeria",
+            "Nepal",
+            "Republic of Congo",
+            "Paraguay",
+            "Bolivia",
+            "Tanzania",
+            "Suriname",
+            "Peru",
+            "Cambodia",
+            "Cameroon",
+            "India",
+            "Thailand",
+            "China",
+            "Laos",
+            "Haiti",
+            "Mexico",
+            "French Guiana",
+            "Taiwan",
+            "Madagascar",
+            "Central African Republic",
+            "Guyana"
+        ];
+        var rc = document.getElementById('random_country');
+        rc.setAttribute('href', '/country#' + countries[Math.floor(Math.random()*countries.length)]);
+    }
+</script>
 </html>
