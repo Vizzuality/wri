@@ -91,7 +91,7 @@ App.modules.CountryLayer = function(app) {
                 $('#border_style').html(),
                 'country_attributes_live',
                 'Borders',
-                "select 0 as lid,'dummy' as name_1, the_geom_webmercator from country_attributes_live limit 1"
+                "select 0 as lid,'dummy' as name_1, 0 as shape_area, the_geom_webmercator from country_attributes_live limit 1"
             );
 
             this.places = this.tilemill.addLayer(
@@ -167,9 +167,9 @@ App.modules.CountryLayer = function(app) {
             self.map.enable_layer('vector0', true);
             self.layer.layer.redraw();
 
-            var sql = "select 0 as lid, the_geom_webmercator, 'dummy' as name_1 from country_attributes_live where iso = '{0}'";
+            var sql = "select 0 as lid, the_geom_webmercator, 'dummy' as name_1, 0 as shape_area from country_attributes_live where iso = '{0}'";
             sql += " UNION ";
-            sql += "select 1 as lid, the_geom_webmercator, name_1 from admin1_attributes_live where iso = '{0}'";
+            sql += "select 1 as lid, the_geom_webmercator, name_1, shape_area from admin1_attributes_live where iso = '{0}'";
             sql = sql.format(iso);
             self.country_border.update(sql);
 

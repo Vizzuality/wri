@@ -23,9 +23,11 @@
     }
 
     //#admin1_attributes_live
-    [lid=1] {
+     [lid=1] {
 
-        line-color: @adm1_line_color; 
+          line-color: @adm1_line_color; 
+ 
+  
         [zoom<=4] { 
             line-opacity: 1; line-width:0.5; line-dasharray:2,5; 
         } 
@@ -35,22 +37,28 @@
         [zoom>=6]{ 
             line-opacity: 1; line-width:2; 
         } 
-        polygon-opacity:1; polygon-fill: transparent; 
+         polygon-opacity:1;
+         polygon-fill: transparent;
         ::glow{ 
             line-color: @adm1_line_glowColor;
             line-opacity:0.1;
             line-width:4;
         }
+        [shape_area > 0.6] {
+        ::labels[zoom<=6]{
+            text-name:"[name_1]"; 
+            text-face-name:@sans;
+            text-halo-radius:2;
+            text-fill:#FFF;
+            text-halo-fill:rgba(0,0,0,0.75);
+            text-allow-overlap:true; 
+            text-avoid-edges:true;
+            text-placement-type:simple;
+            [zoom=6]{ text-size:13; } 
+            [zoom=5]{ text-size:11; } 
 
-        text-name:"[name_1]"; 
-        text-face-name:@sans;
-        text-halo-radius:2;
-        text-fill:#FFF;
-        text-halo-fill:rgba(0,0,0,0.75);
-        text-allow-overlap:true; 
-        [zoom=6]{ text-size:13; } 
-        [zoom=5]{ text-size:11; } 
-        [zoom>6]{ text-opacity:0; }
+        }
+       }
     }
 }
 
