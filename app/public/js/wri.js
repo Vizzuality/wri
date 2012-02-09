@@ -97,7 +97,7 @@ App.modules.WRI= function(app) {
            };
            _(stat).each(function(percent, el) {
                 this.$(el).html(percent);
-                if(percent > 3) {
+                if((percent|0) > 0) {
                     this.$(el + "_percent")
                         .removeClass('green')
                         .addClass('red');
