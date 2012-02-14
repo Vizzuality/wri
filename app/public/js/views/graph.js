@@ -15,7 +15,7 @@ var Graph = Backbone.View.extend({
     },
 
     set_country: function(c) {
-      this.time_series = c.time_series();
+      this.time_series = c.time_series_deltas();
       this.render();
     },
 
