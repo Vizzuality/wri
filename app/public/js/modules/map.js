@@ -21,9 +21,9 @@ App.modules.Map = function(app) {
             this.set_pos(px);
             this.$('h1').html(info.zone);
             if(info.events) {
-                this.$('h2').html(info.events + " events this month");
+                this.$('h2').html(info.events + " hotspots this month");
             } else {
-                this.$('h2').html("no events");
+                this.$('h2').html("no hotspots");
             }
         },
 
