@@ -16,7 +16,7 @@ App.modules.WRIAbout= function(app) {
             });
 
             var stories_dropdown = new app.StoryListView({
-                el: $('span.select'),
+                el: $('#stories_drop'),
                 stories: stories
             });
             countries.fetch();
