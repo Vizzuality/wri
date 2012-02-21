@@ -3,10 +3,11 @@ import os
 import logging
 
 PRODUCTION = False 
-if 'SERVER_SOFTWARE' in os.environ and os.environ['SERVER_SOFTWARE'].startswith('Google App Engine'):
+# heroku sets DATABASE_URL var
+if os.environ.has_key('DATABASE_URL'):
     PRODUCTION = True
 
-
+#PRODUCTION = True
 DEBUG =  not PRODUCTION
 TEMPLATE_DEBUG = DEBUG
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))

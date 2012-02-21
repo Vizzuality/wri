@@ -25,7 +25,7 @@ App.modules.Stories = function(app) {
         var st = this.stories.map(function(s) {
             return {
               name: s.get('title'),
-              url: '#TODO'
+              url: s.get('viewport')
             };
         });
         this.el.dropdown({ source: st });
@@ -41,7 +41,8 @@ App.modules.Stories = function(app) {
         'title',
         'picture_url',
         'picture_large_url',
-        'name_engli'
+        'name_engli',
+        'viewport'
       ],
 
       cache: true,
