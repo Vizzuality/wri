@@ -40,7 +40,7 @@ App.modules.Country = function(app) {
           //now some smoothing, moving average
           var crop = function(a, b, t) {
               if(t < a) return 0;
-              if(t > b) return 0;
+              if(t > b) return b;
               return t;
           };
           var smooth = [];
