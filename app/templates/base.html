@@ -25,6 +25,11 @@
 </head>
 
 <body class="tool">
+  <div class="message alert">
+    <div class="inner">
+      PLEASE NOTE THiS IS A PROTOTYPE. <a data-toggle="modal" href="#myModal">Read more</a>
+    </div>
+  </div>
 
   {% block container %}
   {% endblock %}
@@ -40,6 +45,9 @@
   <script src="js/libs/jquery-ui.min.js"></script>
   <script src='js/libs/json2.js'></script>
   <!-- libraries -->
+
+  <script src="js/libs/bootstrap.min.js"></script>
+
   <script src="js/libs/jquery.mousewheel.js"></script>
   <!--<script src="js/libs/jquery.jscrollpane.min.js"></script>-->
   <script src="js/libs/jquery.jscrollpane.js"></script>
@@ -95,6 +103,19 @@
   {% endblock %}
 
   {% include "_analytics.html" %}
+
+  <div class="modal hide fade" id="myModal">
+    <div class="modal-header">
+      <h3>ABOUT THIS PROTOTYPE</h3>
+    </div>
+    <div class="modal-body">
+      <p>Data, features, performance and overall design may change dramatically without notice. Please do not use the data in your own applications or draw any conclusions from what you see here.</p>
+      <p>For any questions, please contact <a href="#">Nigel Sizer</a>.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" data-dismiss="modal" class="btn">Close</a>
+    </div>
+  </div>
 
 </body>
 </html>

@@ -1,18 +1,18 @@
 /* logos */
-	// @import "logos/*.png";
-	// @include all-logos-sprites;
+// @import "logos/*.png";
+// @include all-logos-sprites;
 
-	/* icons */
-	$icons-down_arrow-position: 100%;
-	$icons-down_arrow-spacing: 12px;
-	$icons-down_arrow_black-position: 100%;
-	$icons-down_arrow_black-spacing: 12px;
-	$icons-pag_arrow-spacing: 50px;
-	$icons-pag_arrow_white-spacing: 50px;
+/* icons */
+$icons-down_arrow-position: 100%;
+$icons-down_arrow-spacing: 12px;
+$icons-down_arrow_black-position: 100%;
+$icons-down_arrow_black-spacing: 12px;
+$icons-pag_arrow-spacing: 50px;
+$icons-pag_arrow_white-spacing: 50px;
 
-	@import "icons/*.png";
-	@include all-icons-sprites;
+@import "icons/*.png";
+@include all-icons-sprites;
 
-	/* layout */
-	@import "layout/*.png";
-	@include all-layout-sprites;
+/* layout */
+@import "layout/*.png";
+@include all-layout-sprites;
