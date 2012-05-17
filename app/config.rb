@@ -10,4 +10,4 @@ images_dir = "public/img"
 http_images_path = "/img"
 javascripts_dir = "public/js"
 # To enable relative paths to assets via compass helper functions. Uncomment:
-# relative_assets = true
+relative_assets = true

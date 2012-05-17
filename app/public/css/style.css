@@ -152,33 +152,27 @@ p.darker {
   padding-bottom: 60px;
 }
 
-/* line 98, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
-.float_elements {
-  position: relative;
-  top: 50px;
-}
-
-/* line 102, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 101, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-open .dropdown-menu {
   z-index: 2050;
 }
 
-/* line 106, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 105, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-open .dropdown.open {
   *z-index: 2050;
 }
 
-/* line 110, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 109, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-open .popover {
   z-index: 2060;
 }
 
-/* line 114, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 113, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-open .tooltip {
   z-index: 2070;
 }
 
-/* line 118, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 117, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -189,19 +183,19 @@ p.darker {
   background-color: #000000;
 }
 
-/* line 128, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 127, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-backdrop.fade {
   opacity: 0;
 }
 
-/* line 133, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 132, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-backdrop,
 .modal-backdrop.fade.in {
   opacity: 0.8;
   filter: alpha(opacity=80);
 }
 
-/* line 138, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 137, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal {
   position: fixed;
   top: 50%;
@@ -225,7 +219,7 @@ p.darker {
   background-clip: padding-box;
 }
 
-/* line 161, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 160, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal.fade {
   top: -25%;
   -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
@@ -235,11 +229,11 @@ p.darker {
   transition: opacity 0.3s linear, top 0.3s ease-out;
 }
 
-/* line 171, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 170, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-header {
   padding: 45px 45px 10px 45px;
 }
-/* line 173, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 172, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-header h3 {
   font: normal 23px "Open Sans";
   margin: 0;
@@ -247,37 +241,37 @@ p.darker {
   color: #333;
 }
 
-/* line 181, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 180, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-header .close {
   margin-top: 2px;
 }
 
-/* line 185, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 184, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-body {
   max-height: 400px;
   padding: 15px 45px;
   overflow-y: auto;
 }
-/* line 189, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 188, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-body p {
   font: normal 15px "Open Sans";
   color: #333333;
 }
-/* line 193, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 192, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-body p a {
   color: #FF3333;
 }
-/* line 194, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 193, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-body p a:hover {
   color: #333;
 }
 
-/* line 197, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 196, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-form {
   margin-bottom: 0;
 }
 
-/* line 201, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 200, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-footer {
   padding: 15px 45px 45px 45px;
   margin-bottom: 0;
@@ -291,36 +285,36 @@ p.darker {
   box-shadow: inset 0 1px 0 #ffffff;
 }
 
-/* line 215, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 214, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-footer:before,
 .modal-footer:after {
   display: table;
   content: "";
 }
 
-/* line 220, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 219, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-footer:after {
   clear: both;
 }
 
-/* line 226, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 223, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .clearfix {
   *zoom: 1;
 }
 
-/* line 230, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 227, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .clearfix:before,
 .clearfix:after {
   display: table;
   content: "";
 }
 
-/* line 234, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 231, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .clearfix:after {
   clear: both;
 }
 
-/* line 237, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 234, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .hide-text {
   font: 0/0 a;
   color: transparent;
@@ -329,7 +323,7 @@ p.darker {
   border: 0;
 }
 
-/* line 244, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 241, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .input-block-level {
   display: block;
   width: 100%;
@@ -340,7 +334,7 @@ p.darker {
   box-sizing: border-box;
 }
 
-/* line 253, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 250, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -351,19 +345,19 @@ p.darker {
   background-color: #000000;
 }
 
-/* line 262, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 259, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-backdrop.fade {
   opacity: 0;
 }
 
-/* line 266, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 263, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-backdrop,
 .modal-backdrop.fade.in {
   opacity: 0.8;
   filter: alpha(opacity=80);
 }
 
-/* line 270, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 267, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal.fade {
   -webkit-transition: opacity .3s linear, top .3s ease-out;
   -moz-transition: opacity .3s linear, top .3s ease-out;
@@ -373,12 +367,12 @@ p.darker {
   top: -25%;
 }
 
-/* line 278, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 275, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal.fade.in {
   top: 50%;
 }
 
-/* line 281, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 278, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .fade {
   opacity: 0;
   filter: alpha(opacity=0);
@@ -389,19 +383,19 @@ p.darker {
   transition: opacity 0.15s linear;
 }
 
-/* line 290, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 287, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .fade.in {
   opacity: 1;
   filter: alpha(opacity=100);
 }
 
-/* line 295, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 292, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .hidden {
   display: none;
   visibility: hidden;
 }
 
-/* line 300, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 297, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .btn {
   display: inline-block;
   vertical-align: top;
@@ -426,12 +420,46 @@ p.darker {
   -ms-filter: "progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,Strength=3)";
   filter: progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,Strength=3);
 }
+/* line 317, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+.btn:hover {
+  text-decoration: underline;
+}
+
+/* line 323, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert.tool .container {
+  top: 50px;
+}
+/* line 325, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert.tool header.country {
+  top: 26px;
+}
+/* line 327, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert div.own_header {
+  top: -47px;
+}
+/* line 329, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert div.own_header.about {
+  top: 55px;
+}
+/* line 332, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert.scrolled div.own_header {
+  top: 70px;
+}
+/* line 336, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert.fullscreen div.own_header {
+  top: 70px;
+}
+/* line 339, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert .float_elements {
+  position: relative;
+  top: 26px;
+}
 
 /* logos */
 /* icons */
 /* line 138, ../../icons/*.png */
 .icons-sprite, .icons-crosshair_map, .icons-down_arrow, .icons-down_arrow_black, .icons-handle, .icons-help, .icons-lens, .icons-list, .icons-list_green, .icons-pag_arrow, .icons-pag_arrow_white, .icons-pause, .icons-play, .icons-slider_point, body.tool a.pag, body.tool a.pag:hover, body.tool .slider div.horizontal a.ui-slider-handle, body.tool .slider a.animation span, body.tool .slider a.animation.play span, body.tool form input[type="submit"], body.tool span.select.active a.init, body.tool span.select a.init {
-  background: url('/public/img/icons-s9293b85372.png') no-repeat;
+  background: url('../img/icons-s9293b85372.png') no-repeat;
 }
 
 /* line 60, /Users/javierarce/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -502,7 +530,7 @@ p.darker {
 /* layout */
 /* line 74, ../../layout/*.png */
 .layout-sprite, .layout-band, .layout-bar, .layout-black_hack, .layout-browser, .layout-options, body.front article.error section div.band {
-  background: url('/public/img/layout-s20ef1ae88e.png') no-repeat;
+  background: url('../img/layout-s20ef1ae88e.png') no-repeat;
 }
 
 /* line 60, /Users/javierarce/.rvm/gems/ruby-1.9.2-p290@imazon/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -619,33 +647,27 @@ p.darker {
   padding-bottom: 60px;
 }
 
-/* line 98, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
-.float_elements {
-  position: relative;
-  top: 50px;
-}
-
-/* line 102, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 101, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-open .dropdown-menu {
   z-index: 2050;
 }
 
-/* line 106, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 105, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-open .dropdown.open {
   *z-index: 2050;
 }
 
-/* line 110, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 109, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-open .popover {
   z-index: 2060;
 }
 
-/* line 114, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 113, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-open .tooltip {
   z-index: 2070;
 }
 
-/* line 118, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 117, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -656,19 +678,19 @@ p.darker {
   background-color: #000000;
 }
 
-/* line 128, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 127, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-backdrop.fade {
   opacity: 0;
 }
 
-/* line 133, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 132, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-backdrop,
 .modal-backdrop.fade.in {
   opacity: 0.8;
   filter: alpha(opacity=80);
 }
 
-/* line 138, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 137, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal {
   position: fixed;
   top: 50%;
@@ -692,7 +714,7 @@ p.darker {
   background-clip: padding-box;
 }
 
-/* line 161, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 160, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal.fade {
   top: -25%;
   -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
@@ -702,11 +724,11 @@ p.darker {
   transition: opacity 0.3s linear, top 0.3s ease-out;
 }
 
-/* line 171, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 170, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-header {
   padding: 45px 45px 10px 45px;
 }
-/* line 173, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 172, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-header h3 {
   font: normal 23px "Open Sans";
   margin: 0;
@@ -714,37 +736,37 @@ p.darker {
   color: #333;
 }
 
-/* line 181, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 180, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-header .close {
   margin-top: 2px;
 }
 
-/* line 185, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 184, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-body {
   max-height: 400px;
   padding: 15px 45px;
   overflow-y: auto;
 }
-/* line 189, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 188, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-body p {
   font: normal 15px "Open Sans";
   color: #333333;
 }
-/* line 193, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 192, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-body p a {
   color: #FF3333;
 }
-/* line 194, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 193, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-body p a:hover {
   color: #333;
 }
 
-/* line 197, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 196, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-form {
   margin-bottom: 0;
 }
 
-/* line 201, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 200, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-footer {
   padding: 15px 45px 45px 45px;
   margin-bottom: 0;
@@ -758,36 +780,36 @@ p.darker {
   box-shadow: inset 0 1px 0 #ffffff;
 }
 
-/* line 215, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 214, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-footer:before,
 .modal-footer:after {
   display: table;
   content: "";
 }
 
-/* line 220, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 219, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-footer:after {
   clear: both;
 }
 
-/* line 226, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 223, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .clearfix {
   *zoom: 1;
 }
 
-/* line 230, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 227, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .clearfix:before,
 .clearfix:after {
   display: table;
   content: "";
 }
 
-/* line 234, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 231, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .clearfix:after {
   clear: both;
 }
 
-/* line 237, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 234, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .hide-text {
   font: 0/0 a;
   color: transparent;
@@ -796,7 +818,7 @@ p.darker {
   border: 0;
 }
 
-/* line 244, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 241, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .input-block-level {
   display: block;
   width: 100%;
@@ -807,7 +829,7 @@ p.darker {
   box-sizing: border-box;
 }
 
-/* line 253, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 250, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -818,19 +840,19 @@ p.darker {
   background-color: #000000;
 }
 
-/* line 262, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 259, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-backdrop.fade {
   opacity: 0;
 }
 
-/* line 266, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 263, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal-backdrop,
 .modal-backdrop.fade.in {
   opacity: 0.8;
   filter: alpha(opacity=80);
 }
 
-/* line 270, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 267, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal.fade {
   -webkit-transition: opacity .3s linear, top .3s ease-out;
   -moz-transition: opacity .3s linear, top .3s ease-out;
@@ -840,12 +862,12 @@ p.darker {
   top: -25%;
 }
 
-/* line 278, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 275, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .modal.fade.in {
   top: 50%;
 }
 
-/* line 281, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 278, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .fade {
   opacity: 0;
   filter: alpha(opacity=0);
@@ -856,19 +878,19 @@ p.darker {
   transition: opacity 0.15s linear;
 }
 
-/* line 290, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 287, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .fade.in {
   opacity: 1;
   filter: alpha(opacity=100);
 }
 
-/* line 295, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 292, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .hidden {
   display: none;
   visibility: hidden;
 }
 
-/* line 300, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 297, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 .btn {
   display: inline-block;
   vertical-align: top;
@@ -892,6 +914,40 @@ p.darker {
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.15);
   -ms-filter: "progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,Strength=3)";
   filter: progid:DXImageTransform.Microsoft.Glow(Color=#ff000000,Strength=3);
+}
+/* line 317, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+.btn:hover {
+  text-decoration: underline;
+}
+
+/* line 323, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert.tool .container {
+  top: 50px;
+}
+/* line 325, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert.tool header.country {
+  top: 26px;
+}
+/* line 327, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert div.own_header {
+  top: -47px;
+}
+/* line 329, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert div.own_header.about {
+  top: 55px;
+}
+/* line 332, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert.scrolled div.own_header {
+  top: 70px;
+}
+/* line 336, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert.fullscreen div.own_header {
+  top: 70px;
+}
+/* line 339, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert .float_elements {
+  position: relative;
+  top: 26px;
 }
 
 /* line 9, /Users/javierarce/code/wri/app/css_src/partials/_page.scss */
@@ -983,7 +1039,7 @@ body.tool {
 /* line 62, /Users/javierarce/code/wri/app/css_src/partials/_page.scss */
 body.tool .container {
   position: relative;
-  top: 50px;
+  top: 0px;
   width: 100%;
   height: 100%;
   padding: 0;
@@ -1051,7 +1107,7 @@ body.tool header nav a:active {
 /* line 107, /Users/javierarce/code/wri/app/css_src/partials/_page.scss */
 body.tool header.country {
   position: fixed;
-  top: 50px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 65px;
