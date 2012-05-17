@@ -168,7 +168,7 @@ p {font:normal 15px "Open Sans"; color:white; &.bigger {font-size:22px;} &.darke
 
 
 .modal-header {
-  padding: 45px 45px 10px 45px;
+  padding: 45px 45px 0px 45px;
   h3 {
     font: normal 23px "Open Sans";
     margin: 0;
@@ -186,6 +186,7 @@ p {font:normal 15px "Open Sans"; color:white; &.bigger {font-size:22px;} &.darke
   padding: 15px 45px;
   overflow-y: auto;
   p {
+    margin-bottom: 15px;
     font:normal 15px "Open Sans";
     color: #333333;
   }
@@ -198,7 +199,7 @@ p {font:normal 15px "Open Sans"; color:white; &.bigger {font-size:22px;} &.darke
 }
 
 .modal-footer {
-  padding: 15px 45px 45px 45px;
+  padding: 0 45px 45px 45px;
   margin-bottom: 0;
   text-align: left;
   -webkit-border-radius: 0 0 6px 6px;
