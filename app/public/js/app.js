@@ -1,3 +1,11 @@
+$(function() {
+
+  $(".read-more").on("click", function(e) {
+    e.preventDefault();
+    $("#read-more").modal({ show: true });
+  });
+});
+
 function App() {
   var args = Array.prototype.slice.call(arguments),
     callback = args.pop(),
@@ -35,18 +43,18 @@ App.modules = {};
 
 /**
  * String formatting for JavaScript.
- * 
- * Usage: 
- * 
+ *
+ * Usage:
+ *
  *   "{0} is {1}".format("CartoDB", "epic!");
  *   // CartoDB is epic!
- * 
+ *
  */
 String.prototype.format = function(i, safe, arg) {
   function format() {
-      var str = this, 
+      var str = this,
           len = arguments.length+1;
-      
+
       for (i=0; i < len; arg = arguments[i++]) {
           safe = typeof arg === 'object' ? JSON.stringify(arg) : arg;
           str = str.replace(RegExp('\\{'+(i-1)+'\\}', 'g'), safe);
