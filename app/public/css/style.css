@@ -2309,7 +2309,7 @@ body.front article.error section div.band p a:hover {
   height: 50px;
   padding-top: 15px;
   background: url("/img/layout/bar.png") repeat-x;
-  z-index: 10000;
+  z-index: 1020;
 }
 
 /* line 2, /Users/javierarce/code/wri/app/css_src/partials/_map.scss */
