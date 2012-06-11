@@ -426,13 +426,17 @@ p.darker {
   text-decoration: underline;
 }
 
-/* line 324, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 323, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 body.with-alert.tool .container {
   top: 50px;
 }
-/* line 326, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 325, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 body.with-alert.tool header.country {
   top: 26px;
+}
+/* line 326, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert.tool header.country.inner {
+  height: 40px;
 }
 /* line 328, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 body.with-alert div.own_header {
@@ -922,13 +926,17 @@ p.darker {
   text-decoration: underline;
 }
 
-/* line 324, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 323, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 body.with-alert.tool .container {
   top: 50px;
 }
-/* line 326, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+/* line 325, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 body.with-alert.tool header.country {
   top: 26px;
+}
+/* line 326, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
+body.with-alert.tool header.country.inner {
+  height: 40px;
 }
 /* line 328, /Users/javierarce/code/wri/app/css_src/partials/_base.scss */
 body.with-alert div.own_header {
@@ -2309,7 +2317,7 @@ body.front article.error section div.band p a:hover {
   height: 50px;
   padding-top: 15px;
   background: url("/img/layout/bar.png") repeat-x;
-  z-index: 1020;
+  z-index: 1030;
 }
 
 /* line 2, /Users/javierarce/code/wri/app/css_src/partials/_map.scss */

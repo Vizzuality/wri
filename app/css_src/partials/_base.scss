@@ -319,11 +319,11 @@ p {font:normal 15px "Open Sans"; color:white; &.bigger {font-size:22px;} &.darke
 
 }
 
-
 body.with-alert  {
   &.tool .container { top:50px; }
 
   &.tool header.country { top:26px; }
+  &.tool header.country.inner { height:40px; }
 
   div.own_header {
     top: -47px;
