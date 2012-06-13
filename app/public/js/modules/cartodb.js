@@ -1,7 +1,7 @@
 
 App.modules.CartoDB = function(app) {
 
-    var resource_path= 'wri-01.cartodb.com/api/v1/sql';
+    var resource_path= 'dyynnn89u7nkm.cloudfront.net/api/v1/sql';
     var resource_url = 'https://' + resource_path;
 
     function query(sql, callback, proxy) {

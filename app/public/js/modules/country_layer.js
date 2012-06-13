@@ -55,11 +55,11 @@ App.modules.CountryLayer = function(app) {
             self.map = map;
             self.zoom_country = 8;
 
-            this.tilemill = new MiniTilemill("wri-01", map.map);
+            this.tilemill = new MiniTilemill("dyynnn89u7nkm.cloudfront.net", map.map);
 
             //TODO: extract to constants
             var cartodb = new CartoDB({
-                user: 'wri-01',
+                user: 'dyynnn89u7nkm.cloudfront.net',
                 table: 'admin1_attributes_live',
                 columns: ['iso', 'shape_area', 'cartodb_id', 'cumm'],
                 debug: false,

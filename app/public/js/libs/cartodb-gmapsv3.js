@@ -15,7 +15,7 @@ CartoDBLayer.prototype.create_layer = function() {
     tiles: {},
     getTile: function(coord, zoom) {
         var img = new Image();
-        var url = 'http://' + self.user_name + '.cartodb.com/tiles/' + self.table + '/'+ zoom +'/'+ coord.x +'/'+coord.y+'.png?sql=' + self.query
+        var url = 'http://' + self.user_name + '/tiles/' + self.table + '/'+ zoom +'/'+ coord.x +'/'+coord.y+'.png?sql=' + self.query
         if(self.style) {
             url += "&style=" + encodeURIComponent(self.style.replace('\n',''));
         }

@@ -10,7 +10,7 @@ function TimePlayer(table) {
     this.render = this.render_time;
     this.cells = [];
     this.table = table;
-    this.base_url = 'http://sql.wri-01.cartodb.com/api/v2/sql';
+    this.base_url = 'http://dyynnn89u7nkm.cloudfront.net/api/v2/sql';
 }
 
 TimePlayer.prototype = new CanvasTileLayer();
